@@ -33,7 +33,7 @@
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+1️⃣ [Trello Board](https://trello.com/b/22w8dI8x/get2it)
 
 1️⃣ [Product Canvas](🚫add link to product canvas here)
 
