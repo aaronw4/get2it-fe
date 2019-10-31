@@ -60,6 +60,11 @@ This is accomplished through the use of timers, calendars, and reminders.
 -    The ability to create and reuse Components keeps our code DRY and saves time in the overall development of the app.
 -    React is an open-source library. Because of this, it has a lot of useful applications and tools that make development easier.
 
+#### Reactstrap
+
+-    Reactstrap has the capabilities of Bootstrap, but is more React friendly because of it's pre-made component library.
+-    It is a huge time saver when it comes to creating forms, animations, tables, and more.
+
 🚫List the rest of the front end features and libraries in the same format as the framework above.
 
 #### Front end deployed to `Netlify`
