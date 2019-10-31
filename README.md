@@ -62,9 +62,9 @@ This is accomplished through the use of timers, calendars, and reminders.
 
 🚫List the rest of the front end features and libraries in the same format as the framework above.
 
-#### Front end deployed to `🚫insert service here`
+#### Front end deployed to `Netlify`
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/Lambda-School-Labs/get2it-be) built using:
 
 #### 🚫 back end framework goes here
 
