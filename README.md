@@ -4,7 +4,7 @@
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ Title of project goes here
+# 1️⃣ Get2It
 
 1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
 
@@ -35,11 +35,8 @@
 
 1️⃣ [Trello Board](https://trello.com/b/22w8dI8x/get2it)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+1️⃣ [Product Canvas](https://www.notion.so/Get2It-f99d691af6ce4731b39adc459f35eba9)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
-
-🚫 Replace lorem ipsum with a description of your project
 
 Get2It is an app that helps people stay organized, focused, and motivated while performing daily tasks.
 This is accomplished through the use of timers, calendars, and reminders.
@@ -57,14 +54,11 @@ This is accomplished through the use of timers, calendars, and reminders.
 
 ### Front end built using:
 
-#### _Front end framework goes here_
+#### Reactjs
 
-🚫 Why did you choose this framework?
-
--    point one
--    point two
--    point three
--    point four
+-    React's virtual DOM allows us to provide an extremely fast and easy UI.
+-    The ability to create and reuse Components keeps our code DRY and saves time in the overall development of the app.
+-    React is an open-source library. Because of this, it has a lot of useful applications and tools that make development easier.
 
 🚫List the rest of the front end features and libraries in the same format as the framework above.
 
