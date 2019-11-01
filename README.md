@@ -6,7 +6,7 @@
 
 # 1️⃣ Get2It
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+1️⃣ You can find the deployed project at [get2it.netlify.com](https://5dbcb44da1bf0a0008efbf19--get2it.netlify.com).
 
 ## 4️⃣ Contributors
 
