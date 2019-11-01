@@ -7,7 +7,7 @@
 
 [build]
   base    = "./get2it"
-  publish = "./get2it/build"
+  publish = "/build"
   command = "npm run build" 
 
 [[redirects]]
