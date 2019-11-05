@@ -1,4 +1,9 @@
 body {
+  height: 100vh;
+  background-image: radial-gradient(circle at 50% 35%,rgb(122, 122, 122) 5%,rgb(122, 122, 122) 5%,rgb(29, 29, 29) 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
