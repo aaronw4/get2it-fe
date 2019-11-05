@@ -69,7 +69,7 @@ class Register extends React.Component {
       <div className='register'>
         <form className='registerForm' onSubmit={this.handleSubmit}>
           {error && <p className='error'>{error}</p>}
-          
+
           <label to='username'><i className="far fa-user-circle"></i></label>
           <input type='text' id='username' name='username' placeholder='Username' value={username} onChange={this.handleChange} /><br />
           <label to='password'><i className="fas fa-unlock-alt"></i></label>
@@ -77,7 +77,7 @@ class Register extends React.Component {
 
           {isLoading ? <p>Creating account, please wait...</p> : <button className='registerButton' type='submit'>Create Account</button>}
         </form>
-        <p className='loginLink'>Already a member? Click <Link to='/login'>here</Link> to login.</p>
+        <p className='loginMessage'>ALREADY HAVE AN ACCOUNT? <Link className='loginLink' to='/login'> SIGN IN</Link></p>
       </div>
     )
   }
