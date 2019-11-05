@@ -1,6 +1,6 @@
 body {
   height: 100vh;
-  background-image: radial-gradient(circle at 50% 35%,rgb(122, 122, 122) 5%,rgb(122, 122, 122) 5%,rgb(29, 29, 29) 100%);
+  background-image: radial-gradient(circle at 50% 30%,rgb(110, 110, 110) 5%,rgb(110, 110, 110) 5%,rgb(6, 14, 26) 90%);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

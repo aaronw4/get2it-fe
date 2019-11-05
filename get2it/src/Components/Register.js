@@ -41,13 +41,18 @@ class Register extends React.Component {
 
     return (
       <div className='register'>
+        <h3 className='pageTitle'>Sign up</h3>
         <form className='registerForm' onSubmit={this.handleSubmit}>
           {error && <p className='error'>{error}</p>}
 
-          <label to='username'><i className="far fa-user-circle"></i></label>
-          <input type='text' id='username' name='username' placeholder='Username' value={username} onChange={this.handleChange} /><br />
-          <label to='password'><i className="fas fa-unlock-alt"></i></label>
-          <input type='password' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} /><br />
+          <div className='inputContainer'>
+            <label to='username'><i id='registerIcon' className="far fa-user-circle"></i></label>
+            <input type='text' id='username' name='username' placeholder='Username' value={username} onChange={this.handleChange} /><br />
+          </div>
+          <div className='inputContainer'>
+            <label to='password'><i id='registerIcon' className="fas fa-unlock-alt"></i></label>
+            <input type='password' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} /><br />
+          </div>
 
           {isLoading ? <p>Creating account, please wait...</p> : <button className='registerButton' type='submit'>Create Account</button>}
         </form>
