@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 const Register = (props) => {
   return (
     <Form>
-      <FormGroup row>
+      <FormGroup className='formGroup' row>
         <Col sm='2'>
           <Label for="username"><i className="far fa-user-circle"></i></Label>
         </Col>
@@ -12,9 +12,9 @@ const Register = (props) => {
           <Input type="text" name="username" id="username" placeholder="Username" />
         </Col>
       </FormGroup>
-      <FormGroup row>
+      <FormGroup className='formGroup' row>
         <Col sm={2}>
-          <Label for="examplePassword">Password</Label>
+          <Label for="examplePassword"><i className="fas fa-unlock-alt"></i></Label>
         </Col>
         <Col sm='auto'>
           <Input type="password" name="password" id="examplePassword" placeholder="Password" />
