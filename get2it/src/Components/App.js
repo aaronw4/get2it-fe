@@ -1,17 +1,13 @@
 import React from 'react';
 import '../App.css';
-import OnBoarding from './OnBoarding'
-import Register from './Register'
-
+import Register from './Register/Register.js';
+import OnBoarding from './OnBoarding';
 
 function App() {
   return (
     <div className="App">
-      <div>
         <OnBoarding  />
       </div>
-
-    </div>
   );
 }
 

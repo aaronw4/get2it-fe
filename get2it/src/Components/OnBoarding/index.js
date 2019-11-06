@@ -59,8 +59,9 @@ const OnBoarding = props => {
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         key={item.src}
+        
       >
-        <img src={item.src} alt={item.altText} />
+        <img className="imgSlide" src={item.src} alt={item.altText} />
         <CarouselCaption
           captionText={item.caption}
           captionHeader={item.caption}
@@ -86,9 +87,10 @@ const OnBoarding = props => {
           items={items}
           activeIndex={activeIndex}
           onClickHandler={goToIndex}
+          className='indecator'
         />
         {slides}
-        <CarouselControl
+        {/* <CarouselControl
           direction="prev"
           directionText="Previous"
           onClickHandler={previous}
@@ -97,7 +99,7 @@ const OnBoarding = props => {
           direction="next"
           directionText="Next"
           onClickHandler={next}
-        />
+        /> */}
       </Carousel>
     </div>
   );

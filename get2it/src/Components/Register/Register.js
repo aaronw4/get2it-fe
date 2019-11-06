@@ -1,8 +1,9 @@
 import React from 'react'
+import './Register.css'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { createUser } from '../actions'
-import logo from './Images/logo.png'
+import { createUser } from '../../actions'
+import logo from '../Images/logo.png'
 
 class Register extends React.Component {
   constructor() {
