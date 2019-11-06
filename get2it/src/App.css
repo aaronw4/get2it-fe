@@ -7,7 +7,11 @@
 .pageTitle {
   width: 100%;
   color: silver;
-  padding: 40px 0;
+  padding: 20px 0 0;
+  font-size: 1.2rem;
+}
+.registerLogo {
+  width: 250px;
 }
 .inputContainer {
   display: flex;
@@ -64,3 +68,4 @@ select:-webkit-autofill:focus {
   color: silver;
   padding-left: 10px;
 }
+/***************** REGISTER FORM END ********************/

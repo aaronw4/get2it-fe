@@ -1,7 +1,8 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-// import { createUser } from '../actions'
+import { createUser } from '../actions'
+import logo from './Images/logo.png'
 
 class Register extends React.Component {
   constructor() {
@@ -42,6 +43,7 @@ class Register extends React.Component {
     return (
       <div className='register'>
         <h3 className='pageTitle'>Sign up</h3>
+        <img className='registerLogo' src={logo} alt='get2it'/>
         <form className='registerForm' onSubmit={this.handleSubmit}>
           {error && <p className='error'>{error}</p>}
 
@@ -62,15 +64,15 @@ class Register extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => ({
-//   isLoading: state.isLoading,
-//   error: state.error,
-// })
+const mapStateToProps = (state) => ({
+  isLoading: state.isLoading,
+  error: state.error,
+})
 
-// const mapDispatchToProps = {
-//   createUser,
-// }
+const mapDispatchToProps = {
+  createUser,
+}
 
 export default withRouter(
-  connect(/*mapStateToProps, mapDispatchToProps*/)(Register)
+  connect(mapStateToProps, mapDispatchToProps)(Register)
 )
