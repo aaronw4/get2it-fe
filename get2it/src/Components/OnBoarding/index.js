@@ -17,18 +17,18 @@ import "./style.css";
 const items = [
   {
     src: require('./focused.PNG'),
-    altText: "Slide 1",
-    caption: "Slide 1"
+    altText: "",
+    caption: ""
   },
   {
     src: require('./organized.PNG'),
-    altText: "Slide 2",
-    caption: "Slide 2"
+    altText: "",
+    caption: ""
   },
   {
     src:require('./fun.PNG'),
-    altText: "Slide 3",
-    caption: "Slide 3"
+    altText: "",
+    caption: ""
   }
 ];
 
