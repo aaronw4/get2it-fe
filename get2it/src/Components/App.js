@@ -1,13 +1,16 @@
 import React from 'react';
 import '../App.css';
 import OnBoarding from './OnBoarding'
+import Register from './Register'
+
 
 function App() {
   return (
     <div className="App">
       <div>
-        <OnBoarding />
+        <OnBoarding  />
       </div>
+
     </div>
   );
 }

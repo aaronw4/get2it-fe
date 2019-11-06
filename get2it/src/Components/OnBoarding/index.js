@@ -13,21 +13,20 @@ import {
   CarouselCaption
 } from "reactstrap";
 import "./style.css";
-import Logo from "./logo.png";
 
 const items = [
   {
-    id: 1,
+    src: require('./focused.PNG'),
     altText: "Slide 1",
     caption: "Slide 1"
   },
   {
-    id: 2,
+    src: require('./organized.PNG'),
     altText: "Slide 2",
     caption: "Slide 2"
   },
   {
-    id: 3,
+    src:require('./fun.PNG'),
     altText: "Slide 3",
     caption: "Slide 3"
   }
@@ -57,14 +56,12 @@ const OnBoarding = props => {
   const slides = items.map(item => {
     return (
       <CarouselItem
-        className="custom-tag"
-        tag="div"
-        key={item.id}
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
+        key={item.src}
       >
+        <img src={item.src} alt={item.altText} />
         <CarouselCaption
-          className="text-danger"
           captionText={item.caption}
           captionHeader={item.caption}
         />
