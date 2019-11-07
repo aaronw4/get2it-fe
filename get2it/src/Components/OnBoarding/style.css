@@ -1,15 +1,17 @@
 .logoImg {
-    width:35px;
+    width:30px;
     color:white;
 }
 #arrow {
     color: aliceblue;
     margin-top: 15px;
+    height: 26px;
 }
 .signUp {
     margin-top: 8px;
     text-align: center;
     color: white;
+    font-size: 20px;
 }
 .custom-tag {
     max-width: 100%;
@@ -18,11 +20,14 @@
 }
 .carousel {
     margin: 101px 54px 40px 54px;
-    width: 250px;
+    width: 265px;
     height: 300px;
+    
 }
 .imgSlide {
     height: 350px;
+    border-radius: 8px;
+    margin-left: -1px;
 }
 .indecator {
     margin-bottom: -90px;
@@ -34,4 +39,8 @@
     background-color: transparent;
     border-radius: 25px;
     border-color: white;
+}
+div.carousel.slide {
+    margin-top:40px;
+    margin-left:48px;
 }
