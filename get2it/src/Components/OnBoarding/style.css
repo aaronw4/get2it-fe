@@ -5,7 +5,7 @@
 #arrow {
     color: aliceblue;
     margin-top: 15px;
-    height: 26px;
+    height: 30px;
 }
 .signUp {
     margin-top: 8px;
@@ -41,6 +41,58 @@
     border-color: white;
 }
 div.carousel.slide {
-    margin-top:40px;
+    margin-top:50px;
     margin-left:48px;
+ 
 }
+.fullContainer {
+   
+    display: flex;
+    justify-content: center;
+
+}
+@media screen and (min-width: 750px) {
+    .imgSlide {
+      height: 450px;
+      width: 300px;
+      border-radius: 8px;
+      margin-left: -1px;
+    
+    }
+    #arrow {
+        color: aliceblue;
+        margin-top: 15px;
+        height: 80px;
+        width: 30px;
+    }
+    .signUp {
+        margin-top: 8px;
+        text-align: center;
+        color: white;
+        font-size: 30px;
+    }
+    #nextBTN {
+        color:white;
+        margin-bottom:-450px;
+        width: 250px;
+        background-color: transparent;
+        border-radius: 25px;
+        border-color: white;
+        margin-left: 40px;
+    }
+    .indecator {
+        margin-bottom: -190px;
+        margin-left: 80px;
+        height:10px;
+    }
+    .carousel-inner {
+        width: 115%;
+  }
+    .carousel-indicators li {
+    width: 49px;
+    height: 7px;
+    margin-right: -1px;
+    margin-left: 14px;
+    }
+}
+  

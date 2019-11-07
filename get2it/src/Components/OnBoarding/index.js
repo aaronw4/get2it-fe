@@ -80,7 +80,8 @@ const OnBoarding = props => {
           </Col>
         </Row>
       </Container>
-      <Carousel activeIndex={activeIndex} next={next} previous={previous}>
+      <div className="fullContainer">
+      <Carousel  activeIndex={activeIndex} next={next} previous={previous}>
         <CarouselIndicators
           items={items}
           activeIndex={activeIndex}
@@ -99,6 +100,7 @@ const OnBoarding = props => {
           onClickHandler={next}
         /> */}
       </Carousel>
+      </div>
       <Button id="nextBTN" >Next</Button>
     </div>
   );
