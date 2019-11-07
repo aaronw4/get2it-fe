@@ -31,6 +31,10 @@
   background-color: rgba(255, 255, 255, 0);
   color: silver;
 }
+.registerButton:hover {
+  background-color: var(--textColor);
+  color: rgb(15, 15, 53);
+}
 input {
   width: 100%;
   text-align: left;
