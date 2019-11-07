@@ -67,3 +67,6 @@ select:-webkit-autofill:focus {
   color: silver;
   padding-left: 10px;
 }
+p {
+  color: var(--textColor);
+}
