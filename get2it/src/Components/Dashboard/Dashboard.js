@@ -5,9 +5,7 @@ import { Route, withRouter } from 'react-router-dom'
 
 class Dashboard extends React.Component {
 
-  componentDidMount() {
-    this.props.getAccount()
-  }
+  
 
   render() {
 

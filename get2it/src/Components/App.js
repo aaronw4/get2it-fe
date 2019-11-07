@@ -11,7 +11,10 @@ import OnBoarding from './OnBoarding'
 function App() {
   return (
     <div className="App">
-      
+      <PrivateRoute exact path='/' component={Dashboard} />
+      <PrivateRoute path='/onboarding' component={Dashboard} />
+      <Route path='/login' component={Login} />
+      <Route path='/register' component={Register} />
     </div>
   );
 }
