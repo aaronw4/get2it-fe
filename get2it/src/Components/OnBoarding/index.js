@@ -6,6 +6,7 @@ import {
   Row,
   Col,
   Carousel,
+  CarouselControl,
   CarouselItem,
   CarouselIndicators,
   CarouselCaption
@@ -89,7 +90,7 @@ const OnBoarding = props => {
           className='indecator'
         />
         {slides}
-        {/* <CarouselControl
+        <CarouselControl
           direction="prev"
           directionText="Previous"
           onClickHandler={previous}
@@ -98,7 +99,7 @@ const OnBoarding = props => {
           direction="next"
           directionText="Next"
           onClickHandler={next}
-        /> */}
+        />
       </Carousel>
       </div>
       <Button id="nextBTN" >Next</Button>

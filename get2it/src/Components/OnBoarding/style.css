@@ -94,5 +94,19 @@ div.carousel.slide {
     margin-right: -1px;
     margin-left: 14px;
     }
+    .carousel-control-next {
+        margin-right:-80px;
+        background-color: grey;
+        width:40px;
+        height:450px;
+        border-radius: 8px;
+    }
+    .carousel-control-prev {
+        margin-left:-40px;
+        background-color: grey;
+        width:40px;
+        height:450px;
+        border-radius: 8px;
+    }
 }
   
