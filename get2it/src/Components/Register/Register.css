@@ -1,3 +1,6 @@
+.register {
+  height: 100%;
+}
 .pageTitle {
   width: 100%;
   color: silver;
@@ -63,4 +66,7 @@ select:-webkit-autofill:focus {
 .loginLink {
   color: silver;
   padding-left: 10px;
+}
+p {
+  color: var(--textColor);
 }

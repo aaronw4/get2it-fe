@@ -68,6 +68,7 @@ const OnBoarding = props => {
       </CarouselItem>
     );
   });
+  
 
   return (
     <div>
