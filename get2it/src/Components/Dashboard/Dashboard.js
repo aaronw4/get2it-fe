@@ -5,13 +5,20 @@ import { Route, withRouter } from 'react-router-dom'
 
 class Dashboard extends React.Component {
 
-  
+  logout = evt => {
+    evt.preventDefault()
+
+    localStorage.removeItem('token')
+    props.history.push('/login')
+  }
 
   render() {
 
     return (
 
       <div className="dashboard">
+
+        <button className='logOutButton' onClick={this.logout}>Logout</button>
 
         {this.props.isLoading ? <p className='loading'>Loading...</p> :
             <div className='appRoutes'>
