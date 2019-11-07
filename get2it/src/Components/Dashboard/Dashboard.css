@@ -1,0 +1,8 @@
+.logOutButton {
+  background: none;
+  border: var(--buttonBorder);
+  border-radius: 40px;
+  color: var(--textColor);
+  padding: 0 15px;
+  margin: 10px 0;
+}

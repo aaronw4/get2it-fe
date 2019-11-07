@@ -30,7 +30,7 @@ class Register extends React.Component {
     this.props.createUser(username, password)
       .then(() => {
         !this.props.error &&
-          this.props.history.push('/')
+          this.props.history.push('/onboarding')
       })
       .catch((err) => {
         console.error(err)
