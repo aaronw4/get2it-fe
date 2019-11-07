@@ -2,6 +2,7 @@ import React from 'react';
 import './Dashboard.css'
 import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
+import OnBoarding from '../OnBoarding/index.js'
 
 class Dashboard extends React.Component {
 
@@ -22,7 +23,8 @@ class Dashboard extends React.Component {
 
         {this.props.isLoading ? <p className='loading'>Loading...</p> :
             <div className='appRoutes'>
-              <p>TEMP MESSAGE (remove later)</p>
+              <Route path='/onboarding' render={props => <OnBoarding {...props} />} />
+
               {/* <Route exact path='/' render={props => <Home {...props} />} /> */}
 
             </div>
