@@ -6,7 +6,6 @@ import PrivateRoute from './PrivateRoute/PrivateRoute.js'
 import Dashboard from './Dashboard/Dashboard.js'
 import Register from './Register/Register.js'
 import Login from './Login/Login.js'
-import OnBoarding from './OnBoarding'
 
 function App() {
   return (
