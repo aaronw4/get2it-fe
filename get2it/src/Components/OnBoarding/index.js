@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Button,
-  Navbar,
   Container,
   Row,
   Col,
   Carousel,
   CarouselItem,
-  CarouselControl,
   CarouselIndicators,
   CarouselCaption
 } from "reactstrap";
@@ -101,6 +99,7 @@ const OnBoarding = props => {
           onClickHandler={next}
         /> */}
       </Carousel>
+      <Button id="nextBTN" >Next</Button>
     </div>
   );
 };

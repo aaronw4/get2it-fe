@@ -27,3 +27,11 @@
 .indecator {
     margin-bottom: -90px;
 }
+#nextBTN {
+    color:white;
+    margin-bottom:-150px;
+    width: 250px;
+    background-color: transparent;
+    border-radius: 25px;
+    border-color: white;
+}
