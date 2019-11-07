@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Dashboard from '../Dashboard/Dashboard'
 import {
   Button,
   Container,
@@ -75,7 +76,7 @@ const OnBoarding = props => {
       <Container className="container">
         <Row>
           <Col xs={2}>
-            <i id="arrow" className="fas fa-arrow-left"></i>
+            {/* <i  id="arrow" className="fas fa-arrow-left"></i> */}
           </Col>
           <Col xs={8} className="signUp">
             Sign Up
