@@ -9,7 +9,7 @@ class Dashboard extends React.Component {
     evt.preventDefault()
 
     localStorage.removeItem('token')
-    props.history.push('/login')
+    this.props.history.push('/login')
   }
 
   render() {
