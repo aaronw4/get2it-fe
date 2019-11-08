@@ -4,15 +4,9 @@ import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
 import OnBoarding from '../OnBoarding/index.js'
 import Home from '../Home/Home.js'
+import Menu from '../Menu/Menu.js'
 
 class Dashboard extends React.Component {
-
-  logout = evt => {
-    evt.preventDefault()
-
-    localStorage.removeItem('token')
-    this.props.history.push('/login')
-  }
 
   render() {
 
@@ -20,7 +14,7 @@ class Dashboard extends React.Component {
 
       <div className="dashboard">
         <div className='nav'>
-          <button className='logOutButton' onClick={this.logout}>Logout</button>
+          <Menu />
         </div>
 
         {this.props.isLoading ? <p className='loading'>Loading...</p> :

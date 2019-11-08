@@ -1,16 +1,3 @@
 .nav {
-  justify-content: flex-end;
   margin: 10px;
-
-}
-.logOutButton {
-  background: none;
-  border: var(--buttonBorder);
-  border-radius: 40px;
-  color: var(--textColor);
-  padding: 0 15px;
-}
-.logOutButton:hover {
-  background-color: var(--textColor);
-  color: rgb(15, 15, 53);
 }
