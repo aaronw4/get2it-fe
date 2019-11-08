@@ -3,6 +3,7 @@ import './Dashboard.css'
 import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
 import OnBoarding from '../OnBoarding/index.js'
+import Home from '../Home/Home.js'
 
 class Dashboard extends React.Component {
 
@@ -26,7 +27,7 @@ class Dashboard extends React.Component {
             <div className='appRoutes'>
               <Route path='/onboarding' render={props => <OnBoarding {...props} />} />
 
-              {/* <Route exact path='/' render={props => <Home {...props} />} /> */}
+              <Route exact path='/' render={props => <Home {...props} />} />
 
             </div>
         }
