@@ -18,8 +18,9 @@ class Dashboard extends React.Component {
     return (
 
       <div className="dashboard">
-
-        <button className='logOutButton' onClick={this.logout}>Logout</button>
+        <div className='nav'>
+          <button className='logOutButton' onClick={this.logout}>Logout</button>
+        </div>
 
         {this.props.isLoading ? <p className='loading'>Loading...</p> :
             <div className='appRoutes'>
