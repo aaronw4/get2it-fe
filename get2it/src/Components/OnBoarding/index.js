@@ -1,35 +1,35 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Dashboard from '../Dashboard/Dashboard'
 import {
   Button,
-  Navbar,
   Container,
   Row,
   Col,
   Carousel,
-  CarouselItem,
   CarouselControl,
+  CarouselItem,
   CarouselIndicators,
   CarouselCaption
 } from "reactstrap";
 import "./style.css";
-import Logo from "./logo.png";
+import { Link } from 'react-router-dom';
 
 const items = [
   {
-    id: 1,
-    altText: "Slide 1",
-    caption: "Slide 1"
+    src: require('./focused.PNG'),
+    altText: "",
+    caption: ""
   },
   {
-    id: 2,
-    altText: "Slide 2",
-    caption: "Slide 2"
+    src: require('./organized.PNG'),
+    altText: "",
+    caption: ""
   },
   {
-    id: 3,
-    altText: "Slide 3",
-    caption: "Slide 3"
+    src:require('./fun.PNG'),
+    altText: "",
+    caption: ""
   }
 ];
 
@@ -57,38 +57,40 @@ const OnBoarding = props => {
   const slides = items.map(item => {
     return (
       <CarouselItem
-        className="custom-tag"
-        tag="div"
-        key={item.id}
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
+        key={item.src}
+        
       >
+        <img className="imgSlide" src={item.src} alt={item.altText} />
         <CarouselCaption
-          className="text-danger"
           captionText={item.caption}
           captionHeader={item.caption}
         />
       </CarouselItem>
     );
   });
+  
 
   return (
     <div>
       <Container className="container">
         <Row>
           <Col xs={2}>
-            <i id="arrow" className="fas fa-arrow-left"></i>
+            {/* <i  id="arrow" className="fas fa-arrow-left"></i> */}
           </Col>
           <Col xs={8} className="signUp">
             Sign Up
           </Col>
         </Row>
       </Container>
-      <Carousel activeIndex={activeIndex} next={next} previous={previous}>
+      <div className="fullContainer">
+      <Carousel  activeIndex={activeIndex} next={next} previous={previous}>
         <CarouselIndicators
           items={items}
           activeIndex={activeIndex}
           onClickHandler={goToIndex}
+          className='indecator'
         />
         {slides}
         <CarouselControl
@@ -102,6 +104,8 @@ const OnBoarding = props => {
           onClickHandler={next}
         />
       </Carousel>
+      </div>
+      <Button id="nextBTN" onClick={this} type="submit"><Link to={'/Dashboard'}>Next</Link> </Button>
     </div>
   );
 };
