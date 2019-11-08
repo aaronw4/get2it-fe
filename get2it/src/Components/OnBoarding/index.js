@@ -105,7 +105,7 @@ const OnBoarding = props => {
         />
       </Carousel>
       </div>
-      <Button id="nextBTN" onClick={this} type="submit"><Link to={'/Dashboard'}>Next</Link> </Button>
+      <Button id="nextBTN" onClick={this} type="submit"><Link to={'/'}>Next</Link> </Button>
     </div>
   );
 };
