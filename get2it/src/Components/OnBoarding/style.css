@@ -72,6 +72,7 @@ div.carousel.slide {
         font-size: 30px;
     }
     #nextBTN {
+        
         color:white;
         margin-bottom:-450px;
         width: 250px;
@@ -79,6 +80,10 @@ div.carousel.slide {
         border-radius: 25px;
         border-color: white;
         margin-left: 40px;
+    }
+    a {
+        text-decoration: none;
+        color: white;
     }
     .indecator {
         margin-bottom: -190px;

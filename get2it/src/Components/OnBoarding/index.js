@@ -13,6 +13,7 @@ import {
   CarouselCaption
 } from "reactstrap";
 import "./style.css";
+import { Link } from 'react-router-dom';
 
 const items = [
   {
@@ -104,7 +105,7 @@ const OnBoarding = props => {
         />
       </Carousel>
       </div>
-      <Button id="nextBTN" >Next</Button>
+      <Button id="nextBTN" onClick={this} type="submit"><Link to={'/Dashboard'}>Next</Link> </Button>
     </div>
   );
 };
