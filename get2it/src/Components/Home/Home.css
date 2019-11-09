@@ -6,6 +6,6 @@
 .date {
   margin: 0;
 }
-/* .time {
-  
-} */
+.greeting {
+  color: var(--textColor);
+}
