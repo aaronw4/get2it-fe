@@ -1,3 +1,9 @@
+.home {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
 .today {
   display: flex;
   flex-flow: column;
@@ -8,4 +14,30 @@
 }
 .greeting {
   color: var(--textColor);
+}
+.countContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(192, 192, 192, 0.363);
+  border-radius: 100%;
+  height: 80px;
+  width: 80px;
+  position: relative;
+}
+.count {
+  color: white
+}
+.total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: gray;
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right: 2px;
+  top: -6px;
 }

@@ -6,7 +6,6 @@ import moment from 'moment'
 
 function Home(props) {
   const time = moment().format('H')
-  console.log(time <= 19)
 
   return (
     <div className='home'>
@@ -15,6 +14,10 @@ function Home(props) {
       <div className='today'>
         <p className='date'>{moment().format('LL')}</p>
         <p className='time'>{moment().format('LT')}</p>
+      </div>
+      <div className='countContainer'>
+        <h1 className='count'>8</h1>
+        <p className='total'>17</p>
       </div>
     </div>
   )
