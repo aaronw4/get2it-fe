@@ -1,7 +1,7 @@
 import React from 'react'
 import './Home.css'
 import { connect } from 'react-redux'
-import { Link, Route } from 'react-router-dom'
+// import { Link, Route } from 'react-router-dom'
 import moment from 'moment'
 
 function Home(props) {
@@ -16,8 +16,24 @@ function Home(props) {
         <p className='time'>{moment().format('LT')}</p>
       </div>
       <div className='countContainer'>
-        <h1 className='count'>8</h1>
+        <h1 className='count'>2</h1>
         <p className='total'>17</p>
+      </div>
+      <div className='homeList'>
+        <div className='listItem'>
+          <div className='iconContainer'><i id='icon' className="icon fas fa-shopping-cart"></i></div>
+          <div className='itemContainer'>
+            <p className='itemName'>Pick up groceries</p>
+            <p className='duration'>9am-10am</p>
+          </div>
+        </div>
+        <div className='listItem'>
+          <div className='iconContainer'><i id='icon' className="icon fas fa-heartbeat"></i></div>
+          <div className='itemContainer'>
+            <p className='itemName'>Go to the dentist</p>
+            <p className='duration'>12:30pm-1:30pm</p>
+          </div>
+        </div>
       </div>
     </div>
   )
