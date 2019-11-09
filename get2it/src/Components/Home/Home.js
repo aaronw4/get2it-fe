@@ -5,6 +5,7 @@ import { Link, Route } from 'react-router-dom'
 import moment from 'moment'
 
 function Home(props) {
+  console.log(moment().format('LT'))
 
   return (
     <div className='home'>
