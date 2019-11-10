@@ -7,12 +7,14 @@ import Moment from 'react-moment'
 
 function Home(props) {
   const time = moment().format('H')
+  const today = moment().format('L')
+  const todayList = props.userTasks.filter(task => task.date === today)
   console.log(props)
 
   return (
     <div className='home'>
-      {time > 4 && time < 11 ? <h2 className='greeting'>Good morning</h2> 
-        : time >= 11 && time < 4 ? <h2 className='greeting'>Good afternoon</h2> : <h2 className='greeting'>Good evening</h2>}
+      {time >= 4 && time < 11 ? <h2 className='greeting'>Good morning</h2> 
+        : time >= 11 && time < 16 ? <h2 className='greeting'>Good afternoon</h2> : <h2 className='greeting'>Good evening</h2>}
       <div className='today'>
         <p className='date'>{moment().format('LL')}</p>
         <p className='time'>
@@ -20,24 +22,23 @@ function Home(props) {
         </p>
       </div>
       <div className='countContainer'>
-  <h1 className='count'>2</h1>
+        <h1 className='count'>{todayList.length}</h1>
         <p className='total'>{props.userTasks.length}</p>
       </div>
       <div className='homeList'>
-        <div className='listItem'>
-          <div className='iconContainer'><i id='icon' className="icon fas fa-shopping-cart"></i></div>
-          <div className='itemContainer'>
-            <p className='itemName'>Pick up groceries</p>
-            <p className='duration'>9am-10am</p>
-          </div>
-        </div>
-        <div className='listItem'>
-          <div className='iconContainer'><i id='icon' className="icon fas fa-heartbeat"></i></div>
-          <div className='itemContainer'>
-            <p className='itemName'>Go to the dentist</p>
-            <p className='duration'>12:30pm-1:30pm</p>
-          </div>
-        </div>
+        {
+          todayList.map(task => {
+            return (
+              <div className='listItem'>
+                <div className='iconContainer'>{task.task_icon}</div>
+                <div className='itemContainer'>
+                  <p className='itemName'>{task.name}</p>
+                  <p className='duration'>{task.start_time}-{task.end_time}</p>
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
     </div>
   )
