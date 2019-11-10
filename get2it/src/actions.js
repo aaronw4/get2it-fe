@@ -8,6 +8,11 @@ export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILED = 'LOGIN_FAILED'
 
+export const GET_ACCOUNT_START = 'GET_DATA_START'
+export const GET_ACCOUNT_SUCCESS = 'GET_DATA_SUCCESS'
+export const GET_ACCOUNT_FAILED = 'GET_DATA_FAILED'
+
+
 
 
 export function createUser(username, password) {
@@ -38,6 +43,25 @@ export function login(username, password) {
       .catch((err) => {
         const payload = err.response ? err.response.data : err
         dispatch({ type: LOGIN_FAILED, payload })
+      })
+  }
+}
+
+export function getAccount() {
+  return (dispatch) => {
+    dispatch({ type: GET_ACCOUNT_START })
+
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+    }
+
+    axios.get('https://get2it.herokuapp.com/api/users/:id/tasks', { headers })
+      .then((res) => {
+        dispatch({ type: GET_ACCOUNT_SUCCESS, payload: res.data })
+      })
+      .catch((err) => {
+        console.log(err)
+        dispatch({ type: GET_ACCOUNT_FAILED, payload: err.response.data })
       })
   }
 }
