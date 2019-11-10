@@ -23,8 +23,22 @@ const dummyTasks = [
     name: 'Work out.',
     date: '11/10/2019',
     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
-    start_time: '9am',
-    end_time: '11am',
+    start_time: '1pm',
+    end_time: '2pm',
+  },
+  {
+    name: 'Work out.',
+    date: '11/9/2019',
+    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
+    start_time: '1pm',
+    end_time: '2pm',
+  },
+  {
+    name: 'Work out.',
+    date: '11/8/2019',
+    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
+    start_time: '1pm',
+    end_time: '2pm',
   },
 ]
 
