@@ -2,7 +2,7 @@ import React from 'react'
 import JsxParser from 'react-jsx-parser'
 import './Home.css'
 import { connect } from 'react-redux'
-// import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import moment from 'moment'
 import Moment from 'react-moment'
 
@@ -41,6 +41,7 @@ function Home(props) {
           })
         }
       </div>
+      <Link className='addTaskLink' to='/addTask'>+</Link>
     </div>
   )
 }
