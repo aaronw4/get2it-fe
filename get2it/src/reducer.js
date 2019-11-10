@@ -5,16 +5,16 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
-  GET_ACCOUNT_START,
-  GET_ACCOUNT_SUCCESS,
-  GET_ACCOUNT_FAILED,
+  GET_TASKS_START,
+  GET_TASKS_SUCCESS,
+  GET_TASKS_FAILED,
 
 } from './actions.js'
 
 const initialState = {
   isLoading: false,
   error: null,
-  userData: [],
+  userTasks: [],
 }
 
 export default function(state = initialState, action) {
@@ -63,22 +63,22 @@ export default function(state = initialState, action) {
         error: action.payload.error
       }
     }
-    case GET_ACCOUNT_START: {
+    case GET_TASKS_START: {
       return {
         ...state,
         isLoading: true,
       }
     }
-    case GET_ACCOUNT_SUCCESS: {
+    case GET_TASKS_SUCCESS: {
       console.log(action.payload)
       return {
         ...state,
         isLoading: false,
         error: null,
-        userData: action.payload
+        userTasks: action.payload
       }
     }
-    case GET_ACCOUNT_FAILED: {
+    case GET_TASKS_FAILED: {
       console.log(action.payload)
       return {
         ...state,

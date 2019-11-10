@@ -8,9 +8,9 @@ export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILED = 'LOGIN_FAILED'
 
-export const GET_ACCOUNT_START = 'GET_DATA_START'
-export const GET_ACCOUNT_SUCCESS = 'GET_DATA_SUCCESS'
-export const GET_ACCOUNT_FAILED = 'GET_DATA_FAILED'
+export const GET_TASKS_START = 'GET_TASKS_START'
+export const GET_TASKS_SUCCESS = 'GET_TASKS_SUCCESS'
+export const GET_TASKS_FAILED = 'GET_TASKS_FAILED'
 
 
 
@@ -37,6 +37,7 @@ export function login(username, password) {
 
     return axios.post('https://get2it.herokuapp.com/api/auth/login', { username, password })
       .then((res) => {
+        console.log(res)
         localStorage.setItem('token', res.data.token)
         dispatch({ type: LOGIN_SUCCESS })
       })
@@ -47,9 +48,9 @@ export function login(username, password) {
   }
 }
 
-export function getAccount() {
+export function getTASKS() {
   return (dispatch) => {
-    dispatch({ type: GET_ACCOUNT_START })
+    dispatch({ type: GET_TASKS_START })
 
     const headers = {
       Authorization: localStorage.getItem('token'),
@@ -57,11 +58,11 @@ export function getAccount() {
 
     axios.get('https://get2it.herokuapp.com/api/users/:id/tasks', { headers })
       .then((res) => {
-        dispatch({ type: GET_ACCOUNT_SUCCESS, payload: res.data })
+        dispatch({ type: GET_TASKS_SUCCESS, payload: res.data })
       })
       .catch((err) => {
         console.log(err)
-        dispatch({ type: GET_ACCOUNT_FAILED, payload: err.response.data })
+        dispatch({ type: GET_TASKS_FAILED, payload: err.response.data })
       })
   }
 }

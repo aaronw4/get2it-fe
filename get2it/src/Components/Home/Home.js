@@ -40,7 +40,7 @@ function Home(props) {
 }
 
 const mapStateToProps = state => ({
-  userData: state.userData,
+  userTasks: state.userTasks,
   isLoading: state.isLoading,
 })
 
