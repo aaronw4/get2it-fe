@@ -32,6 +32,7 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = (state) => ({
   userTasks: state.userTasks,
+  userData: state.userData,
   isLoading: state.isLoading,
 })
 

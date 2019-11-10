@@ -6,6 +6,7 @@ import moment from 'moment'
 
 function Home(props) {
   const time = moment().format('H')
+  console.log(props)
 
   return (
     <div className='home'>
@@ -41,6 +42,7 @@ function Home(props) {
 
 const mapStateToProps = state => ({
   userTasks: state.userTasks,
+  userData: state.userData,
   isLoading: state.isLoading,
 })
 

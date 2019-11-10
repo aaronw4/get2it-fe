@@ -14,6 +14,7 @@ import {
 const initialState = {
   isLoading: false,
   error: null,
+  userData: {},
   userTasks: [],
 }
 
@@ -30,6 +31,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
+        userData: action.payload,
         error: null,
       }
     }
@@ -52,6 +54,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
+        userData: action.payload,
         error: null,
       }
     }

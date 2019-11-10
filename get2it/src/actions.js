@@ -39,7 +39,7 @@ export function login(username, password) {
       .then((res) => {
         console.log(res)
         localStorage.setItem('token', res.data.token)
-        dispatch({ type: LOGIN_SUCCESS })
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data.user })
       })
       .catch((err) => {
         const payload = err.response ? err.response.data : err
