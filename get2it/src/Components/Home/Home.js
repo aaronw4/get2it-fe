@@ -1,4 +1,5 @@
 import React from 'react'
+import JsxParser from 'react-jsx-parser'
 import './Home.css'
 import { connect } from 'react-redux'
 // import { Link, Route } from 'react-router-dom'
@@ -9,7 +10,7 @@ function Home(props) {
   const time = moment().format('H')
   const today = moment().format('L')
   const todayList = props.userTasks.filter(task => task.date === today)
-  console.log(props)
+  console.log(todayList)
 
   return (
     <div className='home'>
@@ -27,10 +28,10 @@ function Home(props) {
       </div>
       <div className='homeList'>
         {
-          todayList.map(task => {
+          todayList.map((task, index) => {
             return (
-              <div className='listItem'>
-                <div className='iconContainer'>{task.task_icon}</div>
+              <div className='listItem' key={index}>
+                <div className='iconContainer'><JsxParser jsx={task.task_icon} /></div>
                 <div className='itemContainer'>
                   <p className='itemName'>{task.name}</p>
                   <p className='duration'>{task.start_time}-{task.end_time}</p>
