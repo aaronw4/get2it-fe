@@ -16,6 +16,7 @@
   color: var(--textColor);
 }
 .countContainer {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,6 +26,9 @@
   width: 100px;
   position: relative;
   margin: 20px 0;
+}
+.countContainer:hover {
+  background-color: rgba(192, 192, 192, 0.137);
 }
 .count {
   color: white
@@ -83,6 +87,7 @@
   height: 48px;
   width: 48px;
   padding-bottom: 12px;
+  padding-left: 2px;
   background-color: dodgerblue;
   color: white;
   border-radius: 100%;
@@ -92,4 +97,7 @@
   text-decoration: none;
   background-color: white;
   color: dodgerblue;
+}
+.countLink:hover {
+  text-decoration: none;
 }

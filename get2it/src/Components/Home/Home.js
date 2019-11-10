@@ -22,10 +22,12 @@ function Home(props) {
           <Moment interval={20000} format='LT' />
         </p>
       </div>
-      <div className='countContainer'>
-        <h1 className='count'>{todayList.length}</h1>
-        <p className='total'>{props.userTasks.length}</p>
-      </div>
+      <Link className='countLink' to='/taskList'>
+        <div className='countContainer'>
+          <h1 className='count'>{todayList.length}</h1>
+          <p className='total'>{props.userTasks.length}</p>
+        </div>
+      </Link>
       <div className='homeList'>
         {
           todayList.map((task, index) => {
