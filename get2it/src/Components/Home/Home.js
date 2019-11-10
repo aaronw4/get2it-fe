@@ -3,6 +3,7 @@ import './Home.css'
 import { connect } from 'react-redux'
 // import { Link, Route } from 'react-router-dom'
 import moment from 'moment'
+import Moment from 'react-moment'
 
 function Home(props) {
   const time = moment().format('H')
@@ -14,11 +15,13 @@ function Home(props) {
         : time >= 11 && time < 4 ? <h2 className='greeting'>Good afternoon</h2> : <h2 className='greeting'>Good evening</h2>}
       <div className='today'>
         <p className='date'>{moment().format('LL')}</p>
-        <p className='time'>{moment().format('LT')}</p>
+        <p className='time'>
+          <Moment interval={20000} format='LT' />
+        </p>
       </div>
       <div className='countContainer'>
-        <h1 className='count'>2</h1>
-        <p className='total'>17</p>
+  <h1 className='count'>2</h1>
+        <p className='total'>{props.userTasks.length}</p>
       </div>
       <div className='homeList'>
         <div className='listItem'>
