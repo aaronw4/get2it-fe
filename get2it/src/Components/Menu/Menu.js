@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { connect } from 'react-redux'
 import './Menu.css'
 
 function Menu(props) {
@@ -23,7 +24,7 @@ function Menu(props) {
         <i className="fas fa-bars fa-lg"></i>
       </DropdownToggle>
       <DropdownMenu>
-        <DropdownItem header>Username Here</DropdownItem>
+        <DropdownItem header>{props.userData.username}</DropdownItem>
         <DropdownItem divider />
         <DropdownItem onClick={logout}><i className="fas fa-sign-out-alt icon"></i>Logout</DropdownItem>
       </DropdownMenu>
@@ -31,4 +32,8 @@ function Menu(props) {
   )
 }
 
-export default withRouter(Menu)
+const mapStateToProps = state => ({
+  userData: state.userData,
+})
+
+export default withRouter(connect(mapStateToProps)(Menu))
