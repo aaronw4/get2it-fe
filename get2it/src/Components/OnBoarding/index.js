@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Dashboard from '../Dashboard/Dashboard'
 import {
   Button,
   Container,
@@ -12,6 +13,7 @@ import {
   CarouselCaption
 } from "reactstrap";
 import "./style.css";
+import { Link } from 'react-router-dom';
 
 const items = [
   {
@@ -75,7 +77,7 @@ const OnBoarding = props => {
       <Container className="container">
         <Row>
           <Col xs={2}>
-            <i id="arrow" className="fas fa-arrow-left"></i>
+            {/* <i  id="arrow" className="fas fa-arrow-left"></i> */}
           </Col>
           <Col xs={8} className="signUp">
             Sign Up
@@ -103,7 +105,7 @@ const OnBoarding = props => {
         />
       </Carousel>
       </div>
-      <Button id="nextBTN" >Next</Button>
+      <Button id="nextBTN" onClick={this} type="submit"><Link to={'/'}>Next</Link> </Button>
     </div>
   );
 };

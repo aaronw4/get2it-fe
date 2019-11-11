@@ -1,5 +1,6 @@
 .register {
   height: 100%;
+  max-width: 400px;
 }
 .pageTitle {
   width: 100%;
