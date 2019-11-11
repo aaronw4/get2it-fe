@@ -2,7 +2,7 @@ import React from 'react'
 import JsxParser from 'react-jsx-parser'
 import './Home.css'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import moment from 'moment'
 import Moment from 'react-moment'
 
@@ -10,7 +10,7 @@ function Home(props) {
   const time = moment().format('H')
   const today = moment().format('L')
   const todayList = props.userTasks.filter(task => task.date === today)
-  console.log(todayList)
+  console.log(props)
 
   return (
     <div className='home'>
@@ -54,4 +54,4 @@ const mapStateToProps = state => ({
   isLoading: state.isLoading,
 })
 
-export default connect(mapStateToProps)(Home)
+export default withRouter(connect(mapStateToProps)(Home))
