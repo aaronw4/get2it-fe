@@ -1,0 +1,12 @@
+.fa-bars {
+  background-color: none;
+}
+.dropButton {
+  background: none;
+  border: none;
+}
+
+.icon {
+  color: var(--iconColor);
+  margin-right: 10px;
+}
