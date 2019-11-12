@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './Components/App.js';
 import { BrowserRouter } from 'react-router-dom'
 import { createStore, compose, applyMiddleware } from 'redux'
+import { autoRehydrate, persistStore } from 'redux-persist'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import reducer from './reducer'
@@ -15,12 +16,15 @@ const store = createStore(
 
   compose(
     applyMiddleware(thunk),
+    autoRehydrate(),
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
   )
 )
 
+const persistedStore = persistStore(store)
+
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={persistedStore}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
