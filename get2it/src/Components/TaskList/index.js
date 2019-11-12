@@ -8,31 +8,39 @@ import { Button, Form } from "react-bootstrap";
 class TaskList extends React.Component {
   constructor(props) {
     super(props);
-    this.state= {taskList:["Kill the cat", "Kill the cat", "Kill the cat"]
+    console.log(props)
+    this.state= {taskList:[]
     }
   }
+  event
 
   createTaskList = event => {
+    event.preventDefault();
     const arrList = ["Kill the cat", "Kill the cat", "Kill the cat"];
-    for (const i = 0; i < arrList.length;i++) {
-      this.state.taskList.push(arrList[i]);
+    const list =[]
+    for (let i = 0; i < arrList.length;i++) {
+      list.push(arrList[i])
     };
-    console.log(this.state[0]);
+    console.log(list)
+    this.setState({
+      taskList: list
+    })
   };
+
 
   
   render() {
     return (
       <div>
         <Form>
-          <Button variant="primary" type="submit">
+          <Button onClick={this.createTaskList} variant="primary" type="submit">
             <span>&#10003;</span>
           </Button>
           
         </Form>
         <ul>
-          {this.state.taskList.map(item => (
-            <li><Form><Form.Group controlId='formBasicCheckbox'><Form.Check type='checkbox' /></Form.Group><Form.Text>{item}</Form.Text></Form></li>
+          {this.state.taskList.map((item, index) => (
+            <li key={index}><Form><Form.Group controlId='formBasicCheckbox'><Form.Check type='checkbox' /></Form.Group><Form.Text>{item}</Form.Text></Form></li>
             
           ))}
         </ul>
@@ -41,4 +49,8 @@ class TaskList extends React.Component {
   }
 }
 
-export default TaskList;
+const mapStateToProps = state => ({
+  userData: state.userData
+})
+
+export default connect(mapStateToProps)(TaskList);
