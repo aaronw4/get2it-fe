@@ -8,6 +8,9 @@ import {
   GET_TASKS_START,
   GET_TASKS_SUCCESS,
   GET_TASKS_FAILED,
+  UPDATE_TASK_START,
+  UPDATE_TASK_SUCCESS,
+  UPDATE_TASK_FAILED,
 
 } from './actions.js'
 
@@ -18,6 +21,7 @@ const dummyTasks = [
     task_icon: '<i id="icon" className="fas fa-shopping-cart icon"></i>',
     start_time: '9am',
     end_time: '11am',
+    completed: false,
   },
   {
     name: 'Work out.',
@@ -25,6 +29,7 @@ const dummyTasks = [
     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
     start_time: '1pm',
     end_time: '2pm',
+    completed: false,
   },
   {
     name: 'Work out.',
@@ -32,6 +37,7 @@ const dummyTasks = [
     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
     start_time: '1pm',
     end_time: '2pm',
+    completed: false,
   },
   {
     name: 'Work out.',
@@ -39,6 +45,7 @@ const dummyTasks = [
     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
     start_time: '1pm',
     end_time: '2pm',
+    completed: false,
   },
 ]
 
@@ -113,6 +120,29 @@ export default function(state = initialState, action) {
       }
     }
     case GET_TASKS_FAILED: {
+      console.log(action.payload)
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.error
+      }
+    }
+    case UPDATE_TASK_START: {
+      return {
+        ...state,
+        isLoading: true,
+      }
+    }
+    case UPDATE_TASK_SUCCESS: {
+      console.log(action.payload)
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        userTasks: action.payload
+      }
+    }
+    case UPDATE_TASK_FAILED: {
       console.log(action.payload)
       return {
         ...state,

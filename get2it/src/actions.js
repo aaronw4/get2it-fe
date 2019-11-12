@@ -12,6 +12,9 @@ export const GET_TASKS_START = 'GET_TASKS_START'
 export const GET_TASKS_SUCCESS = 'GET_TASKS_SUCCESS'
 export const GET_TASKS_FAILED = 'GET_TASKS_FAILED'
 
+export const UPDATE_TASK_START = 'UPDATE_TASK_START'
+export const UPDATE_TASK_SUCCESS = 'UPDATE_TASK_SUCCESS'
+export const UPDATE_TASK_FAILED = 'UPDATE_TASK_FAILED'
 
 
 
@@ -63,6 +66,25 @@ export function getTASKS() {
       .catch((err) => {
         console.log(err)
         dispatch({ type: GET_TASKS_FAILED, payload: err.response.data })
+      })
+  }
+}
+
+export function updateTask(payload, id){
+  return (dispatch) => {
+    dispatch({ type: UPDATE_TASK_START })
+
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+    }
+
+    axios.put(`https://get2it.herokuapp.com/api/users/tasks/${id}`, payload, { headers })
+      .then((res) => {
+        dispatch({ type: UPDATE_TASK_SUCCESS, payload: res.data })
+      })
+      .catch((err) => {
+        console.log(err)
+        dispatch({ type: UPDATE_TASK_FAILED, payload: err.response.data })
       })
   }
 }

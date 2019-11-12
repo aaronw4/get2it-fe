@@ -2,6 +2,8 @@ import React from 'react';
 import './style.css'
 import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
+import updateTask from '../../actions'
 
 class TaskList extends React.Component {
   constructor(props) {
@@ -14,16 +16,23 @@ class TaskList extends React.Component {
 
   createTaskList = event => {
     event.preventDefault();
-    const arrList = ["Kill the cat", "Kill the cat", "Kill the cat"];
+    const arrList = this.props.userTasks;
     const list =[]
     for (let i = 0; i < arrList.length;i++) {
-      list.push(arrList[i])
+      list.push(arrList[i].name)
     };
     console.log(list)
     this.setState({
       taskList: list
     })
   };
+
+  complete = event => {
+    if(querySelector(input[type=checkbox]:checked)){
+      updateTask()
+    } else {
+      check()
+    }
 
 
   
@@ -38,7 +47,14 @@ class TaskList extends React.Component {
         </Form>
         <ul>
           {this.state.taskList.map((item, index) => (
-            <li key={index}><Form><Form.Group controlId='formBasicCheckbox'><Form.Check type='checkbox' /></Form.Group><Form.Text>{item}</Form.Text></Form></li>
+            <li key={index}>
+              <Form>
+                <Form.Group controlId='formBasicCheckbox'>
+                  <Form.Check onClick={this.complete} type='checkbox' />
+                </Form.Group>
+                <Form.Text>{item}</Form.Text>
+              </Form>
+            </li>
             
           ))}
         </ul>
@@ -48,7 +64,8 @@ class TaskList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  userData: state.userData
+  userData: state.userData,
+  userTasks: state.userTasks
 })
 
 export default connect(mapStateToProps)(TaskList);
