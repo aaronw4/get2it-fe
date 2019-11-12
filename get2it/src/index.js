@@ -6,28 +6,38 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './Components/App.js';
 import { BrowserRouter } from 'react-router-dom'
 import { createStore, compose, applyMiddleware } from 'redux'
-import { autoRehydrate, persistStore } from 'redux-persist'
+import { persistReducer, persistStore } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import reducer from './reducer'
 
+const persistConfig = {
+  key: 'root',
+  storage: storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer)
+
 const store = createStore(
-  reducer,
+  persistedReducer,
 
   compose(
     applyMiddleware(thunk),
-    autoRehydrate(),
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
   )
 )
 
-const persistedStore = persistStore(store)
+const persistor = persistStore(store)
 
 ReactDOM.render(
-  <Provider store={persistedStore}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );
