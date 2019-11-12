@@ -7,16 +7,17 @@ import Dashboard from './Dashboard/Dashboard.js'
 import Register from './Register/Register.js'
 import Login from './Login/Login.js'
 import NewTask from './NewTask/NewTask'
-
+import TaskList from './TaskList'
 
 function App() {
   return (
     <div className="App">
-      <PrivateRoute exact path='/' component={Dashboard} />
+      {/* <PrivateRoute exact path='/' component={Dashboard} />
       <PrivateRoute path='/onboarding' component={Dashboard} />
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />
-      <Route path='/NewTask' component={NewTask} />
+      <Route path='/NewTask' component={NewTask} /> */}
+      <TaskList />
     </div>
   );
 }
