@@ -27,12 +27,12 @@ class TaskList extends React.Component {
     })
   };
 
-  complete = event => {
-    if(querySelector(input[type=checkbox]:checked)){
-      updateTask()
-    } else {
-      check()
-    }
+  // complete = event => {
+  //   if(querySelector(input[type=checkbox]:checked)){
+  //     updateTask()
+  //   } else {
+  //     check()
+  //   }
 
 
   
