@@ -4,7 +4,6 @@ import './Home.css'
 import 'react-router-modal/css/react-router-modal.css'
 import { connect } from 'react-redux'
 import { Link, Route, withRouter } from 'react-router-dom'
-import { ModalContainer, ModalRoute } from 'react-router-modal'
 import moment from 'moment'
 import Moment from 'react-moment'
 import NewTask from '../NewTask/NewTask'
@@ -49,10 +48,11 @@ function Home(props) {
           })
         }
       </div>
-      <Link className='addTaskLink' to='/NewTask'>+</Link>
-      <ModalRoute path='/NewTask' component={NewTask} />
 
-      <ModalContainer />
+      <Link className='addTaskLink' to={{pathname:'/NewTask', state: {modal: true}}}>+</Link>
+
+      <Route path='/NewTask' render={props => <NewTask {...props} />} />
+
     </div>
   )
 }
