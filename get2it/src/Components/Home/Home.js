@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import JsxParser from 'react-jsx-parser'
 import './Home.css'
+import 'react-router-modal/css/react-router-modal.css'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, Route, withRouter } from 'react-router-dom'
+import { ModalContainer, ModalRoute } from 'react-router-modal'
 import moment from 'moment'
 import Moment from 'react-moment'
+import NewTask from '../NewTask/NewTask'
 
 function Home(props) {
   const time = moment().format('H')
   const today = moment().format('L')
   const todayList = props.userTasks.filter(task => task.date === today)
   console.log(props)
+
+  const [modal, setModal] = useState(false)
+  const toggle = () => setModal(!modal)
 
   return (
     <div className='home'>
@@ -43,7 +49,10 @@ function Home(props) {
           })
         }
       </div>
-      <Link className='addTaskLink' to='/addTask'>+</Link>
+      <Link className='addTaskLink' to='/NewTask'>+</Link>
+      <ModalRoute path='/NewTask' component={NewTask} />
+
+      <ModalContainer />
     </div>
   )
 }

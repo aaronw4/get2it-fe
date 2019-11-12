@@ -6,9 +6,9 @@ class NewTask extends Component {
     render() { 
         return ( 
             <div className="App">
-                <a class ="button is-primary"> 
-                <span class="icon">
-                <i class="fa fa-plus"></i>
+                <a className ="button is-primary"> 
+                <span className="icon">
+                <i className="fa fa-plus"></i>
                 </span>
                 <span>Add New Task</span>
                 </a> 

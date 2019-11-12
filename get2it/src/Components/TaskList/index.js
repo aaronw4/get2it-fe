@@ -1,9 +1,7 @@
-import React from "react";
-import "./style.css";
-import { connect } from "react-redux";
-import { Route, withRouter } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Form } from "react-bootstrap";
+import React from 'react';
+import './style.css'
+import { connect } from 'react-redux'
+import { Route, withRouter } from 'react-router-dom'
 
 class TaskList extends React.Component {
   constructor(props) {
