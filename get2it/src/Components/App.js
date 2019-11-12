@@ -7,7 +7,6 @@ import Dashboard from './Dashboard/Dashboard.js'
 import Register from './Register/Register.js'
 import Login from './Login/Login.js'
 
-
 function App() {
   return (
     <div className="App">
