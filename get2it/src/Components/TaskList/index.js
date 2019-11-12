@@ -1,5 +1,5 @@
 import React from 'react';
-import './Dashboard.css'
+import './style.css'
 import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
 

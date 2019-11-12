@@ -2,9 +2,12 @@ import React from 'react';
 import './Dashboard.css'
 import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
+import { ModalContainer, ModalRoute } from 'react-router-modal'
 import OnBoarding from '../OnBoarding/index.js'
 import Home from '../Home/Home.js'
 import Menu from '../Menu/Menu.js'
+import NewTask from '../NewTask/NewTask.js'
+import TaskList from '../TaskList/index.js'
 
 class Dashboard extends React.Component {
 
@@ -22,7 +25,10 @@ class Dashboard extends React.Component {
               <Route path='/onboarding' render={props => <OnBoarding {...props} />} />
 
               <Route exact path='/' render={props => <Home {...props} />} />
+              {/* <ModalRoute path='/NewTask' component={NewTask} /> */}
+              <Route path='/taskList' render={props => <TaskList {...props} />} />
 
+              {/* <ModalContainer /> */}
             </div>
         }
       </div>
