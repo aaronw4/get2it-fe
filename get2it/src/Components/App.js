@@ -12,12 +12,11 @@ import TaskList from './TaskList'
 function App() {
   return (
     <div className="App">
-      {/* <PrivateRoute exact path='/' component={Dashboard} />
+      <PrivateRoute exact path='/' component={Dashboard} />
       <PrivateRoute path='/onboarding' component={Dashboard} />
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />
-      <Route path='/NewTask' component={NewTask} /> */}
-      <TaskList />
+      <Route path='/NewTask' component={NewTask} />
     </div>
   );
 }
