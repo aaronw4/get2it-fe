@@ -14,7 +14,7 @@
   margin: 0;
 }
 .greeting {
-  color: var(--textColor);
+  color: rgb(216, 216, 216);
   font-size: 1.9rem;
 }
 .countContainer {
