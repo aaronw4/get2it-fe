@@ -9,13 +9,6 @@ input[type=checkbox] {
     cursor: pointer;
     color:black;
 }
-input[type=checkbox]:checked {
-    border: 1px solid rgb(107, 218, 218);
-    background-image: url("./check.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    /* background: transparent; */
-}
 dl, ol, ul {
     margin-top:5%;
     list-style:none; 
@@ -30,9 +23,16 @@ div .form-group {
     margin-left: 10%;
     padding: 2%;
     color:white;
+    width:100%;
 }
 .checkBTN {
     color:white;
     text-align: center;
     height: 10%;
+}
+input[type=checkbox]:checked {
+ border: 1px solid rgb(107, 218, 218);
+ background-image: url("./check.png");
+ background-size: cover;
+ background-repeat: no-repeat;
 }
