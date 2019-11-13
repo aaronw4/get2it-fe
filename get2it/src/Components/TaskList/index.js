@@ -27,12 +27,12 @@ class TaskList extends React.Component {
     })
   };
 
-  // complete = event => {
-  //   if(querySelector(input[type=checkbox]:checked)){
-  //     upd()
-  //   } else {
-  //     check()
-  //   }
+  complete = event => {
+    if(querySelector(input[type=checkbox]:checked)){
+      updateTask()
+    } else {
+      check()
+    }
 
 
   
@@ -43,7 +43,7 @@ class TaskList extends React.Component {
           <Button onClick={this.createTaskList} variant="primary" type="submit">
             <span>&#10003;</span>
           </Button>
-          <Form.Text>TASKS</Form.Text>
+          
         </Form>
         <ul>
           {this.state.taskList.map((item, index) => (
@@ -51,8 +51,8 @@ class TaskList extends React.Component {
               <Form>
                 <Form.Group controlId='formBasicCheckbox'>
                   <Form.Check onClick={this.complete} type='checkbox' />
-                  <Form.Text>{item}</Form.Text>
                 </Form.Group>
+                <Form.Text>{item}</Form.Text>
               </Form>
             </li>
             
