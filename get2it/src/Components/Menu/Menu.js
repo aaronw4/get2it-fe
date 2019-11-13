@@ -46,6 +46,7 @@ class Menu extends React.Component {
           <DropdownItem header>{this.state.userData.username}</DropdownItem>
           <DropdownItem divider />
           <DropdownItem onClick={this.home}><i className="fas fa-home icon"></i>Home</DropdownItem>
+          <DropdownItem onClick={(evt) => {evt.preventDefault(); this.props.history.push('/taskList')}}><i className="fas fa-list icon"></i>Your Tasks</DropdownItem>
           <DropdownItem divider />
           <DropdownItem onClick={this.logout}><i className="fas fa-sign-out-alt icon"></i>Logout</DropdownItem>
         </DropdownMenu>
