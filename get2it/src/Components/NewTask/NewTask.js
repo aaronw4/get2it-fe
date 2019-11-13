@@ -1,7 +1,7 @@
 import React, { Component,setState } from 'react';
 // import {M} from 'react-materialize'
 import './NewTask.css'
-import 'bulma/css/bulma.css'
+// import 'bulma/css/bulma.css'
 import Clock from './clock';
 
 const toDoTasks = [
