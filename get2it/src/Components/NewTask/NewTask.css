@@ -4,7 +4,7 @@
   }
   
   button {
-    margin: px;
+    margin: 1px;
     cursor: pointer;
   }
   
@@ -34,27 +34,31 @@
   .create-new {
     border-top: 1px solid rgb(255, 255, 255);
     width: 100%;
-    input {
+    
+    }
+    .create-new input {
       box-sizing: border-box;
       width: 75%;
       padding: 10px;
       font-size: 18px;
       border: none;
     }
-    button {
-      width: 25%;
-      background: #eee;
-      box-sizing: border-box;
-      padding: 10px;
-      font-size: 18px;
-      margin: 0;
-      border: none;
-      border-left: 1px solid #999;
-      &:hover {
-        background: #ddd;
-      }
-    }
+  
+  .create-new button {
+    width: 25%;
+    background: #eee;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 18px;
+    margin: 0;
+    border: none;
+    border-left: 1px solid #999;
+    
   }
+  .create-new button :hover {
+    background: #ddd;
+  }
+
   
   .items-list {
     background: #282727;
@@ -76,28 +80,29 @@
   
   .name {
     margin-left: 10px;
-    input {
-      width: 350px;
-      color: #333;
-      padding: 5px;
-      border: none;
-      border-radius: 1px;
-    }
+  }
+  .name input {
+    width: 350px;
+    color: #333;
+    padding: 5px;
+    border: none;
+    border-radius: 1px;
   }
   
   .actions {
     margin-right: 10px;
-    button {
-      padding: 7px;
-      border-radius: 2px;
-      border: none;
-      //background: #FFB923;
-      //background: #E5FF3D;
-      background: #333;
-      color: white;
-      font-weight: lighter;
-      //box-shadow: 0 0 5px darken(#138796, 12%);
-    }
+    
+  }
+  .actions button {
+    padding: 7px;
+    border-radius: 2px;
+    border: none;
+    background: #FFB923;
+    background: #E5FF3D;
+    background: #333;
+    color: white;
+    font-weight: lighter;
+    box-shadow: 0 0 5px darken(#138796, 12%);
   }
   .fa-clock{
     margin: 0 10px;
