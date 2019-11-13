@@ -44,7 +44,9 @@ class CreateItem extends Component {
       <div className="create-new">
         <form onSubmit={this.handleCreate.bind(this)}>
           <input type="text" placeholder="New Task" ref="newItemInput" />
-          <button class="button is-primary">Create</button>
+          <button class="button is-primary">
+          <span class="fa fa-plus"></span>
+          </button>
         </form>
       </div>
     );
@@ -83,16 +85,17 @@ class TaskItems extends Component {
     if (this.state.editing) {
       return (
         <span>
-          <button onClick={this.onSaveClick.bind(this)}>Save</button>
-          <button onClick={this.onCancelClick.bind(this)}>Cancel</button>
+          <button onClick={this.onSaveClick.bind(this)}>
+          <span class="fa fa-save"></span></button>
+          <button onClick={this.onCancelClick.bind(this)}><span class="fa fa-window-close"></span></button>
         </span>
       );
     }
     
     return (
       <span>
-        <button class="button is-primary" onClick={this.onEditClick.bind(this)}>Edit</button>
-        <button class="button is-danger" onClick={this.props.deleteItem.bind(this, this.props.name)}>Delete</button>
+        <button class="button is-primary" onClick={this.onEditClick.bind(this)}><span class="fa fa-edit"></span></button>
+        <button class="button is-danger" onClick={this.props.deleteItem.bind(this, this.props.name)}><span class="fa fa-trash"></span></button>
       </span>
     );
   }
