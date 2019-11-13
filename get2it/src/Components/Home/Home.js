@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import JsxParser from 'react-jsx-parser'
 import './Home.css'
 import 'react-router-modal/css/react-router-modal.css'
@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { Link, Route, withRouter } from 'react-router-dom'
 import moment from 'moment'
 import Moment from 'react-moment'
-import NewTask from '../NewTask/NewTask'
 import NewTaskModal from './NewTaskModal.js'
 
 class Home extends React.Component {

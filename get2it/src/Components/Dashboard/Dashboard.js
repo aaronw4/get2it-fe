@@ -7,7 +7,6 @@ import Home from '../Home/Home.js'
 import Menu from '../Menu/Menu.js'
 import NewTask from '../NewTask/NewTask.js'
 import TaskList from '../TaskList/index.js'
-import NewTaskModal from '../Home/NewTaskModal.js'
 
 class Dashboard extends React.Component {
 
