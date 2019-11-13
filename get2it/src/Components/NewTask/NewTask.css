@@ -1,0 +1,104 @@
+
+  form {
+    display: inline;
+  }
+  
+  button {
+    margin: px;
+    cursor: pointer;
+  }
+  
+  .to-do-app {
+    box-sizing: border-box;
+    width: 550px;
+    margin: 50px auto 0 auto;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #252525;
+  }
+  
+  .header {
+    background: rgb(145, 144, 144);
+    padding: 7px;
+    border-radius: 3px 3px 0 0 ;
+    
+  }
+  h1 {
+      font-family: sans-serif;
+    font-size: 36px;
+    margin: 0;
+    color: white;
+    font-weight: bold;
+   
+  }
+  .create-new {
+    border-top: 1px solid rgb(255, 255, 255);
+    width: 100%;
+    input {
+      box-sizing: border-box;
+      width: 75%;
+      padding: 10px;
+      font-size: 18px;
+      border: none;
+    }
+    button {
+      width: 25%;
+      background: #eee;
+      box-sizing: border-box;
+      padding: 10px;
+      font-size: 18px;
+      margin: 0;
+      border: none;
+      border-left: 1px solid #999;
+      &:hover {
+        background: #ddd;
+      }
+    }
+  }
+  
+  .items-list {
+    background: #282727;
+    border-radius: 3px;
+  }
+  
+  .to-do-item {
+    padding: 10px 0 10px 0;
+    margin: 1px 0 1px 0;
+    border-top: 1px solid darken(#138796, 20%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    font-weight: lighter;
+    user-select: none;
+  }
+  
+  .name {
+    margin-left: 10px;
+    input {
+      width: 350px;
+      color: #333;
+      padding: 5px;
+      border: none;
+      border-radius: 1px;
+    }
+  }
+  
+  .actions {
+    margin-right: 10px;
+    button {
+      padding: 7px;
+      border-radius: 2px;
+      border: none;
+      //background: #FFB923;
+      //background: #E5FF3D;
+      background: #333;
+      color: white;
+      font-weight: lighter;
+      //box-shadow: 0 0 5px darken(#138796, 12%);
+    }
+  }
+  .fa-clock{
+    margin: 0 10px;
+  }

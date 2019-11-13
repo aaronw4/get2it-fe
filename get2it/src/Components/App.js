@@ -14,6 +14,7 @@ function App() {
       <PrivateRoute path='/onboarding' component={Dashboard} />
       <PrivateRoute path='/NewTask' component={Dashboard} />
       <PrivateRoute path='/taskList' component={Dashboard} />
+      <PrivateRoute path='/taskModal' component={Dashboard} />
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />
     </div>

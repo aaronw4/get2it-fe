@@ -73,6 +73,9 @@ p.loginMessage {
   color: silver;
   padding-left: 10px;
 }
+.loginLink:hover {
+  color: white;
+}
 p {
   color: var(--textColor);
 }

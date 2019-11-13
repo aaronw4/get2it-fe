@@ -3,6 +3,7 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  /* position: relative; */
 }
 .today {
   display: flex;
@@ -13,7 +14,8 @@
   margin: 0;
 }
 .greeting {
-  color: var(--textColor);
+  color: rgb(216, 216, 216);
+  font-size: 1.9rem;
 }
 .countContainer {
   box-sizing: border-box;
@@ -31,7 +33,9 @@
   background-color: rgba(192, 192, 192, 0.137);
 }
 .count {
-  color: white
+  color: white;
+  font-size: 3rem;
+  padding-bottom: 7px;
 }
 .total {
   display: flex;
@@ -87,7 +91,7 @@
   height: 48px;
   width: 48px;
   padding-bottom: 12px;
-  padding-left: 2px;
+  padding-left: 1px;
   background-color: dodgerblue;
   color: white;
   border-radius: 100%;
@@ -100,4 +104,29 @@
 }
 .countLink:hover {
   text-decoration: none;
+}
+.taskModal {
+  size: 90%;
+  align-self: center;
+  position: absolute;
+  width: 95%;
+  height: 95vh;
+  top: 15px;
+  border-radius: 10px;
+  border: solid silver;
+  background-image: radial-gradient(circle at 50% 30%,rgb(110, 110, 110) 5%,rgb(110, 110, 110) 5%,rgb(6, 14, 26) 90%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-flow: column;
+}
+.closeLink {
+  align-self: flex-end;
+  margin-right: 10px;
+  text-decoration: none;
+  color: var(--textColor)
+}
+.closeLink:hover {
+  color: white;
 }

@@ -17,7 +17,7 @@ import {
 const dummyTasks = [
   {
     name: 'Go to the grocery store.',
-    date: '11/11/2019',
+    date: '11/12/2019',
     task_icon: '<i id="icon" className="fas fa-shopping-cart icon"></i>',
     start_time: '9am',
     end_time: '11am',
@@ -25,7 +25,7 @@ const dummyTasks = [
   },
   {
     name: 'Work out.',
-    date: '11/11/2019',
+    date: '11/12/2019',
     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
     start_time: '1pm',
     end_time: '2pm',

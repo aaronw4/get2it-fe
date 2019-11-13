@@ -6,12 +6,23 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './Components/App.js';
 import { BrowserRouter } from 'react-router-dom'
 import { createStore, compose, applyMiddleware } from 'redux'
+import { persistReducer, persistStore } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import reducer from './reducer'
 
+const persistConfig = {
+  key: 'root',
+  storage: storage,
+  whitelist: ['userData']
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer)
+
 const store = createStore(
-  reducer,
+  persistedReducer,
 
   compose(
     applyMiddleware(thunk),
@@ -19,11 +30,15 @@ const store = createStore(
   )
 )
 
+const persistor = persistStore(store)
+
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );
