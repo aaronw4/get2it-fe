@@ -11,6 +11,9 @@ import {
   UPDATE_TASK_START,
   UPDATE_TASK_SUCCESS,
   UPDATE_TASK_FAILED,
+  UPDATE_USER_START,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAILED,
 
 } from './actions.js'
 
@@ -143,6 +146,29 @@ export default function(state = initialState, action) {
       }
     }
     case UPDATE_TASK_FAILED: {
+      console.log(action.payload)
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.error
+      }
+    }
+    case UPDATE_USER_START: {
+      return {
+        ...state,
+        isLoading: true,
+      }
+    }
+    case UPDATE_USER_SUCCESS: {
+      console.log(action.payload)
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        userData: action.payload
+      }
+    }
+    case UPDATE_USER_FAILED: {
       console.log(action.payload)
       return {
         ...state,

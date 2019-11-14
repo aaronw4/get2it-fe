@@ -7,6 +7,7 @@ import { Link, Route, withRouter } from 'react-router-dom'
 import moment from 'moment'
 import Moment from 'react-moment'
 import NewTaskModal from './NewTaskModal.js'
+import logo from '../Images/logo.png'
 
 class Home extends React.Component {
   constructor(props) {
@@ -39,6 +40,13 @@ class Home extends React.Component {
         </Link>
         <div className='homeList'>
           {
+            todayList.length === 0 ?
+              <div className='noTaskContainer'>
+                <i className="fas fa-long-arrow-alt-up upArrow"></i>
+                <p className='instruction'>Click the counter to see all of your tasks!</p>
+                <img className='bigLogo' src={logo} alt='Get2It!' />
+                <p className='instruction'>Or add a new task!</p>
+              </div> :
             todayList.map((task, index) => {
               return (
                 <div className='listItem' key={index}>
