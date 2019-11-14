@@ -28,7 +28,7 @@ class Home extends React.Component {
         <div className='today'>
           <p className='date'>{moment().format('LL')}</p>
           <p className='time'>
-            <Moment interval={20000} format='LT' />
+            <Moment interval={10000} format='LT' />
           </p>
         </div>
         <Link className='countLink' to='/taskList'>
