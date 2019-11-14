@@ -24,8 +24,9 @@ export function createUser(username, password) {
 
     return axios.post('https://get2it.herokuapp.com/api/auth/register', { username, password })
       .then((res) => {
+        console.log(res)
         localStorage.setItem('token', res.data.token)
-        dispatch({ type: CREATE_USER_SUCCESS })
+        dispatch({ type: CREATE_USER_SUCCESS, payload: res.data.user })
       })
       .catch((err) => {
         const payload = err.response ? err.response.data : err

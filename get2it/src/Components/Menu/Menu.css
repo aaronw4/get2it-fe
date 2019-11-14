@@ -11,6 +11,7 @@
 }
 .dropdown-header {
   padding: 0;
+  padding-right: 30px;
 }
 .icon {
   color: var(--iconColor);
