@@ -62,6 +62,7 @@ export function getTASKS() {
 
     axios.get('https://get2it.herokuapp.com/api/users/:id/tasks', { headers })
       .then((res) => {
+        console.log(res)
         dispatch({ type: GET_TASKS_SUCCESS, payload: res.data })
       })
       .catch((err) => {

@@ -68,4 +68,5 @@ const mapStateToProps = state => ({
   isLoading: state.isLoading,
 })
 
+
 export default withRouter(connect(mapStateToProps)(Home))
