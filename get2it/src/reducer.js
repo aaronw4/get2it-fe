@@ -53,7 +53,7 @@ const initialState = {
   isLoading: false,
   error: null,
   userData: {},
-  userTasks: [],
+  userTasks: dummyTasks,
 }
 
 export default function(state = initialState, action) {

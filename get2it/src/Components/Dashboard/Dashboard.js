@@ -7,14 +7,14 @@ import Home from '../Home/Home.js'
 import Menu from '../Menu/Menu.js'
 import NewTask from '../NewTask/NewTask.js'
 import TaskList from '../TaskList/index.js'
-import { getTASKS } from "../../actions.js";
+// import { getTASKS } from "../../actions.js";
 
 
 class Dashboard extends React.Component {
-  
-  componentDidMount() {
-    this.props.getTASKS();
-  }
+
+  // componentDidMount() {
+  //   this.props.getTASKS(this.props.userData.id);
+  // }
 
   render() {
     return (
@@ -50,7 +50,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  getTASKS,
+  // getTASKS,
 }
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Dashboard));

@@ -52,7 +52,7 @@ export function login(username, password) {
   }
 }
 
-export function getTASKS() {
+export function getTASKS(id) {
   return (dispatch) => {
     dispatch({ type: GET_TASKS_START })
 
@@ -60,7 +60,7 @@ export function getTASKS() {
       Authorization: localStorage.getItem('token'),
     }
 
-    axios.get('https://get2it.herokuapp.com/api/users/:id/tasks', { headers })
+    axios.get(`https://get2it.herokuapp.com/api/users/${id}/tasks`, { headers })
       .then((res) => {
         console.log(res)
         dispatch({ type: GET_TASKS_SUCCESS, payload: res.data })
