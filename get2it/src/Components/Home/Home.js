@@ -16,10 +16,11 @@ class Home extends React.Component {
 
   time = moment().format('H')
   today = moment().format('L')
-  todayList = this.props.userTasks.filter(task => task.date === this.today)
+  todayList = this.props.userTasks.filter(task => task.date === this.today && task.completed === false)
+  incompleteTasks = this.props.userTasks.filter(task => task.completed === false)
   
   render() {
-    const {time, todayList} = this
+    const {time, todayList, incompleteTasks} = this
     return (
       <div className='home'>
         {time >= 4 && time < 11 ? <h2 className='greeting'>Good morning</h2> 
@@ -33,7 +34,7 @@ class Home extends React.Component {
         <Link className='countLink' to='/taskList'>
           <div className='countContainer'>
             <h1 className='count'>{todayList.length}</h1>
-            <p className='total'>{this.props.userTasks.length}</p>
+            <p className='total'>{incompleteTasks.length}</p>
           </div>
         </Link>
         <div className='homeList'>
