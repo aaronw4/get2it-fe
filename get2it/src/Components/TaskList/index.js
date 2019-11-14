@@ -3,7 +3,7 @@ import './style.css'
 import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
-import updateTask from '../../actions'
+import { updateTask, getTASKS } from '../../actions'
 
 class TaskList extends React.Component {
   constructor(props) {
@@ -27,13 +27,19 @@ class TaskList extends React.Component {
     })
   };
 
-  // complete = event => {
-  //   if(querySelector(input[type=checkbox]:checked)){
-  //     upd()
-  //   } else {
-  //     check()
-  //   }
+  toggleComplete = event => {
+    if (this.state.userTasks = true){
+      this.state.userTasks = false;
+    } else {
+      this.state.userTasks = true
+    }
+  }
+  create = event => {
+    event.preventDefault();
+    console.log('click');
+    this.props.getTASKS()
 
+  };
 
   
   render() {
@@ -43,14 +49,18 @@ class TaskList extends React.Component {
           <Button onClick={this.createTaskList} variant="primary" type="submit">
             <span>&#10003;</span>
           </Button>
+          <Button onClick={this.create} variant="primary" type="submit">
+            <span></span>
+          </Button>
+          
           <Form.Text>TASKS</Form.Text>
         </Form>
         <ul>
           {this.state.taskList.map((item, index) => (
-            <li key={index}>
+            <li value={this.state.task.id} key={index}>
               <Form>
                 <Form.Group controlId='formBasicCheckbox'>
-                  <Form.Check onClick={this.complete} type='checkbox' />
+                  <Form.Check onClick={this.toggleComplete} type='checkbox' />
                   <Form.Text>{item}</Form.Text>
                 </Form.Group>
               </Form>
@@ -67,5 +77,9 @@ const mapStateToProps = state => ({
   userData: state.userData,
   userTasks: state.userTasks
 })
+const mapDispatchToProps = {
+  updateTask,
+  getTASKS
+ }
 
-export default connect(mapStateToProps)(TaskList);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList)
