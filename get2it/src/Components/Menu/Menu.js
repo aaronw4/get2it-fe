@@ -44,7 +44,7 @@ class Menu extends React.Component {
           <i className="fas fa-bars fa-lg"></i>
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem header><img className='menuLogo' src={logo}/> {this.state.userData.username}</DropdownItem>
+          <DropdownItem header><img className='menuLogo' src={logo} alt='Get2It'/> {this.state.userData.username}</DropdownItem>
           <DropdownItem divider />
           <DropdownItem onClick={this.home}><i className="fas fa-home icon"></i>Home</DropdownItem>
           <DropdownItem onClick={(evt) => {evt.preventDefault(); this.props.history.push('/taskList')}}>

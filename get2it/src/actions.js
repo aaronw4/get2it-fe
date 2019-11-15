@@ -16,6 +16,9 @@ export const UPDATE_TASK_START = 'UPDATE_TASK_START'
 export const UPDATE_TASK_SUCCESS = 'UPDATE_TASK_SUCCESS'
 export const UPDATE_TASK_FAILED = 'UPDATE_TASK_FAILED'
 
+export const UPDATE_USER_START = 'UPDATE_USER_START'
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
+export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED'
 
 
 export function createUser(username, password) {
@@ -52,7 +55,7 @@ export function login(username, password) {
   }
 }
 
-export function getTASKS() {
+export function getTASKS(id) {
   return (dispatch) => {
     dispatch({ type: GET_TASKS_START })
 
@@ -61,7 +64,11 @@ export function getTASKS() {
     }
     console.log(headers);
 
+<<<<<<< HEAD
     axios.get('https://get2it.herokuapp.com/api/users/1/tasks', { headers })
+=======
+    axios.get(`https://get2it.herokuapp.com/api/users/${id}/tasks`, { headers })
+>>>>>>> cb14dff6ee27f67777f01bd377f74558db706f53
       .then((res) => {
         console.log(res)
         dispatch({ type: GET_TASKS_SUCCESS, payload: res.data })
@@ -90,4 +97,24 @@ export function updateTask(payload, id){
         dispatch({ type: UPDATE_TASK_FAILED, payload: err.response.data })
       })
   }
+}
+
+export function updateUser(payload, id) {
+  return dispatch => {
+    dispatch({ type: UPDATE_USER_START });
+
+    const headers = {
+      Authorization: localStorage.getItem("token")
+    };
+
+    axios
+      .put(`https://get2it.herokuapp.com/api/auth/edit-profile/${id}`, payload, { headers })
+      .then(res => {
+        dispatch({ type: UPDATE_USER_SUCCESS, payload: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch({ type: UPDATE_USER_FAILED, payload: err.response.data });
+      });
+  };
 }
