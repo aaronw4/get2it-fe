@@ -7,6 +7,7 @@ import Home from '../Home/Home.js'
 import Menu from '../Menu/Menu.js'
 import NewTask from '../NewTask/NewTask.js'
 import TaskList from '../TaskList/index.js'
+import Profile from '../Profile/Profile.js'
 // import { getTASKS } from "../../actions.js";
 
 
@@ -36,6 +37,7 @@ class Dashboard extends React.Component {
             <Route path="/NewTask" render={props => <NewTask {...props} />} />
             <Route path="/taskList" render={props => <TaskList {...props} />} />
             <Route path="/taskModal" render={props => <Home {...props} />} />
+            <Route path="/profile" render={props => <Profile {...props} />} />
           </div>
         )}
       </div>
