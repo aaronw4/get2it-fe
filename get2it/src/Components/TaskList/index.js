@@ -18,8 +18,11 @@ class TaskList extends React.Component {
     event.preventDefault();
     const arrList = this.props.userTasks;
     const list =[]
+    var listItem;
+    var spacer = "      ";
     for (let i = 0; i < arrList.length;i++) {
-      list.push(arrList[i].name)
+      listItem = arrList[i].name.concat(spacer).concat(arrList[i].date)
+      list.push(listItem)
     };
     console.log(list)
     this.setState({
