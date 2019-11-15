@@ -34,11 +34,7 @@ class TaskList extends React.Component {
   };
 
   toggleComplete = event => {
-    if (this.state.userTasks = true){
-      this.state.userTasks = false;
-    } else {
-      this.state.userTasks = true
-    }
+    
   }
   create = event => {
     event.preventDefault();
