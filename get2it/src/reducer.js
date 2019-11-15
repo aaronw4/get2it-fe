@@ -57,6 +57,7 @@ const initialState = {
   error: null,
   userData: {},
   userTasks: dummyTasks,
+  userID: null
 }
 
 export default function(state = initialState, action) {
@@ -73,6 +74,7 @@ export default function(state = initialState, action) {
         ...state,
         isLoading: false,
         userData: action.payload,
+        userID: action.payload.id,
         error: null,
       }
     }
@@ -96,8 +98,9 @@ export default function(state = initialState, action) {
         ...state,
         isLoading: false,
         userData: action.payload,
-        error: null,
-      }
+        userID: action.payload.id,
+        error: null
+      };
     }
     case LOGIN_FAILED: {
       console.log(action.payload)

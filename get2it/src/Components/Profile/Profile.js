@@ -6,7 +6,7 @@ import { updateUser } from '../../actions.js'
 class Profile extends React.Component {
   constructor(props) {
     super(props)
-    const { id, username, password } = this.props.userData
+    const { username } = this.props.userData
     this.state = {
       username: username,
       password: '',
@@ -17,12 +17,12 @@ class Profile extends React.Component {
     evt.preventDefault()
 
     const payload = {
-      id: this.props.userData.id,
+      id: this.props.userID,
       username: this.state.username,
       password: this.state.password
     }
 
-    const id = this.props.userData.id
+    const id = this.props.userID
 
     this.props.updateUser(payload, id)
 
@@ -93,7 +93,8 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  userData: state.userData
+  userData: state.userData,
+  userID: state.userID,
 });
 
 const mapDispatchToProps = {
