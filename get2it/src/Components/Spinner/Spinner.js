@@ -4,7 +4,7 @@ import './Spinner.css'
 
 function Spinner() {
   return (
-    <img className='spinnerImg' src={logo} alt='' />
+    <div className='spinnerContainer'><img className='spinnerImg' src={logo} alt='' /></div>
   )
 }
 
