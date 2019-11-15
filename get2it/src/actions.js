@@ -105,7 +105,7 @@ export function updateUser(payload, id) {
     axios
       .put(`https://get2it.herokuapp.com/api/auth/edit-profile/${id}`, payload, { headers })
       .then(res => {
-        dispatch({ type: UPDATE_USER_SUCCESS, payload: res.data });
+        dispatch({ type: UPDATE_USER_SUCCESS, payload: payload });
       })
       .catch(err => {
         console.log(err);
