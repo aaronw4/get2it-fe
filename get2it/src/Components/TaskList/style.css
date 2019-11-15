@@ -13,17 +13,33 @@ dl, ol, ul {
     margin-top:5%;
     list-style:none; 
     text-align: left;
+    border-image: radial-gradient(silver, black) 50;
 }
 div .form-group {
     display: flex;
+    border-image: radial-gradient(silver, black) 50;
+  border-bottom: 2px solid;
+    width: 90%;
+}
+.formStyle:hover {
+background-color: rgb(85, 84, 84);
+width: 95%;
+border-radius: 15px;
+/* height:100%; */
+border: solid 2px rgb(158, 152, 152);
+padding:5px 5px 5px 10px;
+}
+.formStyle {
+    margin-bottom: 5px;
 }
 .form-text {
     display: block;
     margin-top: .25rem;
-    margin-left: 10%;
     padding: 2%;
+    margin-left: 10%;
     color:white;
     width:100%;
+    font-size: 1em;;
 }
 .checkBTN {
     color:white;
@@ -36,3 +52,31 @@ input[type=checkbox]:checked {
  background-size: cover;
  background-repeat: no-repeat;
 }
+.taskTitle {
+    display: block;
+    margin-top: .25rem;
+    padding: 2%;
+    color:white;
+    width:100%;
+    font-size: 1.7em;
+    margin-left: 0%;
+}
+.addTaskLink {
+    bottom: 10px;
+    height: 48px;
+    width: 48px;
+    padding-bottom: 12px;
+    padding-left: 1px;
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 100%;
+    font-size: 3rem;
+
+  }
+.linkStyle {
+    margin-left: 43%;
+padding: auto;
+  }
+  .linkStyle:hover {
+    background-color: rgb(175, 174, 174);
+  }

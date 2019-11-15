@@ -64,11 +64,7 @@ export function getTASKS(id) {
     }
     console.log(headers);
 
-<<<<<<< HEAD
-    axios.get('https://get2it.herokuapp.com/api/users/1/tasks', { headers })
-=======
     axios.get(`https://get2it.herokuapp.com/api/users/${id}/tasks`, { headers })
->>>>>>> cb14dff6ee27f67777f01bd377f74558db706f53
       .then((res) => {
         console.log(res)
         dispatch({ type: GET_TASKS_SUCCESS, payload: res.data })

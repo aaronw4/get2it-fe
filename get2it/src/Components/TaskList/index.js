@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.css'
 import { connect } from 'react-redux'
-import { Route, withRouter } from 'react-router-dom'
-import { Form, Button } from 'react-bootstrap'
+import { Route, withRouter, Link } from 'react-router-dom'
+import { Form } from 'react-bootstrap'
 import { updateTask, getTASKS } from '../../actions'
 
 class TaskList extends React.Component {
@@ -46,19 +46,12 @@ class TaskList extends React.Component {
     return (
       <div>
         <Form>
-          <Button onClick={this.createTaskList} variant="primary" type="submit">
-            <span>&#10003;</span>
-          </Button>
-          <Button onClick={this.create} variant="primary" type="submit">
-            <span></span>
-          </Button>
-          
-          <Form.Text>TASKS</Form.Text>
+          <Form.Text className="taskTitle">TASKS</Form.Text>
         </Form>
         <ul>
           {this.state.taskList.map((item, index) => (
-            <li value={this.state.task.id} key={index}>
-              <Form>
+            <li className="formStyle" key={index}>
+              <Form >
                 <Form.Group controlId='formBasicCheckbox'>
                   <Form.Check onClick={this.toggleComplete} type='checkbox' />
                   <Form.Text>{item}</Form.Text>
@@ -68,6 +61,14 @@ class TaskList extends React.Component {
             
           ))}
         </ul>
+        <div className="linkStyle">
+          <Link
+          className="addTaskLink" onClick={this.createTaskList}
+          to={{ pathname: "/taskModal", state: { modal: true } }}
+        >
+          +
+        </Link>
+        </div>
       </div>
     );
   }

@@ -7,12 +7,8 @@ import Home from '../Home/Home.js'
 import Menu from '../Menu/Menu.js'
 import NewTask from '../NewTask/NewTask.js'
 import TaskList from '../TaskList/index.js'
-<<<<<<< HEAD
-import { getTASKS } from '../../actions'
-=======
 // import { getTASKS } from "../../actions.js";
 
->>>>>>> cb14dff6ee27f67777f01bd377f74558db706f53
 
 class Dashboard extends React.Component {
 
