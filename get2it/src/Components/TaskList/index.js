@@ -48,6 +48,7 @@ class TaskList extends React.Component {
         <Form>
           <Form.Text className="taskTitle">TASKS</Form.Text>
         </Form>
+        <div>
         <ul>
           {this.state.taskList.map((item, index) => (
             <li className="formStyle" key={index}>
@@ -61,6 +62,7 @@ class TaskList extends React.Component {
             
           ))}
         </ul>
+        </div>
         <div className="linkStyle">
           <Link
           className="addTaskLink" onClick={this.createTaskList}
