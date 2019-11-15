@@ -6,10 +6,11 @@ import { updateUser } from '../../actions.js'
 class Profile extends React.Component {
   constructor(props) {
     super(props)
+
     const { username } = this.props.userData
+
     this.state = {
       username: username,
-      password: '',
     }
   }
 
@@ -19,7 +20,7 @@ class Profile extends React.Component {
     const payload = {
       id: this.props.userID,
       username: this.state.username,
-      password: this.state.password
+      password: this.props.userData.password
     }
 
     const id = this.props.userID
@@ -38,7 +39,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username } = this.state;
     const { isLoading, error } = this.props;
 
     return (
@@ -63,24 +64,9 @@ class Profile extends React.Component {
             />
             <br />
           </div>
-          <div className="inputContainer">
-            <label to="password">
-              <i id="registerIcon" className="fas fa-unlock-alt"></i>
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-              value={password}
-              onChange={this.handleChange}
-              required
-            />
-            <br />
-          </div>
 
           {isLoading ? (
-            <p>Getting account, please wait...</p>
+            <p>Saving changes, please wait...</p>
           ) : (
             <button className="registerButton" type="submit">
               Update Profile
