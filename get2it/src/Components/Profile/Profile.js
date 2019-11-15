@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateUser } from '../../actions.js'
+import './Profile.css'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -44,9 +45,9 @@ class Profile extends React.Component {
 
     return (
       <div className="profile">
-        <h3 className="pageTitle">Profile</h3>
+        <h3 className="pageTitle">{this.props.userData.username}</h3>
         <i className="fas fa-user-circle profileImg"></i>
-        <form className="registerForm" onSubmit={this.updatedProfile}>
+        <form className="registerForm proForm" onSubmit={this.updatedProfile}>
           {error && <p className="error">{error}</p>}
 
           <div className="inputContainer">
