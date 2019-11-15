@@ -21,8 +21,11 @@ class TaskList extends React.Component {
     var listItem;
     var spacer = "      ";
     for (let i = 0; i < arrList.length;i++) {
-      listItem = arrList[i].name.concat(spacer).concat(arrList[i].date)
-      list.push(listItem)
+      if(arrList[i].status === false){
+        listItem = arrList[i].name.concat(spacer).concat(arrList[i].date)
+        list.push(listItem)
+      
+      }
     };
     console.log(list)
     this.setState({

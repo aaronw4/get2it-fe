@@ -56,7 +56,7 @@ const dummyTasks = [
     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
     start_time: '1pm',
     end_time: '2pm',
-    completed: false,
+    status: true,
   },
   {
     name: 'Work out.',
@@ -64,7 +64,7 @@ const dummyTasks = [
     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
     start_time: '1pm',
     end_time: '2pm',
-    completed: false,
+    status: true,
   },
   {
     name: 'This is to test out a long task name, but I am sure it will work just fine.',
@@ -72,7 +72,7 @@ const dummyTasks = [
     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
     start_time: '1pm',
     end_time: '2pm',
-    completed: false,
+    status: false,
   },
 
 ]
