@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './NewTask.css'
 import 'bulma/css/bulma.css'
-import Clock from './clock';
+import Clock from './StartTime';
 import Date from './Date'
+import EndTime from './EndTime'
+import Label from './Label';
 
 const toDoTasks = [
   {
@@ -193,8 +195,8 @@ class NewTask extends React.Component {
                 </div>
                 <Clock/>
                 <br />
-                <Clock/>
-      <div className="to-do-app">
+                <EndTime/>
+      {/* <div className="to-do-app">
       
         <div className="header">
         
@@ -202,8 +204,9 @@ class NewTask extends React.Component {
         </div>
         <CreateItem toDoTasks={this.state.toDoTasks} createItem={this.createItem.bind(this)} />
         <ToDoList toDoTasks={this.state.toDoTasks} deleteItem={this.deleteItem.bind(this)} saveItem={this.saveItem.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
-      </div>
-     
+      </div> */}
+      <br/>
+      <Label/>
       </div>
     );
   }
