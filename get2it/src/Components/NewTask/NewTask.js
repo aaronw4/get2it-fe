@@ -1,8 +1,8 @@
-import React, { Component,setState } from 'react';
-// import {M} from 'react-materialize'
+import React, { Component } from 'react';
 import './NewTask.css'
 import 'bulma/css/bulma.css'
 import Clock from './clock';
+import Date from './Date'
 
 const toDoTasks = [
   {
@@ -29,7 +29,7 @@ class CreateItem extends Component {
     if (!this.refs.newItemInput.value) {
       alert('Please enter a task name.');
       return;
-    } else if (this.props.toDoTasks.map(element => element.name).indexOf(this.refs.newItemInput.value) != -1) {
+    } else if (this.props.toDoTasks.map(element => element.name).indexOf(this.refs.newItemInput.value) !== -1) {
       alert('This task already exists.');
       this.refs.newItemInput.value = '';
       return;
@@ -186,12 +186,16 @@ class NewTask extends React.Component {
   render() {
     return (
       <div className='app'>
-      <a class ="button is-primary"> 
-                <span class="icon">
-                </span>
+      <br />
+        <h1>New Task</h1>
+                <div>
+                 <Date />
+                </div>
                 <Clock/>
-                </a> 
+                <br />
+                <Clock/>
       <div className="to-do-app">
+      
         <div className="header">
         
           <h1>New Task</h1>
@@ -199,6 +203,7 @@ class NewTask extends React.Component {
         <CreateItem toDoTasks={this.state.toDoTasks} createItem={this.createItem.bind(this)} />
         <ToDoList toDoTasks={this.state.toDoTasks} deleteItem={this.deleteItem.bind(this)} saveItem={this.saveItem.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
       </div>
+     
       </div>
     );
   }

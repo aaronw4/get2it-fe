@@ -102,3 +102,111 @@
   .fa-clock{
     margin: 0 10px;
   }
+  @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", helvetica;
+}
+
+.date-picker-container {
+  width: 350px;
+  margin: 5% auto;
+}
+
+input {
+  width: 100%;
+  border: 2px solid #504f4f;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+input:focus {
+  border-color: palevioletred;
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  outline: none;
+}
+
+button:focus {
+  color: lightblue;
+}
+
+.calendar {
+  margin-top: 0.5rem;
+  box-shadow: 0 1px 5px #aeaeae;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: rgb(7, 7, 7);
+}
+
+.week {
+  display: flex;
+}
+
+.week:not(:first-of-type) {
+  border-top: 1px solid #eaeaea;
+}
+
+.week.day-labels {
+  background: rgb(74, 73, 73);
+}
+
+.week.day-labels .day {
+  cursor: default;
+}
+
+.day {
+  width: calc(100% / 7);
+  padding: 1rem 0.5rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.week:not(.day-labels) .day:not(:last-of-type) {
+  border-right: 1px solid #eaeaea;
+}
+
+.week:not(.day-labels) .day:hover {
+  background-color: #e7e7e7;
+}
+
+.day.is-today.is-today {
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
+.week:not(.day-labels) .day.is-selected.is-selected {
+  background-color: rgb(138, 0, 46);
+  color: #fff;
+}
+
+.color-white {
+  color: #fff;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.day[disabled] {
+  color: #eaeaea !important;
+  cursor: not-allowed !important;
+  background: inherit !important;
+}
