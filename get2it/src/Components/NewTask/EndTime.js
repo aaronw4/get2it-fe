@@ -17,12 +17,14 @@ class TimeSelectForm extends Component {
 
   render = () => (
     <div>
-      <h1>End</h1>
+    <h1 className="Title2">END</h1>
+    <div className='endTime'>
     <form className="TimeForm" onSubmit={this.handleSubmit}>
-    <span><i class="far fa-clock fa-4x"></i></span>
+    <i class="far fa-clock fa-3x"></i>
       <TimePicker className="form" value={this.state.value} onChange={this.handleChange} />
       <br />
     </form>
+    </div>
     </div>
   );
 }

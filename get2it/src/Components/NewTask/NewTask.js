@@ -119,7 +119,7 @@ class TaskItems extends Component {
   }
 }
 
-class ToDoList extends React.Component {
+class ToDoTask extends React.Component {
   renderItems() {
     return this.props.toDoTasks.map((item, index) => <TaskItems key={index} {...item} {...this.props} />);
   }
@@ -177,23 +177,36 @@ class NewTask extends React.Component {
   render() {
     return (
       <div className='app'>
+      
       <br />
         <h1 className="NewTask-Tittle"> Add New Task</h1>
-        <Category/>
-                <div>
-                 <Date />
+        <hr className="line" />
+        {/* <Category/> */}
+                <div className="calender-date">
+                <i  Class="far fa-calendar-alt fa-3x" />
+                <br/>
+                <br/>
+                
+                 <Date className="date" />
+                 <br></br>
+                 
                 </div>
                 <Clock/>
-                <br />
+                <hr className="line" />
+                
                 <EndTime/>
                 <br/>
+                
       <div className="app">
         <CreateItem toDoTasks={this.state.toDoTasks} createItem={this.createItem.bind(this)} />
-        <ToDoList toDoTasks={this.state.toDoTasks} deleteItem={this.deleteItem.bind(this)} saveItem={this.saveItem.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
+        <ToDoTask toDoTasks={this.state.toDoTasks} deleteItem={this.deleteItem.bind(this)} saveItem={this.saveItem.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
       </div>
       <br/>
+      <hr className="line" />
       <Label/>
+      <hr className="line" />
       </div>
+      
     );
   }
 }

@@ -276,5 +276,31 @@ main {
   transform: scale(1.1);
 }
 .lable{
-  display: inline-block;
+  display: flex;
+  align-content: space-between;
 }
+.calender-date{
+  display: flex;
+  align-content: space-around;
+}
+.line{
+  color: color;
+  background-color:  rgb(65, 63, 63);
+  height: 5
+}
+.endTime{
+  display: flex;
+  color: #999;
+}
+
+.startTime{
+  display: flex;
+  color: #999;
+}
+.Title2{
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-left: -170px;
+}
+
+

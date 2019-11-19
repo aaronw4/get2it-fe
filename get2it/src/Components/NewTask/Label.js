@@ -101,7 +101,7 @@ class Label extends React.Component {
   render(){
     return (
       <div className="lable">
-        <i class="fas fa-tint fa-5x"></i>
+        <i class="fas fa-tint fa-3x"></i>
         <h1>Label</h1>
       <div style={ this.style }>
         <ColorIndicator
