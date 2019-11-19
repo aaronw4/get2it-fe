@@ -44,12 +44,37 @@ const dummyTasks = [
   },
   {
     name: 'Work out.',
-    date: '11/8/2019',
+    date: '11/14/2019',
     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
     start_time: '1pm',
     end_time: '2pm',
     status: false,
   },
+  {
+    name: 'Work out.',
+    date: '11/8/2019',
+    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
+    start_time: '1pm',
+    end_time: '2pm',
+    status: true,
+  },
+  {
+    name: 'Work out.',
+    date: '11/8/2019',
+    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
+    start_time: '1pm',
+    end_time: '2pm',
+    status: true,
+  },
+  {
+    name: 'This is to test out a long task name, but I am sure it will work just fine.',
+    date: '11/14/2019',
+    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
+    start_time: '1pm',
+    end_time: '2pm',
+    status: false,
+  },
+
 ]
 
 const initialState = {

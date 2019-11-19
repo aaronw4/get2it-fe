@@ -80,3 +80,9 @@ padding: auto;
   .linkStyle:hover {
     background-color: rgb(175, 174, 174);
   }
+  
+.reUseBtn {
+    width: 33%;
+    height: 10%;
+    padding: 2%;
+}

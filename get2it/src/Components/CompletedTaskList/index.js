@@ -2,10 +2,10 @@ import React from 'react';
 import './style.css'
 import { connect } from 'react-redux'
 import { Route, withRouter, Link } from 'react-router-dom'
-import { Form } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import { updateTask, getTASKS } from '../../actions'
 
-class TaskList extends React.Component {
+class CompletedTaskList extends React.Component {
   constructor(props) {
     super(props);
     console.log(props)
@@ -21,7 +21,7 @@ class TaskList extends React.Component {
     var listItem;
     var spacer = "      ";
     for (let i = 0; i < arrList.length;i++) {
-      if(arrList[i].status === false){
+      if(arrList[i].status === true){
         listItem = arrList[i].name.concat(spacer).concat(arrList[i].date)
         list.push(listItem)
       
@@ -48,7 +48,7 @@ class TaskList extends React.Component {
     return (
       <div>
         <Form>
-          <Form.Text className="taskTitle">TASKS</Form.Text>
+          <Form.Text className="taskTitle">COMPLETED TASKS</Form.Text>
         </Form>
         <div>
         <ul>
@@ -56,8 +56,8 @@ class TaskList extends React.Component {
             <li className="formStyle" key={index}>
               <Form >
                 <Form.Group controlId='formBasicCheckbox'>
-                  <Form.Check onClick={this.toggleComplete} type='checkbox' />
                   <Form.Text>{item}</Form.Text>
+                  <Button className="reUseBtn">Re-Use</Button>
                 </Form.Group>
               </Form>
             </li>
@@ -87,4 +87,4 @@ const mapDispatchToProps = {
   getTASKS
  }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TaskList)
+export default connect(mapStateToProps, mapDispatchToProps)(CompletedTaskList)

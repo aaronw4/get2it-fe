@@ -64,6 +64,7 @@ export function getTASKS(id) {
     const headers = {
       Authorization: localStorage.getItem('token'),
     }
+    console.log(headers);
 
     axios.get(`https://get2it.herokuapp.com/api/users/${id}/tasks`, { headers })
       .then((res) => {
