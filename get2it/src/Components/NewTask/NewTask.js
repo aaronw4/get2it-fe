@@ -179,16 +179,21 @@ class NewTask extends React.Component {
       <div className='app'>
       
       <br />
+      <br />
         <h1 className="NewTask-Tittle"> Add New Task</h1>
         <hr className="line" />
+        <br />
         {/* <Category/> */}
                 <div className="calender-date">
+                <div className="startTime">
                 <i  Class="far fa-calendar-alt fa-3x" />
+                </div>
                 <br/>
                 <br/>
                 
                  <Date className="date" />
-                 <br></br>
+                 <br/>
+                 <br/>
                  
                 </div>
                 <Clock/>
@@ -198,7 +203,9 @@ class NewTask extends React.Component {
                 <br/>
                 
       <div className="app">
+     
         <CreateItem toDoTasks={this.state.toDoTasks} createItem={this.createItem.bind(this)} />
+        <br />
         <ToDoTask toDoTasks={this.state.toDoTasks} deleteItem={this.deleteItem.bind(this)} saveItem={this.saveItem.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
       </div>
       <br/>

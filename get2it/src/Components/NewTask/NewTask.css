@@ -117,8 +117,9 @@
 }
 
 .date-picker-container {
-  width: 350px;
+  width: 320px;
   margin: 5% auto;
+  margin-top: -5px;
 }
 
 input {
@@ -276,15 +277,15 @@ main {
   transform: scale(1.1);
 }
 .lable{
-  display: flex;
-  align-content: space-between;
+  
+  
+  
 }
 .calender-date{
   display: flex;
   align-content: space-around;
 }
 .line{
-  color: color;
   background-color:  rgb(65, 63, 63);
   height: 5
 }
@@ -302,5 +303,18 @@ main {
   font-weight: bold;
   margin-left: -170px;
 }
+ 
+.lableColor{
+  margin-left: 350px;
+}
 
-
+.NewTask-Tittle2{
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-left: -130px;
+  margin-top: -50px;
+  text-transform: uppercase;
+}
+.lableIcon{
+ background-color: #fff;
+}
