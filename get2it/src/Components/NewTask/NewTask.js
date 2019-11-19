@@ -5,22 +5,11 @@ import Clock from './StartTime';
 import Date from './Date'
 import EndTime from './EndTime'
 import Label from './Label';
+import Category from './Category';
 
 const toDoTasks = [
   {
-    name: 'Click "Create" to create new task',
-    completed: false
-  },
-  {
-    name: 'Click "Edit" to edit task',
-    completetd: false
-  },
-  {
-    name: 'Click "Delete" to remove task',
-    completed: false
-  },
-  {
-    name: "Click on task to mark as complete",
+    name: 'New Task Show Here',
     completed: false
   }
 ];
@@ -77,7 +66,7 @@ class TaskItems extends Component {
           </form>
       );
     }
-    
+  
     return (
       <span style={itemStyle} onClick={this.props.toggleComplete.bind(this, this.props.name)}>{this.props.name}</span>
     );
@@ -93,7 +82,7 @@ class TaskItems extends Component {
         </span>
       );
     }
-    
+  
     return (
       <span>
         <button class="button is-primary" onClick={this.onEditClick.bind(this)}><span class="fa fa-edit"></span></button>
@@ -109,7 +98,7 @@ class TaskItems extends Component {
   onCancelClick() {
     this.setState({ editing: false });
   }
-  
+
   onSaveClick(e) {
     e.preventDefault();
     this.props.saveItem(this.props.name, this.refs.editInput.value);
@@ -189,22 +178,19 @@ class NewTask extends React.Component {
     return (
       <div className='app'>
       <br />
-        <h1>New Task</h1>
+        <h1 className="NewTask-Tittle"> Add New Task</h1>
+        <Category/>
                 <div>
                  <Date />
                 </div>
                 <Clock/>
                 <br />
                 <EndTime/>
-      {/* <div className="to-do-app">
-      
-        <div className="header">
-        
-          <h1>New Task</h1>
-        </div>
+                <br/>
+      <div className="app">
         <CreateItem toDoTasks={this.state.toDoTasks} createItem={this.createItem.bind(this)} />
         <ToDoList toDoTasks={this.state.toDoTasks} deleteItem={this.deleteItem.bind(this)} saveItem={this.saveItem.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
-      </div> */}
+      </div>
       <br/>
       <Label/>
       </div>

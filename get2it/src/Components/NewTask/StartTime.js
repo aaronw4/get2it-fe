@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import TimePicker from "./TimePicker";
+import './NewTask.css'
 
 class TimeSelectForm extends Component {
   state = {
@@ -18,7 +19,7 @@ class TimeSelectForm extends Component {
 	  <div>
 		  <h1>Start</h1>
     <form onSubmit={this.handleSubmit}>
-    <span><i class="far fa-clock"></i></span>
+    <span><i class="far fa-clock fa-4x"></i></span>
       <TimePicker value={this.state.value} onChange={this.handleChange} />
 	  <br/>
     </form>

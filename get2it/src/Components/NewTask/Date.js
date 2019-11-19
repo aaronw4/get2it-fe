@@ -14,7 +14,7 @@ function Date(props) {
       {({ getInputProps, getItemProps, toggleMenu, isOpen, selectedItem }) => (
         <div className="date-picker-container">
         
-        <button  Class="far fa-calendar-alt" />
+        <button  Class="far fa-calendar-alt fa-4x" />
           <input 
             {...getInputProps({
               readOnly: true,

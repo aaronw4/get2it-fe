@@ -8,7 +8,12 @@
     cursor: pointer;
   }
   
-  .to-do-app {
+  .NewTask-Tittle{
+    font-weight: bold;
+    font-size: 2em;
+    text-transform: capitalize;
+  }
+  /* .to-do-app {
     box-sizing: border-box;
     width: 550px;
     margin: 50px auto 0 auto;
@@ -16,7 +21,7 @@
     border-radius: 5px;
     box-shadow: 0 0 5px #252525;
   }
-  
+   */
   .header {
     background: rgb(145, 144, 144);
     padding: 7px;
@@ -269,4 +274,7 @@ main {
 }
 .color-indicator:hover {
   transform: scale(1.1);
+}
+.lable{
+  display: inline-block;
 }

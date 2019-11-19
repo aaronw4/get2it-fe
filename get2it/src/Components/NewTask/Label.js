@@ -100,12 +100,14 @@ class Label extends React.Component {
 
   render(){
     return (
+      <div className="lable">
+        <i class="fas fa-tint fa-5x"></i>
+        <h1>Label</h1>
       <div style={ this.style }>
         <ColorIndicator
           color={ this.state.color }
           onClick={ this.handleOpenPalette }
         />
-        
         { 
           this.state.paletteOpened && 
             <PalettePopup
@@ -113,6 +115,7 @@ class Label extends React.Component {
               onClose={ this.handlePaletteClose }
             />
         }
+      </div>
       </div>
     )
   }
