@@ -107,6 +107,7 @@ export function updateUser(payload, id) {
     axios
       .put(`https://get2it.herokuapp.com/api/auth/edit-profile/${id}`, payload, { headers })
       .then(res => {
+        console.log(res)
         setTimeout(() => {
           dispatch({ type: UPDATE_USER_SUCCESS, payload: payload, id: id });
         },2000)
