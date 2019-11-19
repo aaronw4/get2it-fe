@@ -5,21 +5,26 @@ import { Route, withRouter, Link } from 'react-router-dom'
 import { Form } from 'react-bootstrap'
 import { updateTask, getTASKS } from '../../actions'
 
+// buld task component and set up state
 class TaskList extends React.Component {
   constructor(props) {
     super(props);
     console.log(props)
+     // add tasklist to state
     this.state= {taskList:[]
     }
   }
   event
 
+  // build function to add tasks to state
   createTaskList = event => {
     event.preventDefault();
+    // pull tasks from props
     const arrList = this.props.userTasks;
     const list =[]
     var listItem;
     var spacer = "      ";
+     // loop through each task and post them to state
     for (let i = 0; i < arrList.length;i++) {
       if(arrList[i].status === false){
         listItem = arrList[i].name.concat(spacer).concat(arrList[i].date)
@@ -43,7 +48,7 @@ class TaskList extends React.Component {
 
   };
 
-  
+    // render content to page
   render() {
     return (
       <div>
@@ -51,6 +56,7 @@ class TaskList extends React.Component {
           <Form.Text className="taskTitle">TASKS</Form.Text>
         </Form>
         <div>
+          {/* for each item on the state tasklist create a task link on the page */}
         <ul>
           {this.state.taskList.map((item, index) => (
             <li className="formStyle" key={index}>
@@ -77,7 +83,7 @@ class TaskList extends React.Component {
     );
   }
 }
-
+// map state to props
 const mapStateToProps = state => ({
   userData: state.userData,
   userTasks: state.userTasks
@@ -86,5 +92,5 @@ const mapDispatchToProps = {
   updateTask,
   getTASKS
  }
-
+// export the Component
 export default connect(mapStateToProps, mapDispatchToProps)(TaskList)
