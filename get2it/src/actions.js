@@ -27,8 +27,8 @@ export function createUser(username, password) {
 
     return axios.post('https://get2it.herokuapp.com/api/auth/register', { username, password })
       .then((res) => {
-        localStorage.setItem('token', res.data.token)
         setTimeout(() => {
+          localStorage.setItem('token', res.data.token)
           dispatch({ type: CREATE_USER_SUCCESS, payload: res.data.user })
         }, 2000);
       })
@@ -45,8 +45,8 @@ export function login(username, password) {
 
     return axios.post('https://get2it.herokuapp.com/api/auth/login', { username, password })
       .then((res) => {
-        localStorage.setItem('token', res.data.token)
         setTimeout(() => {
+          localStorage.setItem('token', res.data.token)
           dispatch({ type: LOGIN_SUCCESS, payload: res.data.user })
         }, 2000);
       })
@@ -64,7 +64,6 @@ export function getTASKS(id) {
     const headers = {
       Authorization: localStorage.getItem('token'),
     }
-    console.log(headers);
 
     axios.get(`https://get2it.herokuapp.com/api/users/${id}/tasks`, { headers })
       .then((res) => {
@@ -108,7 +107,6 @@ export function updateUser(payload, id) {
     axios
       .put(`https://get2it.herokuapp.com/api/auth/edit-profile/${id}`, payload, { headers })
       .then(res => {
-        console.log(res)
         setTimeout(() => {
           dispatch({ type: UPDATE_USER_SUCCESS, payload: payload, id: id });
         },2000)

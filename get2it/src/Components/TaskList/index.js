@@ -1,9 +1,9 @@
 import React from 'react';
 import './style.css'
 import { connect } from 'react-redux'
-import { Route, withRouter, Link } from 'react-router-dom'
-import { Form } from 'react-bootstrap'
-import { updateTask, getTASKS } from '../../actions'
+import { Route, withRouter } from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
+import updateTask from '../../actions'
 
 class TaskList extends React.Component {
   constructor(props) {
@@ -18,14 +18,8 @@ class TaskList extends React.Component {
     event.preventDefault();
     const arrList = this.props.userTasks;
     const list =[]
-    var listItem;
-    var spacer = "      ";
     for (let i = 0; i < arrList.length;i++) {
-      if(arrList[i].status === false){
-        listItem = arrList[i].name.concat(spacer).concat(arrList[i].date)
-        list.push(listItem)
-      
-      }
+      list.push(arrList[i].name)
     };
     console.log(list)
     this.setState({
@@ -33,30 +27,30 @@ class TaskList extends React.Component {
     })
   };
 
-  toggleComplete = event => {
-    
-  }
-  create = event => {
-    event.preventDefault();
-    console.log('click');
-    this.props.getTASKS()
+  // complete = event => {
+  //   if(querySelector(input[type=checkbox]:checked)){
+  //     upd()
+  //   } else {
+  //     check()
+  //   }
 
-  };
 
   
   render() {
     return (
       <div>
         <Form>
-          <Form.Text className="taskTitle">TASKS</Form.Text>
+          <Button onClick={this.createTaskList} variant="primary" type="submit">
+            <span>&#10003;</span>
+          </Button>
+          <Form.Text>TASKS</Form.Text>
         </Form>
-        <div>
         <ul>
           {this.state.taskList.map((item, index) => (
-            <li className="formStyle" key={index}>
-              <Form >
+            <li key={index}>
+              <Form>
                 <Form.Group controlId='formBasicCheckbox'>
-                  <Form.Check onClick={this.toggleComplete} type='checkbox' />
+                  <Form.Check onClick={this.complete} type='checkbox' />
                   <Form.Text>{item}</Form.Text>
                 </Form.Group>
               </Form>
@@ -64,15 +58,6 @@ class TaskList extends React.Component {
             
           ))}
         </ul>
-        </div>
-        <div className="linkStyle">
-          <Link
-          className="addTaskLink" onClick={this.createTaskList}
-          to={{ pathname: "/taskModal", state: { modal: true } }}
-        >
-          +
-        </Link>
-        </div>
       </div>
     );
   }
@@ -82,9 +67,5 @@ const mapStateToProps = state => ({
   userData: state.userData,
   userTasks: state.userTasks
 })
-const mapDispatchToProps = {
-  updateTask,
-  getTASKS
- }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TaskList)
+export default connect(mapStateToProps)(TaskList);

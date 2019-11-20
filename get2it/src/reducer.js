@@ -20,7 +20,7 @@ import {
 const dummyTasks = [
   {
     name: 'Go to the grocery store.',
-    date: '11/17/2019',
+    date: '11/13/2019',
     task_icon: '<i id="icon" className="fas fa-shopping-cart icon"></i>',
     start_time: '9am',
     end_time: '11am',
@@ -28,7 +28,7 @@ const dummyTasks = [
   },
   {
     name: 'Work out.',
-    date: '11/17/2019',
+    date: '11/13/2019',
     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
     start_time: '1pm',
     end_time: '2pm',
@@ -44,37 +44,12 @@ const dummyTasks = [
   },
   {
     name: 'Work out.',
-    date: '11/14/2019',
+    date: '11/8/2019',
     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
     start_time: '1pm',
     end_time: '2pm',
     status: false,
   },
-  {
-    name: 'Work out.',
-    date: '11/8/2019',
-    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
-    start_time: '1pm',
-    end_time: '2pm',
-    status: true,
-  },
-  {
-    name: 'Work out.',
-    date: '11/8/2019',
-    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
-    start_time: '1pm',
-    end_time: '2pm',
-    status: true,
-  },
-  {
-    name: 'This is to test out a long task name, but I am sure it will work just fine.',
-    date: '11/14/2019',
-    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
-    start_time: '1pm',
-    end_time: '2pm',
-    status: false,
-  },
-
 ]
 
 const initialState = {
@@ -108,7 +83,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.message
+        error: action.payload.error
       }
     }
     case LOGIN_START: {
@@ -132,7 +107,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.message
+        error: action.payload.error
       }
     }
     case GET_TASKS_START: {
@@ -155,7 +130,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.message
+        error: action.payload.error
       }
     }
     case UPDATE_TASK_START: {
@@ -178,7 +153,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.message
+        error: action.payload.error
       }
     }
     case UPDATE_USER_START: {
@@ -201,7 +176,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.message
+        error: action.payload.error
       }
     }
     default:

@@ -40,7 +40,6 @@ class Login extends React.Component {
   render() {
     const { username, password } = this.state
     const { isLoading, error } = this.props
-    console.log(error)
 
     return (
       <>
@@ -49,7 +48,7 @@ class Login extends React.Component {
             <h3 className='pageTitle'>Sign In</h3>
             <img className='registerLogo' src={logo} alt='get2it' />
             <form className='registerForm' onSubmit={this.handleSubmit}>
-              {error && <><p className='error'>{error}</p><br /> <p className='error'>Please try again or create a new account.</p></>}
+              {error && <><p className='error'>{error}</p><br /> <p className='error'>Or create a new account.</p></>}
 
               <div className='inputContainer'>
                 <label to='username'><i id='registerIcon' className="far fa-user-circle"></i></label>

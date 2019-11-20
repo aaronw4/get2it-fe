@@ -10,7 +10,6 @@ import TaskList from '../TaskList/index.js'
 import Profile from '../Profile/Profile.js'
 import Spinner from '../Spinner/Spinner.js'
 // import { getTASKS } from "../../actions.js";
-import CompletedTaskList from '../CompletedTaskList/index.js'
 
 
 class Dashboard extends React.Component {
