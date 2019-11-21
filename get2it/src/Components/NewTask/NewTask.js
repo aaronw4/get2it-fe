@@ -35,8 +35,8 @@ class CreateItem extends Component {
       <div className="create-new">
         <form onSubmit={this.handleCreate.bind(this)}>
           <input type="text" placeholder="New Task" ref="newItemInput" />
-          <button class="button is-primary">
-          <span class="fa fa-plus"></span>
+          <button className="button is-primary">
+          <span className="fa fa-plus"></span>
           </button>
         </form>
       </div>
@@ -186,7 +186,7 @@ class NewTask extends React.Component {
         {/* <Category/> */}
                 <div className="calender-date">
                 <div className="startTime">
-                <i  Class="far fa-calendar-alt fa-3x" />
+                <i  className="far fa-calendar-alt fa-3x" />
                 </div>
                 <br/>
                 <br/>

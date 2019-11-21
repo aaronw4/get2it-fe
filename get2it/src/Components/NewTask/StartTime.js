@@ -21,7 +21,7 @@ class TimeSelectForm extends Component {
 	  <div className="startTime">
 		  
     <form onSubmit={this.handleSubmit}>
-    <i class="far fa-clock fa-3x"></i>
+    <i className="far fa-clock fa-3x"></i>
       <TimePicker value={this.state.value} onChange={this.handleChange} />
 	  <br/>
     </form>
