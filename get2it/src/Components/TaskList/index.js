@@ -3,7 +3,8 @@ import './style.css'
 import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
-import updateTask from '../../actions'
+import { updateTask } from '../../actions'
+import { getTASKS } from '../../actions'
 
 // buld task component and set up state
 class TaskList extends React.Component {
@@ -54,19 +55,20 @@ class TaskList extends React.Component {
         </Form>
         <div>
           {/* for each item on the state tasklist create a task link on the page */}
-        <ul>
-          {this.state.taskList.map((item, index) => (
-            <li key={index}>
-              <Form>
-                <Form.Group controlId='formBasicCheckbox'>
-                  <Form.Check onClick={this.complete} type='checkbox' />
-                  <Form.Text>{item}</Form.Text>
-                </Form.Group>
-              </Form>
-            </li>
-            
-          ))}
-        </ul>
+          <ul>
+            {this.state.taskList.map((item, index) => (
+              <li key={index}>
+                <Form>
+                  <Form.Group controlId='formBasicCheckbox'>
+                    <Form.Check onClick={this.complete} type='checkbox' />
+                    <Form.Text>{item}</Form.Text>
+                  </Form.Group>
+                </Form>
+              </li>
+              
+            ))}
+          </ul>
+        </div>
       </div>
     );
   }
