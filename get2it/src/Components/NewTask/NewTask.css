@@ -7,6 +7,7 @@ padding:5px;
 }
   form {
     display: inline;
+    background-color: none;
   }
   
   button {
@@ -151,7 +152,7 @@ input:focus {
 button {
   background: none;
   border: none;
-  font-size: .8rem;
+  font-size: 1rem;
   cursor: pointer;
   outline: none;
 }
