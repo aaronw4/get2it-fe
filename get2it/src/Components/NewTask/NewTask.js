@@ -6,186 +6,38 @@ import Date from "./Date";
 import EndTime from "./EndTime";
 import Label from "./Label";
 import Category from "./Category";
-
-const toDoTasks = [
-  {
-    name: "New Task Show Here",
-    completed: false
-  }
-];
-class CreateItem extends Component {
-  handleCreate(e) {
-    e.preventDefault();
-
-    if (!this.refs.newItemInput.value) {
-      alert("Please enter a task name.");
-      return;
-    } else if (
-      this.props.toDoTasks
-        .map(element => element.name)
-        .indexOf(this.refs.newItemInput.value) !== -1
-    ) {
-      alert("This task already exists.");
-      this.refs.newItemInput.value = "";
-      return;
-    }
-
-    this.props.createItem(this.refs.newItemInput.value);
-    this.refs.newItemInput.value = "";
-  }
-
-  render() {
-    return (
-      <div className="create-new">
-        <form onSubmit={this.handleCreate.bind(this)}>
-          <input type="text" placeholder="New Task" ref="newItemInput" />
-          <button class="button is-primary">
-            <span class="fa fa-plus"></span>
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
-
-// class TaskItems extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       editing: false
-//     };
-//   }
-
-//   renderName() {
-//     const itemStyle = {
-//       "text-decoration": this.props.completed ? "line-through" : "none",
-//       cursor: "pointer"
-//     };
-
-//     if (this.state.editing) {
-//       return (
-//         <form onSubmit={this.onSaveClick.bind(this)}>
-//           <input type="text" ref="editInput" defaultValue={this.props.name} />
-//         </form>
-//       );
-//     }
-
-//     return (
-//       <span
-//         style={itemStyle}
-//         onClick={this.props.toggleComplete.bind(this, this.props.name)}
-//       >
-//         {this.props.name}
-//       </span>
-//     );
-//   }
-
-//   renderButtons() {
-//     if (this.state.editing) {
-//       return (
-//         <span>
-//           <button onClick={this.onSaveClick.bind(this)}>
-//             <span class="fa fa-save"></span>
-//           </button>
-//           <button onClick={this.onCancelClick.bind(this)}>
-//             <span class="fa fa-window-close"></span>
-//           </button>
-//         </span>
-//       );
-//     }
-
-//     return (
-//       <span>
-//         <button class="button is-primary" onClick={this.onEditClick.bind(this)}>
-//           <span class="fa fa-edit"></span>
-//         </button>
-//         <button
-//           class="button is-danger"
-//           onClick={this.props.deleteItem.bind(this, this.props.name)}
-//         >
-//           <span class="fa fa-trash"></span>
-//         </button>
-//       </span>
-//     );
-//   }
-
-//   onEditClick() {
-//     this.setState({ editing: true });
-//   }
-
-//   onCancelClick() {
-//     this.setState({ editing: false });
-//   }
-
-//   onSaveClick(e) {
-//     e.preventDefault();
-//     this.props.saveItem(this.props.name, this.refs.editInput.value);
-//     this.setState({ editing: false });
-//   }
-
-//   render() {
-//     return (
-//       <div className="to-do-item">
-//         <span className="name">{this.renderName()}</span>
-//         <span className="actions">{this.renderButtons()}</span>
-//       </div>
-//     );
-//   }
-// }
-
-// class ToDoTask extends React.Component {
-//   renderItems() {
-//     return this.props.toDoTasks.map((item, index) => (
-//       <TaskItems key={index} {...item} {...this.props} />
-//     ));
-//   }
-
-//   render() {
-//     return <div className="items-list">{this.renderItems()}</div>;
-//   }
-// }
+import { Dropdown, DropdownButton } from "react-bootstrap";
+import { set } from "date-fns";
+import $ from "jquery";
+import JsxParser from "react-jsx-parser";
 
 class NewTask extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      toDoTasks
-    };
+    this.state = { icon: "" };
   }
-
-  createItem(item) {
-    this.state.toDoTasks.unshift({
-      name: item,
-      completed: false
-    });
-    this.setState({
-      toDoTasks: this.state.toDoTasks
-    });
-  }
-
-  findItem(item) {
-    return this.state.toDoTasks.filter(element => element.name === item)[0];
-  }
-
-  toggleComplete(item) {
-    let selectedItem = this.findItem(item);
-    selectedItem.completed = !selectedItem.completed;
-    this.setState({ toDoTasks: this.state.toDoTasks });
-  }
-
-  saveItem(oldItem, newItem) {
-    let selectedItem = this.findItem(oldItem);
-    selectedItem.name = newItem;
-    this.setState({ toDoTasks: this.state.toDoTasks });
-  }
-
-  deleteItem(item) {
-    let index = this.state.toDoTasks.map(element => element.name).indexOf(item);
-    this.state.toDoTasks.splice(index, 1);
-    this.setState({ toDoTasks: this.state.toDoTasks });
-  }
+  // removeicon = () => {
+  //   // console.log('removing icon')
+  //   $('.icon').remove();
+  //   this.setState({
+  //     icon: ""
+  //   })
+  // }
+  // saveIcon= event => {
+  //   this.removeicon()
+  //   // var icontag = $('.addIcon').html();
+  //   // // console.log(icontag)
+  //   // var iconfix = icontag.replace('<svg id="icon" class="svg-inline--fa fa-heartbeat fa-w-16 iconDropdown" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heartbeat" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M320.2 243.8l-49.7 99.4c-6 12.1-23.4 11.7-28.9-.6l-56.9-126.3-30 71.7H60.6l182.5 186.5c7.1 7.3 18.6 7.3 25.7 0L451.4 288H342.3l-22.1-44.2zM473.7 73.9l-2.4-2.5c-51.5-52.6-135.8-52.6-187.4 0L256 100l-27.9-28.5c-51.5-52.7-135.9-52.7-187.4 0l-2.4 2.4C-10.4 123.7-12.5 203 31 256h102.4l35.9-86.2c5.4-12.9 23.6-13.2 29.4-.4l58.2 129.3 49-97.9c5.9-11.8 22.7-11.8 28.6 0l27.6 55.2H481c43.5-53 41.4-132.3-7.3-182.1z"></path></svg><!-- <i id="icon" class="', '');
+  //   // console.log(iconfix)
+  //   // var iconfixtwo = iconfix.replace(' -->', '')
+  //   // console.log(iconfixtwo)
+  //   // var iconclass= '<i id="icon" class="icon '
+  //   // var iconfixthree = iconclass.concat(iconfixtwo)
+  //   // console.log(iconfixthree)
+  //   this.setState({
+  //     icon: '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
+  //   })
+  // }
 
   render() {
     return (
@@ -198,7 +50,7 @@ class NewTask extends React.Component {
         {/* <Category/> */}
         <div className="calender-date">
           <div className="startTime">
-            <i Class="far fa-calendar-alt fa-3x" />
+            <i className="far fa-calendar-alt fa-3x" />
           </div>
           <br />
           <br />
@@ -211,24 +63,59 @@ class NewTask extends React.Component {
         <hr className="line" />
 
         <EndTime />
-        <br />
 
-        <div className="app">
-          <CreateItem
-            toDoTasks={this.state.toDoTasks}
-            createItem={this.createItem.bind(this)}
-          />
-          <br />
-          <ToDoTask
-            toDoTasks={this.state.toDoTasks}
-            deleteItem={this.deleteItem.bind(this)}
-            saveItem={this.saveItem.bind(this)}
-            toggleComplete={this.toggleComplete.bind(this)}
-          />
-        </div>
-        <br />
+        <div className="app"></div>
         <hr className="line" />
-        <Label />
+        <form>
+          <label className="newTaskLableName">
+            New Task Name:
+            <input className="newTaskInput" type="text" name="name" />
+          </label>
+        </form>
+
+        <hr className="line" />
+        <DropdownButton id="dropdown-item-button">
+          <Dropdown.Item
+            className="addIcon"
+            onClick={() => {
+              this.setState({
+                icon:
+                  '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
+              });
+            }}
+            as="button"
+          >
+            <i id="icon" className="fas fa-heartbeat iconDropdown"></i>
+          </Dropdown.Item>
+          <Dropdown.Item
+            className="addIcon"
+            onClick={() => {
+              this.setState({
+                icon:
+                  '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
+              });
+            }}
+            as="button"
+          >
+            <i id="icon" className="fas fa-heartbeat iconDropdown"></i>
+          </Dropdown.Item>
+          <Dropdown.Item
+            className="addIcon"
+            onClick={() => {
+              this.setState({
+                icon:
+                  '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
+              });
+            }}
+            as="button"
+          >
+            <i id="icon" className="fas fa-heartbeat iconDropdown"></i>
+          </Dropdown.Item>
+        </DropdownButton>
+        {/* <Label /> */}
+        <div>
+          {/* <JsxParser jsx={this.state.icon} /> */}
+        </div>
         <hr className="line" />
       </div>
     );

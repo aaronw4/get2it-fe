@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { CirclePicker } from 'react-color'
 import { identity } from 'ramda'
 import './NewTask.css'
+import { Dropdown, DropdownButton } from 'react-bootstrap'
 
 class PalettePopup extends React.Component {
   static propTypes = {
@@ -114,8 +115,21 @@ class Label extends React.Component {
             />
         }
       </div>
-      <h1 className="NewTask-Tittle2">Label</h1>
+      <h1 className="NewTask-Tittle2"></h1>
       {/* <i className="lableIcon" class="fas fa-tint fa-3x"></i> */}
+        <div>
+        {/* <select className="browser-default custom-select">
+          <option>Choose your Icon</option>
+          <option value="1">&#x2600;</option>
+          <option value="2">&#x2606;</option>
+          <option value="3">&#x2618;</option>
+        </select> */}
+        <DropdownButton id="dropdown-item-button" >
+          <Dropdown.Item as="button"><i id="icon" className="fas fa-heartbeat icon"></i></Dropdown.Item>
+          <Dropdown.Item as="button"><i id="icon" className="fas fa-heartbeat icon"></i></Dropdown.Item>
+          <Dropdown.Item as="button"><i id="icon" className="fas fa-heartbeat icon"></i></Dropdown.Item>
+        </DropdownButton>
+        </div>
        
       </div>
     )
