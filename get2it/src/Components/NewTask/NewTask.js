@@ -206,7 +206,7 @@ class NewTask extends React.Component {
      
         <CreateItem toDoTasks={this.state.toDoTasks} createItem={this.createItem.bind(this)} />
         <br />
-        <ToDoTask toDoTasks={this.state.toDoTasks} deleteItem={this.deleteItem.bind(this)} saveItem={this.saveItem.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
+        {/* <ToDoTask toDoTasks={this.state.toDoTasks} deleteItem={this.deleteItem.bind(this)} saveItem={this.saveItem.bind(this)} toggleComplete={this.toggleComplete.bind(this)} /> */}
       </div>
       <br/>
       <hr className="line" />

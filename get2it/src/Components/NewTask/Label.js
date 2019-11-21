@@ -114,7 +114,7 @@ class Label extends React.Component {
             />
         }
       </div>
-      <h1 className="NewTask-Tittle2">Label</h1>
+      <h1 className="NewTask-Tittle2"></h1>
       {/* <i className="lableIcon" class="fas fa-tint fa-3x"></i> */}
        
       </div>

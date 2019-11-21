@@ -46,10 +46,11 @@
     }
     .create-new input {
       box-sizing: border-box;
-      width: 75%;
+      width: 70%;
       padding: 10px;
       font-size: 18px;
-      border: none;
+      border: 1px solid rgb(139, 139, 139);
+      margin:5px 5px 25px 5px
     }
   
   .create-new button {
@@ -131,8 +132,7 @@
   margin: 5% auto;
   margin-top: -5px;
   
-  border-bottom: 2px solid;
-  border-image: radial-gradient(silver, black) 50;
+
 }
 
 input {
@@ -159,7 +159,11 @@ button {
 button:focus {
   color: lightblue;
 }
-
+.calender-date {
+  border-bottom: 2px solid;
+  border-image: radial-gradient(silver, black) 50;
+  margin-bottom: 5%;
+}
 .calendar {
   margin-top: 0.5rem;
   box-shadow: 0 1px 5px #aeaeae;
