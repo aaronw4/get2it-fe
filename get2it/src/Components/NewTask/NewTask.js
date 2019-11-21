@@ -1,24 +1,15 @@
-import React, { Component,setState } from 'react';
-// import {M} from 'react-materialize'
+import React, { Component } from 'react';
 import './NewTask.css'
 // import 'bulma/css/bulma.css'
-import Clock from './clock';
+import Clock from './StartTime';
+import Date from './Date'
+import EndTime from './EndTime'
+import Label from './Label';
+import Category from './Category';
 
 const toDoTasks = [
   {
-    name: 'Click "Create" to create new task',
-    completed: false
-  },
-  {
-    name: 'Click "Edit" to edit task',
-    completetd: false
-  },
-  {
-    name: 'Click "Delete" to remove task',
-    completed: false
-  },
-  {
-    name: "Click on task to mark as complete",
+    name: 'New Task Show Here',
     completed: false
   }
 ];
@@ -29,7 +20,7 @@ class CreateItem extends Component {
     if (!this.refs.newItemInput.value) {
       alert('Please enter a task name.');
       return;
-    } else if (this.props.toDoTasks.map(element => element.name).indexOf(this.refs.newItemInput.value) != -1) {
+    } else if (this.props.toDoTasks.map(element => element.name).indexOf(this.refs.newItemInput.value) !== -1) {
       alert('This task already exists.');
       this.refs.newItemInput.value = '';
       return;
@@ -75,7 +66,7 @@ class TaskItems extends Component {
           </form>
       );
     }
-    
+  
     return (
       <span style={itemStyle} onClick={this.props.toggleComplete.bind(this, this.props.name)}>{this.props.name}</span>
     );
@@ -91,7 +82,7 @@ class TaskItems extends Component {
         </span>
       );
     }
-    
+  
     return (
       <span>
         <button class="button is-primary" onClick={this.onEditClick.bind(this)}><span class="fa fa-edit"></span></button>
@@ -107,7 +98,7 @@ class TaskItems extends Component {
   onCancelClick() {
     this.setState({ editing: false });
   }
-  
+
   onSaveClick(e) {
     e.preventDefault();
     this.props.saveItem(this.props.name, this.refs.editInput.value);
@@ -128,7 +119,7 @@ class TaskItems extends Component {
   }
 }
 
-class ToDoList extends React.Component {
+class ToDoTask extends React.Component {
   renderItems() {
     return this.props.toDoTasks.map((item, index) => <TaskItems key={index} {...item} {...this.props} />);
   }
@@ -186,20 +177,43 @@ class NewTask extends React.Component {
   render() {
     return (
       <div className='app'>
-      <a class ="button is-primary"> 
-                <span class="icon">
-                </span>
+      
+      <br />
+      <br />
+        <h1 className="NewTask-Tittle"> Add New Task</h1>
+        <hr className="line" />
+        <br />
+        {/* <Category/> */}
+                <div className="calender-date">
+                <div className="startTime">
+                <i  Class="far fa-calendar-alt fa-3x" />
+                </div>
+                <br/>
+                <br/>
+                
+                 <Date className="date" />
+                 <br/>
+                 <br/>
+                 
+                </div>
                 <Clock/>
-                </a> 
-      <div className="to-do-app">
-        <div className="header">
-        
-          <h1>New Task</h1>
-        </div>
+                <hr className="line" />
+                
+                <EndTime/>
+                <br/>
+                
+      <div className="app">
+     
         <CreateItem toDoTasks={this.state.toDoTasks} createItem={this.createItem.bind(this)} />
-        <ToDoList toDoTasks={this.state.toDoTasks} deleteItem={this.deleteItem.bind(this)} saveItem={this.saveItem.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
+        <br />
+        <ToDoTask toDoTasks={this.state.toDoTasks} deleteItem={this.deleteItem.bind(this)} saveItem={this.saveItem.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
       </div>
+      <br/>
+      <hr className="line" />
+      <Label/>
+      <hr className="line" />
       </div>
+      
     );
   }
 }

@@ -8,7 +8,12 @@
     cursor: pointer;
   }
   
-  .to-do-app {
+  .NewTask-Tittle{
+    font-weight: bold;
+    font-size: 2em;
+    text-transform: capitalize;
+  }
+  /* .to-do-app {
     box-sizing: border-box;
     width: 550px;
     margin: 50px auto 0 auto;
@@ -16,7 +21,7 @@
     border-radius: 5px;
     box-shadow: 0 0 5px #252525;
   }
-  
+   */
   .header {
     background: rgb(145, 144, 144);
     padding: 7px;
@@ -107,3 +112,210 @@
   .fa-clock{
     margin: 0 10px;
   }
+  @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", helvetica;
+}
+
+.date-picker-container {
+  width: 320px;
+  margin: 5% auto;
+  margin-top: -5px;
+}
+
+input {
+  width: 100%;
+  border: 2px solid #504f4f;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+input:focus {
+  border-color: palevioletred;
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  outline: none;
+}
+
+button:focus {
+  color: lightblue;
+}
+
+.calendar {
+  margin-top: 0.5rem;
+  box-shadow: 0 1px 5px #aeaeae;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: rgb(7, 7, 7);
+}
+
+.week {
+  display: flex;
+}
+
+.week:not(:first-of-type) {
+  border-top: 1px solid #eaeaea;
+}
+
+.week.day-labels {
+  background: rgb(74, 73, 73);
+}
+
+.week.day-labels .day {
+  cursor: default;
+}
+
+.day {
+  width: calc(100% / 7);
+  padding: 1rem 0.5rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.week:not(.day-labels) .day:not(:last-of-type) {
+  border-right: 1px solid #eaeaea;
+}
+
+.week:not(.day-labels) .day:hover {
+  background-color: #e7e7e7;
+}
+
+.day.is-today.is-today {
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
+.week:not(.day-labels) .day.is-selected.is-selected {
+  background-color: rgb(138, 0, 46);
+  color: #fff;
+}
+
+.color-white {
+  color: #fff;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.day[disabled] {
+  color: #eaeaea !important;
+  cursor: not-allowed !important;
+  background: inherit !important;
+}
+
+example-wrapper { 
+    min-height: 280px; 
+    align-content: flex-start; 
+}
+.example-wrapper p, .example-col p {
+    margin: 20px 0 10px; 
+}
+.example-wrapper p:first-child, .example-col p:first-child { 
+    margin-top: 0; 
+}
+.example-col { 
+    display: inline-block; 
+    vertical-align: top; 
+    padding-right: 20px; 
+    padding-bottom: 20px;
+}
+.example-config {
+    margin: 0 0 20px; 
+    padding: 20px; 
+    background-color: rgba(0,0,0,.03);
+    border: 1px solid rgba(0,0,0,.08); 
+}
+.event-log { 
+    margin: 0; 
+    padding: 0; 
+    max-height: 100px; 
+    overflow-y: auto; 
+    list-style-type: none; 
+    border: 1px solid rgba(0,0,0,.08); 
+    background-color: white; 
+}
+.event-log li {
+    margin: 0; 
+    padding: .3em; 
+    line-height: 1.2em; 
+    border-bottom: 1px solid rgba(0,0,0,.08); 
+}
+.event-log li:last-child { 
+    margin-bottom: -1px;
+}
+.form{
+  background: transparent;
+}
+
+main {
+  margin: 100px auto;
+}
+
+.color-indicator {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  transition: transform .2s;
+}
+.color-indicator:hover {
+  transform: scale(1.1);
+}
+
+.calender-date{
+  display: flex;
+  align-content: space-around;
+}
+.line{
+  background-color:  rgb(65, 63, 63);
+  height: 5
+}
+.endTime{
+  display: flex;
+  color: #999;
+}
+
+.startTime{
+  display: flex;
+  color: #999;
+}
+.Title2{
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-left: -170px;
+}
+ 
+.lableColor{
+  margin-left: 350px;
+}
+
+.NewTask-Tittle2{
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-left: -130px;
+  margin-top: -50px;
+  text-transform: uppercase;
+}
+.lableIcon{
+ background-color: #fff;
+}
