@@ -352,3 +352,10 @@ hr {
 .lableIcon{
  background-color: #fff;
 }
+.newTaskLableName {
+  color: white;
+}
+.newTaskInput {
+  border: 1px solid grey;
+  background: rgba(76, 175, 80, 0.1);
+}
