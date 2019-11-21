@@ -60,7 +60,7 @@
     font-size: 18px;
     margin: 0;
     border: none;
-    border-left: 1px solid #999;
+    /* border-left: 1px solid #999; */
     
   }
   .create-new button :hover {
@@ -76,7 +76,7 @@
   .to-do-item {
     padding: 10px 0 10px 0;
     margin: 1px 0 1px 0;
-    border-top: 1px solid darken(#138796, 20%);
+    /* border-top: 1px solid darken(#138796, 20%); */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -137,7 +137,7 @@
 
 input {
   width: 100%;
-  border: 2px solid #504f4f;
+  /* border: 2px solid #504f4f; */
   padding: 0.5rem;
   border-radius: 5px;
   font-size: 1.1rem;
@@ -180,7 +180,7 @@ button:focus {
 }
 
 .week:not(:first-of-type) {
-  border-top: 1px solid #eaeaea;
+  /* border-top: 1px solid #eaeaea; */
 }
 
 .week.day-labels {
@@ -265,7 +265,7 @@ example-wrapper {
     margin: 0; 
     padding: .3em; 
     line-height: 1.2em; 
-    border-bottom: 1px solid rgba(0,0,0,.08); 
+    /* border-bottom: 1px solid rgba(0,0,0,.08);  */
 }
 .event-log li:last-child { 
     margin-bottom: -1px;
@@ -295,8 +295,8 @@ main {
   align-content: space-around;
 }
 .line{
-  background-color:  rgb(65, 63, 63);
-  height: 5
+  /* background-color:  rgb(65, 63, 63); */
+  /* height: 5 */
 }
 .endTime{
   display: flex;
@@ -315,6 +315,12 @@ main {
   font-size: 1.4em;
   font-weight: bold;
   margin-left: -170px;
+}
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: none;
 }
  
 .lableColor{
