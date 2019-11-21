@@ -81,8 +81,11 @@ p {
 }
 .error {
   margin: 0;
-  padding: 1px;
-  color: red;
+  padding: 2px 4px;
+  color: rgb(98, 255, 93);
   background-color: rgba(255, 255, 255, 0.377);
   border-radius: 10px;
+  -webkit-text-stroke: .3px black;
+  font-weight: 700;
+  text-shadow: 2px 2px 3px black;
 }
