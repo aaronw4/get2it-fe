@@ -9,6 +9,7 @@ import NewTask from '../NewTask/NewTask.js'
 import TaskList from '../TaskList/index.js'
 import Profile from '../Profile/Profile.js'
 import Spinner from '../Spinner/Spinner.js'
+import CompletedTaskList from '../CompletedTaskList/index.js'
 // import { getTASKS } from "../../actions.js";
 
 
@@ -37,6 +38,7 @@ class Dashboard extends React.Component {
               <Route path="/taskList" render={props => <TaskList {...props} />} />
               <Route path="/taskModal" render={props => <Home {...props} />} />
               <Route path="/profile" render={props => <Profile {...props} />} />
+              <Route path="/CompletedTaskList" render={props => <CompletedTaskList {...props} />} />
             </div>
           </div>
         }

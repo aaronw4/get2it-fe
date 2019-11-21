@@ -39,8 +39,10 @@ class Menu extends React.Component {
     }
   }
 
+  completeTasks = this.props.userTasks.filter(task => task.status === true)
+
   render() {
-    console.log(this.props)
+    console.log(this.completeTasks)
     return (
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle className="dropButton">
@@ -65,6 +67,18 @@ class Menu extends React.Component {
             <div className="yourTasks">
               Your Tasks
               <div className="menuTaskCount">{this.props.userTasks.length}</div>
+            </div>
+          </DropdownItem>
+          <DropdownItem
+            onClick={evt => {
+              evt.preventDefault();
+              this.props.history.push("/CompletedTaskList");
+            }}
+          >
+            <i className="fas fa-check-circle icon"></i>
+            <div className="yourTasks">
+              Completed Tasks
+              <div className="menuTaskCount">{this.completeTasks.length}</div>
             </div>
           </DropdownItem>
           <DropdownItem
