@@ -2,8 +2,9 @@ import React from 'react';
 import './style.css'
 import { connect } from 'react-redux'
 import { Route, withRouter, Link } from 'react-router-dom'
-import { Form } from 'react-bootstrap'
-import { updateTask, getTASKS } from '../../actions'
+import { Form, Button } from 'react-bootstrap'
+import { updateTask } from '../../actions'
+import { getTASKS } from '../../actions'
 
 // buld task component and set up state
 class TaskList extends React.Component {
@@ -26,11 +27,7 @@ class TaskList extends React.Component {
     var spacer = "      ";
      // loop through each task and post them to state
     for (let i = 0; i < arrList.length;i++) {
-      if(arrList[i].status === false){
-        listItem = arrList[i].name.concat(spacer).concat(arrList[i].date)
-        list.push(listItem)
-      
-      }
+      list.push(arrList[i].name)
     };
     console.log(list)
     this.setState({
@@ -38,38 +35,36 @@ class TaskList extends React.Component {
     })
   };
 
-  toggleComplete = event => {
-    
-  }
-  create = event => {
-    event.preventDefault();
-    console.log('click');
-    this.props.getTASKS()
+  // complete = event => {
+  //   if(querySelector(input[type=checkbox]:checked)){
+  //     upd()
+  //   } else {
+  //     check()
+  //   }
 
-  };
 
     // render content to page
   render() {
     return (
       <div>
         <Form>
-          <Form.Text className="taskTitle">TASKS</Form.Text>
+          <Form.Text className="taskTitle">TASK LIST</Form.Text>
         </Form>
         <div>
           {/* for each item on the state tasklist create a task link on the page */}
-        <ul>
-          {this.state.taskList.map((item, index) => (
-            <li className="formStyle" key={index}>
-              <Form >
-                <Form.Group controlId='formBasicCheckbox'>
-                  <Form.Check onClick={this.toggleComplete} type='checkbox' />
-                  <Form.Text>{item}</Form.Text>
-                </Form.Group>
-              </Form>
-            </li>
-            
-          ))}
-        </ul>
+          <ul>
+            {this.state.taskList.map((item, index) => (
+              <li key={index}>
+                <Form>
+                  <Form.Group controlId='formBasicCheckbox'>
+                    <Form.Check onClick={this.complete} type='checkbox' />
+                    <Form.Text>{item}</Form.Text>
+                  </Form.Group>
+                </Form>
+              </li>
+              
+            ))}
+          </ul>
         </div>
         <div className="linkStyle">
           <Link

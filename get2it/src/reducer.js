@@ -64,17 +64,8 @@ const dummyTasks = [
     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
     start_time: '1pm',
     end_time: '2pm',
-    status: true,
-  },
-  {
-    name: 'This is to test out a long task name, but I am sure it will work just fine.',
-    date: '11/14/2019',
-    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
-    start_time: '1pm',
-    end_time: '2pm',
     status: false,
   },
-
 ]
 
 const initialState = {
@@ -82,6 +73,7 @@ const initialState = {
   error: null,
   userData: {},
   userTasks: dummyTasks,
+  userID: null
 }
 
 export default function(state = initialState, action) {
@@ -98,6 +90,7 @@ export default function(state = initialState, action) {
         ...state,
         isLoading: false,
         userData: action.payload,
+        userID: action.payload.id,
         error: null,
       }
     }
@@ -106,7 +99,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.error
+        error: action.payload.message
       }
     }
     case LOGIN_START: {
@@ -121,15 +114,16 @@ export default function(state = initialState, action) {
         ...state,
         isLoading: false,
         userData: action.payload,
-        error: null,
-      }
+        userID: action.payload.id,
+        error: null
+      };
     }
     case LOGIN_FAILED: {
       console.log(action.payload)
       return {
         ...state,
         isLoading: false,
-        error: action.payload.error
+        error: action.payload.message
       }
     }
     case GET_TASKS_START: {
@@ -152,7 +146,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.error
+        error: action.payload.message
       }
     }
     case UPDATE_TASK_START: {
@@ -175,7 +169,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.error
+        error: action.payload.message
       }
     }
     case UPDATE_USER_START: {
@@ -198,7 +192,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.error
+        error: action.payload.message
       }
     }
     default:

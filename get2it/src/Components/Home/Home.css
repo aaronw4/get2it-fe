@@ -1,5 +1,5 @@
 #root {
-  height: 100vh;
+  height: 100%;
 }
 .home {
   width: 100%;
@@ -145,7 +145,7 @@
   flex-flow: column;
   align-items: center;
   justify-content: space-evenly;
-  margin-bottom: 25%;
+  margin-bottom: 12%;
 }
 .bigLogoContainer {
   display: flex;
