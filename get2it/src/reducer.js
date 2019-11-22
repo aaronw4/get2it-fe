@@ -82,6 +82,7 @@ const initialState = {
   newTaskDate: '',
   start_time: '',
   end_time: '',
+  newTask: {},
   
 }
 
@@ -209,6 +210,29 @@ export default function(state = initialState, action) {
       return {
         ...state,
         newTaskDate: action.payload
+      };
+    }
+    case CREATE_TASK_START: {
+      return {
+        ...state,
+        isLoading: true
+      };
+    }
+    case CREATE_TASK_SUCCESS: {
+      console.log(action.payload);
+      return {
+        ...state,
+        isLoading: false,
+        newTask: action.payload,
+        error: null
+      };
+    }
+    case CREATE_TASK_FAILED: {
+      console.log(action.payload);
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.message
       };
     }
     case NEW_START_TIME: {

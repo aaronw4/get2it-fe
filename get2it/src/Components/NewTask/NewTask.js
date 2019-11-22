@@ -36,30 +36,25 @@ class NewTask extends React.Component {
     });
   };
 
-  
-    $('#iconThree').addClass("iconThree")
-    $('#iconTwo').addClass("iconTwo")
-    $('#iconOne').removeClass("iconOne")
+  addIconOne = event => {
+    $("#iconThree").addClass("iconThree");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconOne").removeClass("iconOne");
+  };
+  addIconTwo = event => {
+    // console.log("yolo")
 
-    }
-    addIconTwo = event => {
-      // console.log("yolo")
+    $("#iconOne").addClass("iconOne");
+    $("#iconThree").addClass("iconThree");
+    $("#iconTwo").removeClass("iconTwo");
+  };
+  addIconThree = event => {
+    // console.log("yolo")
 
-      $('#iconOne').addClass("iconOne")
-      $('#iconThree').addClass("iconThree")
-      $('#iconTwo').removeClass("iconTwo")
-  
-      }
-      addIconThree = event => {
-        // console.log("yolo")
- 
-        $('#iconOne').addClass("iconOne")
-        $('#iconTwo').addClass("iconTwo")
-        $('#iconThree').removeClass("iconThree")
-    
-        }
-
-        
+    $("#iconOne").addClass("iconOne");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconThree").removeClass("iconThree");
+  };
 
   render() {
     return (
@@ -91,20 +86,37 @@ class NewTask extends React.Component {
         <form>
           <label className="newTaskLableName">
             New Task Name:
-            <input className="newTaskInput" type="text" name="taskName" onChange={this.changeHandler} />
+            <input
+              className="newTaskInput"
+              type="text"
+              name="taskName"
+              onChange={this.changeHandler}
+            />
           </label>
         </form>
 
         <hr className="line" />
         <div className="displayIcons">
           <div id="iconOne">
-            <i id="icon" data-myval='1' className="fas fa-heartbeat iconDropdown"></i>
+            <i
+              id="icon"
+              data-myval="1"
+              className="fas fa-heartbeat iconDropdown"
+            ></i>
           </div>
-          <div id="iconTwo" >
-            <i id="icon" data-myval='2' className="fas fa-hospital iconDropdown"></i>
+          <div id="iconTwo">
+            <i
+              id="icon"
+              data-myval="2"
+              className="fas fa-hospital iconDropdown"
+            ></i>
           </div>
           <div id="iconThree">
-            <i id="icon" data-myval='3' className="fab fa-accessible-icon iconDropdown"></i>
+            <i
+              id="icon"
+              data-myval="3"
+              className="fab fa-accessible-icon iconDropdown"
+            ></i>
           </div>
         </div>
         <DropdownButton id="dropdown-item-button">
@@ -116,7 +128,7 @@ class NewTask extends React.Component {
                 icon:
                   '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
               });
-              this.addIconOne()
+              this.addIconOne();
             }}
             as="button"
           >
@@ -129,7 +141,7 @@ class NewTask extends React.Component {
                 icon:
                   '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
               });
-              this.addIconTwo()
+              this.addIconTwo();
             }}
             as="button"
           >
@@ -142,7 +154,7 @@ class NewTask extends React.Component {
                 icon:
                   '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
               });
-              this.addIconThree()
+              this.addIconThree();
             }}
             as="button"
           >
