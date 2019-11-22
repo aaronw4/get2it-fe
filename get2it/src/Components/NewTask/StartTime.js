@@ -2,32 +2,47 @@ import React, { Component } from "react";
 import moment from "moment";
 import TimePicker from "./TimePicker";
 import './NewTask.css'
+import { newStartTime } from '../../actions.js'
+import { connect } from 'react-redux'
 
 class TimeSelectForm extends Component {
-  state = {
-    value: moment()
+  constructor(props) {
+    super(props)
+    this.state = {
+      start_time: moment(),
+    }
+  }
+  handleChange = value => {
+    this.setState({ start_time: value })
+    this.props.newStartTime(moment(this.state.start_time).format("h:mm a"));
   };
-
-  handleChange = value => this.setState({ value });
-
+  
   handleSubmit = e => {
     e.preventDefault();
-    alert(moment(this.state.value).format("hh:mm a"));
+    alert(moment(this.state.start_time).format("hh:mm a"));
   };
+  
+  render = () => {
+    console.log(moment(this.state.start_time).format("h:mm a"));
+    return(
 
-  render = () => (
-    <div>
-      <h1 className="Title2" > START</h1>
-	  <div className="startTime">
-		  
-    <form onSubmit={this.handleSubmit}>
-    <i className="far fa-clock fa-3x"></i>
-      <TimePicker value={this.state.value} onChange={this.handleChange} />
-	  <br/>
-    </form>
-	</div>
-  </div>
-  );
+      <div>
+        <h1 className="Title2" > START</h1>
+        <div className="startTime">
+        
+          <form onSubmit={this.handleSubmit}>
+            <i className="far fa-clock fa-3x"></i>
+            <TimePicker value={this.state.start_time} onChange={this.handleChange} />
+            <br/>
+          </form>
+        </div>
+      </div>
+    )
+  };
 }
 
-export default TimeSelectForm;
+const mapDispatchToProps = {
+  newStartTime,
+};
+
+export default connect(null,mapDispatchToProps)(TimeSelectForm);

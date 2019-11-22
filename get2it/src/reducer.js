@@ -15,6 +15,8 @@ import {
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILED,
   NEW_TASK_DATE,
+  NEW_START_TIME,
+  NEW_END_TIME,
 
 } from './actions.js'
 
@@ -76,6 +78,8 @@ const initialState = {
   userTasks: dummyTasks,
   userID: null,
   newTaskDate: '',
+  start_time: '',
+  end_time: '',
 }
 
 export default function(state = initialState, action) {
@@ -202,6 +206,20 @@ export default function(state = initialState, action) {
       return {
         ...state,
         newTaskDate: action.payload
+      };
+    }
+    case NEW_START_TIME: {
+      console.log(action.payload);
+      return {
+        ...state,
+        start_time: action.payload
+      };
+    }
+    case NEW_END_TIME: {
+      console.log(action.payload);
+      return {
+        ...state,
+        end_time: action.payload
       };
     }
     default:

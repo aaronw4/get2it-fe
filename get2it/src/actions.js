@@ -21,6 +21,8 @@ export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
 export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED'
 
 export const NEW_TASK_DATE = 'NEW_TASK_DATE'
+export const NEW_START_TIME = 'NEW_START_TIME'
+export const NEW_END_TIME = 'NEW_END_TIME'
 
 
 export function createUser(username, password) {
@@ -124,5 +126,19 @@ export function newTaskDate(date) {
   return {
     type: NEW_TASK_DATE,
     payload: date
+  }
+}
+
+export function newStartTime(time) {
+  return {
+    type: NEW_START_TIME,
+    payload: time
+  }
+}
+
+export function newEndTime(time) {
+  return {
+    type: NEW_END_TIME,
+    payload: time
   }
 }
