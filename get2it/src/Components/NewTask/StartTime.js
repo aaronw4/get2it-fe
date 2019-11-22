@@ -3,6 +3,7 @@ import moment from "moment";
 import TimePicker from "./TimePicker";
 import './NewTask.css'
 import { newStartTime } from '../../actions.js'
+import { connect } from 'react-redux'
 
 class TimeSelectForm extends Component {
   constructor(props) {
