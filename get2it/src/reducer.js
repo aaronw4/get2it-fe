@@ -14,6 +14,7 @@ import {
   UPDATE_USER_START,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILED,
+  NEW_TASK_DATE,
 
 } from './actions.js'
 
@@ -73,7 +74,8 @@ const initialState = {
   error: null,
   userData: {},
   userTasks: dummyTasks,
-  userID: null
+  userID: null,
+  newTaskDate: '',
 }
 
 export default function(state = initialState, action) {
@@ -81,35 +83,35 @@ export default function(state = initialState, action) {
     case CREATE_USER_START: {
       return {
         ...state,
-        isLoading: true,
-      }
+        isLoading: true
+      };
     }
     case CREATE_USER_SUCCESS: {
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,
         userData: action.payload,
         userID: action.payload.id,
-        error: null,
-      }
+        error: null
+      };
     }
     case CREATE_USER_FAILED: {
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,
         error: action.payload.message
-      }
+      };
     }
     case LOGIN_START: {
       return {
         ...state,
-        isLoading: true,
-      }
+        isLoading: true
+      };
     }
     case LOGIN_SUCCESS: {
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,
@@ -119,83 +121,90 @@ export default function(state = initialState, action) {
       };
     }
     case LOGIN_FAILED: {
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,
         error: action.payload.message
-      }
+      };
     }
     case GET_TASKS_START: {
       return {
         ...state,
-        isLoading: true,
-      }
+        isLoading: true
+      };
     }
     case GET_TASKS_SUCCESS: {
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,
         error: null,
         userTasks: action.payload
-      }
+      };
     }
     case GET_TASKS_FAILED: {
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,
         error: action.payload.message
-      }
+      };
     }
     case UPDATE_TASK_START: {
       return {
         ...state,
-        isLoading: true,
-      }
+        isLoading: true
+      };
     }
     case UPDATE_TASK_SUCCESS: {
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,
         error: null,
         userTasks: action.payload
-      }
+      };
     }
     case UPDATE_TASK_FAILED: {
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,
         error: action.payload.message
-      }
+      };
     }
     case UPDATE_USER_START: {
       return {
         ...state,
-        isLoading: true,
-      }
+        isLoading: true
+      };
     }
     case UPDATE_USER_SUCCESS: {
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,
         error: null,
         userData: action.payload
-      }
+      };
     }
     case UPDATE_USER_FAILED: {
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,
         error: action.payload.message
-      }
+      };
+    }
+    case NEW_TASK_DATE: {
+      console.log(action.payload);
+      return {
+        ...state,
+        newTaskDate: action.payload
+      };
     }
     default:
-      return state
+      return state;
   }
 }
