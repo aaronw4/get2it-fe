@@ -59,6 +59,7 @@ class TaskList extends React.Component {
                   <Form.Group controlId='formBasicCheckbox'>
                     <Form.Check onClick={this.complete} type='checkbox' />
                     <Form.Text>{item}</Form.Text>
+                    <Button className="reUseBtn">Delete</Button>
                   </Form.Group>
                 </Form>
               </li>

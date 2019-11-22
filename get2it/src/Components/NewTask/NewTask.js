@@ -36,7 +36,7 @@ class NewTask extends React.Component {
     });
   };
 
-  
+  addIconOne = event => {
     $('#iconThree').addClass("iconThree")
     $('#iconTwo').addClass("iconTwo")
     $('#iconOne').removeClass("iconOne")
