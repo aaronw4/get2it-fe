@@ -22,8 +22,8 @@ class TimeSelectForm extends Component {
     alert(moment(this.state.start_time).format("hh:mm a"));
   };
   
-  render = () => {
-    console.log(moment(this.state.start_time).format("h:mm a"));
+  render = (props) => {
+    // console.log(moment(this.state.start_time).format("h:mm a"));
     return(
 
       <div>
