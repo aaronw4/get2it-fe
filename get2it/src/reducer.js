@@ -79,7 +79,7 @@ const initialState = {
   userData: {},
   userTasks: dummyTasks,
   userID: null,
-  newTaskDate: '',
+  date: '',
   start_time: '',
   end_time: '',
   newTask: {},
@@ -205,13 +205,6 @@ export default function(state = initialState, action) {
         error: action.payload.message
       };
     }
-    case NEW_TASK_DATE: {
-      console.log(action.payload);
-      return {
-        ...state,
-        newTaskDate: action.payload
-      };
-    }
     case CREATE_TASK_START: {
       return {
         ...state,
@@ -233,6 +226,13 @@ export default function(state = initialState, action) {
         ...state,
         isLoading: false,
         error: action.payload.message
+      };
+    }
+    case NEW_TASK_DATE: {
+      console.log(action.payload);
+      return {
+        ...state,
+        date: action.payload
       };
     }
     case NEW_START_TIME: {

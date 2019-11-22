@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom'
 import "./NewTask.css";
 // import 'bulma/css/bulma.css'
 import Clock from "./StartTime";
@@ -10,6 +11,8 @@ import { Dropdown, DropdownButton, Button } from "react-bootstrap";
 import { set } from "date-fns";
 import $ from "jquery";
 import JsxParser from "react-jsx-parser";
+import { connect } from 'react-redux'
+import { createTask } from '../../actions.js'
 
 class NewTask extends React.Component {
   constructor(props) {
@@ -36,6 +39,29 @@ class NewTask extends React.Component {
     });
   };
 
+  handleSubmit = evt => {
+    evt.preventDefault()
+
+    const { icon, taskName } = this.state
+    const { createTask, date, start_time, end_time, userData, error } = this.props
+    const id = userData.id
+    const payload = {
+      task_icon: icon,
+      name: taskName,
+      date,
+      start_time,
+      end_time
+    }
+
+    createTask(payload, id)
+      .then(() => {
+        error && this.props.history.push("/");
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+  
   addIconOne = event => {
     $('#iconThree').addClass("iconThree")
     $('#iconTwo').addClass("iconTwo")
@@ -58,6 +84,7 @@ class NewTask extends React.Component {
   };
 
   render() {
+    console.log(this.props)
     return (
       <div className="app">
         <br />
@@ -92,8 +119,10 @@ class NewTask extends React.Component {
               type="text"
               name="taskName"
               onChange={this.changeHandler}
+              required
             />
           </label>
+          {this.props.error && <p className="error">{this.props.error}</p>}
         </form>
 
         <hr className="line" />
@@ -166,11 +195,26 @@ class NewTask extends React.Component {
         <div>{/* <JsxParser jsx={this.state.icon} /> */}</div>
         <hr className="line" />
         <div>
-          <Button className="completeBtn">Complete</Button>
+          <Button className="completeBtn" onClick={this.handleSubmit}>
+            Complete
+          </Button>
         </div>
       </div>
     );
   }
 }
 
-export default NewTask;
+const mapStateToProps = state => ({
+  userData: state.userData,
+  date: state.date,
+  start_time: state.start_time,
+  end_time: state.end_time,
+  isLoading: state.isLoading,
+  error: state.error
+});
+
+const mapDispatchToProps = {
+  createTask,
+};
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(NewTask));
