@@ -20,6 +20,8 @@ export const UPDATE_USER_START = 'UPDATE_USER_START'
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
 export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED'
 
+export const NEW_TASK_DATE = 'NEW_TASK_DATE'
+
 
 export function createUser(username, password) {
   return (dispatch) => {
@@ -116,4 +118,11 @@ export function updateUser(payload, id) {
         dispatch({ type: UPDATE_USER_FAILED, payload: err.response.data });
       });
   };
+}
+
+export function newTaskDate(date) {
+  return {
+    type: NEW_TASK_DATE,
+    payload: date
+  }
 }

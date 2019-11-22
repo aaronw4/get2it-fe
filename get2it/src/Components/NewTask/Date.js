@@ -8,12 +8,12 @@ import "./NewTask.css";
 function Date(props) {
   return (
     <Downshift
-      itemToString={date => (date ? format(date, 'MM/dd/yyyy') : "")}
+      itemToString={date => (date ?  console.log(format(date, 'MM/dd/yyyy')) : "")}
+      
       {...props}
-    >
+      >
       {({ getInputProps, getItemProps, toggleMenu, isOpen, selectedItem }) => (
         <div className="date-picker-container">
-        
         
           <input 
             {...getInputProps({
