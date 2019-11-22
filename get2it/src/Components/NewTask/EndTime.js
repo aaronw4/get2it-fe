@@ -4,29 +4,44 @@ import TimePicker from "./TimePicker";
 import './NewTask.css'
 
 class TimeSelectForm extends Component {
-  state = {
-    value: moment()
+  constructor(props) {
+    super(props);
+    this.state = {
+      end_time: moment()
+    };
+  }
+  handleChange = value => {
+    this.setState({ end_time: value });
+    this.props.newEndTime(moment(this.state.end_time).format("h:mm a"));
   };
-
-  handleChange = value => this.setState({ value });
 
   handleSubmit = e => {
     e.preventDefault();
-    alert(moment(this.state.value).format("hh:mm a"));
+    alert(moment(this.state.end_time).format("hh:mm a"));
   };
 
-  render = () => (
-    <div>
-    <h1 className="Title2">END</h1>
-    <div className='endTime'>
-    <form className="TimeForm" onSubmit={this.handleSubmit}>
-    <i className="far fa-clock fa-3x"></i>
-      <TimePicker className="form" value={this.state.value} onChange={this.handleChange} />
-      <br />
-    </form>
-    </div>
-    </div>
-  );
+  render = () => {
+    console.log(moment(this.state.end_time).format("h:mm a"));
+    return (
+      <div>
+        <h1 className="Title2"> END</h1>
+        <div className="startTime">
+          <form onSubmit={this.handleSubmit}>
+            <i className="far fa-clock fa-3x"></i>
+            <TimePicker
+              value={this.state.end_time}
+              onChange={this.handleChange}
+            />
+            <br />
+          </form>
+        </div>
+      </div>
+    );
+  };
 }
 
-export default TimeSelectForm;
+const mapDispatchToProps = {
+  newEndTime,
+};
+
+export default connect(null,mapDispatchToProps)(TimeSelectForm);

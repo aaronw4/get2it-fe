@@ -24,7 +24,7 @@ class Date extends React.Component {
         onSelect={date => {
           const newDate = format(date, "MM/dd/yyyy");
           this.setState({ date: newDate });
-          newTaskDate(this.state.date)
+          this.props.newTaskDate(this.state.date)
         }}
         {...this.props}
       >
