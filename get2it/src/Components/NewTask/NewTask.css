@@ -359,3 +359,41 @@ hr {
   border: 1px solid grey;
   background: rgba(76, 175, 80, 0.1);
 }
+.dropdown-item {
+  /* border:1px solid red; */
+}
+.displayIcons {
+  display: flex;
+
+}
+.iconOne {
+  /* border:1px solid rgb(182, 42, 170); */
+  display: none;
+}
+.iconTwo {
+  /* border:1px solid red; */
+  display: none;
+}
+.iconThree {
+  /* border:1px solid rgb(15, 158, 58); */
+  display: none;
+}
+#iconOne {
+  /* border:1px solid rgb(182, 42, 170); */
+
+}
+#iconTwo {
+  /* border:1px solid red; */
+
+}
+#iconThree {
+  /* border:1px solid rgb(15, 158, 58); */
+
+}
+#dropdown-item-button {
+  margin-top: -16%;
+}
+.completeBtn {
+  margin-left: 58%;
+    margin-top: -40%;
+}
