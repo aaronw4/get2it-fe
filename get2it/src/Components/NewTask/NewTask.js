@@ -14,12 +14,29 @@ import JsxParser from "react-jsx-parser";
 class NewTask extends React.Component {
   constructor(props) {
     super(props);
-    
-    this.state = { icon: "" };
-                 
+
+    this.state = {
+      icon: "",
+      taskName: ""
+    };
   }
   addIconOne = event => {
     // console.log("yolo")
+    $("#iconOne").addClass("iconOne");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconThree").addClass("iconThree");
+    // $('#iconOne').removeClass("iconOne")
+  };
+
+  changeHandler = evt => {
+    evt.preventDefault();
+
+    this.setState({
+      [evt.target.name]: evt.target.value
+    });
+  };
+
+  
     $('#iconThree').addClass("iconThree")
     $('#iconTwo').addClass("iconTwo")
     $('#iconOne').removeClass("iconOne")
@@ -74,7 +91,7 @@ class NewTask extends React.Component {
         <form>
           <label className="newTaskLableName">
             New Task Name:
-            <input className="newTaskInput" type="text" name="name" />
+            <input className="newTaskInput" type="text" name="taskName" onChange={this.changeHandler} />
           </label>
         </form>
 
@@ -92,7 +109,7 @@ class NewTask extends React.Component {
         </div>
         <DropdownButton id="dropdown-item-button">
           <Dropdown.Item
-          onClick={this.addIcons}
+            onClick={this.addIcons}
             className="addIcon"
             onClick={() => {
               this.setState({
@@ -103,7 +120,7 @@ class NewTask extends React.Component {
             }}
             as="button"
           >
-            <i id="icon"  className="fas fa-heartbeat iconDropdown"></i>
+            <i id="icon" className="fas fa-heartbeat iconDropdown"></i>
           </Dropdown.Item>
           <Dropdown.Item
             className="addIcon"

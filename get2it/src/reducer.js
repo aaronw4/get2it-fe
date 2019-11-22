@@ -17,8 +17,10 @@ import {
   NEW_TASK_DATE,
   NEW_START_TIME,
   NEW_END_TIME,
-
-} from './actions.js'
+  CREATE_TASK_START,
+  CREATE_TASK_SUCCESS,
+  CREATE_TASK_FAILED
+} from "./actions.js";
 
 const dummyTasks = [
   {
@@ -80,6 +82,7 @@ const initialState = {
   newTaskDate: '',
   start_time: '',
   end_time: '',
+  
 }
 
 export default function(state = initialState, action) {

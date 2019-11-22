@@ -20,6 +20,10 @@ export const UPDATE_USER_START = 'UPDATE_USER_START'
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
 export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED'
 
+export const CREATE_TASK_START = "CREATE_TASK_START";
+export const CREATE_TASK_SUCCESS = "CREATE_TASK_SUCCESS";
+export const CREATE_TASK_FAILED = "CREATE_TASK_FAILED";
+
 export const NEW_TASK_DATE = 'NEW_TASK_DATE'
 export const NEW_START_TIME = 'NEW_START_TIME'
 export const NEW_END_TIME = 'NEW_END_TIME'
@@ -118,6 +122,31 @@ export function updateUser(payload, id) {
       .catch(err => {
         console.log(err);
         dispatch({ type: UPDATE_USER_FAILED, payload: err.response.data });
+      });
+  };
+}
+
+export function createTask(payload, id) {
+  return dispatch => {
+    dispatch({ type: CREATE_TASK_START });
+
+    const headers = {
+      Authorization: localStorage.getItem("token")
+    };
+
+    return axios
+      .post(`https://get2it.herokuapp.com/api/users/${id}/tasks`, payload, {
+        headers
+      })
+      .then(res => {
+        localStorage.setItem("token", res.data.token);
+        setTimeout(() => {
+          dispatch({ type: CREATE_TASK_SUCCESS, payload: res.data.user });
+        }, 2000);
+      })
+      .catch(err => {
+        const payload = err.response ? err.response.data : err;
+        dispatch({ type: CREATE_TASK_FAILED, payload });
       });
   };
 }
