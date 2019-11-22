@@ -20,7 +20,7 @@ class NewTask extends React.Component {
       taskName: ""
     };
   }
-  addIcons = event => {
+  addIconOne = event => {
     // console.log("yolo")
     $("#iconOne").addClass("iconOne");
     $("#iconTwo").addClass("iconTwo");
@@ -37,6 +37,29 @@ class NewTask extends React.Component {
   };
 
   
+    $('#iconThree').addClass("iconThree")
+    $('#iconTwo').addClass("iconTwo")
+    $('#iconOne').removeClass("iconOne")
+
+    }
+    addIconTwo = event => {
+      // console.log("yolo")
+
+      $('#iconOne').addClass("iconOne")
+      $('#iconThree').addClass("iconThree")
+      $('#iconTwo').removeClass("iconTwo")
+  
+      }
+      addIconThree = event => {
+        // console.log("yolo")
+ 
+        $('#iconOne').addClass("iconOne")
+        $('#iconTwo').addClass("iconTwo")
+        $('#iconThree').removeClass("iconThree")
+    
+        }
+
+        
 
   render() {
     return (
@@ -75,13 +98,13 @@ class NewTask extends React.Component {
         <hr className="line" />
         <div className="displayIcons">
           <div id="iconOne">
-            <i id="icon" className="fas fa-heartbeat iconDropdown"></i>
+            <i id="icon" data-myval='1' className="fas fa-heartbeat iconDropdown"></i>
           </div>
-          <div id="iconTwo">
-            <i id="icon" className="fas fa-hospital iconDropdown"></i>
+          <div id="iconTwo" >
+            <i id="icon" data-myval='2' className="fas fa-hospital iconDropdown"></i>
           </div>
           <div id="iconThree">
-            <i id="icon" className="fab fa-accessible-icon iconDropdown"></i>
+            <i id="icon" data-myval='3' className="fab fa-accessible-icon iconDropdown"></i>
           </div>
         </div>
         <DropdownButton id="dropdown-item-button">
@@ -93,7 +116,7 @@ class NewTask extends React.Component {
                 icon:
                   '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
               });
-              this.addIcons();
+              this.addIconOne()
             }}
             as="button"
           >
@@ -106,7 +129,7 @@ class NewTask extends React.Component {
                 icon:
                   '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
               });
-              this.addIcons();
+              this.addIconTwo()
             }}
             as="button"
           >
@@ -119,7 +142,7 @@ class NewTask extends React.Component {
                 icon:
                   '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
               });
-              this.addIcons();
+              this.addIconThree()
             }}
             as="button"
           >
