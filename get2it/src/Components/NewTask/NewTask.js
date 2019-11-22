@@ -14,19 +14,29 @@ import JsxParser from "react-jsx-parser";
 class NewTask extends React.Component {
   constructor(props) {
     super(props);
-    
-    this.state = { icon: "" };
-                 
+
+    this.state = {
+      icon: "",
+      taskName: ""
+    };
   }
   addIcons = event => {
     // console.log("yolo")
-    $('#iconOne').addClass("iconOne")
-    $('#iconTwo').addClass("iconTwo")
-    $('#iconThree').addClass("iconThree")
+    $("#iconOne").addClass("iconOne");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconThree").addClass("iconThree");
     // $('#iconOne').removeClass("iconOne")
+  };
 
+  changeHandler = evt => {
+    evt.preventDefault();
 
-  }
+    this.setState({
+      [evt.target.name]: evt.target.value
+    });
+  };
+
+  
 
   render() {
     return (
@@ -58,7 +68,7 @@ class NewTask extends React.Component {
         <form>
           <label className="newTaskLableName">
             New Task Name:
-            <input className="newTaskInput" type="text" name="name" />
+            <input className="newTaskInput" type="text" name="taskName" onChange={this.changeHandler} />
           </label>
         </form>
 
@@ -67,7 +77,7 @@ class NewTask extends React.Component {
           <div id="iconOne">
             <i id="icon" className="fas fa-heartbeat iconDropdown"></i>
           </div>
-          <div id="iconTwo" >
+          <div id="iconTwo">
             <i id="icon" className="fas fa-hospital iconDropdown"></i>
           </div>
           <div id="iconThree">
@@ -76,18 +86,18 @@ class NewTask extends React.Component {
         </div>
         <DropdownButton id="dropdown-item-button">
           <Dropdown.Item
-          onClick={this.addIcons}
+            onClick={this.addIcons}
             className="addIcon"
             onClick={() => {
               this.setState({
                 icon:
                   '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
               });
-              this.addIcons()
+              this.addIcons();
             }}
             as="button"
           >
-            <i id="icon"  className="fas fa-heartbeat iconDropdown"></i>
+            <i id="icon" className="fas fa-heartbeat iconDropdown"></i>
           </Dropdown.Item>
           <Dropdown.Item
             className="addIcon"
@@ -96,7 +106,7 @@ class NewTask extends React.Component {
                 icon:
                   '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
               });
-              this.addIcons()
+              this.addIcons();
             }}
             as="button"
           >
@@ -109,7 +119,7 @@ class NewTask extends React.Component {
                 icon:
                   '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
               });
-              this.addIcons()
+              this.addIcons();
             }}
             as="button"
           >
