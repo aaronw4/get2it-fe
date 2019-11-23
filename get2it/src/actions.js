@@ -135,13 +135,10 @@ export function createTask(payload, id) {
     };
 
     return axios
-      .post(`https://get2it.herokuapp.com/api/users/${id}/tasks`, payload, {
-        headers
-      })
+      .post(`https://get2it.herokuapp.com/api/users/${id}/tasks`, payload, { headers })
       .then(res => {
-        localStorage.setItem("token", res.data.token);
         setTimeout(() => {
-          dispatch({ type: CREATE_TASK_SUCCESS, payload: res.data.user });
+          dispatch({ type: CREATE_TASK_SUCCESS, payload: payload, id: id });
         }, 2000);
       })
       .catch(err => {

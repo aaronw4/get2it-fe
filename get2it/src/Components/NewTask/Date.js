@@ -12,11 +12,11 @@ class Date extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      date: ''
+      date: moment().format('L')
     };
   }
   render() {
-    // console.log(this.state.date)
+    this.props.newTaskDate(this.state.date);
 
     return (
       <Downshift
@@ -26,8 +26,7 @@ class Date extends React.Component {
         }
         onSelect={date => {
           const newDate = format(date, "MM/dd/yyyy");
-          this.setState({ date: newDate });
-          this.props.newTaskDate(this.state.date);
+          this.setState({ date: newDate })
         }}
         {...this.props}
       >
@@ -62,8 +61,12 @@ class Date extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  date: state.date,
+})
+
 const mapDispatchToProps = {
   newTaskDate,
 };
 
-export default connect(null,mapDispatchToProps)(Date);
+export default connect(mapStateToProps,mapDispatchToProps)(Date);

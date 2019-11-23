@@ -55,7 +55,12 @@ class NewTask extends React.Component {
 
     createTask(payload, id)
       .then(() => {
-        error && this.props.history.push("/");
+        if(!error) {
+          // this.props.history.push("/");
+          return (
+            <p className='error'>Success!</p>
+          )
+        } 
       })
       .catch(err => {
         console.error(err);
@@ -111,7 +116,7 @@ class NewTask extends React.Component {
 
         <div className="app"></div>
         <hr className="line" />
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label className="newTaskLableName">
             New Task Name:
             <input
@@ -123,6 +128,9 @@ class NewTask extends React.Component {
             />
           </label>
           {this.props.error && <p className="error">{this.props.error}</p>}
+          <Button className="completeBtn" type="submit">
+            Complete
+          </Button>
         </form>
 
         <hr className="line" />
@@ -194,11 +202,6 @@ class NewTask extends React.Component {
         {/* <Label /> */}
         <div>{/* <JsxParser jsx={this.state.icon} /> */}</div>
         <hr className="line" />
-        <div>
-          <Button className="completeBtn" onClick={this.handleSubmit}>
-            Complete
-          </Button>
-        </div>
       </div>
     );
   }
