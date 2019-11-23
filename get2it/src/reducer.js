@@ -171,7 +171,6 @@ export default function(state = initialState, action) {
         ...state,
         isLoading: false,
         error: null,
-        userTasks: action.payload
       };
     }
     case UPDATE_TASK_FAILED: {

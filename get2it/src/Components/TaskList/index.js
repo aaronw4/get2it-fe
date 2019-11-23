@@ -1,12 +1,12 @@
 import React from 'react';
 import './style.css'
 import { connect } from 'react-redux'
-import { Route, withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { updateTask } from '../../actions'
 import { getTASKS } from '../../actions'
 
-// buld task component and set up state
+// build task component and set up state
 class TaskList extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +27,7 @@ class TaskList extends React.Component {
     var spacer = "      ";
      // loop through each task and post them to state
     for (let i = 0; i < arrList.length;i++) {
-      list.push(arrList[i].name)
+      list.push(arrList[i])
     };
     console.log(list)
     this.setState({
@@ -58,7 +58,7 @@ class TaskList extends React.Component {
                 <Form>
                   <Form.Group controlId='formBasicCheckbox'>
                     <Form.Check onClick={this.complete} type='checkbox' />
-                    <Form.Text>{item}</Form.Text>
+                    <Form.Text>{item.name}</Form.Text>
                     <Button className="reUseBtn">Delete</Button>
                   </Form.Group>
                 </Form>
