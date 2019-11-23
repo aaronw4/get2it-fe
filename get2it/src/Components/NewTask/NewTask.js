@@ -55,12 +55,7 @@ class NewTask extends React.Component {
 
     createTask(payload, id)
       .then(() => {
-        if(!error) {
-          // this.props.history.push("/");
-          return (
-            <p className='error'>Success!</p>
-          )
-        } 
+        !error && this.props.history.push('/')
       })
       .catch(err => {
         console.error(err);
