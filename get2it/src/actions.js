@@ -122,6 +122,7 @@ export function updateTask(payload, id){
 export function deleteTask(id) {
   return dispatch => {
     dispatch({ type: DELETE_TASK_START });
+    console.log(id)
 
     const headers = {
       Authorization: localStorage.getItem("token")
