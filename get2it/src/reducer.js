@@ -77,7 +77,7 @@ const initialState = {
   isLoading: false,
   error: null,
   userData: {},
-  userTasks: dummyTasks,
+  userTasks: [],
   userID: null,
   date: '',
   start_time: '',
