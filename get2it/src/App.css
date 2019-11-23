@@ -2,6 +2,7 @@
   --textColor: silver;
   --iconColor: rgba(192, 192, 192, 0.65);
   --buttonBorder: 2px solid rgb(212, 211, 211);
+  height: 100%;
 
   /* Example:  
                 button {
@@ -16,4 +17,5 @@
   text-align: center;
   display: flex;
   justify-content: center;
+  position: relative;
 }
