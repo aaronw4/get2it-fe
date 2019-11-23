@@ -69,7 +69,7 @@ class Menu extends React.Component {
           <DropdownItem
             onClick={evt => {
               evt.preventDefault();
-              this.props.history.push("/taskModal");
+              this.props.history.push("/NewTask");
             }}
           >
             <i className="fas fa-plus-circle icon"></i>Add a Task
