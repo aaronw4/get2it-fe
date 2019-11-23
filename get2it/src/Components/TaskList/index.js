@@ -12,7 +12,8 @@ class TaskList extends React.Component {
     super(props);
     console.log(props)
      // add tasklist to state
-    this.state= {taskList:[]
+    this.state= {
+      taskList:[]
     }
   }
   event

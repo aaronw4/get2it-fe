@@ -17,6 +17,10 @@ export const UPDATE_TASK_START = 'UPDATE_TASK_START'
 export const UPDATE_TASK_SUCCESS = 'UPDATE_TASK_SUCCESS'
 export const UPDATE_TASK_FAILED = 'UPDATE_TASK_FAILED'
 
+export const DELETE_TASK_START = "DELETE_TASK_START";
+export const DELETE_TASK_SUCCESS = "DELETE_TASK_SUCCESS";
+export const DELETE_TASK_FAILED = "DELETE_TASK_FAILED";
+
 export const UPDATE_USER_START = 'UPDATE_USER_START'
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
 export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED'
@@ -113,6 +117,26 @@ export function updateTask(payload, id){
         dispatch({ type: UPDATE_TASK_FAILED, payload: err.response.data })
       })
   }
+}
+
+export function deleteTask(id) {
+  return dispatch => {
+    dispatch({ type: DELETE_TASK_START });
+
+    const headers = {
+      Authorization: localStorage.getItem("token")
+    };
+
+    axios
+      .delete(`https://get2it.herokuapp.com/api/users/tasks/${id}`, { headers })
+      .then(res => {
+        dispatch({ type: DELETE_TASK_SUCCESS, payload: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch({ type: DELETE_TASK_FAILED, payload: err.response.data });
+      });
+  };
 }
 
 export function updateUser(payload, id) {
