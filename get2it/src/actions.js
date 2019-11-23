@@ -1,4 +1,5 @@
 import axios from 'axios'
+import moment from 'moment'
 
 export const CREATE_USER_START = 'CREATE_USER_START'
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS'
@@ -76,7 +77,17 @@ export function getTASKS(id) {
     axios.get(`https://get2it.herokuapp.com/api/users/${id}/tasks`, { headers })
       .then((res) => {
         console.log(res)
-        dispatch({ type: GET_TASKS_SUCCESS, payload: res.data })
+        const newRes = res.data.map(task => {
+          if (!task.status) {
+            return {
+              ...task,
+              status: false,
+              date: moment(task.date).add(1,'day').format('L')
+            }
+          }
+          task.date = moment(task.date).format("L");
+        })
+        dispatch({ type: GET_TASKS_SUCCESS, payload: newRes})
       })
       .catch((err) => {
         console.log(err)
