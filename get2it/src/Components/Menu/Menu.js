@@ -60,10 +60,27 @@ class Menu extends React.Component {
           <DropdownItem
             onClick={evt => {
               evt.preventDefault();
+              this.props.history.push("/profile");
+            }}
+          >
+            <i className="fas fa-user-circle icon"></i>
+            Profile
+          </DropdownItem>
+          <DropdownItem
+            onClick={evt => {
+              evt.preventDefault();
+              this.props.history.push("/NewTask");
+            }}
+          >
+            <i className="fas fa-plus-circle icon"></i>Add a Task
+          </DropdownItem>
+          <DropdownItem
+            onClick={evt => {
+              evt.preventDefault();
               this.props.history.push("/taskList");
             }}
           >
-            <i className="fas fa-list icon"></i>
+            <i className="fas fa-list-alt icon"></i>
             <div className="yourTasks">
               Your Tasks
               <div className="menuTaskCount">{this.props.userTasks.length}</div>
@@ -80,15 +97,6 @@ class Menu extends React.Component {
               Completed Tasks
               <div className="menuTaskCount">{this.completeTasks.length}</div>
             </div>
-          </DropdownItem>
-          <DropdownItem
-            onClick={evt => {
-              evt.preventDefault();
-              this.props.history.push("/profile");
-            }}
-          >
-            <i className="fas fa-user-circle icon"></i>
-            Profile
           </DropdownItem>
           <DropdownItem divider />
           <DropdownItem onClick={this.logout}>

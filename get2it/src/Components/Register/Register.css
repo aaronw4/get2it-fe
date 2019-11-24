@@ -1,6 +1,17 @@
 .register {
   height: 100%;
-  max-width: 400px;
+  width: 100vw;
+  /* max-width: 400px; */
+  overflow: auto;
+  padding: 5px 20px;
+}
+.register::-webkit-scrollbar {
+  height: 20px;
+  width: 8px;
+}
+.register::-webkit-scrollbar-thumb {
+  background: rgba(192, 192, 192, 0.281);
+  border-radius: 30px;
 }
 .pageTitle {
   width: 100%;

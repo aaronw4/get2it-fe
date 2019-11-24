@@ -1,38 +1,39 @@
 import React from 'react';
 import './style.css'
 import { connect } from 'react-redux'
-import { Route, withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { updateTask } from '../../actions'
-import { getTASKS } from '../../actions'
+import { getTASKS, deleteTask } from '../../actions'
 
-// buld task component and set up state
+// build task component and set up state
 class TaskList extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
-     // add tasklist to state
-    this.state= {taskList:[]
-    }
+    console.log(props);
+    // add tasklist to state
+    this.state = {
+      taskList: [],
+    };
   }
-  event
+  event;
 
   // build function to add tasks to state
   createTaskList = event => {
     event.preventDefault();
     // pull tasks from props
     const arrList = this.props.userTasks;
-    const list =[]
+    const list = [];
     var listItem;
     var spacer = "      ";
-     // loop through each task and post them to state
-    for (let i = 0; i < arrList.length;i++) {
-      list.push(arrList[i].name)
-    };
-    console.log(list)
+    // loop through each task and post them to state
+    for (let i = 0; i < arrList.length; i++) {
+      list.push(arrList[i]);
+    }
+    console.log(list);
     this.setState({
       taskList: list
-    })
+    });
   };
 
   // complete = event => {
@@ -42,38 +43,49 @@ class TaskList extends React.Component {
   //     check()
   //   }
 
+  deleted = (id) => {
+    this.props.deleteTask(id);
+    this.setState({
+      taskList: this.props.getTASKS(this.props.userData.id)
+    })
+  };
 
-    // render content to page
+  // render content to page
   render() {
     return (
       <div>
         <Form>
           <Form.Text className="taskTitle">TASK LIST</Form.Text>
         </Form>
-        <div>
+        <div className="taskListContainer">
           {/* for each item on the state tasklist create a task link on the page */}
           <ul>
             {this.state.taskList.map((item, index) => (
               <li key={index}>
                 <Form>
-                  <Form.Group controlId='formBasicCheckbox'>
-                    <Form.Check onClick={this.complete} type='checkbox' />
-                    <Form.Text>{item}</Form.Text>
-                    <Button className="reUseBtn">Delete</Button>
+                  <Form.Group controlId="formBasicCheckbox">
+                    <Form.Check onClick={this.complete} type="checkbox" />
+                    <Form.Text>{item.name}</Form.Text>
+                    <Button
+                      className="reUseBtn"
+                      onClick={() => this.deleted(item.id)}
+                    >
+                      Delete
+                    </Button>
                   </Form.Group>
                 </Form>
               </li>
-              
             ))}
           </ul>
         </div>
         <div className="linkStyle">
           <Link
-          className="addTaskLink" onClick={this.createTaskList}
-          to={{ pathname: "/taskModal", state: { modal: true } }}
-        >
-          +
-        </Link>
+            id="addTaskLink"
+            onClick={this.createTaskList}
+            to={{ pathname: "/taskModal", state: { modal: true } }}
+          >
+            +
+          </Link>
         </div>
       </div>
     );
@@ -86,7 +98,8 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = {
   updateTask,
-  getTASKS
+  getTASKS,
+  deleteTask,
  }
 // export the Component
 export default connect(mapStateToProps, mapDispatchToProps)(TaskList)

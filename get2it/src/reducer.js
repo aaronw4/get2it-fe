@@ -11,6 +11,9 @@ import {
   UPDATE_TASK_START,
   UPDATE_TASK_SUCCESS,
   UPDATE_TASK_FAILED,
+  DELETE_TASK_START,
+  DELETE_TASK_SUCCESS,
+  DELETE_TASK_FAILED,
   UPDATE_USER_START,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILED,
@@ -22,62 +25,62 @@ import {
   CREATE_TASK_FAILED
 } from "./actions.js";
 
-const dummyTasks = [
-  {
-    name: 'Go to the grocery store.',
-    date: '11/13/2019',
-    task_icon: '<i id="icon" className="fas fa-shopping-cart icon"></i>',
-    start_time: '9am',
-    end_time: '11am',
-    status: false,
-  },
-  {
-    name: 'Work out.',
-    date: '11/21/2019',
-    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
-    start_time: '1pm',
-    end_time: '2pm',
-    status: false,
-  },
-  {
-    name: 'Work out.',
-    date: '11/20/2019',
-    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
-    start_time: '1pm',
-    end_time: '2pm',
-    status: false,
-  },
-  {
-    name: 'Work out.',
-    date: '11/21/2019',
-    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
-    start_time: '1pm',
-    end_time: '2pm',
-    status: false,
-  },
-  {
-    name: 'Work out.',
-    date: '11/8/2019',
-    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
-    start_time: '1:00 pm',
-    end_time: '2:00 pm',
-    status: true,
-  },
-  {
-    name: 'Work out.',
-    date: '11/20/2019',
-    task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
-    start_time: '1pm',
-    end_time: '2pm',
-    status: false,
-  },
-]
+// const dummyTasks = [
+//   {
+//     name: 'Go to the grocery store.',
+//     date: '11/13/2019',
+//     task_icon: '<i id="icon" className="fas fa-shopping-cart icon"></i>',
+//     start_time: '9am',
+//     end_time: '11am',
+//     status: false,
+//   },
+//   {
+//     name: 'Work out.',
+//     date: '11/21/2019',
+//     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
+//     start_time: '1pm',
+//     end_time: '2pm',
+//     status: false,
+//   },
+//   {
+//     name: 'Work out.',
+//     date: '11/20/2019',
+//     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
+//     start_time: '1pm',
+//     end_time: '2pm',
+//     status: false,
+//   },
+//   {
+//     name: 'Work out.',
+//     date: '11/21/2019',
+//     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
+//     start_time: '1pm',
+//     end_time: '2pm',
+//     status: false,
+//   },
+//   {
+//     name: 'Work out.',
+//     date: '11/8/2019',
+//     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
+//     start_time: '1:00 pm',
+//     end_time: '2:00 pm',
+//     status: true,
+//   },
+//   {
+//     name: 'Work out.',
+//     date: '11/20/2019',
+//     task_icon: '<i id="icon" className="fas fa-heartbeat icon"></i>',
+//     start_time: '1pm',
+//     end_time: '2pm',
+//     status: false,
+//   },
+// ]
 
 const initialState = {
   isLoading: false,
   error: null,
   userData: {},
-  userTasks: dummyTasks,
+  userTasks: [],
   userID: null,
   date: '',
   start_time: '',
@@ -85,7 +88,7 @@ const initialState = {
   newTask: {},
   
 }
-
+//2019-11-22T00:00:00.000Z
 export default function(state = initialState, action) {
   switch (action.type) {
     case CREATE_USER_START: {
@@ -171,10 +174,31 @@ export default function(state = initialState, action) {
         ...state,
         isLoading: false,
         error: null,
-        userTasks: action.payload
       };
     }
     case UPDATE_TASK_FAILED: {
+      console.log(action.payload);
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.message
+      };
+    }
+    case DELETE_TASK_START: {
+      return {
+        ...state,
+        isLoading: true
+      };
+    }
+    case DELETE_TASK_SUCCESS: {
+      console.log(action.payload);
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+      };
+    }
+    case DELETE_TASK_FAILED: {
       console.log(action.payload);
       return {
         ...state,

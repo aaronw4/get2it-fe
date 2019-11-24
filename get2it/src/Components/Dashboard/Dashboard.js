@@ -10,14 +10,14 @@ import TaskList from '../TaskList/index.js'
 import Profile from '../Profile/Profile.js'
 import Spinner from '../Spinner/Spinner.js'
 import CompletedTaskList from '../CompletedTaskList/index.js'
-// import { getTASKS } from "../../actions.js";
+import { getTASKS } from "../../actions.js";
 
 
 class Dashboard extends React.Component {
 
-  // componentDidMount() {
-  //   this.props.getTASKS(this.props.userData.id);
-  // }
+  componentDidMount() {
+    this.props.getTASKS(this.props.userData.id);
+  }
 
   render() {
     return (
@@ -54,7 +54,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  // getTASKS,
+  getTASKS,
 }
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Dashboard));
