@@ -412,13 +412,24 @@ hr {
 }
 #dropdown-item-button {
   /* margin-top: -16%; */
+  background-color: white;
+  color: dodgerblue;
+  margin: 2px 5px;
 }
 .completeBtn {
   margin-top: 20px;
 }
+.addIcon {
+  display: flex;
+  justify-content: center;
+}
+.addIcon #icon {
+  color: dodgerblue
+}
 .iconDropContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   
 }
