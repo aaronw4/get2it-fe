@@ -57,7 +57,7 @@ class TaskList extends React.Component {
         <Form>
           <Form.Text className="taskTitle">TASK LIST</Form.Text>
         </Form>
-        <div>
+        <div className="taskListContainer">
           {/* for each item on the state tasklist create a task link on the page */}
           <ul>
             {this.state.taskList.map((item, index) => (
@@ -66,7 +66,10 @@ class TaskList extends React.Component {
                   <Form.Group controlId="formBasicCheckbox">
                     <Form.Check onClick={this.complete} type="checkbox" />
                     <Form.Text>{item.name}</Form.Text>
-                    <Button className="reUseBtn" onClick={() => this.deleted(item.id)}>
+                    <Button
+                      className="reUseBtn"
+                      onClick={() => this.deleted(item.id)}
+                    >
                       Delete
                     </Button>
                   </Form.Group>
