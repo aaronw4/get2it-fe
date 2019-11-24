@@ -9,7 +9,7 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: auto;
   /* position: relative; */
 }
 .today {
@@ -63,7 +63,7 @@
   display: flex;
   flex-flow: column;
   padding: 0 20px;
-  overflow: hidden;
+  overflow: auto;
 }
 .listItem {
   width: 100%;
@@ -116,6 +116,7 @@
 }
 .taskModal {
   size: 90%;
+  overflow: auto;
   align-self: center;
   position: absolute;
   width: 95%;

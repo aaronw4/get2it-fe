@@ -20,7 +20,8 @@ class NewTask extends React.Component {
 
     this.state = {
       icon: "",
-      taskName: ""
+      taskName: "",
+      newError: null
     };
   }
   addIconOne = event => {
@@ -50,15 +51,18 @@ class NewTask extends React.Component {
       name: taskName,
       date,
       start_time,
-      end_time
+      end_time,
     }
 
     createTask(payload, id)
       .then(() => {
-        !error && this.props.history.push('/')
+        this.props.history.push('/')
       })
       .catch(err => {
         console.error(err);
+        this.setState({
+          newError: this.props.error
+        })
       });
   }
   
@@ -86,7 +90,7 @@ class NewTask extends React.Component {
   render() {
     console.log(this.props)
     return (
-      <div className="app">
+      <div className="newTaskContainer">
         <br />
         <br />
         <h1 className="NewTask-Tittle"> Add New Task</h1>
@@ -122,7 +126,7 @@ class NewTask extends React.Component {
               required
             />
           </label>
-          {this.props.error && <p className="error">{this.props.error}</p>}
+          {this.state.newError && <p className="error">{this.state.newError}</p>}
           <Button className="completeBtn" type="submit">
             Complete
           </Button>
