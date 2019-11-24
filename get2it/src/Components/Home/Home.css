@@ -99,7 +99,7 @@
   color: rgba(255, 255, 255, 0.781);
   margin-left: 10px;
 }
-.addTaskLink {
+#addTaskLink {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,14 +107,14 @@
   bottom: 10px;
   height: 48px;
   width: 48px;
-  padding-bottom: 1px;
-  padding-left: 1px;
+  padding-bottom: 3.5px;
+  padding-left: 1.5px;
   background-color: dodgerblue;
   color: white;
   border-radius: 100%;
   font-size: 3rem;
 }
-.addTaskLink:hover {
+#addTaskLink:hover {
   text-decoration: none;
   background-color: white;
   color: dodgerblue;

@@ -80,7 +80,7 @@ class TaskList extends React.Component {
         </div>
         <div className="linkStyle">
           <Link
-            className="addTaskLink"
+            id="addTaskLink"
             onClick={this.createTaskList}
             to={{ pathname: "/taskModal", state: { modal: true } }}
           >

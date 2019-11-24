@@ -77,7 +77,7 @@ class Home extends React.Component {
         </div>
 
         <Link
-          className="addTaskLink"
+          id="addTaskLink"
           to={{ pathname: "/taskModal", state: { modal: true } }}
         >
           +
