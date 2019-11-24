@@ -411,9 +411,14 @@ hr {
 
 }
 #dropdown-item-button {
-  margin-top: -16%;
+  /* margin-top: -16%; */
 }
 .completeBtn {
-  margin-left: 58%;
-    margin-top: -40%;
+  /* margin-left: 58%; */
+}
+.iconDropContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  
 }

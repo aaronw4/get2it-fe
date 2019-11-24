@@ -116,91 +116,95 @@ class NewTask extends React.Component {
         <div className="app"></div>
         <hr className="line" />
         <form onSubmit={this.handleSubmit}>
-          <label className="newTaskLableName">
-            New Task Name:
-            <input
-              className="newTaskInput"
-              type="text"
-              name="taskName"
-              onChange={this.changeHandler}
-              required
-            />
-          </label>
-          {this.state.newError && <p className="error">{this.state.newError}</p>}
+          <label className="newTaskLableName">New Task Name:</label>
+          <input
+            className="newTaskInput"
+            type="text"
+            name="taskName"
+            onChange={this.changeHandler}
+            required
+          />
+
+          <hr className="line" />
+            <label className='newTaskLableName'>Pick an icon for your task!</label>
+          <div className='iconDropContainer'>
+            <div className="displayIcons">
+              <div id="iconOne">
+                <i
+                  id="icon"
+                  data-myval="1"
+                  className="fas fa-heartbeat iconDropdown"
+                ></i>
+              </div>
+              <div id="iconTwo">
+                <i
+                  id="icon"
+                  data-myval="2"
+                  className="fas fa-hospital iconDropdown"
+                ></i>
+              </div>
+              <div id="iconThree">
+                <i
+                  id="icon"
+                  data-myval="3"
+                  className="fab fa-accessible-icon iconDropdown"
+                ></i>
+              </div>
+            </div>
+            <DropdownButton id="dropdown-item-button" onClick={(evt) => {evt.preventDefault()}}>
+              <Dropdown.Item
+                onClick={this.addIcons}
+                className="addIcon"
+                onClick={() => {
+                  this.setState({
+                    icon:
+                      '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
+                  });
+                  this.addIconOne();
+                }}
+                as="button"
+              >
+                <i id="icon" className="fas fa-heartbeat iconDropdown"></i>
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="addIcon"
+                onClick={() => {
+                  this.setState({
+                    icon:
+                      '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
+                  });
+                  this.addIconTwo();
+                }}
+                as="button"
+              >
+                <i id="icon" className="fas fa-hospital iconDropdown"></i>
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="addIcon"
+                onClick={() => {
+                  this.setState({
+                    icon:
+                      '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
+                  });
+                  this.addIconThree();
+                }}
+                as="button"
+              >
+                <i id="icon" className="fab fa-accessible-icon iconDropdown"></i>
+              </Dropdown.Item>
+            </DropdownButton>
+            {/* <Label /> */}
+            <div>{/* <JsxParser jsx={this.state.icon} /> */}</div>
+          </div>
+          <hr className="line" />
+
+          {this.state.newError && (
+            <p className="error">{this.state.newError}</p>
+          )}
           <Button className="completeBtn" type="submit">
             Complete
           </Button>
         </form>
-
-        <hr className="line" />
-        <div className="displayIcons">
-          <div id="iconOne">
-            <i
-              id="icon"
-              data-myval="1"
-              className="fas fa-heartbeat iconDropdown"
-            ></i>
-          </div>
-          <div id="iconTwo">
-            <i
-              id="icon"
-              data-myval="2"
-              className="fas fa-hospital iconDropdown"
-            ></i>
-          </div>
-          <div id="iconThree">
-            <i
-              id="icon"
-              data-myval="3"
-              className="fab fa-accessible-icon iconDropdown"
-            ></i>
-          </div>
-        </div>
-        <DropdownButton id="dropdown-item-button">
-          <Dropdown.Item
-            onClick={this.addIcons}
-            className="addIcon"
-            onClick={() => {
-              this.setState({
-                icon:
-                  '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
-              });
-              this.addIconOne();
-            }}
-            as="button"
-          >
-            <i id="icon" className="fas fa-heartbeat iconDropdown"></i>
-          </Dropdown.Item>
-          <Dropdown.Item
-            className="addIcon"
-            onClick={() => {
-              this.setState({
-                icon:
-                  '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
-              });
-              this.addIconTwo();
-            }}
-            as="button"
-          >
-            <i id="icon" className="fas fa-hospital iconDropdown"></i>
-          </Dropdown.Item>
-          <Dropdown.Item
-            className="addIcon"
-            onClick={() => {
-              this.setState({
-                icon:
-                  '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
-              });
-              this.addIconThree();
-            }}
-            as="button"
-          >
-            <i id="icon" className="fab fa-accessible-icon iconDropdown"></i>
-          </Dropdown.Item>
-        </DropdownButton>
-        {/* <Label /> */}
-        <div>{/* <JsxParser jsx={this.state.icon} /> */}</div>
-        <hr className="line" />
       </div>
     );
   }
