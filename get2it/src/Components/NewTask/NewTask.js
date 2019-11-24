@@ -125,8 +125,7 @@ class NewTask extends React.Component {
             required
           />
 
-          <hr className="line" />
-            <label className='newTaskLableName'>Pick an icon for your task!</label>
+          <label className='newTaskLableName'>Pick an icon for your task!</label>
           <div className='iconDropContainer'>
             <div className="displayIcons">
               <div id="iconOne">

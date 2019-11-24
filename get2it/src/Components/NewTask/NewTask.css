@@ -414,7 +414,7 @@ hr {
   /* margin-top: -16%; */
 }
 .completeBtn {
-  /* margin-left: 58%; */
+  margin-top: 20px;
 }
 .iconDropContainer {
   display: flex;
