@@ -65,6 +65,14 @@
   padding: 0 20px;
   overflow: auto;
 }
+.homeList::-webkit-scrollbar {
+  height: 20px;
+  width: 8px;
+}
+.homeList::-webkit-scrollbar-thumb {
+  background: rgba(192, 192, 192, 0.281);
+  border-radius: 30px;
+}
 .listItem {
   width: 100%;
   display: flex;
