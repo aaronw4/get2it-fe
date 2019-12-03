@@ -34,7 +34,7 @@
   height: 100px;
   width: 100px;
   position: relative;
-  margin: 20px 0;
+  margin: 15px 0;
 }
 .countContainer:hover {
   background-color: rgba(192, 192, 192, 0.137);
@@ -158,13 +158,14 @@
   color: white;
 }
 .noTaskContainer {
+  box-sizing: border-box;
   overflow: hidden;
   height: 100%;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: space-evenly;
-  margin-bottom: 12%;
+  padding-bottom: 98px;
 }
 .bigLogoContainer {
   display: flex;
@@ -177,7 +178,7 @@
   width: 200px;
 }
 .instruction {
-  margin: 13px;
+  margin: 0px;
   color: dodgerblue;
 }
 .arrow {

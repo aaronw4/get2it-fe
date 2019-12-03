@@ -1,8 +1,8 @@
 import * as serviceWorker from './serviceWorker';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './index.css';
 import App from './Components/App.js';
 import { BrowserRouter } from 'react-router-dom'
 import { createStore, compose, applyMiddleware } from 'redux'
