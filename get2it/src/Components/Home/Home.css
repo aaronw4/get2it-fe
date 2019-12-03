@@ -80,6 +80,9 @@
   margin: 20px 0 10px 0;
   border-image: radial-gradient(silver, black) 50;
   border-bottom: 2px solid;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
 }
 #icon {
   width: 18px;
