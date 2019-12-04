@@ -20,9 +20,9 @@ class TaskList extends React.Component {
 
   // build function to add tasks to state
   createTaskList = event => {
-    event.preventDefault();
+    // event.preventDefault();
     // pull tasks from props
-    const arrList = this.props.userTasks;
+    const arrList = this.props.userTasks.filter();
     const list = [];
     var listItem;
     var spacer = "      ";
@@ -35,13 +35,11 @@ class TaskList extends React.Component {
       taskList: list
     });
   };
+  
+  complete = event => {
+    event.preventDefault();
 
-  // complete = event => {
-  //   if(querySelector(input[type=checkbox]:checked)){
-  //     upd()
-  //   } else {
-  //     check()
-  //   }
+    }
 
   deleted = (id) => {
     this.props.deleteTask(id);
@@ -50,6 +48,9 @@ class TaskList extends React.Component {
     })
   };
 
+  componentDidMount(){
+    this.createTaskList()
+  }
   // render content to page
   render() {
     return (
@@ -64,7 +65,7 @@ class TaskList extends React.Component {
               <li key={index}>
                 <Form>
                   <Form.Group controlId="formBasicCheckbox">
-                    <Form.Check onClick={this.complete} type="checkbox" />
+                    <Form.Check type="checkbox" />
                     <Form.Text>{item.name}</Form.Text>
                     <Button
                       className="reUseBtn"
@@ -77,16 +78,11 @@ class TaskList extends React.Component {
               </li>
             ))}
           </ul>
+          <div className="completeBtn">
+          <Button onClick={this.complete}>Complete</Button>
         </div>
-        <div className="linkStyle">
-          <Link
-            id="addTaskLink"
-            onClick={this.createTaskList}
-            to={{ pathname: "/taskModal", state: { modal: true } }}
-          >
-            +
-          </Link>
         </div>
+        
       </div>
     );
   }

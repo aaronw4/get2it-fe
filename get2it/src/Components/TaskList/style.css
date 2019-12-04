@@ -95,3 +95,10 @@ padding: auto;
   .linkStyle:hover {
     background-color: rgb(175, 174, 174);
   }
+.completeBtn {
+  position: absolute;
+  width: 30px;
+  height: 40px;
+  margin: 10px 10px 10px 130px;
+  bottom: 10px;
+}
