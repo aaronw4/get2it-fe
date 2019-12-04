@@ -17,7 +17,7 @@ class CompletedTaskList extends React.Component {
   event
 // build function to add tasks to state
   createTaskList = event => {
-    event.preventDefault();
+    // event.preventDefault();
     // pull tasks from props
     const arrList = this.props.userTasks;
     const list =[]
@@ -47,6 +47,10 @@ class CompletedTaskList extends React.Component {
 
   };
 
+  componentDidMount(){
+    this.createTaskList()
+  }
+
   // render content to page
   render() {
     return (
@@ -70,14 +74,7 @@ class CompletedTaskList extends React.Component {
           ))}
         </ul>
         </div>
-        <div className="linkStyle">
-          <Link
-          className="addTaskLink" onClick={this.createTaskList}
-          to={{ pathname: "/taskModal", state: { modal: true } }}
-        >
-          +
-        </Link>
-        </div>
+        
       </div>
     );
   }

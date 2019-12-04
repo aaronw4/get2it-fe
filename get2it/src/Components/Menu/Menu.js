@@ -42,7 +42,7 @@ class Menu extends React.Component {
   completeTasks = this.props.userTasks.filter(task => task.status === true)
 
   render() {
-    console.log(this.completeTasks)
+    // console.log(this.completeTasks)
     return (
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle className="dropButton">

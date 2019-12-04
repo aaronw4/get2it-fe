@@ -5,15 +5,16 @@ import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { updateTask } from '../../actions'
 import { getTASKS, deleteTask } from '../../actions'
-
+import $ from "jquery";
 // build task component and set up state
 class TaskList extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    // console.log(props);
     // add tasklist to state
     this.state = {
       taskList: [],
+      updatedList: []
     };
   }
   event;
@@ -22,7 +23,9 @@ class TaskList extends React.Component {
   createTaskList = event => {
     // event.preventDefault();
     // pull tasks from props
-    const arrList = this.props.userTasks.filter();
+    const arrList = this.props.userTasks.filter(
+      task => task.status === false 
+    );
     const list = [];
     var listItem;
     var spacer = "      ";
@@ -30,16 +33,59 @@ class TaskList extends React.Component {
     for (let i = 0; i < arrList.length; i++) {
       list.push(arrList[i]);
     }
-    console.log(list);
     this.setState({
       taskList: list
     });
   };
   
-  complete = event => {
-    event.preventDefault();
+  
+    
+  arr2 = [];
+  check = (item) => {
+    var task = item;
+    var checkbox = $("#checkBox")
+      // item.status !== item.status
+      switch(checkbox.is(':checked')){
+        case true: this.arr2.push(item)
+        break;
+        case false: console.log("yeet")
+        }
 
+        
+        // $("#checkBox").removeClass('complete')
+        // $("#checkBox").removeClass('notcomplete')
+        // $("#checkBox").addClass('complete')
+      // } else {
+      //   this.setState({
+      //     updatedList: this.arr2.filter(item => item != task )
+      //   })
+      
+        // return
+        // $("#checkBox").removeClass('complete')
+        // $("#checkBox").removeClass('notcomplete')
+        // $("#checkBox").addClass('notcomplete')
+      
+      this.setState({
+        updatedList: this.arr2
+      });
+      console.log(this.arr2)
+    
+  }
+  complete = () => {
+
+    
+    //   this.state.updatedList.map(task => {
+    //   task.status = true
+    //   console.log(task.status)
+    //   this.prop.updateTask(task, task.id) 
+    // })
+    //   this.setState({
+    //     taskList: this.props.userTasks.filter(task => task.status === false)
+    //   })
+
+    console.log(this.state.updatedList)
     }
+    
 
   deleted = (id) => {
     this.props.deleteTask(id);
@@ -53,6 +99,7 @@ class TaskList extends React.Component {
   }
   // render content to page
   render() {
+    
     return (
       <div>
         <Form>
@@ -65,7 +112,7 @@ class TaskList extends React.Component {
               <li key={index}>
                 <Form>
                   <Form.Group controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" />
+                    <Form.Check id="checkBox" onClick={() => this.check(item)} type="checkbox" />
                     <Form.Text>{item.name}</Form.Text>
                     <Button
                       className="reUseBtn"
@@ -79,7 +126,7 @@ class TaskList extends React.Component {
             ))}
           </ul>
           <div className="completeBtn">
-          <Button onClick={this.complete}>Complete</Button>
+          <Button onClick={() => this.complete()}>Complete</Button>
         </div>
         </div>
         
@@ -87,6 +134,7 @@ class TaskList extends React.Component {
     );
   }
 }
+
 // map state to props
 const mapStateToProps = state => ({
   userData: state.userData,
