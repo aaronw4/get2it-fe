@@ -13,6 +13,7 @@ import $ from "jquery";
 import JsxParser from "react-jsx-parser";
 import { connect } from 'react-redux'
 import { createTask } from '../../actions.js'
+import { parseWithOptions } from "date-fns/fp";
 
 class NewTask extends React.Component {
   constructor(props) {

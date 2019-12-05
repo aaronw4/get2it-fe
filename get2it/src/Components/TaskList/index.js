@@ -39,22 +39,26 @@ class TaskList extends React.Component {
   };
   
   
-    
-  arr2 = [];
+ 
+  
   check = (item) => {
+    $('.checkBox').toggleClass("checkBoxChecked")
     var task = item;
-    var checkbox = $("#checkBox")
+    // var checkbox = $(this).find(".checkBox")
+    console.log(this.item)
       // item.status !== item.status
-      switch(checkbox.is(':checked')){
-        case true: this.arr2.push(item)
-        break;
-        case false: console.log("yeet")
-        }
+      // console.log(checkbox)
+      // switch(checkbox.is(':checked')){
+      //   case true:  
+      //   $(this).find(".checkBox").removeClass('complete')
+      //   $(this).find(".checkBox").addClass('complete')
+      //   break;
+      //   case false: $(this).find(".checkBox").removeClass('complete')
+
+      //   }
 
         
-        // $("#checkBox").removeClass('complete')
-        // $("#checkBox").removeClass('notcomplete')
-        // $("#checkBox").addClass('complete')
+       
       // } else {
       //   this.setState({
       //     updatedList: this.arr2.filter(item => item != task )
@@ -65,15 +69,13 @@ class TaskList extends React.Component {
         // $("#checkBox").removeClass('notcomplete')
         // $("#checkBox").addClass('notcomplete')
       
-      this.setState({
-        updatedList: this.arr2
-      });
-      console.log(this.arr2)
+     
+      // console.log(this.arr2)
     
   }
   complete = () => {
-
-    
+ var arr2 = [];
+    $('.checkBoxChecked').push(arr2)
     //   this.state.updatedList.map(task => {
     //   task.status = true
     //   console.log(task.status)
@@ -82,6 +84,9 @@ class TaskList extends React.Component {
     //   this.setState({
     //     taskList: this.props.userTasks.filter(task => task.status === false)
     //   })
+    this.setState({
+      updatedList: this.arr2
+    });
 
     console.log(this.state.updatedList)
     }
@@ -112,7 +117,10 @@ class TaskList extends React.Component {
               <li key={index}>
                 <Form>
                   <Form.Group controlId="formBasicCheckbox">
-                    <Form.Check id="checkBox" onClick={() => this.check(item)} type="checkbox" />
+                    <div  className="check checkBox" onClick={() => this.check(item)} type="checkbox">
+
+                    </div>
+                    {/* <Form.Check  id="checkBox" onClick={() => this.check(item)} type="checkbox" /> */}
                     <Form.Text>{item.name}</Form.Text>
                     <Button
                       className="reUseBtn"

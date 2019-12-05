@@ -102,3 +102,21 @@ padding: auto;
   margin: 10px 10px 10px 130px;
   bottom: 10px;
 }
+.checkBoxChecked {
+  border: 1px solid rgb(107, 218, 218) !important;
+ background-image: url("./check.png") !important;
+ background-size: cover;
+ background-repeat: no-repeat;
+ width: 70px;
+  height: 40px;
+  border-radius: 50%;
+}
+.checkBox{
+  border: 1px solid white;
+ background: transparent;
+ background-size: cover;
+ background-repeat: no-repeat;
+ width: 70px;
+  height: 40px;
+  border-radius: 50%;
+}
