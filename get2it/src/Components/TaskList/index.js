@@ -16,7 +16,7 @@ class TaskList extends React.Component {
     this.state = {
       taskList: [],
       updatedList: [],
-      toggleCheck: '', 
+      toggleCheck: ""
     };
   }
   event;
@@ -38,55 +38,50 @@ class TaskList extends React.Component {
     });
   };
   itemArr = [];
-  check = (item) => {
-    // if(this.state.toggleCheck === ''){
-    //   this.setState({
-    //     toggleCheck: "checkBoxChecked"
-    //   })
-    //   } else if(this.state.toggleCheck === 'checkBoxChecked') {
-    //     this.setState({
-    //       toggleCheck: ""
-    //     })
-    //   }
+  check = item => {
 
     var task = item;
-// console.log(task)
-    switch(this.itemArr.includes(task)){
+    // console.log(task)
+    switch (this.itemArr.includes(task)) {
       case false:
-          this.itemArr.push(task);
-        console.log(this.itemArr)
+        this.itemArr.push(task);
+        // console.log(this.itemArr)
         break;
       case true:
-
-          var filtered = this.itemArr.filter(function (el) {
-            return el != task;
-          });
-          this.itemArr = filtered
-      console.log(filtered)
+        var filtered = this.itemArr.filter(function(el) {
+          return el != task;
+        });
+        this.itemArr = filtered;
+      // console.log(filtered)
     }
- 
+
     // console.log(this.itemArr)
-  }
-    
-    // var task = item;
-    // console.log(key)
-    // this.state.taskList[key].toggleClass("checkBoxChecked");
-    // console.log(task)
-  complete = () => {
- 
-    for(var i = 0; i > this.itemArr.length; i++){
-      this.setState({
-        updatedList: this.state.taskList[this.itemArr[i]]
-      });
+  };
 
+  // var task = item;
+  // console.log(key)
+  // this.state.taskList[key].toggleClass("checkBoxChecked");
+  // console.log(task)
+  arrar = [];
+  complete = () => {
+    for (var i = 0; i < this.itemArr.length; i++) {
+      this.arrar.push(this.itemArr[i]);
     }
 
+    this.setState(
+      {
+        updatedList: this.arrar
+      },
+      () => {
+        console.log(this.state.updatedList);
+      }
+    );
 
-    console.log(this.state.updatedList);
+    this.state.updatedList.forEach(task=> {this.props.updateTask()})
 
     this.setState({
       taskList: this.props.userTasks
-    })
+    });
   };
 
   deleted = id => {
@@ -101,7 +96,6 @@ class TaskList extends React.Component {
   }
   // render content to page
   render() {
-
     return (
       <div>
         <Form>
@@ -116,8 +110,7 @@ class TaskList extends React.Component {
                   <Form.Group controlId="formBasicCheckbox">
                     <div
                       className={`check checkBox ${this.state.toggleCheck}`}
-                      onClick={(index) => this.check(item.id)}
-                      
+                      onClick={index => this.check(item.id)}
                       type="checkbox"
                     ></div>
                     <Form.Text>{item.name}</Form.Text>
