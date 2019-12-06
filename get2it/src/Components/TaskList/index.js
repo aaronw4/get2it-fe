@@ -48,26 +48,24 @@ class TaskList extends React.Component {
     //       toggleCheck: ""
     //     })
     //   }
-    var arrVar = this.itemArr;
+
     var task = item;
 // console.log(task)
     switch(this.itemArr.includes(task)){
       case false:
-          arrVar.push(task);
-        // console.log(this.itemArr)
+          this.itemArr.push(task);
+        console.log(this.itemArr)
         break;
       case true:
-      for(var i = 0; i < this.itemArr.length; i++){
-        if(task === this.itemArr[i]){
-          console.log(this.itemArr[i])
-          arrVar.slice(arrVar[i])
-        }
-      }
-      break;
-      
+
+          var filtered = this.itemArr.filter(function (el) {
+            return el != task;
+          });
+          this.itemArr = filtered
+      console.log(filtered)
     }
  
-    console.log(this.itemArr)
+    // console.log(this.itemArr)
   }
     
     // var task = item;
