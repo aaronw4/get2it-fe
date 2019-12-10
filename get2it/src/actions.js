@@ -110,6 +110,7 @@ export function updateTask(payload, id){
 
     axios.put(`https://get2it.herokuapp.com/api/users/tasks/${id}`, payload, { headers })
       .then((res) => {
+        console.log(payload)
         dispatch({ type: UPDATE_TASK_SUCCESS, payload: res.data })
       })
       .catch((err) => {

@@ -16,6 +16,7 @@ class TaskList extends React.Component {
     this.state = {
       taskList: [],
       updatedList: [],
+      retrievedTasks: [],
       toggleCheck: ""
     };
   }
@@ -40,7 +41,7 @@ class TaskList extends React.Component {
   itemArr = [];
   check = item => {
 
-    var task = item;
+    var task = item.id;
     // console.log(task)
     switch (this.itemArr.includes(task)) {
       case false:
@@ -73,16 +74,46 @@ class TaskList extends React.Component {
         updatedList: this.arrar
       },
       () => {
-        console.log(this.state.updatedList);
+        console.log(this.arrar);
+        this.state.updatedList.map(task => {
+          const id = task
+          this.getTaskById(id)
+        })
+
+        this.setState({
+          taskList: this.props.userTasks
+        });
       }
     );
 
-    this.state.updatedList.forEach(task=> {this.props.updateTask()})
-
-    this.setState({
-      taskList: this.props.userTasks
-    });
   };
+
+  getTaskById = id => {
+    let tasksById = []
+    this.state.taskList.map(task => {
+      if (task.id === id) {
+        tasksById.push(task)
+      }
+    })
+    this.setState({
+      retrievedTasks: tasksById
+      },
+      () => {
+        console.log(this.state.retrievedTasks);
+
+        this.state.retrievedTasks.map(task => {
+          const id = task.id;
+          const payload = {
+            ...task,
+            status: true
+          };
+          console.log(payload);
+
+          this.props.updateTask(payload, id);
+        });
+      }
+    )
+  }
 
   deleted = id => {
     this.props.deleteTask(id);
@@ -110,7 +141,7 @@ class TaskList extends React.Component {
                   <Form.Group controlId="formBasicCheckbox">
                     <div
                       className={`check checkBox ${this.state.toggleCheck}`}
-                      onClick={index => this.check(item.id)}
+                      onClick={index => this.check(item)}
                       type="checkbox"
                     ></div>
                     <Form.Text>{item.name}</Form.Text>
