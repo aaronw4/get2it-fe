@@ -201,7 +201,7 @@ class NewTask extends React.Component {
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
           )}
-          <Button className="completeBtn" type="submit">
+          <Button className="completeBtn-create" type="submit">
             Complete
           </Button>
         </form>

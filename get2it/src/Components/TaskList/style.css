@@ -1,6 +1,6 @@
 input[type=checkbox] {
     width: 40px;
-    height:40px;
+    height:39px;
     border-radius: 50%;
     vertical-align: middle;
     border: 1px solid #ddd;
@@ -63,10 +63,19 @@ padding:5px 5px 5px 10px;
     height: 10%;
 }
 input[type=checkbox]:checked {
- border: 1px solid rgb(107, 218, 218);
+ border: 2px solid rgb(107, 218, 218);
  background-image: url("./check.png");
  background-size: cover;
  background-repeat: no-repeat;
+ width: 38px;
+ height: 39px;
+ border-radius: 50%;
+ vertical-align: middle;
+ border: 0px solid #ddd;
+ -webkit-appearance: none;
+ /* outline: none; */
+ cursor: pointer;
+ color: black;
 }
 .taskTitle {
     display: block;
@@ -105,7 +114,7 @@ padding: auto;
   bottom: 10px;
 }
 .checkBoxChecked {
-  border: 1px solid rgb(107, 218, 218) !important;
+  border: 2px solid rgb(107, 218, 218) !important;
  background-image: url("./check.png") !important;
  background-size: cover;
  background-repeat: no-repeat;
@@ -114,16 +123,23 @@ padding: auto;
   border-radius: 50%;
 }
 .checkBox{
-  border: 1px solid white;
+  border: 2px solid white;
  background: transparent;
  background-size: cover;
  background-repeat: no-repeat;
  width: 70px;
-  height: 40px;
+  height: 42px;
   border-radius: 50%;
 }
 .completeCont {
   display: flex;
   justify-content: center;
   width: 100%;
+}
+.checkedBox {
+  margin-top: 0px;
+  width: 38px;
+ height: 39px;
+  border-width: 2px;
+
 }
