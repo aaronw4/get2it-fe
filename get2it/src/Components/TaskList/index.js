@@ -54,14 +54,14 @@ class TaskList extends React.Component {
         this.itemArr = filtered;
       // console.log(filtered)
     }
-
+    this.classBTN(item); 
     // console.log(this.itemArr)
   };
+  classBTN = (item) => {
+    console.log('hitting check')
+    $('#containter').find('.checkbox').toggleClass('checkBoxChecked');
+  }
 
-  // var task = item;
-  // console.log(key)
-  // this.state.taskList[key].toggleClass("checkBoxChecked");
-  // console.log(task)
   arrar = [];
   complete = () => {
     for (var i = 0; i < this.itemArr.length; i++) {
@@ -101,7 +101,7 @@ class TaskList extends React.Component {
         <Form>
           <Form.Text className="taskTitle">TASK LIST</Form.Text>
         </Form>
-        <div className="taskListContainer">
+        <div id='containter' className="taskListContainer">
           {/* for each item on the state tasklist create a task link on the page */}
           <ul>
             {this.state.taskList.map((item, index) => (
@@ -109,10 +109,10 @@ class TaskList extends React.Component {
                 <Form>
                   <Form.Group controlId="formBasicCheckbox">
                     <div
-                      className={`check checkBox ${this.state.toggleCheck}`}
+                      className='check checkBox'
                       onClick={index => this.check(item.id)}
                       type="checkbox"
-                    ></div>
+                    ><input className="checkedBox" type="checkbox" name="vehicle1" value="Bike"></input></div>
                     <Form.Text>{item.name}</Form.Text>
                     <Button
                       className="reUseBtn"
