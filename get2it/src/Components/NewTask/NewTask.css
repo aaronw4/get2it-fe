@@ -417,8 +417,12 @@ hr {
   color: dodgerblue;
   margin: 2px 5px;
 }
-.completeBtn {
-  margin-top: 20px;
+.completeBtn-create {
+  position: absolute;
+    width: 62%;
+    height: 40px;
+    margin: 0px 10px -254px -107px;
+    bottom: 10px;
 }
 .addIcon {
   display: flex;
