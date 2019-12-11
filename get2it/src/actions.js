@@ -88,8 +88,12 @@ export function getTASKS(id) {
               status: false,
               date: moment(task.date).add(1,'day').format('L')
             }
+          }else {
+            return {
+              ...task,
+              date: moment(task.date).add(1, "day").format("L")
+            };
           }
-          task.date = moment(task.date).format("L");
         })
         dispatch({ type: GET_TASKS_SUCCESS, payload: newRes})
       })

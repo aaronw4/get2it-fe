@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { updateTask } from "../../actions";
 import { getTASKS, deleteTask } from "../../actions";
@@ -42,7 +42,7 @@ class TaskList extends React.Component {
   check = item => {
 
     var task = item.id;
-    // console.log(task)
+    console.log(task)
     switch (this.itemArr.includes(task)) {
       case false:
         this.itemArr.push(task);
@@ -69,23 +69,19 @@ class TaskList extends React.Component {
       this.arrar.push(this.itemArr[i]);
     }
 
-    this.setState(
-      {
-        updatedList: this.arrar
-      },
-      () => {
-        console.log(this.arrar);
-        this.state.updatedList.map(task => {
-          const id = task
-          this.getTaskById(id)
-        })
-
-        this.setState({
-          taskList: this.props.userTasks
-        });
-      }
-    );
-
+      this.setState(
+        {
+          updatedList: this.arrar
+        },
+        () => {
+          console.log(this.arrar);
+          this.state.updatedList.map(task => {
+            const id = task
+            this.getTaskById(id)
+          })
+        }
+      );
+      window.location.reload(false);
   };
 
   getTaskById = id => {
@@ -96,7 +92,7 @@ class TaskList extends React.Component {
       }
     })
     this.setState({
-      retrievedTasks: tasksById
+      retrievedTasks: tasksById,
       },
       () => {
         console.log(this.state.retrievedTasks);
@@ -141,7 +137,7 @@ class TaskList extends React.Component {
                   <Form.Group controlId="formBasicCheckbox">
                     <div
                       className='check checkBox'
-                      onClick={index => this.check(item.id)}
+                      onClick={index => this.check(item)}
                       type="checkbox"
                     ><input className="checkedBox" type="checkbox" name="vehicle1" value="Bike"></input></div>
                     <Form.Text>{item.name}</Form.Text>
