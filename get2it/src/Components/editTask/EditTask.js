@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import "./NewTask.css";
 // import 'bulma/css/bulma.css'
 import Clock from "./StartTime";
@@ -12,10 +12,10 @@ import { set } from "date-fns";
 import $ from "jquery";
 import JsxParser from "react-jsx-parser";
 import { connect } from 'react-redux'
-import { createTask } from '../../actions.js'
+import { updateTask } from '../../actions.js'
 import { parseWithOptions } from "date-fns/fp";
 
-class EditTask extends React.Component {
+class EditTaskList extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,6 +25,11 @@ class EditTask extends React.Component {
       newError: null
     };
   }
+
+
+
+
+
   addIconOne = event => {
     // console.log("yolo")
     $("#iconOne").addClass("iconOne");
@@ -33,6 +38,7 @@ class EditTask extends React.Component {
     // $('#iconOne').removeClass("iconOne")
   };
 
+ 
   changeHandler = evt => {
     evt.preventDefault();
 
@@ -41,31 +47,8 @@ class EditTask extends React.Component {
     });
   };
 
-  handleSubmit = evt => {
-    evt.preventDefault()
+  
 
-    const { icon, taskName } = this.state
-    const { createTask, date, start_time, end_time, userData, error } = this.props
-    const id = userData.id
-    const payload = {
-      task_icon: icon,
-      name: taskName,
-      date,
-      start_time,
-      end_time,
-    }
-
-    createTask(payload, id)
-      .then(() => {
-        this.props.history.push('/')
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({
-          newError: this.props.error
-        })
-      });
-  }
   
   addIconOne = event => {
     $('#iconThree').addClass("iconThree")
@@ -93,7 +76,6 @@ class EditTask extends React.Component {
     return (
       <div className="newTaskContainer">
         <br />
-        
         <h1 className="NewTask-Tittle"> Edit Task</h1>
         {/* <hr className="line" /> */}
         <br />
@@ -114,6 +96,7 @@ class EditTask extends React.Component {
 
         <EndTime />
 
+      
         <div className="app"></div>
         <hr className="line" />
         <form onSubmit={this.handleSubmit}>
@@ -151,7 +134,7 @@ class EditTask extends React.Component {
                 ></i>
               </div>
             </div>
-            <DropdownButton id="dropdown-item-button" onClick={(evt) => {evt.preventDefault()}}>
+            <DropdownButton id="dropdown-item-button" title='' onClick={(evt) => {evt.preventDefault()}}>
               <Dropdown.Item
                 onClick={this.addIcons}
                 className="addIcon"
@@ -205,6 +188,7 @@ class EditTask extends React.Component {
             Complete
           </Button>
         </form>
+        
       </div>
     );
   }
@@ -212,15 +196,12 @@ class EditTask extends React.Component {
 
 const mapStateToProps = state => ({
   userData: state.userData,
-  date: state.date,
-  start_time: state.start_time,
-  end_time: state.end_time,
-  isLoading: state.isLoading,
-  error: state.error
+  userTasks: state.userTasks
+
 });
 
 const mapDispatchToProps = {
-  createTask,
+  updateTask,
 };
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(EditTask));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(EditTaskList));

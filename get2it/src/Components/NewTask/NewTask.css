@@ -1,9 +1,9 @@
 .taskModal{
-border: 1px solid grey;
-/* background: none */
-width: 100%;
-height: 95%;
-padding:5px;
+  border: 1px solid grey;
+  /* background: none */
+  width: 100%;
+  height: 95%;
+  padding:5px;
 }
   form {
     display: inline;

@@ -1,18 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import EditTask from '../editTask/EditTask'
+import EditTaskList from '../editTask/EditTask'
 
 const EditTaskModal = ({ location }) => {
   const { state = {} } = location
   const { modal } = state
   
-  const modalClass = modal ? 'edittaskModal' : undefined
-
+  const modalClass = modal ? 'editModal' : undefined
+console.log('props');
   return (
-    <div className={editmodalClass}>
-      {modal && <Link className='closeLink' to='/'>Close</Link>}
+    <div className={modalClass}>
+      {modal && <Link className='closeLink' to='/TaskList'>Close</Link>}
       <div>
-        <EditTask />
+        <EditTaskList />
       </div>
     </div>
   )

@@ -8,9 +8,9 @@ import { updateTask } from "../../actions";
 import { getTASKS, deleteTask } from "../../actions";
 import $ from "jquery";
 import { element } from "prop-types";
-import EditTaskModal from "../editTask/EditTask";
+import EditTaskModal from "../Home/EditTaskModal";
 // build task component and set up state
-class TaskList extends React.Component {
+class editTaskList extends React.Component {
   constructor(props) {
     super(props);
     // console.log(props);
@@ -24,6 +24,8 @@ class TaskList extends React.Component {
   }
   event;
 
+
+  
   // build function to add tasks to state
   createTaskList = event => {
     // event.preventDefault();
@@ -42,9 +44,8 @@ class TaskList extends React.Component {
   };
   itemArr = [];
   check = item => {
-
     var task = item.id;
-    console.log(task)
+    console.log(task);
     switch (this.itemArr.includes(task)) {
       case false:
         this.itemArr.push(task);
@@ -73,30 +74,31 @@ class TaskList extends React.Component {
       this.arrar.push(this.itemArr[i]);
     }
 
-      this.setState(
-        {
-          updatedList: this.arrar
-        },
-        () => {
-          console.log(this.arrar);
-          this.state.updatedList.map(task => {
-            const id = task
-            this.getTaskById(id)
-          })
-        }
-      );
-      window.location.reload(false);
+    this.setState(
+      {
+        updatedList: this.arrar
+      },
+      () => {
+        console.log(this.arrar);
+        this.state.updatedList.map(task => {
+          const id = task;
+          this.getTaskById(id);
+        });
+      }
+    );
+    window.location.reload(false);
   };
 
   getTaskById = id => {
-    let tasksById = []
+    let tasksById = [];
     this.state.taskList.map(task => {
       if (task.id === id) {
-        tasksById.push(task)
+        tasksById.push(task);
       }
-    })
-    this.setState({
-      retrievedTasks: tasksById,
+    });
+    this.setState(
+      {
+        retrievedTasks: tasksById
       },
       () => {
         console.log(this.state.retrievedTasks);
@@ -112,8 +114,8 @@ class TaskList extends React.Component {
           this.props.updateTask(payload, id);
         });
       }
-    )
-  }
+    );
+  };
 
   deleted = id => {
     this.props.deleteTask(id);
@@ -128,11 +130,11 @@ class TaskList extends React.Component {
   // render content to page
   render() {
     return (
-      <div>
+      <div className="taskCont">
         <Form>
           <Form.Text className="taskTitle">TASK LIST</Form.Text>
         </Form>
-        <div id='containter' className="taskListContainer">
+        <div id="containter" className="taskListContainer">
           {/* for each item on the state tasklist create a task link on the page */}
           <ul>
             {this.state.taskList.map((item, index) => (
@@ -140,11 +142,30 @@ class TaskList extends React.Component {
                 <Form>
                   <Form.Group controlId="formBasicCheckbox">
                     <div
-                      className='check checkBox'
+                      className="check checkBox"
                       onClick={index => this.check(item)}
                       type="checkbox"
-                    ><input className="checkedBox" type="checkbox" name="vehicle1" value="Bike"></input></div>
+                    >
+                      <input
+                        className="checkedBox"
+                        type="checkbox"
+                        name="vehicle1"
+                        value="Bike"
+                      ></input>
+                    </div>
+                    <Link id='formText'
+                      to={{
+                        pathname: "/edittaskModal",
+                        state: { modal: true }
+                      }}
+                    >
                     <Form.Text>{item.name}</Form.Text>
+                    </Link>
+                    <Route
+                      path="/edittaskModal"
+                      render={props => <EditTaskModal {...props} />}
+                    />
+
                     <Button
                       className="reUseBtn"
                       onClick={() => this.deleted(item.id)}
@@ -162,19 +183,6 @@ class TaskList extends React.Component {
             </div>
           </div>
         </div>
-        <div className="editModal">
-          <Link
-            id="addTaskLink"
-            to={{ pathname: "/edittaskModal", state: { modal: true } }}
-          >
-            +
-          </Link>
-
-          <Route
-            path="/edittaskModal"
-            render={props => <EditTaskModal {...props} />}
-          />
-        </div>
       </div>
     );
   }
@@ -191,4 +199,4 @@ const mapDispatchToProps = {
   deleteTask
 };
 // export the Component
-export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
+export default connect(mapStateToProps, mapDispatchToProps)(editTaskList);

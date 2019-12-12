@@ -6,7 +6,7 @@ import OnBoarding from '../OnBoarding/index.js'
 import Home from '../Home/Home.js'
 import Menu from '../Menu/Menu.js'
 import NewTask from '../NewTask/NewTask.js'
-import EditTask from '../editTask/EditTask.js'
+import EditTaskList from '../editTask/EditTask.js'
 import TaskList from '../TaskList/index.js'
 import Profile from '../Profile/Profile.js'
 import Spinner from '../Spinner/Spinner.js'
@@ -40,8 +40,9 @@ class Dashboard extends React.Component {
               <Route path="/taskModal" render={props => <Home {...props} />} />
               <Route path="/profile" render={props => <Profile {...props} />} />
               <Route path="/CompletedTaskList" render={props => <CompletedTaskList {...props} />} />
-              <Route path="/EditTaskModal" render={props => <TaskList {...props} />} />
-              <Route path="/EditTask" render={props => <EditTask {...props} />} />
+              <Route path="/edittaskModal" render={props => <TaskList {...props} />} />
+              <Route path="/EditTaskList" render={props => <EditTaskList {...props} />} />
+
             </div>
           </div>
         }
