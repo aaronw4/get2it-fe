@@ -1,12 +1,13 @@
 import React from "react";
 import "./style.css";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { updateTask } from "../../actions";
 import { getTASKS, deleteTask } from "../../actions";
 import $ from "jquery";
 import { element } from "prop-types";
+import EditTaskModal from "../editTask/EditTask";
 // build task component and set up state
 class TaskList extends React.Component {
   constructor(props) {
@@ -39,7 +40,6 @@ class TaskList extends React.Component {
   };
   itemArr = [];
   check = item => {
-
     var task = item;
     // console.log(task)
     switch (this.itemArr.includes(task)) {
@@ -54,13 +54,15 @@ class TaskList extends React.Component {
         this.itemArr = filtered;
       // console.log(filtered)
     }
-    this.classBTN(item); 
+    this.classBTN(item);
     // console.log(this.itemArr)
   };
-  classBTN = (item) => {
-    console.log('hitting check')
-    $('#containter').find('.checkbox').toggleClass('checkBoxChecked');
-  }
+  classBTN = item => {
+    console.log("hitting check");
+    $("#containter")
+      .find(".checkbox")
+      .toggleClass("checkBoxChecked");
+  };
 
   arrar = [];
   complete = () => {
@@ -77,7 +79,9 @@ class TaskList extends React.Component {
       }
     );
 
-    this.state.updatedList.forEach(task=> {this.props.updateTask()})
+    this.state.updatedList.forEach(task => {
+      this.props.updateTask();
+    });
 
     this.setState({
       taskList: this.props.userTasks
@@ -98,38 +102,60 @@ class TaskList extends React.Component {
   render() {
     return (
       <div>
-        <Form>
-          <Form.Text className="taskTitle">TASK LIST</Form.Text>
-        </Form>
-        <div id='containter' className="taskListContainer">
-          {/* for each item on the state tasklist create a task link on the page */}
-          <ul>
-            {this.state.taskList.map((item, index) => (
-              <li key={index}>
-                <Form>
-                  <Form.Group controlId="formBasicCheckbox">
-                    <div
-                      className='check checkBox'
-                      onClick={index => this.check(item.id)}
-                      type="checkbox"
-                    ><input className="checkedBox" type="checkbox" name="vehicle1" value="Bike"></input></div>
-                    <Form.Text>{item.name}</Form.Text>
-                    <Button
-                      className="reUseBtn"
-                      onClick={() => this.deleted(item.id)}
-                    >
-                      Delete
-                    </Button>
-                  </Form.Group>
-                </Form>
-              </li>
-            ))}
-          </ul>
-          <div className="completeCont">
-            <div className="completeBtn">
-              <Button onClick={() => this.complete()}>Complete</Button>
+        <div className="taskListCont">
+          <Form>
+            <Form.Text className="taskTitle">TASK LIST</Form.Text>
+          </Form>
+          <div id="containter" className="taskListContainer">
+            {/* for each item on the state tasklist create a task link on the page */}
+            <ul>
+              {this.state.taskList.map((item, index) => (
+                <li key={index}>
+                  <Form>
+                    <Form.Group controlId="formBasicCheckbox">
+                      <div
+                        className="check checkBox"
+                        onClick={index => this.check(item.id)}
+                        type="checkbox"
+                      >
+                        <input
+                          className="checkedBox"
+                          type="checkbox"
+                          name="vehicle1"
+                          value="Bike"
+                        ></input>
+                      </div>
+                      <Form.Text>{item.name}</Form.Text>
+                      <Button
+                        className="reUseBtn"
+                        onClick={() => this.deleted(item.id)}
+                      >
+                        Delete
+                      </Button>
+                    </Form.Group>
+                  </Form>
+                </li>
+              ))}
+            </ul>
+            <div className="completeCont">
+              <div className="completeBtn">
+                <Button onClick={() => this.complete()}>Complete</Button>
+              </div>
             </div>
           </div>
+        </div>
+        <div className="editModal">
+          <Link
+            id="addTaskLink"
+            to={{ pathname: "/edittaskModal", state: { modal: true } }}
+          >
+            +
+          </Link>
+
+          <Route
+            path="/edittaskModal"
+            render={props => <EditTaskModal {...props} />}
+          />
         </div>
       </div>
     );

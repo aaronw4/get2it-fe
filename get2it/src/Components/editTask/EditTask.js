@@ -15,7 +15,7 @@ import { connect } from 'react-redux'
 import { createTask } from '../../actions.js'
 import { parseWithOptions } from "date-fns/fp";
 
-class NewTask extends React.Component {
+class EditTask extends React.Component {
   constructor(props) {
     super(props);
 
@@ -94,7 +94,7 @@ class NewTask extends React.Component {
       <div className="newTaskContainer">
         <br />
         
-        <h1 className="NewTask-Tittle"> Add New Task</h1>
+        <h1 className="NewTask-Tittle"> Edit Task</h1>
         {/* <hr className="line" /> */}
         <br />
         {/* <Category/> */}
@@ -117,7 +117,7 @@ class NewTask extends React.Component {
         <div className="app"></div>
         <hr className="line" />
         <form onSubmit={this.handleSubmit}>
-          <label className="newTaskLableName">New Task Name:</label>
+          <label className="newTaskLableName">Task Name:</label>
           <input
             className="newTaskInput"
             type="text"
@@ -223,4 +223,4 @@ const mapDispatchToProps = {
   createTask,
 };
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(NewTask));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(EditTask));

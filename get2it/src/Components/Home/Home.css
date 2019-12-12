@@ -125,7 +125,7 @@
 .countLink:hover {
   text-decoration: none;
 }
-.taskModal {
+.edittaskModal {
   size: 90%;
   overflow: auto;
   align-self: center;
@@ -142,12 +142,12 @@
   display: flex;
   flex-flow: column;
 }
-.taskModal::-webkit-scrollbar {
+.edittaskModal::-webkit-scrollbar {
   height: 20px;
   width: 8px;
   /* padding: ; */
 }
-.taskModal::-webkit-scrollbar-thumb {
+.edittaskModal::-webkit-scrollbar-thumb {
   background: rgba(192, 192, 192, 0.281);
   border-radius: 30px;
 }

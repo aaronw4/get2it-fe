@@ -1,9 +1,11 @@
 .taskModal{
+  /* position: absolute; */
 border: 1px solid grey;
 /* background: none */
 width: 100%;
 height: 95%;
 padding:5px;
+top:10px;
 }
   form {
     display: inline;
