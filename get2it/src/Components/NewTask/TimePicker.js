@@ -16,7 +16,7 @@ const DeliTimePicker = ({ className, onChange, value, ...rest }) => (
     value={value}
     use12Hours
   />
-);
+  );
 
 DeliTimePicker.propTypes = {
   className: PropTypes.string.isRequired,
