@@ -20,7 +20,7 @@ dl, ol, ul {
     border-image: radial-gradient(silver, black) 50;
 }
 .taskListContainer {
-  overflow: scroll;
+  overflow: auto;
   height: 75vh;
   padding: 0px;
 }

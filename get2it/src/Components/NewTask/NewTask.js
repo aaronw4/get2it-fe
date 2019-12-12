@@ -151,7 +151,7 @@ class NewTask extends React.Component {
                 ></i>
               </div>
             </div>
-            <DropdownButton id="dropdown-item-button" onClick={(evt) => {evt.preventDefault()}}>
+            <DropdownButton id="dropdown-item-button" title='' onClick={(evt) => {evt.preventDefault()}}>
               <Dropdown.Item
                 onClick={this.addIcons}
                 className="addIcon"
@@ -201,9 +201,11 @@ class NewTask extends React.Component {
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
           )}
-          <Button className="completeBtn-create" type="submit">
-            Complete
-          </Button>
+          <div className='completeBtnContainer'>
+            <Button className="completeBtn-create" type="submit">
+              Complete
+            </Button>
+          </div>
         </form>
       </div>
     );

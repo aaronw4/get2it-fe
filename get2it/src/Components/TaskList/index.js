@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import { connect } from "react-redux";
 import { Link, Route } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { updateTask } from "../../actions";
 import { getTASKS, deleteTask } from "../../actions";
@@ -17,6 +18,7 @@ class TaskList extends React.Component {
     this.state = {
       taskList: [],
       updatedList: [],
+      retrievedTasks: [],
       toggleCheck: ""
     };
   }
@@ -40,8 +42,9 @@ class TaskList extends React.Component {
   };
   itemArr = [];
   check = item => {
-    var task = item;
-    // console.log(task)
+
+    var task = item.id;
+    console.log(task)
     switch (this.itemArr.includes(task)) {
       case false:
         this.itemArr.push(task);
@@ -70,23 +73,47 @@ class TaskList extends React.Component {
       this.arrar.push(this.itemArr[i]);
     }
 
-    this.setState(
-      {
-        updatedList: this.arrar
+      this.setState(
+        {
+          updatedList: this.arrar
+        },
+        () => {
+          console.log(this.arrar);
+          this.state.updatedList.map(task => {
+            const id = task
+            this.getTaskById(id)
+          })
+        }
+      );
+      window.location.reload(false);
+  };
+
+  getTaskById = id => {
+    let tasksById = []
+    this.state.taskList.map(task => {
+      if (task.id === id) {
+        tasksById.push(task)
+      }
+    })
+    this.setState({
+      retrievedTasks: tasksById,
       },
       () => {
-        console.log(this.state.updatedList);
+        console.log(this.state.retrievedTasks);
+
+        this.state.retrievedTasks.map(task => {
+          const id = task.id;
+          const payload = {
+            ...task,
+            status: true
+          };
+          console.log(payload);
+
+          this.props.updateTask(payload, id);
+        });
       }
-    );
-
-    this.state.updatedList.forEach(task => {
-      this.props.updateTask();
-    });
-
-    this.setState({
-      taskList: this.props.userTasks
-    });
-  };
+    )
+  }
 
   deleted = id => {
     this.props.deleteTask(id);
@@ -102,45 +129,36 @@ class TaskList extends React.Component {
   render() {
     return (
       <div>
-        <div className="taskListCont">
-          <Form>
-            <Form.Text className="taskTitle">TASK LIST</Form.Text>
-          </Form>
-          <div id="containter" className="taskListContainer">
-            {/* for each item on the state tasklist create a task link on the page */}
-            <ul>
-              {this.state.taskList.map((item, index) => (
-                <li key={index}>
-                  <Form>
-                    <Form.Group controlId="formBasicCheckbox">
-                      <div
-                        className="check checkBox"
-                        onClick={index => this.check(item.id)}
-                        type="checkbox"
-                      >
-                        <input
-                          className="checkedBox"
-                          type="checkbox"
-                          name="vehicle1"
-                          value="Bike"
-                        ></input>
-                      </div>
-                      <Form.Text>{item.name}</Form.Text>
-                      <Button
-                        className="reUseBtn"
-                        onClick={() => this.deleted(item.id)}
-                      >
-                        Delete
-                      </Button>
-                    </Form.Group>
-                  </Form>
-                </li>
-              ))}
-            </ul>
-            <div className="completeCont">
-              <div className="completeBtn">
-                <Button onClick={() => this.complete()}>Complete</Button>
-              </div>
+        <Form>
+          <Form.Text className="taskTitle">TASK LIST</Form.Text>
+        </Form>
+        <div id='containter' className="taskListContainer">
+          {/* for each item on the state tasklist create a task link on the page */}
+          <ul>
+            {this.state.taskList.map((item, index) => (
+              <li key={index}>
+                <Form>
+                  <Form.Group controlId="formBasicCheckbox">
+                    <div
+                      className='check checkBox'
+                      onClick={index => this.check(item)}
+                      type="checkbox"
+                    ><input className="checkedBox" type="checkbox" name="vehicle1" value="Bike"></input></div>
+                    <Form.Text>{item.name}</Form.Text>
+                    <Button
+                      className="reUseBtn"
+                      onClick={() => this.deleted(item.id)}
+                    >
+                      Delete
+                    </Button>
+                  </Form.Group>
+                </Form>
+              </li>
+            ))}
+          </ul>
+          <div className="completeCont">
+            <div className="completeBtn">
+              <Button onClick={() => this.complete()}>Complete</Button>
             </div>
           </div>
         </div>

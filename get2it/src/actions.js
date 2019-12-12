@@ -88,8 +88,12 @@ export function getTASKS(id) {
               status: false,
               date: moment(task.date).add(1,'day').format('L')
             }
+          }else {
+            return {
+              ...task,
+              date: moment(task.date).add(1, "day").format("L")
+            };
           }
-          task.date = moment(task.date).format("L");
         })
         dispatch({ type: GET_TASKS_SUCCESS, payload: newRes})
       })
@@ -110,6 +114,7 @@ export function updateTask(payload, id){
 
     axios.put(`https://get2it.herokuapp.com/api/users/tasks/${id}`, payload, { headers })
       .then((res) => {
+        console.log(payload)
         dispatch({ type: UPDATE_TASK_SUCCESS, payload: res.data })
       })
       .catch((err) => {
