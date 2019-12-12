@@ -1,9 +1,9 @@
 .taskModal{
-border: 1px solid grey;
-/* background: none */
-width: 100%;
-height: 95%;
-padding:5px;
+  border: 1px solid grey;
+  /* background: none */
+  width: 100%;
+  height: 95%;
+  padding:5px;
 }
   form {
     display: inline;
@@ -19,6 +19,7 @@ padding:5px;
     font-weight: bold;
     font-size: 2em;
     text-transform: capitalize;
+    margin:0;
   }
   /* .to-do-app {
     box-sizing: border-box;
@@ -141,7 +142,7 @@ padding:5px;
 .newTaskContainer {
   overflow: auto;
   width: 100%;
-  height: 100%;
+  height: 95%;
   margin-bottom: 20px;
   padding: 0 10px;
 }
@@ -379,6 +380,7 @@ hr {
 .newTaskInput {
   border: 1px solid grey;
   background: rgba(76, 175, 80, 0.1);
+  margin:0;
 }
 .dropdown-item {
   /* border:1px solid red; */
@@ -427,6 +429,8 @@ hr {
   /* position: absolute; */
     width: 62%;
     height: 40px;
+    /* margin: 0px 0px -5px -108px; */
+    bottom: 10px;
     /* margin: 0px 10px -254px -107px; */
     /* bottom: 10px; */
 }

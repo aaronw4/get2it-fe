@@ -5,6 +5,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute.js'
 import Dashboard from './Dashboard/Dashboard.js'
 import Register from './Register/Register.js'
 import Login from './Login/Login.js'
+import TaskList from './TaskList';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
       <PrivateRoute exact path='/' component={Dashboard} />
       <PrivateRoute path='/onboarding' component={Dashboard} />
       <PrivateRoute path='/NewTask' component={Dashboard} />
+      <PrivateRoute path='/editTask' component={Dashboard} />
+      <PrivateRoute path='/edittaskModal' component={Dashboard} />
       <PrivateRoute path='/taskList' component={Dashboard} />
       <PrivateRoute path='/taskModal' component={Dashboard} />
       <PrivateRoute path='/profile' component={Dashboard} />

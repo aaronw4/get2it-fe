@@ -1,3 +1,4 @@
+
 input[type=checkbox] {
     width: 40px;
     height:39px;
@@ -48,7 +49,7 @@ padding:5px 5px 5px 10px;
 .formStyle {
     margin-bottom: 5px;
 }
-.form-text {
+#formText {
     display: block;
     margin-top: .25rem;
     padding: 2%;
@@ -57,6 +58,7 @@ padding:5px 5px 5px 10px;
     width:100%;
     font-size: 1em;;
 }
+
 .checkBTN {
     color:white;
     text-align: center;
@@ -67,7 +69,7 @@ input[type=checkbox]:checked {
  background-image: url("./check.png");
  background-size: cover;
  background-repeat: no-repeat;
- width: 38px;
+ width: 40px;
  height: 39px;
  border-radius: 50%;
  vertical-align: middle;
@@ -142,4 +144,7 @@ padding: auto;
  height: 39px;
   border-width: 2px;
 
+}
+.taskCont{
+  /* position: relative; */
 }
