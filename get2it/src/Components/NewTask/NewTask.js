@@ -1,19 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import { withRouter } from 'react-router-dom'
 import "./NewTask.css";
-// import 'bulma/css/bulma.css'
 import Clock from "./StartTime";
 import Date from "./Date";
 import EndTime from "./EndTime";
-import Label from "./Label";
-import Category from "./Category";
 import { Dropdown, DropdownButton, Button } from "react-bootstrap";
-import { set } from "date-fns";
 import $ from "jquery";
-import JsxParser from "react-jsx-parser";
 import { connect } from 'react-redux'
 import { createTask } from '../../actions.js'
-import { parseWithOptions } from "date-fns/fp";
 
 class NewTask extends React.Component {
   constructor(props) {

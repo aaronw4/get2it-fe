@@ -322,11 +322,7 @@ main {
 .color-indicator:hover {
   transform: scale(1.1);
 }
-.lable{
-  
-  
-  
-}
+
 .calender-date{
   display: flex;
   align-content: space-around;
