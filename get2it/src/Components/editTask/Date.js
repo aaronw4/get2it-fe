@@ -12,9 +12,9 @@ class Date extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      date: this.props.date
+      date: this.props.taskDate
     };
-    console.log(this.state.date)
+    console.log(props)
   }
   render() {
     this.props.newTaskDate(this.state.date);
@@ -36,7 +36,7 @@ class Date extends React.Component {
           getItemProps,
           toggleMenu,
           isOpen,
-          selectedItem
+          selectedItem,
         }) => (
           <div className="date-picker-container">
             <input
@@ -53,6 +53,7 @@ class Date extends React.Component {
                 selectedItem={selectedItem}
                 getItemProps={getItemProps}
                 render={Calendar}
+                
               />
             ) : null}
           </div>

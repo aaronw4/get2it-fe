@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Link } from "react-router-dom";
 import "./NewTask.css";
 // import 'bulma/css/bulma.css'
 import Clock from "./StartTime";
@@ -11,41 +11,45 @@ import { Dropdown, DropdownButton, Button } from "react-bootstrap";
 import { set } from "date-fns";
 import $ from "jquery";
 import JsxParser from "react-jsx-parser";
-import { connect } from 'react-redux'
-import { updateTask } from '../../actions.js'
+import { connect } from "react-redux";
+import { updateTask } from "../../actions.js";
 import { parseWithOptions } from "date-fns/fp";
 
 class EditTaskList extends React.Component {
   constructor(props) {
-    super(props)
-    const tasks = this.props.userTasks.find(tasks => `${tasks.id}` === this.props.match.params.id)
+    super(props);
+    const tasks = this.props.userTasks.find(
+      tasks => `${tasks.id}` === this.props.match.params.id
+    );
     this.state = {
       icon: "",
       date: tasks.date,
       task_name: tasks.name,
       start_time: tasks.start_time,
       end_time: tasks.end_time,
-      newError: null,
-    }
+      icon: tasks.task_icon,
+      newError: null
+    };
   }
+ 
 
   newTask = evt => {
-    evt.preventDefault()
-    const {
-      task_name
-    } = this.state
-  }
-// console.log(task_name)
-  // payload = {
-  //   task_name
-  
-  // }
-//   id = { this.props.match.params.id
-    
-//   this.props.updateTask(payload,id)
-  
-//   this.props.history.push(`/`)
-// }
+    evt.preventDefault();
+    const { date, task_name, start_time, end_time } = this.state;
+
+    const payload = {
+      date,
+      task_name,
+      start_time,
+      end_time
+    };
+
+    const id = this.props.match.params.id;
+
+    this.props.updateTask(payload, id);
+
+    this.props.history.push(`/taskList`);
+  };
 
   addIconOne = event => {
     // console.log("yolo")
@@ -55,26 +59,23 @@ class EditTaskList extends React.Component {
     // $('#iconOne').removeClass("iconOne")
   };
 
- 
   changeHandler = evt => {
     evt.preventDefault();
 
     this.setState({
       [evt.target.name]: evt.target.value
-    });
+    }, () => console.log(this.state.task_name));
+    
+
   };
 
-  
-
-  
   addIconOne = event => {
-    $('#iconThree').addClass("iconThree")
-    $('#iconTwo').addClass("iconTwo")
-    $('#iconOne').removeClass("iconOne")
-
-    }
-    addIconTwo = event => {
-      // console.log("yolo")
+    $("#iconThree").addClass("iconThree");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconOne").removeClass("iconOne");
+  };
+  addIconTwo = event => {
+    // console.log("yolo")
 
     $("#iconOne").addClass("iconOne");
     $("#iconThree").addClass("iconThree");
@@ -88,11 +89,13 @@ class EditTaskList extends React.Component {
     $("#iconThree").removeClass("iconThree");
   };
 
+  refreshPage = () => {
+    window.location.reload(false);
+  }
+
   render() {
-    const {
-      task_name,
-     
-    } = this.state
+    const { task_name } = this.state;
+   
     // console.log(this.props)
     return (
       <div className="newTaskContainer">
@@ -108,31 +111,32 @@ class EditTaskList extends React.Component {
           <br />
           <br />
 
-          <Date className="date" date={this.state.date} />
+          <Date taskDate={this.state.date} />
           <br />
           <br />
         </div>
-        <Clock start_time={this.state.start_time}  />
+        <Clock start_time={this.state.start_time} />
         <hr className="line" />
 
         <EndTime end_time={this.state.end_time} />
 
-      
         <div className="app"></div>
         <hr className="line" />
         <div onSubmit={this.handleSubmit}>
-          <label className="newTaskLableName">Task Name:</label>
+          <label to="taskName"  className="newTaskLableName">Task Name:</label>
           <input
-            value={this.state.task_name}
+          value={task_name}
+            id="taskName"
             className="newTaskInput"
             type="text"
-            name="taskName"
+            name="task_name"
             onChange={this.changeHandler}
             required
           />
-
-          <label className='newTaskLableName'>Pick an icon for your task!</label>
-          <div className='iconDropContainer'>
+          <label className="newTaskLableName">
+            Pick an icon for your task!
+          </label>
+          <div className="iconDropContainer">
             <div className="displayIcons">
               <div id="iconOne">
                 <i
@@ -156,7 +160,13 @@ class EditTaskList extends React.Component {
                 ></i>
               </div>
             </div>
-            <DropdownButton id="dropdown-item-button" title='' onClick={(evt) => {evt.preventDefault()}}>
+            <DropdownButton
+              id="dropdown-item-button"
+              title=""
+              onClick={evt => {
+                evt.preventDefault();
+              }}
+            >
               <Dropdown.Item
                 onClick={this.addIcons}
                 className="addIcon"
@@ -195,7 +205,10 @@ class EditTaskList extends React.Component {
                 }}
                 as="button"
               >
-                <i id="icon" className="fab fa-accessible-icon iconDropdown"></i>
+                <i
+                  id="icon"
+                  className="fab fa-accessible-icon iconDropdown"
+                ></i>
               </Dropdown.Item>
             </DropdownButton>
             {/* <Label /> */}
@@ -206,11 +219,10 @@ class EditTaskList extends React.Component {
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
           )}
-          <Button className="completeBtn-create" type="submit">
-            Complete
+          <Button onChange={this.newTask = () => this.newTask} className="completeBtn-create" type="submit">
+            Save
           </Button>
         </div>
-        
       </div>
     );
   }
@@ -219,11 +231,12 @@ class EditTaskList extends React.Component {
 const mapStateToProps = state => ({
   userData: state.userData,
   userTasks: state.userTasks
-
 });
 
 const mapDispatchToProps = {
-  updateTask,
+  updateTask
 };
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(EditTaskList));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(EditTaskList)
+);

@@ -7,7 +7,7 @@ const EditTaskModal = ({ location }) => {
   const { modal } = state
   
   const modalClass = modal ? 'editModal' : undefined
-console.log('props');
+// console.log('props');
   return (
     <div className={modalClass}>
       {modal && <Link className='closeLink' to='/TaskList'>Close</Link>}
