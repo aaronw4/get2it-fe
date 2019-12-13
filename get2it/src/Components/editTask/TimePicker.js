@@ -18,10 +18,10 @@ const DeliTimePicker = ({ className, onChange, value, ...rest }) => (
   />
 );
 
-DeliTimePicker.propTypes = {
-  className: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.instanceOf(moment)
-};
+// DeliTimePicker.propTypes = {
+//   className: PropTypes.string.isRequired,
+//   onChange: PropTypes.func.isRequired,
+//   value: PropTypes.instanceOf(moment)
+// };
 
 export default DeliTimePicker;

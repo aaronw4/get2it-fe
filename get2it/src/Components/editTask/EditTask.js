@@ -17,18 +17,35 @@ import { parseWithOptions } from "date-fns/fp";
 
 class EditTaskList extends React.Component {
   constructor(props) {
-    super(props);
-
+    super(props)
+    const tasks = this.props.userTasks.find(tasks => `${tasks.id}` === this.props.match.params.id)
     this.state = {
       icon: "",
-      taskName: "",
-      newError: null
-    };
+      date: tasks.date,
+      task_name: tasks.name,
+      start_time: tasks.start_time,
+      end_time: tasks.end_time,
+      newError: null,
+    }
   }
 
-
-
-
+  newTask = evt => {
+    evt.preventDefault()
+    const {
+      task_name
+    } = this.state
+  }
+// console.log(task_name)
+  // payload = {
+  //   task_name
+  
+  // }
+//   id = { this.props.match.params.id
+    
+//   this.props.updateTask(payload,id)
+  
+//   this.props.history.push(`/`)
+// }
 
   addIconOne = event => {
     // console.log("yolo")
@@ -72,7 +89,11 @@ class EditTaskList extends React.Component {
   };
 
   render() {
-    console.log(this.props)
+    const {
+      task_name,
+     
+    } = this.state
+    // console.log(this.props)
     return (
       <div className="newTaskContainer">
         <br />
@@ -87,21 +108,22 @@ class EditTaskList extends React.Component {
           <br />
           <br />
 
-          <Date className="date" />
+          <Date className="date" date={this.state.date} />
           <br />
           <br />
         </div>
-        <Clock />
+        <Clock start_time={this.state.start_time}  />
         <hr className="line" />
 
-        <EndTime />
+        <EndTime end_time={this.state.end_time} />
 
       
         <div className="app"></div>
         <hr className="line" />
-        <form onSubmit={this.handleSubmit}>
+        <div onSubmit={this.handleSubmit}>
           <label className="newTaskLableName">Task Name:</label>
           <input
+            value={this.state.task_name}
             className="newTaskInput"
             type="text"
             name="taskName"
@@ -187,7 +209,7 @@ class EditTaskList extends React.Component {
           <Button className="completeBtn-create" type="submit">
             Complete
           </Button>
-        </form>
+        </div>
         
       </div>
     );

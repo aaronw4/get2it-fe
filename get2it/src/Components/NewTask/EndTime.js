@@ -13,6 +13,7 @@ class TimeSelectForm extends Component {
       end_time: moment()
     };
   }
+
   handleChange = value => {
     this.setState({ end_time: value });
     this.props.newEndTime(moment(this.state.end_time).format("h:mm a"));

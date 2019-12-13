@@ -9,9 +9,13 @@ class TimeSelectForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      start_time: moment()
+      start_time: moment(this.props.start_time, "h:mm a"),
     };
+    // console.log(this.state.start_time)
   }
+
+
+
   handleChange = value => {
     this.setState({ start_time: value });
     this.props.newStartTime(moment(this.state.start_time).format("h:mm a"));
@@ -22,18 +26,17 @@ class TimeSelectForm extends Component {
     alert(moment(this.state.start_time).format("hh:mm a"));
   };
 
-  render = props => {
-    // console.log(moment(this.state.start_time).format("h:mm a"));
+  render() {
     return (
       <div>
         <h1 className="Title2" > START</h1>
         <div className="startTime">
 
-          <form onSubmit={this.handleSubmit}>
+          <div onSubmit={this.handleSubmit}>
             <i className="far fa-clock fa-3x"></i>
             <TimePicker className='stupid' value={this.state.start_time} onChange={this.handleChange} />
             <br/>
-          </form>
+          </div>
         </div>
       </div>
       // <div className="startCont">

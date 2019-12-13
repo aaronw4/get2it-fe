@@ -155,14 +155,14 @@ class editTaskList extends React.Component {
                     </div>
                     <Link id='formText'
                       to={{
-                        pathname: "/edittaskModal",
+                        pathname: `/edittaskModal/${item.id}`,
                         state: { modal: true }
                       }}
                     >
                     <Form.Text>{item.name}</Form.Text>
                     </Link>
                     <Route
-                      path="/edittaskModal"
+                      path="/edittaskModal/:id"
                       render={props => <EditTaskModal {...props} />}
                     />
 

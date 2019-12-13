@@ -12,8 +12,9 @@ class Date extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      date: moment().format('L')
+      date: this.props.date
     };
+    console.log(this.state.date)
   }
   render() {
     this.props.newTaskDate(this.state.date);
