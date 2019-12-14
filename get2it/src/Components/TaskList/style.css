@@ -145,6 +145,39 @@ padding: auto;
   border-width: 2px;
 
 }
-.taskCont{
-  /* position: relative; */
+#completedLink {
+  padding: 4px;
+  padding-left: 8px;
+  box-sizing: border-box;
+  height: 35px;
+  width: 177px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  text-decoration: none;
+}
+#completedLink:hover {
+  border: 1px solid silver;
+  border-radius: 20px;
+}
+.completedLinkText {
+  margin-right: 20px;
+  margin-bottom: 0;
+  padding: 0;
+}
+.completedLinkCount {
+  padding: 0;
+  margin-bottom: 0;
+  background-color: white;
+  height: 25px;
+  width: 25px;
+  font-size: .8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  color: navy;
 }

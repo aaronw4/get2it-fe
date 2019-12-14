@@ -127,10 +127,21 @@ class editTaskList extends React.Component {
   componentDidMount() {
     this.createTaskList();
   }
+
+  completedTasksList = this.props.userTasks.filter(task => {
+    return task.status === true
+  })
+
   // render content to page
   render() {
     return (
       <div className="taskCont">
+        <Link id="completedLink" to="/CompletedTaskList">
+          <p className="completedLinkText">Completed Tasks:</p>
+          <p className="completedLinkCount">
+            {this.completedTasksList.length}
+          </p>
+        </Link>
         <Form>
           <Form.Text className="taskTitle">TASK LIST</Form.Text>
         </Form>
@@ -153,13 +164,14 @@ class editTaskList extends React.Component {
                         value="Bike"
                       ></input>
                     </div>
-                    <Link id='formText'
+                    <Link
+                      id="formText"
                       to={{
                         pathname: `/edittaskModal/${item.id}`,
                         state: { modal: true }
                       }}
                     >
-                    <Form.Text>{item.name}</Form.Text>
+                      <Form.Text>{item.name}</Form.Text>
                     </Link>
                     <Route
                       path="/edittaskModal/:id"
