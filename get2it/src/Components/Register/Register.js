@@ -12,6 +12,7 @@ class Register extends React.Component {
     this.state = {
       username: '',
       password: '',
+      error: null
     }
   }
 
@@ -30,8 +31,11 @@ class Register extends React.Component {
 
     this.props.createUser(username, password)
       .then(() => {
-        !this.props.error &&
-          this.props.history.push('/onboarding')
+        !this.props.error ?
+          this.props.history.push('/onboarding') :
+          this.setState({
+            error: 'Invalid Credentials'
+          })
       })
       .catch((err) => {
         console.error(err)
@@ -50,7 +54,7 @@ class Register extends React.Component {
             <h3 className='pageTitle'>Sign up</h3>
             <img className='registerLogo' src={logo} alt='get2it'/>
             <form className='registerForm' onSubmit={this.handleSubmit}>
-              {error && <p className='error'>{error}</p>}
+              {this.state.error === 'Invalid Credentials' ? <p className='error'>Username already exists!</p> : null}
 
               <div className='inputContainer'>
                 <label to='username'><i id='registerIcon' className="far fa-user-circle"></i></label>

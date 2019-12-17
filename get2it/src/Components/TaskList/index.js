@@ -120,8 +120,11 @@ class editTaskList extends React.Component {
   deleted = id => {
     this.props.deleteTask(id);
     this.setState({
-      taskList: this.props.getTASKS(this.props.userData.id)
-    });
+      taskList: this.props.userTasks.filter(task => {
+        return task.status === false
+      })
+    }, setTimeout(() => {window.location.reload(false)}, 500));
+    ;
   };
 
   componentDidMount() {

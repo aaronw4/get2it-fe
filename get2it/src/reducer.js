@@ -112,7 +112,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.message
+        error: action.payload
       };
     }
     case LOGIN_START: {
