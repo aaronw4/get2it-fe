@@ -17,9 +17,13 @@ class TimeSelectForm extends Component {
 
 
   handleChange = value => {
-    this.setState({ start_time: value });
-    this.props.newStartTime(moment(this.state.start_time).format("h:mm a"));
+    this.setState({ start_time: value }, () => {
+      this.props.newStartTime(moment(this.state.start_time).format("h:mm a"));
+    });
+  
+  
   };
+
 
   handleSubmit = e => {
     e.preventDefault();

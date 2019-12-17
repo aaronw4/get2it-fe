@@ -6,8 +6,9 @@ import Date from "./Date";
 import EndTime from "./EndTime";
 import { Dropdown, DropdownButton, Button } from "react-bootstrap";
 import $ from "jquery";
-import { connect } from 'react-redux'
-import { createTask } from '../../actions.js'
+import { connect } from 'react-redux';
+import { createTask, newStartTime } from '../../actions.js';
+import moment from "moment";
 
 class NewTask extends React.Component {
   constructor(props) {
@@ -41,15 +42,20 @@ class NewTask extends React.Component {
     const { icon, taskName } = this.state
     const { createTask, date, start_time, end_time, userData, error } = this.props
     const id = userData.id
-    const payload = {
-      task_icon: icon,
-      name: taskName,
-      date,
-      start_time,
-      end_time,
-    }
 
-    createTask(payload, id)
+      if(start_time === '' && end_time === ''){
+        // this.props.newStartTime(moment().format("h:mm a"));
+
+        const payload = {
+          task_icon: icon,
+          name: taskName,
+          date,
+          start_time: moment().format("h:mm a"),
+          end_time: moment().format("h:mm a"),
+        }
+        // console.log(payload)
+        
+        createTask(payload, id)
       .then(() => {
         this.props.history.push('/')
       })
@@ -59,6 +65,69 @@ class NewTask extends React.Component {
           newError: this.props.error
         })
       });
+      } else if (end_time === ''){
+        const payload = {
+          task_icon: icon,
+          name: taskName,
+          date,
+          start_time,
+          end_time: moment().format("h:mm a")
+        }
+        console.log(payload)
+        
+        createTask(payload, id)
+      .then(() => {
+        this.props.history.push('/')
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({
+          newError: this.props.error
+        })
+      });
+
+      } else if (start_time === ''){
+        const payload = {
+          task_icon: icon,
+          name: taskName,
+          date,
+          start_time: moment().format("h:mm a"),
+          end_time 
+        }
+        console.log(payload)
+        
+        createTask(payload, id)
+      .then(() => {
+        this.props.history.push('/')
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({
+          newError: this.props.error
+        })
+      });
+
+      } else {
+        
+        const payload = {
+          task_icon: icon,
+          name: taskName,
+          date,
+          start_time,
+          end_time,
+        }
+        createTask(payload, id)
+      .then(() => {
+        this.props.history.push('/')
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({
+          newError: this.props.error
+        })
+      });
+      }
+
   }
   
   addIconOne = event => {
@@ -217,6 +286,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   createTask,
+  newStartTime
 };
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(NewTask));

@@ -86,8 +86,12 @@ class editTaskList extends React.Component {
         });
       }
     );
-    window.location.reload(false);
+    setTimeout(() => {
+  
+      window.location.reload(false);
+    }, 500);
   };
+
 
   getTaskById = id => {
     let tasksById = [];

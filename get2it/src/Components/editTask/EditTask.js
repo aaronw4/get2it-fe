@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, Redirect } from "react-router-dom";
 import "./NewTask.css";
 // import 'bulma/css/bulma.css'
 import Clock from "./StartTime";
@@ -28,28 +28,36 @@ class EditTaskList extends React.Component {
       start_time: tasks.start_time,
       end_time: tasks.end_time,
       icon: tasks.task_icon,
-      newError: null
+      newError: null,
+      user_id: tasks.user_id,
+      id: tasks.id
     };
   }
  
 
   newTask = evt => {
-    evt.preventDefault();
-    const { date, task_name, start_time, end_time } = this.state;
-
+    // evt.preventDefault();
+    const {task_name, task_icon, user_id, id} = this.state;
+    const { date, start_time, end_time} = this.props;
     const payload = {
       date,
-      task_name,
+      name: task_name,
       start_time,
-      end_time
+      end_time,
+      user_id,
+      id,
+      task_icon
     };
-
-    const id = this.props.match.params.id;
 
     this.props.updateTask(payload, id);
 
-    this.props.history.push(`/taskList`);
+    setTimeout(() => {
+      
+      this.props.history.push(`/taskList`);
+    }, 400);
+
   };
+
 
   addIconOne = event => {
     // console.log("yolo")
@@ -125,7 +133,7 @@ class EditTaskList extends React.Component {
         <div onSubmit={this.handleSubmit}>
           <label to="taskName"  className="newTaskLableName">Task Name:</label>
           <input
-          value={task_name}
+            value={task_name}
             id="taskName"
             className="newTaskInput"
             type="text"
@@ -219,7 +227,7 @@ class EditTaskList extends React.Component {
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
           )}
-          <Button onChange={this.newTask = () => this.newTask} className="completeBtn-create" type="submit">
+          <Button onClick={this.newTask} className="completeBtn-create" type="button">
             Save
           </Button>
         </div>
@@ -230,7 +238,12 @@ class EditTaskList extends React.Component {
 
 const mapStateToProps = state => ({
   userData: state.userData,
-  userTasks: state.userTasks
+  userTasks: state.userTasks,
+  date: state.date,
+  start_time: state.start_time,
+  end_time: state.end_time,
+  isLoading: state.isLoading,
+  error: state.error
 });
 
 const mapDispatchToProps = {
