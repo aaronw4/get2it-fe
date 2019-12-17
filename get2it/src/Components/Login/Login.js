@@ -54,11 +54,11 @@ class Login extends React.Component {
 
               <div className='inputContainer'>
                 <label to='username'><i id='registerIcon' className="far fa-user-circle"></i></label>
-                <input type='text' id='username' name='username' placeholder='Username' value={username} onChange={this.handleChange} /><br />
+                <input type='text' id='username' name='username' placeholder='Username' value={username} onChange={this.handleChange} required /><br />
               </div>
               <div className='inputContainer'>
                 <label to='password'><i id='registerIcon' className="fas fa-unlock-alt"></i></label>
-                <input type='password' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} /><br />
+                <input type='password' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} required /><br />
               </div>
 
               <button className='registerButton' type='submit'>Login</button>
