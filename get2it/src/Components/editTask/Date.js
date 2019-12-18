@@ -3,10 +3,9 @@ import Downshift from "downshift";
 import Kalendaryo from "kalendaryo";
 import Calendar from "./Calender";
 import { format } from "date-fns";
-import "./NewTask.css";
+import "./EditTask.css";
 import { newTaskDate } from '../../actions.js'
 import { connect } from 'react-redux'
-import moment from 'moment'
 
 class Date extends React.Component {
   constructor(props) {

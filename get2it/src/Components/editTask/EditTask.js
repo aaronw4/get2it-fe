@@ -1,19 +1,13 @@
-import React, { Component } from "react";
-import { withRouter, Link, Redirect } from "react-router-dom";
-import "./NewTask.css";
-// import 'bulma/css/bulma.css'
+import React from "react";
+import { withRouter } from "react-router-dom";
+import "../NewTask/NewTask.css";
 import Clock from "./StartTime";
 import Date from "./Date";
 import EndTime from "./EndTime";
-import Label from "./Label";
-import Category from "./Category";
 import { Dropdown, DropdownButton, Button } from "react-bootstrap";
-import { set } from "date-fns";
 import $ from "jquery";
-import JsxParser from "react-jsx-parser";
 import { connect } from "react-redux";
 import { updateTask } from "../../actions.js";
-import { parseWithOptions } from "date-fns/fp";
 
 class EditTaskList extends React.Component {
   constructor(props) {
@@ -22,7 +16,6 @@ class EditTaskList extends React.Component {
       tasks => `${tasks.id}` === this.props.match.params.id
     );
     this.state = {
-      icon: "",
       date: tasks.date,
       task_name: tasks.name,
       start_time: tasks.start_time,
@@ -35,7 +28,6 @@ class EditTaskList extends React.Component {
   }
 
   newTask = evt => {
-    // evt.preventDefault();
     const { task_name, task_icon, user_id, id } = this.state;
     const { date, start_time, end_time } = this.props;
     const payload = {
@@ -67,22 +59,22 @@ class EditTaskList extends React.Component {
   };
 
   addIconOne = event => {
-    $("#iconThree").addClass("iconThree");
-    $("#iconTwo").addClass("iconTwo");
-    $("#iconOne").removeClass("iconOne");
-    console.log($("#iconThree"))
+    $("#iconThreet").addClass("iconThreet");
+    $("#iconTwot").addClass("iconTwot");
+    $("#iconOnet").removeClass("iconOnet");
+    console.log($("#iconThreet"));
   };
   addIconTwo = event => {
-    $("#iconOne").addClass("iconOne");
-    $("#iconThree").addClass("iconThree");
-    $("#iconTwo").removeClass("iconTwo");
-    console.log("yolo")
+    $("#iconOnet").addClass("iconOnet");
+    $("#iconThreet").addClass("iconThreet");
+    $("#iconTwot").removeClass("iconTwot");
+    console.log("yolo");
   };
   addIconThree = event => {
-    $("#iconOne").addClass("iconOne");
-    $("#iconTwo").addClass("iconTwo");
-    $("#iconThree").removeClass("iconThree");
-    console.log("yolo")
+    $("#iconOnet").addClass("iconOnet");
+    $("#iconTwot").addClass("iconTwot");
+    $("#iconThreet").removeClass("iconThreet");
+    console.log("yolo");
   };
   iconCheck = () => {
     if (this.state.icon === "") {
@@ -119,21 +111,17 @@ class EditTaskList extends React.Component {
   render() {
     const { task_name, date } = this.state;
 
-    // console.log(this.props)
     return (
       <div className="newTaskContainer">
         <br />
         <h1 className="NewTask-Tittle"> Edit Task</h1>
-        {/* <hr className="line" /> */}
         <br />
-        {/* <Category/> */}
         <div className="calender-date">
           <div className="startTime">
             <i className="far fa-calendar-alt fa-3x" />
           </div>
           <br />
           <br />
-
           <Date taskDate={this.state.date} />
           <br />
           <br />
@@ -148,9 +136,7 @@ class EditTaskList extends React.Component {
         </div>
         <Clock start_time={this.state.start_time} />
         <hr className="line" />
-
         <EndTime end_time={this.state.end_time} />
-
         <div className="app"></div>
         <hr className="line" />
         <div onSubmit={this.handleSubmit}>
@@ -171,21 +157,21 @@ class EditTaskList extends React.Component {
           </label>
           <div className="iconDropContainer">
             <div className="displayIcons">
-              <div id="iconOne">
+              <div id="iconOnet">
                 <i
                   id="icon"
                   data-myval="1"
                   className="fas fa-heartbeat iconDropdown"
                 ></i>
               </div>
-              <div id="iconTwo">
+              <div id="iconTwot">
                 <i
                   id="icon"
                   data-myval="2"
                   className="fas fa-hospital iconDropdown"
                 ></i>
               </div>
-              <div id="iconThree">
+              <div id="iconThreet">
                 <i
                   id="icon"
                   data-myval="3"
@@ -201,7 +187,6 @@ class EditTaskList extends React.Component {
               }}
             >
               <Dropdown.Item
-                onClick={this.addIcons}
                 className="addIcon"
                 onClick={() => {
                   this.setState({
@@ -244,8 +229,6 @@ class EditTaskList extends React.Component {
                 ></i>
               </Dropdown.Item>
             </DropdownButton>
-            {/* <Label /> */}
-            <div>{/* <JsxParser jsx={this.state.icon} /> */}</div>
           </div>
           <hr className="line" />
 

@@ -1,6 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
-import moment from "moment";
 import TimePicker from "rc-time-picker";
 import "rc-time-picker/assets/index.css";
 
