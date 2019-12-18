@@ -235,7 +235,6 @@ class EditTaskList extends React.Component {
                     icon2: false,
                     icon3: true
                   })
-                  // this.addIconTwo()
                 }}
                 as="button"
               >
