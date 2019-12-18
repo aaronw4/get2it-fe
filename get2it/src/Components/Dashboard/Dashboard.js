@@ -16,45 +16,77 @@ import { getTASKS } from "../../actions.js";
 
 
 class Dashboard extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
   componentDidMount() {
+    
     this.props.getTASKS(this.props.userData.id);
   }
 
+  logout = evt => {
+
+    localStorage.removeItem("token");
+    this.props.history.push("/login");
+    window.location.reload(false)
+  };
+
   render() {
+    console.log(this.props)
     return (
       <>
-        {
-          this.props.isLoading ? <Spinner /> :
-          this.props.errorStatus === 401 ?
-              <Alert variant="danger" className='expired' onClose={() => this.props.history.push('/login')} dismissible>
-                <Alert.Heading className='expiredHead'>Your Session Has Expired!</Alert.Heading>
-                <p>
-                  For security purposes your session has expired. Please log back in and Get2It.
-                </p>
-              </Alert> :
-              <div className="dashboard">
-              <div className="nav">
-                <Menu />
-              </div>
-              <div className="appRoutes">
-                <Route
-                  path="/onboarding"
-                  render={props => <OnBoarding {...props} />}
-                />
-
-                <Route exact path="/" render={props => <Home {...props} />} />
-                <Route path="/NewTask" render={props => <NewTask {...props} />} />
-                <Route path="/taskList" render={props => <TaskList {...props} />} />
-                <Route path="/taskModal" render={props => <Home {...props} />} />
-                <Route path="/profile" render={props => <Profile {...props} />} />
-                <Route path="/CompletedTaskList" render={props => <CompletedTaskList {...props} />} />
-                <Route path="/edittaskModal" render={props => <TaskList {...props} />} />
-                <Route path="/EditTaskList" render={props => <EditTaskList {...props} />} />
-
-              </div>
+        {this.props.isLoading ? (
+          <Spinner />
+        ) : this.props.errorStatus === 401 ? (
+          <Alert
+            variant="danger"
+            className="expired"
+            onClose={this.logout}
+            dismissible
+          >
+            <Alert.Heading className="expiredHead">
+              Your Session Has Expired!
+            </Alert.Heading>
+            <p>
+              For security purposes your session has expired. Please log back in
+              and <span className='expiredGet2It'>Get2It</span>.
+            </p>
+          </Alert>
+        ) : (
+          <div className="dashboard">
+            <div className="nav">
+              <Menu />
             </div>
-        }
+            <div className="appRoutes">
+              <Route
+                path="/onboarding"
+                render={props => <OnBoarding {...props} />}
+              />
+
+              <Route exact path="/" render={props => <Home {...props} />} />
+              <Route path="/NewTask" render={props => <NewTask {...props} />} />
+              <Route
+                path="/taskList"
+                render={props => <TaskList {...props} />}
+              />
+              <Route path="/taskModal" render={props => <Home {...props} />} />
+              <Route path="/profile" render={props => <Profile {...props} />} />
+              <Route
+                path="/CompletedTaskList"
+                render={props => <CompletedTaskList {...props} />}
+              />
+              <Route
+                path="/edittaskModal"
+                render={props => <TaskList {...props} />}
+              />
+              <Route
+                path="/EditTaskList"
+                render={props => <EditTaskList {...props} />}
+              />
+            </div>
+          </div>
+        )}
       </>
     );
   }
