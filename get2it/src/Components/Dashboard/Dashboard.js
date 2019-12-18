@@ -24,24 +24,15 @@ class Dashboard extends React.Component {
   render() {
     return (
       <>
-        {() => {
-          if(this.props.isLoading) {
-            return (
-              <Spinner />
-            )
-          }else if (this.props.errorStatus === 401) {
-            return (
-              <Alert variant="danger" onClose={() => this.props.history.push('/login')} dismissible>
-                <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+        {
+          this.props.isLoading ? <Spinner /> :
+          this.props.errorStatus === 401 ?
+              <Alert variant="danger" className='expired' onClose={() => this.props.history.push('/login')} dismissible>
+                <Alert.Heading className='expiredHead'>Your Session Has Expired!</Alert.Heading>
                 <p>
-                  Change this and that and try again. Duis mollis, est non commodo
-                  luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-                  Cras mattis consectetur purus sit amet fermentum.
+                  For security purposes your session has expired. Please log back in and Get2It.
                 </p>
-              </Alert>
-            )
-          }else {
-            return (
+              </Alert> :
               <div className="dashboard">
               <div className="nav">
                 <Menu />
@@ -63,9 +54,7 @@ class Dashboard extends React.Component {
 
               </div>
             </div>
-            )
-          }
-        }}
+        }
       </>
     );
   }
