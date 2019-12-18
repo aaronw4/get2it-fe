@@ -41,9 +41,7 @@ export function createUser(username, password) {
     return axios.post('https://get2it.herokuapp.com/api/auth/register', { username, password })
       .then((res) => {
         localStorage.setItem('token', res.data.token)
-        setTimeout(() => {
           dispatch({ type: CREATE_USER_SUCCESS, payload: res.data.user })
-        }, 2000);
       })
       .catch((err) => {
         const payload = err.response ? err.response.data : err
@@ -59,9 +57,7 @@ export function login(username, password) {
     return axios.post('https://get2it.herokuapp.com/api/auth/login', { username, password })
       .then((res) => {
         localStorage.setItem('token', res.data.token)
-        setTimeout(() => {
-          dispatch({ type: LOGIN_SUCCESS, payload: res.data.user })
-        }, 2000);
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data.user });
       })
       .catch((err) => {
         const payload = err.response ? err.response.data : err
@@ -156,9 +152,7 @@ export function updateUser(payload, id) {
     axios
       .put(`https://get2it.herokuapp.com/api/auth/edit-profile/${id}`, payload, { headers })
       .then(res => {
-        setTimeout(() => {
           dispatch({ type: UPDATE_USER_SUCCESS, payload: payload, id: id });
-        },2000)
       })
       .catch(err => {
         console.log(err);
@@ -178,9 +172,7 @@ export function createTask(payload, id) {
     return axios
       .post(`https://get2it.herokuapp.com/api/users/${id}/tasks`, payload, { headers })
       .then(res => {
-        setTimeout(() => {
           dispatch({ type: CREATE_TASK_SUCCESS, payload: payload, id: id });
-        }, 2000);
       })
       .catch(err => {
         const payload = err.response ? err.response.data : err;
