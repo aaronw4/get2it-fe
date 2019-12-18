@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import TimePicker from "./TimePicker";
-import "./NewTask.css";
+import "./EditTask.css";
 import { newStartTime } from "../../actions.js";
 import { connect } from "react-redux";
 

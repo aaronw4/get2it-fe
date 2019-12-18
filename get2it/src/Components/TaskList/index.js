@@ -2,12 +2,10 @@ import React from "react";
 import "./style.css";
 import { connect } from "react-redux";
 import { Link, Route } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { updateTask } from "../../actions";
 import { getTASKS, deleteTask } from "../../actions";
 import $ from "jquery";
-import { element } from "prop-types";
 import EditTaskModal from "../Home/EditTaskModal";
 // build task component and set up state
 class editTaskList extends React.Component {
@@ -32,8 +30,6 @@ class editTaskList extends React.Component {
     // pull tasks from props
     const arrList = this.props.userTasks.filter(task => task.status === false);
     const list = [];
-    var listItem;
-    var spacer = "      ";
     // loop through each task and post them to state
     for (let i = 0; i < arrList.length; i++) {
       list.push(arrList[i]);

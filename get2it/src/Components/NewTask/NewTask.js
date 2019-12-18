@@ -128,7 +128,7 @@ class NewTask extends React.Component {
     $('#iconThree').addClass("iconThree")
     $('#iconTwo').addClass("iconTwo")
     $('#iconOne').removeClass("iconOne")
-
+console.log($('#iconThree'))
     }
     addIconTwo = event => {
       // console.log("yolo")
@@ -200,7 +200,7 @@ class NewTask extends React.Component {
                   className="fas fa-hospital iconDropdown"
                 ></i>
               </div>
-              <div id="iconThree">
+              <div id="iconThree" >
                 <i
                   id="icon"
                   data-myval="3"

@@ -1,7 +1,6 @@
 import React from 'react';
 import './style.css'
 import { connect } from 'react-redux'
-import { Route, withRouter, Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { updateTask, getTASKS } from '../../actions'
 

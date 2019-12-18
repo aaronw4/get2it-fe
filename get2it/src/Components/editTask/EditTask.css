@@ -387,15 +387,16 @@
     display: flex;
   
   }
-  .iconOne {
+  .iconOnet {
     /* border:1px solid rgb(182, 42, 170); */
     display: none;
+    
   }
-  .iconTwo {
+  .iconTwot {
     /* border:1px solid red; */
     display: none;
   }
-  .iconThree {
+  .iconThreet {
     /* border:1px solid rgb(15, 158, 58); */
     display: none;
   }

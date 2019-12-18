@@ -255,7 +255,7 @@ export default function(state = initialState, action) {
       };
     }
     case NEW_TASK_DATE: {
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
         date: action.payload
