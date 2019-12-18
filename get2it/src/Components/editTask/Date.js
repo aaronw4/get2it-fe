@@ -13,7 +13,7 @@ class Date extends React.Component {
     this.state = {
       date: this.props.taskDate
     };
-    console.log(props)
+    // console.log(props)
   }
   render() {
     this.props.newTaskDate(this.state.date);

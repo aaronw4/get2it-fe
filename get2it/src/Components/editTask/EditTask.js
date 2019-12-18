@@ -11,11 +11,14 @@ import { updateTask } from "../../actions.js";
 
 class EditTaskList extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     const tasks = this.props.userTasks.find(
       tasks => `${tasks.id}` === this.props.match.params.id
-    );
+    )
     this.state = {
+      icon1: false,
+      icon2: false,
+      icon3: false,
       date: tasks.date,
       task_name: tasks.name,
       start_time: tasks.start_time,
@@ -24,7 +27,7 @@ class EditTaskList extends React.Component {
       newError: null,
       user_id: tasks.user_id,
       id: tasks.id
-    };
+    }
   }
 
   newTask = evt => {
@@ -38,79 +41,76 @@ class EditTaskList extends React.Component {
       user_id,
       id,
       task_icon
-    };
+    }
 
-    this.props.updateTask(payload, id);
+    this.props.updateTask(payload, id)
 
     setTimeout(() => {
-      this.props.history.push(`/taskList`);
-    }, 400);
-  };
+      this.props.history.push(`/taskList`)
+    }, 400)
+  }
 
   changeHandler = evt => {
-    evt.preventDefault();
+    evt.preventDefault()
 
     this.setState(
       {
         [evt.target.name]: evt.target.value
       },
       () => console.log(this.state.task_name)
-    );
-  };
-
-  addIconOne = event => {
-    $("#iconThreet").addClass("iconThreet");
-    $("#iconTwot").addClass("iconTwot");
-    $("#iconOnet").removeClass("iconOnet");
-    console.log($("#iconThreet"));
-  };
-  addIconTwo = event => {
-    $("#iconOnet").addClass("iconOnet");
-    $("#iconThreet").addClass("iconThreet");
-    $("#iconTwot").removeClass("iconTwot");
-    console.log("yolo");
-  };
-  addIconThree = event => {
-    $("#iconOnet").addClass("iconOnet");
-    $("#iconTwot").addClass("iconTwot");
-    $("#iconThreet").removeClass("iconThreet");
-    console.log("yolo");
-  };
+    )
+  }
   iconCheck = () => {
     if (this.state.icon === "") {
-      console.log("NO ICON");
+      // console.log("NO ICON")
+      this.setState({
+        icon1: false,
+        icon2: false,
+        icon3: false,
+      })
     } else if (
       this.state.icon ===
       '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
     ) {
-      console.log("icon one");
-      this.addIconOne();
+      // console.log("icon one")
+      this.setState({
+        icon1: false,
+        icon2: true,
+        icon3: true,
+      })
     } else if (
       this.state.icon ===
       '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
     ) {
-      console.log("icon two");
-      this.addIconTwo();
+      // console.log("icon two")
+      this.setState({
+        icon1: true,
+        icon2: false,
+        icon3: true,
+      })
     } else if (
       this.state.icon ===
       '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
     ) {
-      console.log("icon three");
-      this.addIconThree();
+      // console.log("icon three")
+      this.setState({
+        icon1: true,
+        icon2: true,
+        icon3: false,
+      })
     } else {
-      console.log("not working");
+      console.log("not working")
     }
-  };
+  }
 
   refreshPage = () => {
-    window.location.reload(false);
-  };
-  // componentDidMount(){
-  //   this.iconCheck()
-  // }
+    window.location.reload(false)
+  }
+  componentDidMount(){
+    this.iconCheck()
+  }
   render() {
-    const { task_name, date } = this.state;
-
+    const { task_name, date } = this.state
     return (
       <div className="newTaskContainer">
         <br />
@@ -137,7 +137,8 @@ class EditTaskList extends React.Component {
         <Clock start_time={this.state.start_time} />
         <hr className="line" />
         <EndTime end_time={this.state.end_time} />
-        <div className="app"></div>
+
+        <div className="app" />
         <hr className="line" />
         <div onSubmit={this.handleSubmit}>
           <label to="taskName" className="newTaskLableName">
@@ -157,76 +158,82 @@ class EditTaskList extends React.Component {
           </label>
           <div className="iconDropContainer">
             <div className="displayIcons">
-              <div id="iconOnet">
+              <div id="iconOne" hidden={this.state.icon1}>
                 <i
                   id="icon"
                   data-myval="1"
                   className="fas fa-heartbeat iconDropdown"
-                ></i>
+                />
               </div>
-              <div id="iconTwot">
+              <div id="iconTwo" hidden={this.state.icon2}>
                 <i
                   id="icon"
                   data-myval="2"
                   className="fas fa-hospital iconDropdown"
-                ></i>
+                />
               </div>
-              <div id="iconThreet">
+              <div id="iconThree" hidden={this.state.icon3}>
                 <i
                   id="icon"
                   data-myval="3"
                   className="fab fa-accessible-icon iconDropdown"
-                ></i>
+                />
               </div>
             </div>
             <DropdownButton
               id="dropdown-item-button"
               title=""
               onClick={evt => {
-                evt.preventDefault();
+                evt.preventDefault()
               }}
             >
               <Dropdown.Item
+                // onClick={this.addIcons}
                 className="addIcon"
                 onClick={() => {
                   this.setState({
                     icon:
-                      '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
-                  });
-                  this.addIconOne();
+                      '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>',
+                    icon1: false,
+                    icon2: true,
+                    icon3: true
+                  })
+                  // this.addIconOne()
                 }}
                 as="button"
               >
-                <i id="icon" className="fas fa-heartbeat iconDropdown"></i>
+                <i id="icon" className="fas fa-heartbeat iconDropdown" />
               </Dropdown.Item>
               <Dropdown.Item
                 className="addIcon"
                 onClick={() => {
                   this.setState({
                     icon:
-                      '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
-                  });
-                  this.addIconTwo();
+                      '<i id="icon" className="fas fa-hospital iconDropdown"></i>',
+                    icon1: true,
+                    icon2: false,
+                    icon3: true
+                  })
                 }}
                 as="button"
               >
-                <i id="icon" className="fas fa-hospital iconDropdown"></i>
+                <i id="icon" className="fas fa-hospital iconDropdown" />
               </Dropdown.Item>
               <Dropdown.Item
                 className="addIcon"
                 onClick={() => {
                   this.setState({
                     icon:
-                      '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
-                  });
-                  this.addIconThree();
+                      '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>',
+                    icon1: true,
+                    icon2: true,
+                    icon3: false
+                  })
+                  // this.addIconThree()
                 }}
                 as="button"
               >
-                <i
-                  id="icon"
-                  className="fab fa-accessible-icon iconDropdown"
-                ></i>
+                <i id="icon" className="fab fa-accessible-icon iconDropdown" />
               </Dropdown.Item>
             </DropdownButton>
           </div>
@@ -244,7 +251,7 @@ class EditTaskList extends React.Component {
           </Button>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -256,12 +263,15 @@ const mapStateToProps = state => ({
   end_time: state.end_time,
   isLoading: state.isLoading,
   error: state.error
-});
+})
 
 const mapDispatchToProps = {
   updateTask
-};
+}
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(EditTaskList)
-);
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(EditTaskList)
+)
