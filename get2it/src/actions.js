@@ -98,8 +98,8 @@ export function getTASKS(id) {
         dispatch({ type: GET_TASKS_SUCCESS, payload: newRes})
       })
       .catch((err) => {
-        console.log(err)
-        dispatch({ type: GET_TASKS_FAILED, payload: err.response.data })
+        console.log(err.response)
+        dispatch({ type: GET_TASKS_FAILED, payload: err.response })
       })
   }
 }
