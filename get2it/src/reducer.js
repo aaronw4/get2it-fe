@@ -79,6 +79,7 @@ import {
 const initialState = {
   isLoading: false,
   error: null,
+  errorStatus: null,
   userData: {},
   userTasks: [],
   userID: null,
@@ -159,7 +160,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.message
+        error: action.payload.data.message,
+        errorStatus: action.payload.status
       };
     }
     case UPDATE_TASK_START: {
