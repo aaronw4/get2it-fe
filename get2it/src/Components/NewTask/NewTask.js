@@ -19,14 +19,8 @@ class NewTask extends React.Component {
       taskName: "",
       newError: null
     };
+
   }
-  addIconOne = event => {
-    // console.log("yolo")
-    $("#iconOne").addClass("iconOne");
-    $("#iconTwo").addClass("iconTwo");
-    $("#iconThree").addClass("iconThree");
-    // $('#iconOne').removeClass("iconOne")
-  };
 
   changeHandler = evt => {
     evt.preventDefault();

@@ -33,12 +33,11 @@ class EditTaskList extends React.Component {
       id: tasks.id
     };
   }
- 
 
   newTask = evt => {
     // evt.preventDefault();
-    const {task_name, task_icon, user_id, id} = this.state;
-    const { date, start_time, end_time} = this.props;
+    const { task_name, task_icon, user_id, id } = this.state;
+    const { date, start_time, end_time } = this.props;
     const payload = {
       date,
       name: task_name,
@@ -52,58 +51,74 @@ class EditTaskList extends React.Component {
     this.props.updateTask(payload, id);
 
     setTimeout(() => {
-      
       this.props.history.push(`/taskList`);
     }, 400);
-
-  };
-
-
-  addIconOne = event => {
-    // console.log("yolo")
-    $("#iconOne").addClass("iconOne");
-    $("#iconTwo").addClass("iconTwo");
-    $("#iconThree").addClass("iconThree");
-    // $('#iconOne').removeClass("iconOne")
   };
 
   changeHandler = evt => {
     evt.preventDefault();
 
-    this.setState({
-      [evt.target.name]: evt.target.value
-    }, () => console.log(this.state.task_name));
-    
-
+    this.setState(
+      {
+        [evt.target.name]: evt.target.value
+      },
+      () => console.log(this.state.task_name)
+    );
   };
 
   addIconOne = event => {
     $("#iconThree").addClass("iconThree");
     $("#iconTwo").addClass("iconTwo");
     $("#iconOne").removeClass("iconOne");
+    console.log($("#iconThree"))
   };
   addIconTwo = event => {
-    // console.log("yolo")
-
     $("#iconOne").addClass("iconOne");
     $("#iconThree").addClass("iconThree");
     $("#iconTwo").removeClass("iconTwo");
+    console.log("yolo")
   };
   addIconThree = event => {
-    // console.log("yolo")
-
     $("#iconOne").addClass("iconOne");
     $("#iconTwo").addClass("iconTwo");
     $("#iconThree").removeClass("iconThree");
+    console.log("yolo")
+  };
+  iconCheck = () => {
+    if (this.state.icon === "") {
+      console.log("NO ICON");
+    } else if (
+      this.state.icon ===
+      '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
+    ) {
+      console.log("icon one");
+      this.addIconOne();
+    } else if (
+      this.state.icon ===
+      '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
+    ) {
+      console.log("icon two");
+      this.addIconTwo();
+    } else if (
+      this.state.icon ===
+      '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
+    ) {
+      console.log("icon three");
+      this.addIconThree();
+    } else {
+      console.log("not working");
+    }
   };
 
   refreshPage = () => {
     window.location.reload(false);
-  }
-
+  };
+  // componentDidMount(){
+  //   this.iconCheck()
+  // }
   render() {
-    const { task_name } = this.state;
-   
+    const { task_name, date } = this.state;
+
     // console.log(this.props)
     return (
       <div className="newTaskContainer">
@@ -122,6 +137,14 @@ class EditTaskList extends React.Component {
           <Date taskDate={this.state.date} />
           <br />
           <br />
+          <div>
+            <input
+              onChange={this.changeHandler}
+              type="text"
+              value={date}
+              id=""
+            />
+          </div>
         </div>
         <Clock start_time={this.state.start_time} />
         <hr className="line" />
@@ -131,7 +154,9 @@ class EditTaskList extends React.Component {
         <div className="app"></div>
         <hr className="line" />
         <div onSubmit={this.handleSubmit}>
-          <label to="taskName"  className="newTaskLableName">Task Name:</label>
+          <label to="taskName" className="newTaskLableName">
+            Task Name:
+          </label>
           <input
             value={task_name}
             id="taskName"
@@ -227,7 +252,11 @@ class EditTaskList extends React.Component {
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
           )}
-          <Button onClick={this.newTask} className="completeBtn-create" type="button">
+          <Button
+            onClick={this.newTask}
+            className="completeBtn-create"
+            type="button"
+          >
             Save
           </Button>
         </div>
