@@ -40,6 +40,7 @@ class Menu extends React.Component {
   }
 
   completeTasks = this.props.userTasks.filter(task => task.status === true)
+  incompleteTasks = this.props.userTasks.filter(task => task.status === false)
 
   render() {
     // console.log(this.completeTasks)
@@ -83,7 +84,7 @@ class Menu extends React.Component {
             <i className="fas fa-list-alt icon"></i>
             <div className="yourTasks">
               Your Tasks
-              <div className="menuTaskCount">{this.props.userTasks.length}</div>
+              <div className="menuTaskCount">{this.incompleteTasks.length}</div>
             </div>
           </DropdownItem>
           <DropdownItem
