@@ -442,6 +442,10 @@
   .completeBtn {
     margin-top: 20px;
   }
+  .completeBtnContainer {
+    display: flex;
+    justify-content: center;
+  }
   .addIcon {
     display: flex;
     justify-content: center;
