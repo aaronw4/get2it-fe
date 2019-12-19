@@ -454,7 +454,18 @@ hr {
   height: 50px;
   color: grey;
 }
-.rc-time-picker-clear-icon:after{
+/* .rc-time-picker-clear-icon:after{
   width: 50px;
   height: 50px;
+  color: black;
+} */
+/* .rc-time-picker-clear {
+  color: black;
+  background-color: white;
+  border-radius: 100%;
+  top: 19px;
+  left: 160px;
 }
+.rc-time-picker-clear-icon {
+  color: black;
+} */
