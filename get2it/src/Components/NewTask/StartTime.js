@@ -27,14 +27,17 @@ class TimeSelectForm extends Component {
   render = props => {
     // console.log(moment(this.state.start_time).format("h:mm a"));
     return (
-      <div>
-        <h1 className="Title2" > START</h1>
+      <div className="timeBlock">
+        <h1 className="Title2"> START</h1>
         <div className="startTime">
-
-          <form onSubmit={this.handleSubmit}>
+          <form className="timeContainer" onSubmit={this.handleSubmit}>
             <i className="far fa-clock fa-3x"></i>
-            <TimePicker className='pickTime' value={this.state.start_time} onChange={this.handleChange} />
-            <br/>
+            <TimePicker
+              className="pickTime"
+              value={this.state.start_time}
+              onChange={this.handleChange}
+            />
+            <br />
           </form>
         </div>
       </div>
@@ -46,8 +49,7 @@ class TimeSelectForm extends Component {
       //     value={this.state.start_time}
       //     onChange={this.handleChange}
       //     type="time"
-          
-          
+
       //   ></input>
       // </div>
     );

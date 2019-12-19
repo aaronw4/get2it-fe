@@ -32,11 +32,11 @@ class TimeSelectForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className='timeBlock'>
         <h1 className="Title2" > START</h1>
         <div className="startTime">
 
-          <div onSubmit={this.handleSubmit}>
+          <div className='timeContainer' onSubmit={this.handleSubmit}>
             <i className="far fa-clock fa-3x"></i>
             <TimePicker className='stupid' value={this.state.start_time} onChange={this.handleChange} />
             <br/>

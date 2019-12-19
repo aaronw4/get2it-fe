@@ -139,6 +139,9 @@
     border-radius: 30px;
   }
   .newTaskContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
     overflow: auto;
     width: 100%;
     height: 100%;
@@ -146,9 +149,13 @@
     padding: 0 10px;
   }
   .date-picker-container {
-    width: 320px;
-    margin: 5% auto;
-    margin-top: -5px;
+    width: 100%;
+    /* margin-top: -5px; */
+  }
+  .retrievedDate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   input {
@@ -329,6 +336,7 @@
   .calender-date{
     display: flex;
     align-content: space-around;
+    justify-content: center;
   }
   .line{
     background-color:  rgb(65, 63, 63); 
@@ -340,9 +348,13 @@
     border-bottom: 2px solid;
     border-image: radial-gradient(silver, black) 50;
   }
-  
+  .datePick {
+    display: flex;
+    color: rgb(153, 153, 153);
+  }
   .startTime{
     display: flex;
+    width: 100%;
     color: #999;
     border-bottom: 2px solid;
     border-image: radial-gradient(silver, black) 50;
@@ -350,7 +362,16 @@
   .Title2{
     font-size: 1.4em;
     font-weight: bold;
-    margin-left: -170px;
+    margin-left: 0px;
+
+    /* margin-left: -170px; */
+  }
+  .timeBlock {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
   hr {
     margin-top: 1rem;
@@ -437,13 +458,21 @@
   }
   .startCont {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-content: center;
+    align-items: center;
   }
   #startClock{
     width: 50px;
     height: 50px;
     color: grey;
+  }
+  .stupid {
+    margin-left: 20px;
+  }
+  .timeContainer {
+    display: flex;
+    align-items: center;
   }
   .rc-time-picker-clear-icon:after{
     /* width: 50px;

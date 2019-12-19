@@ -117,7 +117,7 @@ class EditTaskList extends React.Component {
         <h1 className="NewTask-Tittle"> Edit Task</h1>
         <br />
         <div className="calender-date">
-          <div className="startTime">
+          <div className="datePick">
             <i className="far fa-calendar-alt fa-3x" />
           </div>
           <br />
@@ -125,7 +125,7 @@ class EditTaskList extends React.Component {
           <Date taskDate={this.state.date} />
           <br />
           <br />
-          <div>
+          <div className='retrievedDate'>
             <input
               onChange={this.changeHandler}
               type="text"
@@ -242,13 +242,15 @@ class EditTaskList extends React.Component {
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
           )}
-          <Button
-            onClick={this.newTask}
-            className="completeBtn-create"
-            type="button"
-          >
-            Save
-          </Button>
+          <div className='completeBtnContainer'>
+            <Button
+              onClick={this.newTask}
+              className="completeBtn-create"
+              type="button"
+            >
+              Save
+            </Button>
+          </div>
         </div>
       </div>
     )

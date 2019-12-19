@@ -156,7 +156,7 @@ console.log($('#iconThree'))
         <br />
         {/* <Category/> */}
         <div className="calender-date">
-          <div className="startTime">
+          <div className="datePick">
             <i className="far fa-calendar-alt fa-3x" />
           </div>
           <br />
