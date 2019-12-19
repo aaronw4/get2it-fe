@@ -23,7 +23,7 @@ class EditTaskList extends React.Component {
       task_name: tasks.name,
       start_time: tasks.start_time,
       end_time: tasks.end_time,
-      icon: tasks.task_icon,
+      task_icon: tasks.task_icon,
       newError: null,
       user_id: tasks.user_id,
       id: tasks.id
@@ -61,7 +61,7 @@ class EditTaskList extends React.Component {
     )
   }
   iconCheck = () => {
-    if (this.state.icon === "") {
+    if (this.state.task_icon === "") {
       // console.log("NO ICON")
       this.setState({
         icon1: false,
@@ -69,7 +69,7 @@ class EditTaskList extends React.Component {
         icon3: false,
       })
     } else if (
-      this.state.icon ===
+      this.state.task_icon ===
       '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
     ) {
       // console.log("icon one")
@@ -77,9 +77,10 @@ class EditTaskList extends React.Component {
         icon1: false,
         icon2: true,
         icon3: true,
-      })
+        task_icon: '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
+      });
     } else if (
-      this.state.icon ===
+      this.state.task_icon ===
       '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
     ) {
       // console.log("icon two")
@@ -87,9 +88,10 @@ class EditTaskList extends React.Component {
         icon1: true,
         icon2: false,
         icon3: true,
-      })
+        task_icon: '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
+      });
     } else if (
-      this.state.icon ===
+      this.state.task_icon ===
       '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
     ) {
       // console.log("icon three")
@@ -97,7 +99,8 @@ class EditTaskList extends React.Component {
         icon1: true,
         icon2: true,
         icon3: false,
-      })
+        task_icon: '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
+      });
     } else {
       console.log("not working")
     }
@@ -110,6 +113,7 @@ class EditTaskList extends React.Component {
     this.iconCheck()
   }
   render() {
+    console.log(this.state.task_icon)
     const { task_name, date } = this.state
     return (
       <div className="newTaskContainer">
@@ -192,7 +196,7 @@ class EditTaskList extends React.Component {
                 className="addIcon"
                 onClick={() => {
                   this.setState({
-                    icon:
+                    task_icon:
                       '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>',
                     icon1: false,
                     icon2: true,
@@ -208,7 +212,7 @@ class EditTaskList extends React.Component {
                 className="addIcon"
                 onClick={() => {
                   this.setState({
-                    icon:
+                    task_icon:
                       '<i id="icon" className="fas fa-hospital iconDropdown"></i>',
                     icon1: true,
                     icon2: false,
@@ -223,7 +227,7 @@ class EditTaskList extends React.Component {
                 className="addIcon"
                 onClick={() => {
                   this.setState({
-                    icon:
+                    task_icon:
                       '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>',
                     icon1: true,
                     icon2: true,
