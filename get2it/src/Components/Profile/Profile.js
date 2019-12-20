@@ -27,8 +27,9 @@ class Profile extends React.Component {
     const id = this.props.userID
 
     this.props.updateUser(payload, id)
-
-    this.props.history.push('/')
+    setTimeout(() => {
+      this.props.history.push('/')
+    }, 200)
   }
 
   handleChange = evt => {
