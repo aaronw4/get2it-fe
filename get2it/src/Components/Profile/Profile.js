@@ -29,7 +29,7 @@ class Profile extends React.Component {
     this.props.updateUser(payload, id)
     setTimeout(() => {
       this.props.history.push('/')
-    }, 500)
+    }, 200)
   }
 
   handleChange = evt => {
