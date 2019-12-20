@@ -125,17 +125,23 @@ class NewTask extends React.Component {
   }
   
   addIconOne = event => {
-    $('#iconThree').addClass("iconThree")
-    $('#iconTwo').addClass("iconTwo")
     $('#iconOne').removeClass("iconOne")
+    $('#iconTwo').addClass("iconTwo")
+    $('#iconThree').addClass("iconThree")
+    $('#iconFour').addClass("iconFour")
+    $('#iconFive').addClass("iconFive")
+    $('#iconSix').addClass("iconSix")
 console.log($('#iconThree'))
     }
     addIconTwo = event => {
       // console.log("yolo")
 
     $("#iconOne").addClass("iconOne");
-    $("#iconThree").addClass("iconThree");
     $("#iconTwo").removeClass("iconTwo");
+    $("#iconThree").addClass("iconThree");
+    $('#iconFour').addClass("iconFour")
+    $('#iconFive').addClass("iconFive")
+    $('#iconSix').addClass("iconSix")
   };
   addIconThree = event => {
     // console.log("yolo")
@@ -143,6 +149,40 @@ console.log($('#iconThree'))
     $("#iconOne").addClass("iconOne");
     $("#iconTwo").addClass("iconTwo");
     $("#iconThree").removeClass("iconThree");
+    $('#iconFour').addClass("iconFour")
+    $('#iconFive').addClass("iconFive")
+    $('#iconSix').addClass("iconSix")
+  };
+  addIconFour = event => {
+    // console.log("yolo")
+
+    $("#iconOne").addClass("iconOne");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconThree").addClass("iconThree");
+    $('#iconFive').addClass("iconFive")
+    $('#iconSix').addClass("iconSix")
+    $('#iconFour').removeClass("iconFour")
+  };
+  addIconFive = event => {
+    // console.log("yolo")
+
+    $("#iconOne").addClass("iconOne");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconThree").addClass("iconThree");
+
+    $('#iconFour').addClass("iconFour")
+    $('#iconSix').addClass("iconSix")
+    $('#iconFive').removeClass("iconFive")
+  };
+  addIconSix = event => {
+    // console.log("yolo")
+
+    $("#iconOne").addClass("iconOne");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconThree").addClass("iconThree");
+    $('#iconFour').addClass("iconFour")
+    $('#iconFive').addClass("iconFive")
+    $('#iconSix').removeClass("iconSix")
   };
 
   render() {
@@ -207,7 +247,31 @@ console.log($('#iconThree'))
                   className="fab fa-accessible-icon iconDropdown"
                 ></i>
               </div>
+              <div id="iconFour" >
+                <i
+                  id="icon"
+                  data-myval="4"
+                  className="fas fa-carrot iconDropdown"
+                ></i>
+              </div>
+              <div id="iconFive" >
+                <i
+                  id="icon"
+                  data-myval="5"
+                  className="fas fa-broom iconDropdown"
+                ></i>
+              </div>
+              <div id="iconSix" >
+                <i
+                  id="icon"
+                  data-myval="6"
+                  className="fab fa-black-tie iconDropdown"
+                ></i>
+              </div>
             </div>
+            
+            
+            
             <DropdownButton id="dropdown-item-button" title='' onClick={(evt) => {evt.preventDefault()}}>
               <Dropdown.Item
                 onClick={this.addIcons}
@@ -248,6 +312,45 @@ console.log($('#iconThree'))
                 as="button"
               >
                 <i id="icon" className="fab fa-accessible-icon iconDropdown"></i>
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="addIcon"
+                onClick={() => {
+                  this.setState({
+                    icon:
+                      '<i id="icon" className="fas fa-carrot iconDropdown"></i>'
+                  });
+                  this.addIconFour();
+                }}
+                as="button"
+              >
+                <i id="icon" className="fas fa-carrot iconDropdown"></i>
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="addIcon"
+                onClick={() => {
+                  this.setState({
+                    icon:
+                      '<i id="icon" className="fas fa-broom iconDropdown"></i>'
+                  });
+                  this.addIconFive();
+                }}
+                as="button"
+              >
+                <i id="icon" className="fas fa-broom iconDropdown"></i>
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="addIcon"
+                onClick={() => {
+                  this.setState({
+                    icon:
+                      '<i id="icon" className="fab fa-black-tie iconDropdown"></i>'
+                  });
+                  this.addIconSix();
+                }}
+                as="button"
+              >
+                <i id="icon" className="fab fa-black-tie iconDropdown"></i>
               </Dropdown.Item>
             </DropdownButton>
             {/* <Label /> */}

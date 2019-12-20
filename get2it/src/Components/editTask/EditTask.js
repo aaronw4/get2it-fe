@@ -19,6 +19,9 @@ class EditTaskList extends React.Component {
       icon1: false,
       icon2: false,
       icon3: false,
+      icon4: false,
+      icon5: false,
+      icon6: false,
       date: tasks.date,
       task_name: tasks.name,
       start_time: tasks.start_time,
@@ -67,6 +70,9 @@ class EditTaskList extends React.Component {
         icon1: false,
         icon2: false,
         icon3: false,
+        icon4: false,
+        icon5: false,
+        icon6: false
       })
     } else if (
       this.state.task_icon ===
@@ -77,6 +83,9 @@ class EditTaskList extends React.Component {
         icon1: false,
         icon2: true,
         icon3: true,
+        icon4: true,
+        icon5: true,
+        icon6: true,
         task_icon: '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
       });
     } else if (
@@ -88,6 +97,9 @@ class EditTaskList extends React.Component {
         icon1: true,
         icon2: false,
         icon3: true,
+        icon4: true,
+        icon5: true,
+        icon6: true,
         task_icon: '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
       });
     } else if (
@@ -99,7 +111,54 @@ class EditTaskList extends React.Component {
         icon1: true,
         icon2: true,
         icon3: false,
+        icon4: true,
+        icon5: true,
+        icon6: true,
         task_icon: '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
+      });
+    } else if (
+      this.state.task_icon ===
+      '<i id="icon" className="fas fa-carrot iconDropdown"></i>'
+    ) {
+      // console.log("icon three")
+      this.setState({
+        icon1: true,
+        icon2: true,
+        icon3: true,
+        icon4: false,
+        icon5: true,
+        icon6: true,
+        task_icon: '<i id="icon" className="fas fa-carrot iconDropdown"></i>'
+      });
+    } 
+    else if (
+      this.state.task_icon ===
+      '<i id="icon" className="fas fa-broom iconDropdown"></i>'
+    ) {
+      // console.log("icon three")
+      this.setState({
+        icon1: true,
+        icon2: true,
+        icon3: true,
+        icon4: true,
+        icon5: false,
+        icon6: true,
+        task_icon: '<i id="icon" className="fas fa-broom iconDropdown"></i>'
+      });
+    }
+    else if (
+      this.state.task_icon ===
+      '<i id="icon" className="fab fa-black-tie iconDropdown"></i>'
+    ) {
+      // console.log("icon three")
+      this.setState({
+        icon1: true,
+        icon2: true,
+        icon3: true,
+        icon4: true,
+        icon5: true,
+        icon6: false,
+        task_icon: '<i id="icon" className="fab fa-black-tie iconDropdown"></i>'
       });
     } else {
       console.log("not working")
@@ -183,6 +242,28 @@ class EditTaskList extends React.Component {
                   className="fab fa-accessible-icon iconDropdown"
                 />
               </div>
+              <div id="iconFour" hidden={this.state.icon4}>
+                <i
+                  id="icon"
+                  data-myval="4"
+                  className="fas fa-carrot iconDropdown"
+                />
+              </div>
+              <div id="iconFive" hidden={this.state.icon5}>
+                <i
+                  id="icon"
+                  data-myval="5"
+                  className="fas fa-broom iconDropdown"
+                />
+              </div>
+              <div id="iconSix" hidden={this.state.icon6}>
+                <i
+                  id="icon"
+                  data-myval="6"
+                  className="fab fa-black-tie iconDropdown"
+                />
+              </div>
+             
             </div>
             <DropdownButton
               id="dropdown-item-button"
@@ -200,7 +281,10 @@ class EditTaskList extends React.Component {
                       '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>',
                     icon1: false,
                     icon2: true,
-                    icon3: true
+                    icon3: true,
+                    icon4: true,
+                    icon5: true,
+                    icon6: true
                   })
                   // this.addIconOne()
                 }}
@@ -216,7 +300,10 @@ class EditTaskList extends React.Component {
                       '<i id="icon" className="fas fa-hospital iconDropdown"></i>',
                     icon1: true,
                     icon2: false,
-                    icon3: true
+                    icon3: true,
+                    icon4: true,
+                    icon5: true,
+                    icon6: true
                   })
                 }}
                 as="button"
@@ -231,13 +318,73 @@ class EditTaskList extends React.Component {
                       '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>',
                     icon1: true,
                     icon2: true,
-                    icon3: false
+                    icon3: false,
+                    icon4: true,
+                    icon5: true,
+                    icon6: true
                   })
                   // this.addIconThree()
                 }}
                 as="button"
               >
                 <i id="icon" className="fab fa-accessible-icon iconDropdown" />
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="addIcon"
+                onClick={() => {
+                  this.setState({
+                    task_icon:
+                      '<i id="icon" className="fas fa-carrot iconDropdown"></i>',
+                    icon1: true,
+                    icon2: true,
+                    icon3: true,
+                    icon4: false,
+                    icon5: true,
+                    icon6: true
+                  })
+                  // this.addIconThree()
+                }}
+                as="button"
+              >
+                <i id="icon" className="fas fa-carrot iconDropdown" />
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="addIcon"
+                onClick={() => {
+                  this.setState({
+                    task_icon:
+                      '<i id="icon" className="fas fa-broom iconDropdown"></i>',
+                    icon1: true,
+                    icon2: true,
+                    icon3: true,
+                    icon4: true,
+                    icon5: false,
+                    icon6: true
+                  })
+                  // this.addIconThree()
+                }}
+                as="button"
+              >
+                <i id="icon" className="fas fa-broom iconDropdown" />
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="addIcon"
+                onClick={() => {
+                  this.setState({
+                    task_icon:
+                      '<i id="icon" className="fab fa-black-tie iconDropdown"></i>',
+                    icon1: true,
+                    icon2: true,
+                    icon3: true,
+                    icon4: true,
+                    icon5: true,
+                    icon6: false
+                  })
+                  // this.addIconThree()
+                }}
+                as="button"
+              >
+                <i id="icon" className="fab fa-black-tie iconDropdown" />
               </Dropdown.Item>
             </DropdownButton>
           </div>
