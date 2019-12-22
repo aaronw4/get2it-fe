@@ -408,16 +408,29 @@
     display: flex;
   
   }
-  .iconOnet {
+  .iconOne {
     /* border:1px solid rgb(182, 42, 170); */
     display: none;
     
   }
-  .iconTwot {
+  .iconTwo {
     /* border:1px solid red; */
     display: none;
   }
-  .iconThreet {
+  .iconThree {
+    /* border:1px solid rgb(15, 158, 58); */
+    display: none;
+  }
+  .iconFour {
+    /* border:1px solid rgb(182, 42, 170); */
+    display: none;
+    
+  }
+  .iconFive {
+    /* border:1px solid red; */
+    display: none;
+  }
+  .iconSix {
     /* border:1px solid rgb(15, 158, 58); */
     display: none;
   }
