@@ -85,7 +85,7 @@ class editTaskList extends React.Component {
     setTimeout(() => {
   
       window.location.reload(false);
-    }, 50);
+    }, 500);
   };
 
 
@@ -111,7 +111,8 @@ class editTaskList extends React.Component {
           };
           console.log(payload);
 
-          this.props.updateTask(payload, id);
+          this.forceUpdate()
+          // this.props.updateTask(payload, id);
         });
       }
     );
