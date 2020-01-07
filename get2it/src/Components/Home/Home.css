@@ -173,7 +173,8 @@
   align-self: flex-end;
   margin-right: 10px;
   text-decoration: none;
-  color: var(--textColor)
+  color: var(--textColor);
+  z-index: 0;
 }
 .closeLink:hover {
   color: white;
