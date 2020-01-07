@@ -52,10 +52,10 @@ class editTaskList extends React.Component {
           return el != task;
         });
         this.itemArr = filtered;
-      // console.log(filtered)
+      console.log(filtered)
     }
     this.classBTN(item);
-    // console.log(this.itemArr)
+    console.log(this.itemArr)
   };
   classBTN = item => {
     console.log("hitting check");
@@ -69,39 +69,32 @@ class editTaskList extends React.Component {
     for (var i = 0; i < this.itemArr.length; i++) {
       this.arrar.push(this.itemArr[i]);
     }
+    this.arrar.map(task => {
+      const id = task;
+      this.getTaskById(id);
+    });
 
-    this.setState(
-      {
-        updatedList: this.arrar
-      },
-      () => {
-        console.log(this.arrar);
-        this.state.updatedList.map(task => {
-          const id = task;
-          this.getTaskById(id);
-        });
-      }
-    );
     setTimeout(() => {
   
-      window.location.reload(false);
-    }, 500);
+      window.location.reload(true);
+    }, 100);
   };
 
 
+  tasksById = [];
   getTaskById = id => {
-    let tasksById = [];
     this.state.taskList.map(task => {
       if (task.id === id) {
-        tasksById.push(task);
+        this.tasksById.push(task);
       }
     });
+    // console.log(this.tasksById)
     this.setState(
       {
-        retrievedTasks: tasksById
+        retrievedTasks: this.tasksById
       },
       () => {
-        console.log(this.state.retrievedTasks);
+        // console.log(this.state.retrievedTasks);
 
         this.state.retrievedTasks.map(task => {
           const id = task.id;
@@ -111,8 +104,7 @@ class editTaskList extends React.Component {
           };
           console.log(payload);
 
-          this.forceUpdate()
-          // this.props.updateTask(payload, id);
+          this.props.updateTask(payload, id);
         });
       }
     );
@@ -124,12 +116,15 @@ class editTaskList extends React.Component {
       taskList: this.props.userTasks.filter(task => {
         return task.status === false
       })
-    }, setTimeout(() => {window.location.reload(true)}, 50));
+    }, setTimeout(() => {window.location.reload(true)}, 100));
     ;
   };
 
   componentDidMount() {
-    this.createTaskList();
+    console.log(this.props.userTasks.filter(task => task.status === false));
+    this.setState({
+      taskList: this.props.userTasks.filter(task => task.status === false)
+    });
   }
 
   completedTasksList = this.props.userTasks.filter(task => {
@@ -142,9 +137,7 @@ class editTaskList extends React.Component {
       <div className="taskCont">
         <Link id="completedLink" to="/CompletedTaskList">
           <p className="completedLinkText">Completed Tasks:</p>
-          <p className="completedLinkCount">
-            {this.completedTasksList.length}
-          </p>
+          <p className="completedLinkCount">{this.completedTasksList.length}</p>
         </Link>
         <Form>
           <Form.Text className="taskTitle">TASK LIST</Form.Text>
@@ -152,46 +145,47 @@ class editTaskList extends React.Component {
         <div id="containter" className="taskListContainer">
           {/* for each item on the state tasklist create a task link on the page */}
           <ul>
-            {this.state.taskList.map((item, index) => (
-              <li key={index}>
-                <Form>
-                  <Form.Group controlId="formBasicCheckbox">
-                    <div
-                      className="check checkBox"
-                      onClick={index => this.check(item)}
-                      type="checkbox"
-                    >
-                      <input
-                        className="checkedBox"
+            {this.state.taskList
+              .map((item, index) => (
+                <li key={index}>
+                  <Form>
+                    <Form.Group controlId="formBasicCheckbox">
+                      <div
+                        className="check checkBox"
+                        onClick={index => this.check(item)}
                         type="checkbox"
-                        name="vehicle1"
-                        value="Bike"
-                      ></input>
-                    </div>
-                    <Link
-                      id="formText"
-                      to={{
-                        pathname: `/edittaskModal/${item.id}`,
-                        state: { modal: true }
-                      }}
-                    >
-                      <Form.Text>{item.name}</Form.Text>
-                    </Link>
-                    <Route
-                      path="/edittaskModal/:id"
-                      render={props => <EditTaskModal {...props} />}
-                    />
+                      >
+                        <input
+                          className="checkedBox"
+                          type="checkbox"
+                          name="vehicle1"
+                          value="Bike"
+                        ></input>
+                      </div>
+                      <Link
+                        id="formText"
+                        to={{
+                          pathname: `/edittaskModal/${item.id}`,
+                          state: { modal: true }
+                        }}
+                      >
+                        <Form.Text>{item.name}</Form.Text>
+                      </Link>
+                      <Route
+                        path="/edittaskModal/:id"
+                        render={props => <EditTaskModal {...props} />}
+                      />
 
-                    <Button
-                      className="reUseBtn"
-                      onClick={() => this.deleted(item.id)}
-                    >
-                      Delete
-                    </Button>
-                  </Form.Group>
-                </Form>
-              </li>
-            ))}
+                      <Button
+                        className="reUseBtn"
+                        onClick={() => this.deleted(item.id)}
+                      >
+                        Delete
+                      </Button>
+                    </Form.Group>
+                  </Form>
+                </li>
+              ))}
           </ul>
           <div className="completeCont">
             <div className="completeBtn">
