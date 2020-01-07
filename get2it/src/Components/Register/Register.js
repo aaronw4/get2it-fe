@@ -44,7 +44,7 @@ class Register extends React.Component {
   render() {
     console.log(this.props)
     const { username, password } = this.state
-    const { isLoading, error } = this.props
+    const { isLoading } = this.props
 
     return (
 

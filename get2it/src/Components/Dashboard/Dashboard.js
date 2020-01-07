@@ -16,9 +16,6 @@ import { getTASKS } from "../../actions.js";
 
 
 class Dashboard extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     
