@@ -10,7 +10,7 @@ const EditTaskModal = ({ location }) => {
 // console.log('props');
   return (
     <div className={modalClass}>
-      {modal && <Link className='closeLink' to='/TaskList'>Close</Link>}
+      {modal && <Link className='closeLink' to='/taskList'>Close</Link>}
       <div>
         <EditTaskList />
       </div>
