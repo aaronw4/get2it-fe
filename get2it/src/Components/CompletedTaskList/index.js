@@ -39,6 +39,27 @@ class CompletedTaskList extends React.Component {
   toggleComplete = event => {
     
   }
+  arrar = [];
+  complete = (index) => {
+// console.log(index)
+var tasks = this.props.userTasks
+// console.log(tasks)
+  //  console.log(tasks[index].id)
+    const id = tasks[index].id;
+    // console.log(id)
+          const payload = {
+            status: false
+          };
+          console.log(payload);
+
+          this.props.updateTask(payload, id);
+
+    setTimeout(() => {
+  
+      window.location.reload(true);
+    }, 100);
+  };
+
   create = event => {
     event.preventDefault();
     console.log('click');
@@ -65,7 +86,7 @@ class CompletedTaskList extends React.Component {
               <Form >
                 <Form.Group controlId='formBasicCheckbox'>
                   <Form.Text>{item}</Form.Text>
-                  <Button className="reUseBtn">Re-Use</Button>
+                  <Button className="reUseBtn" onClick={() => this.complete(index)}>Re-Use</Button>
                 </Form.Group>
               </Form>
             </li>
