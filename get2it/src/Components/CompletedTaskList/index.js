@@ -30,7 +30,7 @@ class CompletedTaskList extends React.Component {
       
       }
     };
-    console.log(list)
+    // console.log(list)
     this.setState({
       taskList: list
     })
