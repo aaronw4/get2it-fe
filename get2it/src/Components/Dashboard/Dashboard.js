@@ -8,6 +8,7 @@ import Home from '../Home/Home.js'
 import Menu from '../Menu/Menu.js'
 import NewTask from '../NewTask/NewTask.js'
 import EditTaskList from '../editTask/EditTask.js'
+import EditCompletedTaskList from '../editCompletedTask/EditTask'
 import TaskList from '../TaskList/index.js'
 import Profile from '../Profile/Profile.js'
 import Spinner from '../Spinner/Spinner.js'
@@ -78,8 +79,16 @@ class Dashboard extends React.Component {
                 render={props => <TaskList {...props} />}
               />
               <Route
+                path="/CompletedtaskModal"
+                render={props => <CompletedTaskList {...props} />}
+              />
+              <Route
                 path="/EditTaskList"
                 render={props => <EditTaskList {...props} />}
+              />
+              <Route
+                path="/EditCompletedTaskList"
+                render={props => <EditCompletedTaskList {...props} />}
               />
             </div>
           </div>

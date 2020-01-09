@@ -1,9 +1,11 @@
 import React from 'react';
-import './style.css'
-import { connect } from 'react-redux'
-import { Form, Button } from 'react-bootstrap'
-import { updateTask, getTASKS } from '../../actions'
-
+import './style.css';
+import { connect } from 'react-redux';
+import { Form, Button } from 'react-bootstrap';
+import { updateTask, getTASKS } from '../../actions';
+import CompletedtaskModal from "../Home/CompletedtaskModal";
+import $ from "jquery";
+import { Link, Route } from "react-router-dom";
 // buld completed task component and set up state
 class CompletedTaskList extends React.Component {
   constructor(props) {
@@ -41,18 +43,15 @@ class CompletedTaskList extends React.Component {
   }
   arrar = [];
   complete = (index) => {
-// console.log(index)
-var tasks = this.props.userTasks
-// console.log(tasks)
-  //  console.log(tasks[index].id)
-    const id = tasks[index].id;
-    // console.log(id)
-          const payload = {
-            status: false
-          };
-          console.log(payload);
 
-          this.props.updateTask(payload, id);
+    var tasks = this.props.userTasks
+    const id = tasks[index].id;
+
+    const payload = {
+      status: false
+    };
+
+    this.props.updateTask(payload, id);
 
     setTimeout(() => {
   
@@ -86,7 +85,19 @@ var tasks = this.props.userTasks
               <Form >
                 <Form.Group controlId='formBasicCheckbox'>
                   <Form.Text>{item}</Form.Text>
-                  <Button className="reUseBtn" onClick={() => this.complete(index)}>Re-Use</Button>
+                  <Link
+                        id="formText"
+                        to={{
+                          pathname: `/editCompletedtaskModal/99`,
+                          state: { modal: true }
+                        }}
+                      >
+                  <div className="reUseBtn" >Re-Use</div>
+                  </Link>
+                  <Route
+                        path="/editCompletedtaskModal/:id"
+                        render={props => <CompletedtaskModal {...props} />}
+                      />
                 </Form.Group>
               </Form>
             </li>

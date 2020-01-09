@@ -14,6 +14,8 @@ function App() {
       <PrivateRoute path='/NewTask' component={Dashboard} />
       <PrivateRoute path='/editTask' component={Dashboard} />
       <PrivateRoute path='/edittaskModal' component={Dashboard} />
+      <PrivateRoute path='/editCompletedTask' component={Dashboard} />
+      <PrivateRoute path='/CompletedtaskModal' component={Dashboard} />
       <PrivateRoute path='/taskList' component={Dashboard} />
       <PrivateRoute path='/taskModal' component={Dashboard} />
       <PrivateRoute path='/profile' component={Dashboard} />
