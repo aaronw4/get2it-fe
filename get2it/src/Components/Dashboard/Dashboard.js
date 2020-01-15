@@ -12,6 +12,7 @@ import TaskList from '../TaskList/index.js'
 import Profile from '../Profile/Profile.js'
 import Spinner from '../Spinner/Spinner.js'
 import CompletedTaskList from '../CompletedTaskList/index.js'
+import Notification from '../Notifications/Notification.js'
 import { getTASKS } from "../../actions.js";
 
 
@@ -52,6 +53,7 @@ class Dashboard extends React.Component {
           </Alert>
         ) : (
           <div className="dashboard">
+            <Notification />
             <div className="nav">
               <Menu />
             </div>
