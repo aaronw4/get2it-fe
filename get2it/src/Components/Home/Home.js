@@ -8,6 +8,7 @@ import moment from 'moment'
 import Moment from 'react-moment'
 import NewTaskModal from './NewTaskModal.js'
 import logo from '../Images/logo.png'
+import {notify} from '../Notifications/Notification.js'
 
 class Home extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class Home extends React.Component {
     const {time, todayList} = this
     return (
       <div className="home">
+        <button onClick={() => notify('Hey hey hey')} style={{'z-index': '999'}}>Hey</button>
         {time >= 4 && time < 11 ? (
           <h2 className="greeting">Good morning</h2>
         ) : time >= 11 && time < 16 ? (

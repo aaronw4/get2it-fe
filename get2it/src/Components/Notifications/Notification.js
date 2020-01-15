@@ -1,25 +1,49 @@
 import React from 'react'
 import './notification.css'
+import ee from 'event-emitter'
 
 
+const emitter = new ee()
+
+export const notify = (msg) => {
+  emitter.emit('notification', msg)
+}
 
 export default class Notification extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       top: -100,
+      msg: '',
+    }
+    this.timeout = null
+
+    emitter.on('notification', (msg) => {
+      this.onShow(msg)
+    })
+  }
+
+  onShow = (msg) => {
+    if(this.timeout){
+      clearTimeout(this.timeout)
+      this.setState({
+        top: -100
+      }, () => {
+        this.timeout = setTimeout(() => {
+          this.showNotification(msg)
+        }, 500)
+      })
+    } else {
+      this.showNotification(msg)
     }
   }
 
-  onShow = () => {
-
-  }
-
-  showNotification = () => {
+  showNotification = (msg) => {
     this.setState({
       top: 16,
+      msg: msg,
     }, () => {
-      setTimeout(() => {
+      this.timeout = setTimeout(() => {
         this.setState({
           top: -100,
         })
@@ -30,9 +54,8 @@ export default class Notification extends React.Component {
   render() {
     return (
       <>
-        <button onClick={this.showNotification} style={{}}>Hey!</button>
         <div className='notificationContainer' style={{top: this.state.top}}>
-          <p className='notificationBody'>You've been notified!</p>
+          <p className='notificationBody'>{this.state.msg}</p>
         </div>
       </>
     )
