@@ -54,11 +54,14 @@ export default class Notification extends React.Component {
   render() {
     return (
       <>
-        <div className='notificationContainer' style={{top: this.state.top}}>
-          <p className='notificationBody'>{this.state.msg}</p>
+        <div className="notificationContainer" style={{ top: this.state.top }}>
+          <p className="notificationBody">
+            <i className="fas fa-exclamation-circle notificationIcon"></i>
+            {this.state.msg}
+          </p>
         </div>
       </>
-    )
+    );
   }
 
 }

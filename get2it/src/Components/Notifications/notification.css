@@ -1,4 +1,7 @@
 .notificationContainer {
+  display: flex;
+  align-items: center;
+  width: 200px;
   background-color: white;
   color: black;
   border-radius: 10px 0 10px 10px;
@@ -10,8 +13,16 @@
   transition: top 0.5s ease;
 
 }
-
 .notificationBody {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
   color: black;
   font-size: .9rem;
+}
+.notificationIcon {
+  align-self: flex-start;
+  margin: 4px;
+  margin-top: 3px;
+  color: rgb(124, 124, 124);
 }
