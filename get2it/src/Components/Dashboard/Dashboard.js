@@ -12,7 +12,7 @@ import TaskList from '../TaskList/index.js'
 import Profile from '../Profile/Profile.js'
 import Spinner from '../Spinner/Spinner.js'
 import CompletedTaskList from '../CompletedTaskList/index.js'
-import Notification from '../Notifications/Notification.js'
+import Notification, { notify } from '../Notifications/Notification.js'
 import { getTASKS } from "../../actions.js";
 
 
@@ -21,6 +21,24 @@ class Dashboard extends React.Component {
   componentDidMount() {
     
     this.props.getTASKS(this.props.userData.id);
+    
+    setTimeout(() => {
+      
+      this.props.userTasks.map(task => {
+        if (task.status === false) {
+          return notify(
+            <div className='notifyContainer'>
+              <span className='notifyName'>{task.name} </span>
+              <span className='notifyText'>is set to begin at </span>
+              <span className='notifyStart'>{task.start_time} </span>
+              <span className='notifyText'>on </span>
+              <span className='notifyDate'>{task.date}</span>
+            </div>
+          );
+        }
+      });
+    }, 5000);
+    
   }
 
   logout = evt => {
