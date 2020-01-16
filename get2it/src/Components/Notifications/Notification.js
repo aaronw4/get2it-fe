@@ -40,9 +40,10 @@ export default class Notification extends React.Component {
 
   showNotification = (msg) => {
     this.setState({
-      top: 16,
+      top: 18,
       msg: msg,
-    }, () => {
+    }
+    , () => {
       this.timeout = setTimeout(() => {
         this.setState({
           top: -100,

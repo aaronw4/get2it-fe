@@ -53,11 +53,11 @@ class Dashboard extends React.Component {
           </Alert>
         ) : (
           <div className="dashboard">
-            <Notification />
             <div className="nav">
               <Menu />
             </div>
             <div className="appRoutes">
+            <Notification />
               <Route
                 path="/onboarding"
                 render={props => <OnBoarding {...props} />}

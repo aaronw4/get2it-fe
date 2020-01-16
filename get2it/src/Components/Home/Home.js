@@ -26,7 +26,7 @@ class Home extends React.Component {
     const {time, todayList} = this
     return (
       <div className="home">
-        <button onClick={() => notify('Get your head out of your ass and Get2It')} style={{'z-index': '1'}}>Hey</button>
+        <button onClick={() => notify('Get your head out of your ass and Get2It')} style={{'zIndex': '1'}}>.</button>
         {time >= 4 && time < 11 ? (
           <h2 className="greeting">Good morning</h2>
         ) : time >= 11 && time < 16 ? (
@@ -51,7 +51,7 @@ class Home extends React.Component {
             <div className="noTaskContainer">
               <i className="fas fa-long-arrow-alt-up arrow"></i>
               <p className="instruction">
-                See all of your tasks!
+                See your pending tasks!
               </p>
               <div className="bigLogoContainer">
                 <img className="bigLogo" src={logo} alt="Get2It!" />
