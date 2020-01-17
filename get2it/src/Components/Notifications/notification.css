@@ -27,3 +27,19 @@
   margin-top: 3px;
   color: rgb(124, 124, 124);
 }
+
+.notifyText {
+
+}
+.notifyName {
+  color: dodgerblue;
+  font-weight: bold;
+}
+.notifyStart {
+  color: forestgreen;
+  font-weight: bold;
+}
+.notifyDate {
+  color: blueviolet;
+  font-weight: bold;
+}

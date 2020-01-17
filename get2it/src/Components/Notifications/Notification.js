@@ -26,6 +26,7 @@ export default class Notification extends React.Component {
   onShow = (msg) => {
     if(this.timeout){
       clearTimeout(this.timeout)
+        
       this.setState({
         top: -100
       }, () => {
@@ -48,8 +49,9 @@ export default class Notification extends React.Component {
         this.setState({
           top: -100,
         })
-      }, 5000);
-    })
+      }, 8000);
+    }
+    )
   }
 
   render() {
