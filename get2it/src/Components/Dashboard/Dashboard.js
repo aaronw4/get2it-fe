@@ -17,54 +17,58 @@ import { getTASKS } from "../../actions.js";
 
 
 class Dashboard extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.timeout = null;
+  }
   componentDidMount() {
-    
     this.props.getTASKS(this.props.userData.id);
-    setTimeout(() => {
-      this.runNotify()
-    }, 2000);
+    this.timeout = setTimeout(() => {
+      this.runNotify();
+    }, 3000);
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
+    this.timeout = null
+  }
 
   runNotify = () => {
-
-    const { userTasks } = this.props
-    console.log(userTasks.length)
-    let i = 1
+    const { userTasks } = this.props;
+    console.log(userTasks.length);
+    let i = 0;
     userTasks.forEach(task => {
-      console.log(task.status)
+      console.log(task.status);
       if (task.status === false) {
-        setTimeout(() => {
+        this.timeout = setTimeout(() => {
           notify(
-            <div className='notifyContainer'>
-              <span className='notifyName'>{task.name} </span>
-              <span className='notifyText'>is set to begin at </span>
-              <span className='notifyStart'>{task.start_time} </span>
-              <span className='notifyText'>on </span>
-              <span className='notifyDate'>{task.date}</span>
+            <div className="notifyContainer">
+              <span className="notifyName">{task.name} </span>
+              <span className="notifyText">is set to begin at </span>
+              <span className="notifyStart">{task.start_time} </span>
+              <span className="notifyText">on </span>
+              <span className="notifyDate">{task.date}</span>
             </div>
           );
-        }, i*6000);
-        i++
-        console.log(i)
+        }, i * 6000);
+        i++;
+        console.log(i);
       }
       // else {
       //   console.log('else')
       //   i++
       // }
     });
-  }
+  };
 
   logout = evt => {
-
     localStorage.removeItem("token");
     this.props.history.push("/login");
-    window.location.reload(false)
+    window.location.reload(false);
   };
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <>
         {this.props.isLoading ? (
@@ -81,7 +85,7 @@ class Dashboard extends React.Component {
             </Alert.Heading>
             <p>
               For security purposes your session has expired. Please log back in
-              and <span className='expiredGet2It'>Get2It</span>.
+              and <span className="expiredGet2It">Get2It</span>.
             </p>
           </Alert>
         ) : (
@@ -90,7 +94,7 @@ class Dashboard extends React.Component {
               <Menu />
             </div>
             <div className="appRoutes">
-            <Notification />
+              <Notification />
               <Route
                 path="/onboarding"
                 render={props => <OnBoarding {...props} />}

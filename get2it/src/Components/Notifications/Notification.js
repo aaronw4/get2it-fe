@@ -23,6 +23,11 @@ export default class Notification extends React.Component {
     })
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timeout)
+    this.timeout = null
+  }
+
   onShow = (msg) => {
     if(this.timeout){
       clearTimeout(this.timeout)
@@ -49,7 +54,7 @@ export default class Notification extends React.Component {
         this.setState({
           top: -100,
         })
-      }, 8000);
+      }, 6000);
     }
     )
   }
