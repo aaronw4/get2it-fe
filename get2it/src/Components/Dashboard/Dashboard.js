@@ -21,29 +21,39 @@ class Dashboard extends React.Component {
   componentDidMount() {
     
     this.props.getTASKS(this.props.userData.id);
-    
     setTimeout(() => {
-      
-      let i = 0
-      const { userTasks } = this.props
-      for (; i < userTasks.length;) {
-        if (userTasks[i].status === false) {
+      this.runNotify()
+    }, 2000);
+  }
+
+
+  runNotify = () => {
+
+    const { userTasks } = this.props
+    console.log(userTasks.length)
+    let i = 1
+    userTasks.forEach(task => {
+      console.log(task.status)
+      if (task.status === false) {
+        setTimeout(() => {
           notify(
             <div className='notifyContainer'>
-              <span className='notifyName'>{userTasks[i].name} </span>
+              <span className='notifyName'>{task.name} </span>
               <span className='notifyText'>is set to begin at </span>
-              <span className='notifyStart'>{userTasks[i].start_time} </span>
+              <span className='notifyStart'>{task.start_time} </span>
               <span className='notifyText'>on </span>
-              <span className='notifyDate'>{userTasks[i].date}</span>
+              <span className='notifyDate'>{task.date}</span>
             </div>
           );
-          setTimeout(() => {
-            i++
-          }, 8000);
-        }
-      };
-    }, 2000);
-    
+        }, i*6000);
+        i++
+        console.log(i)
+      }
+      // else {
+      //   console.log('else')
+      //   i++
+      // }
+    });
   }
 
   logout = evt => {
