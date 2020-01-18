@@ -18,16 +18,22 @@ export default class Notification extends React.Component {
     }
     this.timeout = null
 
-    emitter.on('notification', (msg) => {
-      this.onShow(msg)
-    })
+    
+  }
+
+  componentDidMount() {
+    this._mounted = true
+    emitter.on("notification", msg => {
+      this.onShow(msg);
+    });
   }
 
   componentWillUnmount() {
+    this._mounted = false;
     clearTimeout(this.timeout)
     this.timeout = null
   }
-
+  
   onShow = (msg) => {
     if(this.timeout){
       clearTimeout(this.timeout)
@@ -45,18 +51,21 @@ export default class Notification extends React.Component {
   }
 
   showNotification = (msg) => {
-    this.setState({
-      top: 18,
-      msg: msg,
+    if (this._mounted) {
+      
+      this.setState({
+        top: 18,
+        msg: msg,
+      }
+      , () => {
+        this.timeout = setTimeout(() => {
+          this.setState({
+            top: -100,
+          })
+        }, 6000);
+      }
+      )
     }
-    , () => {
-      this.timeout = setTimeout(() => {
-        this.setState({
-          top: -100,
-        })
-      }, 6000);
-    }
-    )
   }
 
   render() {
