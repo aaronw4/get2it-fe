@@ -15,6 +15,14 @@ class Home extends React.Component {
     console.log(props)
   }
 
+  componentDidMount() {
+    this._mounted = true
+  }
+
+  componentWillUnmount() {
+    this._mounted = false
+  }
+
   time = moment().format('H')
   today = moment().format('L')
   todayList = this.props.userTasks.filter(task => task.date === this.today && task.status === false)

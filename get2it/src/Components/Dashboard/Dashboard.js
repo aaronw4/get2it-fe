@@ -20,6 +20,7 @@ import { getTASKS } from "../../actions.js";
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+    this.notifyRan = false
     this.timeout = null;
   }
 
@@ -27,46 +28,90 @@ class Dashboard extends React.Component {
   today = moment().format("L");
   
   componentDidMount() {
+    this._mounted = true
     console.log(this.time)
     this.props.getTASKS(this.props.userData.id);
-    this.timeout = setTimeout(() => {
-      this.runNotify();
-    }, 3000);
+    // this.timeout = setTimeout(() => {
+    //   this.runNotify();
+    // }, 3000);
   }
   
   componentWillUnmount() {
+    this._mounted = false
     clearTimeout(this.timeout);
     this.timeout = null;
   }
   
   runNotify = () => {
-    const todayList = this.props.userTasks.filter(
-      task => task.date === this.today && task.status === false
-    );
-    console.log(this.today);
-    let i = 0;
-    todayList.forEach(task => {
-      const endTime = moment(task.end_time, 'HH:mm:ss a')
-      const currentTime = moment(this.time, 'HH:mm:ss a')
-      const minutesLeft = moment.duration(endTime.diff(currentTime)).asMinutes();
-      const hoursLeft = moment.duration(endTime.diff(currentTime)).asHours();
-      console.log(minutesLeft);
-      console.log(hoursLeft);
-      if (minutesLeft === 74) {
-        this.timeout = setTimeout(() => {
-          notify(
-            <div className="notifyContainer">
-              <span className="notifyName">{task.name} </span>
-              <span className="notifyText">is set to begin at </span>
-              <span className="notifyStart">{task.start_time} </span>
-              <span className="notifyText">and end at </span>
-              <span className="notifyEnd">{task.end_time}</span>
-            </div>
-          );
-        }, i * 6000);
-        i++;
-      }
-    });
+    if (!this.notifyRan) {
+      this.notifyRan = true
+
+      const todayList = this.props.userTasks.filter(
+        task => task.date === this.today && task.status === false
+      );
+      console.log(this.today);
+      let i = 0;
+      todayList.forEach(task => {
+        const endTime = moment(task.end_time, 'HH:mm:ss a')
+        const currentTime = moment(this.time, 'HH:mm:ss a')
+        const minutesLeft = moment.duration(endTime.diff(currentTime)).asMinutes();
+        const hoursLeft = moment.duration(endTime.diff(currentTime)).asHours();
+        console.log(minutesLeft);
+        console.log(hoursLeft);
+        if (minutesLeft === 60) {
+          this.timeout = setTimeout(() => {
+            notify(
+              <div className="notifyContainer">
+                <span className="notifyText">You have </span>
+                <span className="notifyEnd">one hour</span>
+                <span className="notifyText"> left to complete </span>
+                <span className="notifyName">{task.name}!</span>
+              </div>
+            );
+          }, i * 6000);
+          i++;
+        }
+        else if (minutesLeft === 30 || minutesLeft === 10 || minutesLeft === 5) {
+          this.timeout = setTimeout(() => {
+            notify(
+              <div className="notifyContainer">
+                <span className="notifyText">You have </span>
+                <span className="notifyEnd">{minutesLeft} minutes</span>
+                <span className="notifyText"> left to complete </span>
+                <span className="notifyName">{task.name}!</span>
+              </div>
+            );
+          }, i * 6000);
+          i++;
+        }
+        else if (minutesLeft === 1) {
+          this.timeout = setTimeout(() => {
+            notify(
+              <div className="notifyContainer">
+                <span className="notifyText">You have </span>
+                <span className="notifyEnd">{minutesLeft} minute</span>
+                <span className="notifyText"> left to complete </span>
+                <span className="notifyName">{task.name}!</span>
+              </div>
+            );
+          }, i * 6000);
+          i++;
+        }
+        else if (minutesLeft <= 0) {
+          this.timeout = setTimeout(() => {
+            notify(
+              <div className="notifyContainer">
+                <span className="notifyName">{task.name} </span>
+                <span className="notifyText">is </span>
+                <span className="notifyEnd">OVERDUE!!! </span>
+                <span className="notifyText">Please update the due date or mark it complete!</span>
+              </div>
+            );
+          }, i * 6000);
+          i++;
+        }
+      });
+    }
   };
 
   logout = evt => {
@@ -77,6 +122,10 @@ class Dashboard extends React.Component {
 
   render() {
     console.log(this.props);
+    this.timeout = setTimeout(() => {
+      this.runNotify();
+    }, 3000);
+    
     return (
       <>
         {this.props.isLoading ? (
