@@ -1,5 +1,6 @@
 import React from 'react';
 import './Dashboard.css'
+import moment from 'moment'
 import Alert from 'react-bootstrap/Alert'
 import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
@@ -21,43 +22,50 @@ class Dashboard extends React.Component {
     super(props);
     this.timeout = null;
   }
+
+  time = moment().format("LT");
+  today = moment().format("L");
+  
   componentDidMount() {
+    console.log(this.time)
     this.props.getTASKS(this.props.userData.id);
     this.timeout = setTimeout(() => {
       this.runNotify();
     }, 3000);
   }
-
+  
   componentWillUnmount() {
     clearTimeout(this.timeout);
-    this.timeout = null
+    this.timeout = null;
   }
-
+  
   runNotify = () => {
-    const { userTasks } = this.props;
-    console.log(userTasks.length);
+    const todayList = this.props.userTasks.filter(
+      task => task.date === this.today && task.status === false
+    );
+    console.log(this.today);
     let i = 0;
-    userTasks.forEach(task => {
-      console.log(task.status);
-      if (task.status === false) {
+    todayList.forEach(task => {
+      const endTime = moment(task.end_time, 'HH:mm:ss a')
+      const currentTime = moment(this.time, 'HH:mm:ss a')
+      const minutesLeft = moment.duration(endTime.diff(currentTime)).asMinutes();
+      const hoursLeft = moment.duration(endTime.diff(currentTime)).asHours();
+      console.log(minutesLeft);
+      console.log(hoursLeft);
+      if (minutesLeft === 74) {
         this.timeout = setTimeout(() => {
           notify(
             <div className="notifyContainer">
               <span className="notifyName">{task.name} </span>
               <span className="notifyText">is set to begin at </span>
               <span className="notifyStart">{task.start_time} </span>
-              <span className="notifyText">on </span>
-              <span className="notifyDate">{task.date}</span>
+              <span className="notifyText">and end at </span>
+              <span className="notifyEnd">{task.end_time}</span>
             </div>
           );
         }, i * 6000);
         i++;
-        console.log(i);
       }
-      // else {
-      //   console.log('else')
-      //   i++
-      // }
     });
   };
 

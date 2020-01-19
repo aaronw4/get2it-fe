@@ -39,6 +39,10 @@
   color: forestgreen;
   font-weight: bold;
 }
+.notifyEnd {
+  color: firebrick;
+  font-weight: bold;
+}
 .notifyDate {
   color: blueviolet;
   font-weight: bold;
