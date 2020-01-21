@@ -31,14 +31,18 @@ class Dashboard extends React.Component {
     this._mounted = true
     console.log(this.time)
     this.props.getTASKS(this.props.userData.id);
-    // this.timeout = setTimeout(() => {
-    //   this.runNotify();
-    // }, 3000);
+    this.timeout = setTimeout(() => {
+      this.runNotify();
+    }, 3000);
+    this.interval = setInterval(() => {
+      this.runNotify()
+    }, 10000);
   }
   
   componentWillUnmount() {
     this._mounted = false
     clearTimeout(this.timeout);
+    clearInterval(this.interval)
     this.timeout = null;
   }
   
@@ -50,7 +54,6 @@ class Dashboard extends React.Component {
         return false
       }
     })
-    console.log(notified.includes(true))
     if (notified.includes(true)) {
       return true;
     } else {
@@ -59,117 +62,111 @@ class Dashboard extends React.Component {
   }
 
   runNotify = () => {
-    if (this.notifyRan) {
-      // this.notifyRan = true
 
-      const todayList = this.props.userTasks.filter(
-        task => task.date === this.today && task.status === false
-      );
-      console.log(this.today);
-      let i = 0;
-      todayList.forEach((task,index) => {
-        const endTime = moment(task.end_time, 'HH:mm:ss a')
-        const currentTime = moment(moment().format("LT"), "HH:mm:ss a");
-        const minutesLeft = moment.duration(endTime.diff(currentTime)).asMinutes();
-        const hoursLeft = moment.duration(endTime.diff(currentTime)).asHours();
-        console.log(minutesLeft);
-        console.log(hoursLeft);
+    const todayList = this.props.userTasks.filter(
+      task => task.date === this.today && task.status === false
+    );
+    let i = 0;
+    todayList.forEach((task,index) => {
+      const endTime = moment(task.end_time, 'HH:mm:ss a')
+      const currentTime = moment(moment().format("LT"), "HH:mm:ss a");
+      const minutesLeft = moment.duration(endTime.diff(currentTime)).asMinutes();
+      // const hoursLeft = moment.duration(endTime.diff(currentTime)).asHours();
 
-        if (minutesLeft === 60 && this.sift(task.name,60) === false) {
-          this.timeout = setTimeout(() => {
-            notify(
-              <div className="notifyContainer">
-                <span className="notifyText">You have </span>
-                <span className="notifyEnd">one hour</span>
-                <span className="notifyText"> left to complete </span>
-                <span className="notifyName">{task.name}!</span>
-              </div>
-            );
-          }, i * 6000);
-          this.notifyRan = [
-            ...this.notifyRan,
-            {
-              name: task.name,
-              timeLeft: 60
-            }]
-          i++;
-        }
-        else if (
-               (minutesLeft === 30 && this.sift(task.name,30) === false) ||
-               (minutesLeft === 10 && this.sift(task.name,10) === false) ||
-               (minutesLeft === 5 && this.sift(task.name,5) === false)
-             ) {
-               this.timeout = setTimeout(() => {
-                 notify(
-                   <div className="notifyContainer">
-                     <span className="notifyText">You have </span>
-                     <span className="notifyEnd">{minutesLeft} minutes</span>
-                     <span className="notifyText"> left to complete </span>
-                     <span className="notifyName">{task.name}!</span>
-                   </div>
-                 );
-               }, i * 6000);
-               this.notifyRan = [
-                 ...this.notifyRan,
-                 {
-                   name: task.name,
-                   timeLeft: minutesLeft
-                 }
-               ];
-               i++;
-             } else if (minutesLeft === 1 && this.sift(task.name,1) === false) {
-                      this.timeout = setTimeout(() => {
-                        notify(
-                          <div className="notifyContainer">
-                            <span className="notifyText">You have </span>
-                            <span className="notifyEnd">
-                              {minutesLeft} minute
-                            </span>
-                            <span className="notifyText">
-                              {" "}
-                              left to complete{" "}
-                            </span>
-                            <span className="notifyName">{task.name}!</span>
-                          </div>
-                        );
-                      }, i * 6000);
-                      this.notifyRan = [
-                        ...this.notifyRan,
-                        {
-                          name: task.name,
-                          timeLeft: 1
-                        }
-                      ];
-                      i++;
-                    } else if (minutesLeft <= 0 && this.sift(task.name,0) === false) {
-                             this.timeout = setTimeout(() => {
-                               notify(
-                                 <div className="notifyContainer">
-                                   <span className="notifyName">
-                                     {task.name}{" "}
-                                   </span>
-                                   <span className="notifyText">is </span>
-                                   <span className="notifyEnd">
-                                     OVERDUE!!!{" "}
-                                   </span>
-                                   <span className="notifyText">
-                                     Please update the due date or mark it
-                                     complete!
-                                   </span>
-                                 </div>
-                               );
-                             }, i * 6000);
-                             this.notifyRan = [
-                               ...this.notifyRan,
-                               {
-                                 name: task.name,
-                                 timeLeft: 0
-                               }
-                             ];
-                             i++;
-                           }
-      });
-    }
+      if (minutesLeft === 60 && this.sift(task.name,60) === false) {
+        this.timeout = setTimeout(() => {
+          notify(
+            <div className="notifyContainer">
+              <span className="notifyText">You have </span>
+              <span className="notifyEnd">one hour</span>
+              <span className="notifyText"> left to complete </span>
+              <span className="notifyName">{task.name}</span>
+            </div>
+          );
+        }, i * 6000);
+        this.notifyRan = [
+          ...this.notifyRan,
+          {
+            name: task.name,
+            timeLeft: 60
+          }]
+        i++;
+      }
+      else if (
+              (minutesLeft === 30 && this.sift(task.name,30) === false) ||
+              (minutesLeft === 10 && this.sift(task.name,10) === false) ||
+              (minutesLeft === 5 && this.sift(task.name,5) === false)
+            ) {
+              this.timeout = setTimeout(() => {
+                notify(
+                  <div className="notifyContainer">
+                    <span className="notifyText">You have </span>
+                    <span className="notifyEnd">{minutesLeft} minutes</span>
+                    <span className="notifyText"> left to complete </span>
+                    <span className="notifyName">{task.name}</span>
+                  </div>
+                );
+              }, i * 6000);
+              this.notifyRan = [
+                ...this.notifyRan,
+                {
+                  name: task.name,
+                  timeLeft: minutesLeft
+                }
+              ];
+              i++;
+            } else if (minutesLeft === 1 && this.sift(task.name,1) === false) {
+                    this.timeout = setTimeout(() => {
+                      notify(
+                        <div className="notifyContainer">
+                          <span className="notifyText">You have </span>
+                          <span className="notifyEnd">
+                            {minutesLeft} minute
+                          </span>
+                          <span className="notifyText">
+                            {" "}
+                            left to complete{" "}
+                          </span>
+                          <span className="notifyName">{task.name}</span>
+                        </div>
+                      );
+                    }, i * 6000);
+                    this.notifyRan = [
+                      ...this.notifyRan,
+                      {
+                        name: task.name,
+                        timeLeft: 1
+                      }
+                    ];
+                    i++;
+                  } else if (minutesLeft <= 0 && this.sift(task.name,0) === false) {
+                            this.timeout = setTimeout(() => {
+                              notify(
+                                <div className="notifyContainer">
+                                  <span className="notifyName">
+                                    {task.name}{" "}
+                                  </span>
+                                  <span className="notifyText">is </span>
+                                  <span className="notifyEnd">
+                                    OVERDUE!!!{" "}
+                                  </span>
+                                  <span className="notifyText">
+                                    Please update the due date or mark it
+                                    complete!
+                                  </span>
+                                </div>
+                              );
+                            }, i * 6000);
+                            this.notifyRan = [
+                              ...this.notifyRan,
+                              {
+                                name: task.name,
+                                timeLeft: 0
+                              }
+                            ];
+                            i++;
+                          }
+    });
   };
 
   logout = evt => {
@@ -180,9 +177,7 @@ class Dashboard extends React.Component {
 
   render() {
     console.log(this.props);
-    this.timeout = setTimeout(() => {
-      this.runNotify();
-    }, 3000);
+    
     
     return (
       <>
