@@ -77,7 +77,7 @@ class editTaskList extends React.Component {
     setTimeout(() => {
   
       window.location.reload(true);
-    }, 100);
+    }, 500);
   };
 
 
