@@ -20,7 +20,7 @@ import { getTASKS, updateTask } from "../../actions.js";
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.initialRun = []
+    this.initialRun = JSON.parse(sessionStorage.getItem("initialRun"));
     this.notifyRan = false;
     this.timeout = null;
     this.notifyList = [];
@@ -47,7 +47,6 @@ class Dashboard extends React.Component {
     clearInterval(this.interval);
     this.timeout = null;
     if (this.notifyList.length > 0) {
-      console.log(this.notifyList);
       this.notifyList.forEach(task => {
         this.props.updateTask(task.payload, task.id);
       });
@@ -58,46 +57,70 @@ class Dashboard extends React.Component {
   sift = (name, time) => {
     const todayList = this.props.userTasks.filter(
       task => task.date === this.today && task.status === false
-    );
-    let notified = todayList.map(task => {
-      const endTime = moment(task.end_time, "HH:mm:ss a");
-      const currentTime = moment(moment().format("LT"), "HH:mm:ss a");
-      const minutesLeft = moment
-      .duration(endTime.diff(currentTime))
-      .asMinutes();
-      console.log(task.timeLeft)
-      // console.log(task.timeLeft, time);
-      // console.log(task.name === name, minutesLeft <= time);
-      if (task.name === name && minutesLeft !== time && time >= -1) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-    console.log(this.initialRun.length)
+      );
+      let notified = todayList.map(task => {
+        const endTime = moment(task.end_time, "HH:mm:ss a");
+        const currentTime = moment(moment().format("LT"), "HH:mm:ss a");
+        const minutesLeft = moment
+        .duration(endTime.diff(currentTime))
+        .asMinutes();
+        const makeList = (name) => {
+          if (this.initialRun === null) {
+            this.initialRun = []
+            return false
+          }else {
 
-    if (this.initialRun.length === 0) {
-      let initRun = todayList.map(task => {
-        return false
-      })
-      if (notified.includes(true) || initRun.includes(true)) {
-        return true;
-      } else {
-        return false;
-      }
-    }else {
-      let initRun = this.initialRun.map(task => {
-        console.log(task.time, time);
-        if (task.name === name && task.time === time) {
-          return true
-        }else {
-          return false
+            for (let i = 0; i < this.initialRun.length; i++) {
+              if (this.initialRun[i].name === name) {
+                return true
+              }
+              else if (undefined) {
+                return false
+              }else {
+                return false
+              }
+            }
+          }
         }
-      })
-      if (notified.includes(true) || initRun.includes(true)) {
-        return true;
-      } else {
-        return false;
+        let nameInList = makeList(name)
+        console.log(nameInList);
+        // console.log(task.name === name, minutesLeft <= time);
+        if (task.name === name && minutesLeft !== time && nameInList !== false && nameInList !== undefined) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      // console.log(this.initialRun.includes(name));
+    console.log(this.initialRun)
+
+    if (this.initialRun === null) {
+      return false
+    }else {
+
+      if (this.initialRun.length === 0) {
+        let initRun = todayList.map(task => {
+          return false
+        })
+        if (notified.includes(true) || initRun.includes(true)) {
+          return true;
+        } else {
+          return false;
+        }
+      }else {
+        let initRun = this.initialRun.map(task => {
+          console.log(task.time, time);
+          if (task.name === name && task.time === time) {
+            return true
+          }else {
+            return false
+          }
+        })
+        if (notified.includes(true) || initRun.includes(true)) {
+          return true;
+        } else {
+          return false;
+        }
       }
     }
   };
@@ -114,6 +137,7 @@ class Dashboard extends React.Component {
         .duration(endTime.diff(currentTime))
         .asMinutes();
       // const hoursLeft = moment.duration(endTime.diff(currentTime)).asHours();
+      
       console.log(task.name, task.timeLeft);
       if (minutesLeft === 60 && this.sift(task.name, 60) === false) {
         const payload = {
@@ -251,7 +275,8 @@ class Dashboard extends React.Component {
         i++;
       }
     });
-    
+
+    sessionStorage.setItem('initialRun', JSON.stringify(this.initialRun))
   };
 
   logout = evt => {
