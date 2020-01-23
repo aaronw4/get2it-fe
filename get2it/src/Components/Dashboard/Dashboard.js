@@ -23,6 +23,7 @@ class Dashboard extends React.Component {
     this.initialRun = []
     this.notifyRan = false;
     this.timeout = null;
+    this.notifyList = [];
   }
 
   time = moment().format("LT");
@@ -37,7 +38,7 @@ class Dashboard extends React.Component {
     this.interval = setInterval(() => {
       console.log(this.initialRun)
       this.timeout = this.runNotify();
-    }, 10000);
+    }, 5000);
   }
 
   componentWillUnmount() {
@@ -45,15 +46,14 @@ class Dashboard extends React.Component {
     clearTimeout(this.timeout);
     clearInterval(this.interval);
     this.timeout = null;
+    if (this.notifyList.length > 0) {
+      console.log(this.notifyList);
+      this.notifyList.forEach(task => {
+        this.props.updateTask(task.payload, task.id);
+      });
+    }
   }
 
-  // shouldComponentUpdate(newProps, newState) {
-  //   if (this.notifyRan === false) {
-  //     return true;
-  //   }else {
-  //     return false
-  //   }
-  // }
 
   sift = (name, time) => {
     const todayList = this.props.userTasks.filter(
@@ -63,12 +63,12 @@ class Dashboard extends React.Component {
       const endTime = moment(task.end_time, "HH:mm:ss a");
       const currentTime = moment(moment().format("LT"), "HH:mm:ss a");
       const minutesLeft = moment
-        .duration(endTime.diff(currentTime))
-        .asMinutes();
+      .duration(endTime.diff(currentTime))
+      .asMinutes();
+      console.log(task.timeLeft)
       // console.log(task.timeLeft, time);
       // console.log(task.name === name, minutesLeft <= time);
-
-      if (task.name === name && minutesLeft != time && time > -1) {
+      if (task.name === name && minutesLeft !== time && time >= -1) {
         return true;
       } else {
         return false;
@@ -114,14 +114,13 @@ class Dashboard extends React.Component {
         .duration(endTime.diff(currentTime))
         .asMinutes();
       // const hoursLeft = moment.duration(endTime.diff(currentTime)).asHours();
-      console.log(task.name, minutesLeft);
+      console.log(task.name, task.timeLeft);
       if (minutesLeft === 60 && this.sift(task.name, 60) === false) {
         const payload = {
           timeLeft: minutesLeft
         };
-        this.timeout = setTimeout(() => {
-          this.props.updateTask(payload, task.id);
-        }, 500);
+        this.notifyList.push({ id: task.id, payload });
+
         this.timeout = setTimeout(() => {
           notify(
             <div className="notifyContainer">
@@ -151,9 +150,8 @@ class Dashboard extends React.Component {
         const payload = {
           timeLeft: minutesLeft
         };
-        this.timeout = setTimeout(() => {
-          this.props.updateTask(payload, task.id);
-        }, 500);
+        this.notifyList.push({ id: task.id, payload });
+
         this.timeout = setTimeout(() => {
           notify(
             <div className="notifyContainer">
@@ -177,9 +175,8 @@ class Dashboard extends React.Component {
         const payload = {
           timeLeft: minutesLeft
         };
-        this.timeout = setTimeout(() => {
-          this.props.updateTask(payload, task.id);
-        }, 500);
+        this.notifyList.push({ id: task.id, payload });
+
         this.timeout = setTimeout(() => {
           notify(
             <div className="notifyContainer">
@@ -203,9 +200,8 @@ class Dashboard extends React.Component {
         const payload = {
           timeLeft: minutesLeft
         };
-        this.timeout = setTimeout(() => {
-          this.props.updateTask(payload, task.id);;
-        }, 500);
+        this.notifyList.push({id: task.id, payload})
+        
         this.timeout = setTimeout(() => {
           notify(
             <div className="notifyContainer">
@@ -232,9 +228,8 @@ class Dashboard extends React.Component {
         const payload = {
           timeLeft: minutesLeft
         };
-        this.timeout = setTimeout(() => {
-          this.props.updateTask(payload, task.id);
-        }, 500);
+        this.notifyList.push({ id: task.id, payload });
+
         this.timeout = setTimeout(() => {
           notify(
             <div className="notifyContainer">
@@ -256,6 +251,7 @@ class Dashboard extends React.Component {
         i++;
       }
     });
+    
   };
 
   logout = evt => {
