@@ -20,65 +20,108 @@ import { getTASKS, updateTask } from "../../actions.js";
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.notifyRan = []
+    this.initialRun = []
+    this.notifyRan = false;
     this.timeout = null;
-    
   }
 
   time = moment().format("LT");
   today = moment().format("L");
-  
+
   componentDidMount() {
-    this._mounted = true
-    this.props.getTASKS(this.props.userData.id)
-    this.timeout = setTimeout(() => {
-      this.runNotify();
-    }, 3000);
+    this._mounted = true;
+    this.props.getTASKS(this.props.userData.id);
+    // this.timeout = setTimeout(() => {
+    //   this.runNotify();
+    // }, 3000);
     this.interval = setInterval(() => {
-      this.timeout = this.runNotify()
-    }, 60000);
+      console.log(this.initialRun)
+      this.timeout = this.runNotify();
+    }, 10000);
   }
-  
+
   componentWillUnmount() {
-    this._mounted = false
+    this._mounted = false;
     clearTimeout(this.timeout);
-    clearInterval(this.interval)
+    clearInterval(this.interval);
     this.timeout = null;
   }
-  
 
-  sift = (name,time) => {
+  // shouldComponentUpdate(newProps, newState) {
+  //   if (this.notifyRan === false) {
+  //     return true;
+  //   }else {
+  //     return false
+  //   }
+  // }
+
+  sift = (name, time) => {
     const todayList = this.props.userTasks.filter(
       task => task.date === this.today && task.status === false
     );
     let notified = todayList.map(task => {
-      console.log(task.timeLeft,time)
-      if (task.name === name && task.timeLeft >= time) {
-        return true
-      }else {
-        return false
-      }
-    })
-    if (notified.includes(true)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  
-  runNotify = () => {
+      const endTime = moment(task.end_time, "HH:mm:ss a");
+      const currentTime = moment(moment().format("LT"), "HH:mm:ss a");
+      const minutesLeft = moment
+        .duration(endTime.diff(currentTime))
+        .asMinutes();
+      // console.log(task.timeLeft, time);
+      // console.log(task.name === name, minutesLeft <= time);
 
+      if (task.name === name && minutesLeft != time && time > -1) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    console.log(this.initialRun.length)
+
+    if (this.initialRun.length === 0) {
+      let initRun = todayList.map(task => {
+        return false
+      })
+      if (notified.includes(true) || initRun.includes(true)) {
+        return true;
+      } else {
+        return false;
+      }
+    }else {
+      let initRun = this.initialRun.map(task => {
+        console.log(task.time, time);
+        if (task.name === name && task.time === time) {
+          return true
+        }else {
+          return false
+        }
+      })
+      if (notified.includes(true) || initRun.includes(true)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
+
+  runNotify = () => {
     const todayList = this.props.userTasks.filter(
       task => task.date === this.today && task.status === false
     );
-    let i = 0;
-    todayList.forEach((task,index) => {
-      const endTime = moment(task.end_time, 'HH:mm:ss a')
+    let i = 1;
+    todayList.forEach((task, index) => {
+      const endTime = moment(task.end_time, "HH:mm:ss a");
       const currentTime = moment(moment().format("LT"), "HH:mm:ss a");
-      const minutesLeft = moment.duration(endTime.diff(currentTime)).asMinutes();
+      const minutesLeft = moment
+        .duration(endTime.diff(currentTime))
+        .asMinutes();
       // const hoursLeft = moment.duration(endTime.diff(currentTime)).asHours();
-      console.log(task.name, minutesLeft)
-      if (minutesLeft === 60 && this.sift(task.name,60) === false) {
+      console.log(task.name, minutesLeft);
+      if (minutesLeft === 60 && this.sift(task.name, 60) === false) {
+        const payload = {
+          timeLeft: minutesLeft
+        };
+        this.timeout = setTimeout(() => {
+          this.props.updateTask(payload, task.id);
+        }, 500);
         this.timeout = setTimeout(() => {
           notify(
             <div className="notifyContainer">
@@ -89,79 +132,129 @@ class Dashboard extends React.Component {
             </div>
           );
         }, i * 6000);
-        const payload = {
-          timeLeft: minutesLeft
-        }
-        this.props.updateTask(payload, task.id)
-        this.props.getTASKS(this.props.userData.id);
+        this.initialRun = [
+          ...this.initialRun,
+          {
+            name: task.name,
+            time: 60
+          }
+        ]
+        this.notifyRan = true;
+        // this.props.getTASKS(this.props.userData.id);
 
         i++;
+      } else if (
+        (minutesLeft === 30 && this.sift(task.name, 30) === false) ||
+        (minutesLeft === 10 && this.sift(task.name, 10) === false) ||
+        (minutesLeft === 5 && this.sift(task.name, 5) === false)
+      ) {
+        const payload = {
+          timeLeft: minutesLeft
+        };
+        this.timeout = setTimeout(() => {
+          this.props.updateTask(payload, task.id);
+        }, 500);
+        this.timeout = setTimeout(() => {
+          notify(
+            <div className="notifyContainer">
+              <span className="notifyText">You have </span>
+              <span className="notifyEnd">{minutesLeft} minutes</span>
+              <span className="notifyText"> left to complete </span>
+              <span className="notifyName">{task.name}</span>
+            </div>
+          );
+        }, i * 6000);
+        this.initialRun = [
+          ...this.initialRun,
+          {
+            name: task.name,
+            time: minutesLeft
+          }
+        ];
+        this.notifyRan = true;
+        i++;
+      } else if (minutesLeft === 1 && this.sift(task.name, 1) === false) {
+        const payload = {
+          timeLeft: minutesLeft
+        };
+        this.timeout = setTimeout(() => {
+          this.props.updateTask(payload, task.id);
+        }, 500);
+        this.timeout = setTimeout(() => {
+          notify(
+            <div className="notifyContainer">
+              <span className="notifyText">You have </span>
+              <span className="notifyEnd">{minutesLeft} minute</span>
+              <span className="notifyText"> left to complete </span>
+              <span className="notifyName">{task.name}</span>
+            </div>
+          );
+        }, i * 6000);
+        this.initialRun = [
+          ...this.initialRun,
+          {
+            name: task.name,
+            time: 1
+          }
+        ];
+        this.notifyRan = true;
+        i++;
+      } else if (minutesLeft <= 0 && this.sift(task.name, -1) === false) {
+        const payload = {
+          timeLeft: minutesLeft
+        };
+        this.timeout = setTimeout(() => {
+          this.props.updateTask(payload, task.id);;
+        }, 500);
+        this.timeout = setTimeout(() => {
+          notify(
+            <div className="notifyContainer">
+              <span className="notifyName">{task.name} </span>
+              <span className="notifyText">is </span>
+              <span className="notifyEnd">OVERDUE!!! </span>
+              <span className="notifyText">
+                Please update the due date or mark it complete!
+              </span>
+            </div>
+          );
+        }, i * 6000);
+        this.initialRun = [
+          ...this.initialRun,
+          {
+            name: task.name,
+            time: -1
+          }
+        ];
+        this.notifyRan = true;
+        // this.props.getTASKS(this.props.userData.id);
+        i++;
+      } else if (task.timeLeft === null && this.sift(task.name, minutesLeft)) {
+        const payload = {
+          timeLeft: minutesLeft
+        };
+        this.timeout = setTimeout(() => {
+          this.props.updateTask(payload, task.id);
+        }, 500);
+        this.timeout = setTimeout(() => {
+          notify(
+            <div className="notifyContainer">
+              <span className="notifyText">You have </span>
+              <span className="notifyEnd">{minutesLeft} minutes</span>
+              <span className="notifyText"> left to complete </span>
+              <span className="notifyName">{task.name}</span>
+            </div>
+          );
+        }, i * 6000);
+        this.initialRun = [
+          ...this.initialRun,
+          {
+            name: task.name,
+            time: minutesLeft
+          }
+        ];
+        this.notifyRan = true;
+        i++;
       }
-      else if (
-              (minutesLeft === 30 && this.sift(task.name,30) === false) ||
-              (minutesLeft === 10 && this.sift(task.name,10) === false) ||
-              (minutesLeft === 5 && this.sift(task.name,5) === false)
-            ) {
-              this.timeout = setTimeout(() => {
-                notify(
-                  <div className="notifyContainer">
-                    <span className="notifyText">You have </span>
-                    <span className="notifyEnd">{minutesLeft} minutes</span>
-                    <span className="notifyText"> left to complete </span>
-                    <span className="notifyName">{task.name}</span>
-                  </div>
-                );
-              }, i * 6000);
-              const payload = {
-                timeLeft: minutesLeft
-              };
-              this.props.updateTask(payload, task.id);
-              i++;
-            } else if (minutesLeft === 1 && this.sift(task.name,1) === false) {
-                    this.timeout = setTimeout(() => {
-                      notify(
-                        <div className="notifyContainer">
-                          <span className="notifyText">You have </span>
-                          <span className="notifyEnd">
-                            {minutesLeft} minute
-                          </span>
-                          <span className="notifyText">
-                            {" "}
-                            left to complete{" "}
-                          </span>
-                          <span className="notifyName">{task.name}</span>
-                        </div>
-                      );
-                    }, i * 6000);
-                    const payload = {
-                      timeLeft: minutesLeft
-                    };
-                    this.props.updateTask(payload, task.id);
-                    i++;
-                  } else if (minutesLeft <= 0 && this.sift(task.name,-1) === false) {
-                            this.timeout = setTimeout(() => {
-                              notify(
-                                <div className="notifyContainer">
-                                  <span className="notifyName">
-                                    {task.name}{" "}
-                                  </span>
-                                  <span className="notifyText">is </span>
-                                  <span className="notifyEnd">
-                                    OVERDUE!!!{" "}
-                                  </span>
-                                  <span className="notifyText">
-                                    Please update the due date or mark it
-                                    complete!
-                                  </span>
-                                </div>
-                              );
-                            }, i * 6000);
-                            const payload = {
-                              timeLeft: minutesLeft
-                            };
-                            this.props.updateTask(payload, task.id);
-                            i++;
-                          }
     });
   };
 
@@ -173,8 +266,7 @@ class Dashboard extends React.Component {
 
   render() {
     console.log(this.props);
-    
-    
+
     return (
       <>
         {this.props.isLoading ? (

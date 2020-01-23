@@ -70,7 +70,7 @@ class Home extends React.Component {
               return (
                 <div className="listItem" key={index}>
                   <div className="iconContainer">
-                    <JsxParser jsx={task.task_icon} />
+                    {this._mounted === true ? <JsxParser jsx={task.task_icon} /> : null}
                   </div>
                   <div className="itemContainer">
                     <p className="itemName">{task.name}</p>
