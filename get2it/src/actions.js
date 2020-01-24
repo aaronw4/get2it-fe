@@ -115,7 +115,7 @@ export function updateTask(payload, id){
       })
       .catch((err) => {
         console.log(err)
-        dispatch({ type: UPDATE_TASK_FAILED, payload: err.response.data })
+        dispatch({ type: UPDATE_TASK_FAILED, payload: err.response })
       })
   }
 }

@@ -15,6 +15,14 @@ class Home extends React.Component {
     console.log(props)
   }
 
+  componentDidMount() {
+    this._mounted = true
+  }
+
+  componentWillUnmount() {
+    this._mounted = false
+  }
+
   time = moment().format('H')
   today = moment().format('L')
   todayList = this.props.userTasks.filter(task => task.date === this.today && task.status === false)
@@ -49,7 +57,7 @@ class Home extends React.Component {
             <div className="noTaskContainer">
               <i className="fas fa-long-arrow-alt-up arrow"></i>
               <p className="instruction">
-                See all of your tasks!
+                See your pending tasks!
               </p>
               <div className="bigLogoContainer">
                 <img className="bigLogo" src={logo} alt="Get2It!" />
@@ -62,7 +70,7 @@ class Home extends React.Component {
               return (
                 <div className="listItem" key={index}>
                   <div className="iconContainer">
-                    <JsxParser jsx={task.task_icon} />
+                    {/* {this._mounted === true ? <JsxParser jsx={task.task_icon} /> : null} */}
                   </div>
                   <div className="itemContainer">
                     <p className="itemName">{task.name}</p>
