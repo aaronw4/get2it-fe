@@ -1,3 +1,4 @@
+@import "../../../node_modules/react-toggle-switch/dist/css/switch.min.css";
 .taskModal{
   border: 1px solid grey;
   /* background: none */
@@ -133,6 +134,7 @@
   .newTaskContainer::-webkit-scrollbar {
     height: 20px;
     width: 8px;
+    display: none;
   }
   .newTaskContainer::-webkit-scrollbar-thumb {
     background: rgba(192, 192, 192, 0.281);
@@ -452,7 +454,10 @@
     color: dodgerblue;
     margin: 2px 5px;
   }
-  .completeBtn {
+  .dropdown-menu.show {
+    width: 5px;
+  }
+  .completeBtnContainer {
     margin-top: 20px;
   }
   .addIcon {
@@ -460,14 +465,17 @@
     justify-content: center;
   }
   .addIcon #icon {
-    color: dodgerblue
+    color: dodgerblue;
   }
   .iconDropContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    
+    margin-bottom: 40px; 
+    padding-bottom: 20px;
+    border-bottom: 2px solid;
+    border-image: radial-gradient(silver, black) 50;   
   }
   .startCont {
     display: flex;
@@ -511,4 +519,51 @@
 }
 .pickTime {
   margin-left: 20px;
+}
+
+.switchContainer {
+  display: flex;
+  /* flex-flow: column; */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.notifySwitch {
+  height: 20px;
+  width: 42px;
+  background-color: transparent;
+  /* margin-bottom: 10px; */
+}
+.switch-toggle {
+  height: 17px;
+  width: 17px;
+}
+.notifySwitchText {
+  display: flex;
+  align-items: center;
+  font-size: .8rem;
+  margin-bottom: 3px;
+  color: white;
+}
+.blue {
+  color: rgb(30, 131, 231);
+}
+.red {
+  color: rgb(209, 0, 0);
+}
+.yellow {
+  color: rgb(207, 187, 0);
+}
+.green {
+  color: rgb(0, 129, 0);
+}
+.googleContainer {
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+  margin: 0 3px 0 4px;
+  padding: 2px;
+  height: 16px;
+  font-weight: bolder;
 }
