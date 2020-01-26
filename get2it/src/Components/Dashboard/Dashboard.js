@@ -36,7 +36,6 @@ class Dashboard extends React.Component {
     //   this.runNotify();
     // }, 3000);
     this.interval = setInterval(() => {
-      console.log(this.initialRun)
       this.timeout = this.runNotify();
     }, 5000);
   }
@@ -83,16 +82,12 @@ class Dashboard extends React.Component {
           }
         }
         let nameInList = makeList(name)
-        console.log(nameInList);
-        // console.log(task.name === name, minutesLeft <= time);
         if (task.name === name && minutesLeft !== time && nameInList !== false && nameInList !== undefined) {
           return true;
         } else {
           return false;
         }
       });
-      // console.log(this.initialRun.includes(name));
-    console.log(this.initialRun)
 
     if (this.initialRun === null) {
       return false
@@ -138,7 +133,6 @@ class Dashboard extends React.Component {
         .asMinutes();
       // const hoursLeft = moment.duration(endTime.diff(currentTime)).asHours();
       
-      console.log(task.name, task.timeLeft);
       if (minutesLeft === 60 && this.sift(task.name, 60) === false) {
         const payload = {
           timeLeft: minutesLeft
@@ -246,7 +240,6 @@ class Dashboard extends React.Component {
           }
         ];
         this.notifyRan = true;
-        // this.props.getTASKS(this.props.userData.id);
         i++;
       } else if (task.timeLeft === null && this.sift(task.name, minutesLeft)) {
         const payload = {
@@ -286,7 +279,6 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    console.log(this.props);
 
     return (
       <>
