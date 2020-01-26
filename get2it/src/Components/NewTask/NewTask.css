@@ -454,9 +454,6 @@
     color: dodgerblue;
     margin: 2px 5px;
   }
-  .dropdown-menu.show {
-    width: 5px;
-  }
   .completeBtnContainer {
     margin-top: 20px;
   }
