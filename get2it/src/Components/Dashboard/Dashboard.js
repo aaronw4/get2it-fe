@@ -110,7 +110,6 @@ class Dashboard extends React.Component {
             return false
           }
         })
-        console.log(initRun.includes(true))
         if (notified.includes(true) || initRun.includes(true)) {
           return true;
         } else {
