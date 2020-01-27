@@ -57,7 +57,8 @@ class NewTask extends React.Component {
       start_time,
       end_time,
       userData,
-      error
+      error,
+      notifyOn,
     } = this.props;
     const id = userData.id;
 
@@ -68,6 +69,7 @@ class NewTask extends React.Component {
         task_icon: icon,
         name: taskName,
         date,
+        notifyOn,
         start_time: moment().format("h:mm a"),
         end_time: moment().format("h:mm a")
       };
@@ -88,6 +90,7 @@ class NewTask extends React.Component {
         task_icon: icon,
         name: taskName,
         date,
+        notifyOn,
         start_time,
         end_time: moment().format("h:mm a")
       };
@@ -108,6 +111,7 @@ class NewTask extends React.Component {
         task_icon: icon,
         name: taskName,
         date,
+        notifyOn,
         start_time: moment().format("h:mm a"),
         end_time
       };
@@ -128,6 +132,7 @@ class NewTask extends React.Component {
         task_icon: icon,
         name: taskName,
         date,
+        notifyOn,
         start_time,
         end_time
       };
