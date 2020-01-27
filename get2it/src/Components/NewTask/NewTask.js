@@ -50,7 +50,7 @@ class NewTask extends React.Component {
   handleSubmit = evt => {
     evt.preventDefault();
 
-    const { icon, taskName } = this.state;
+    const { icon, taskName, notifyOn } = this.state;
     const {
       createTask,
       date,
@@ -58,7 +58,6 @@ class NewTask extends React.Component {
       end_time,
       userData,
       error,
-      notifyOn,
     } = this.props;
     const id = userData.id;
 

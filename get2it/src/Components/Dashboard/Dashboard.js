@@ -104,13 +104,13 @@ class Dashboard extends React.Component {
         }
       }else {
         let initRun = this.initialRun.map(task => {
-          console.log(task.time, time);
           if (task.name === name && task.time === time) {
             return true
           }else {
             return false
           }
         })
+        console.log(initRun.includes(true))
         if (notified.includes(true) || initRun.includes(true)) {
           return true;
         } else {
@@ -160,6 +160,7 @@ class Dashboard extends React.Component {
           // this.props.getTASKS(this.props.userData.id);
   
           i++;
+          sessionStorage.setItem('initialRun', JSON.stringify(this.initialRun))
         } else if (
           (minutesLeft === 30 && this.sift(task.name, 30) === false) ||
           (minutesLeft === 10 && this.sift(task.name, 10) === false) ||
@@ -189,6 +190,7 @@ class Dashboard extends React.Component {
           ];
           this.notifyRan = true;
           i++;
+          sessionStorage.setItem('initialRun', JSON.stringify(this.initialRun))
         } else if (minutesLeft === 1 && this.sift(task.name, 1) === false) {
           const payload = {
             timeLeft: minutesLeft
@@ -214,6 +216,7 @@ class Dashboard extends React.Component {
           ];
           this.notifyRan = true;
           i++;
+          sessionStorage.setItem('initialRun', JSON.stringify(this.initialRun))
         } else if (minutesLeft <= 0 && this.sift(task.name, -1) === false) {
           const payload = {
             timeLeft: minutesLeft
@@ -241,6 +244,7 @@ class Dashboard extends React.Component {
           ];
           this.notifyRan = true;
           i++;
+          sessionStorage.setItem('initialRun', JSON.stringify(this.initialRun))
         } else if (task.timeLeft === null && this.sift(task.name, minutesLeft)) {
           const payload = {
             timeLeft: minutesLeft
@@ -266,6 +270,7 @@ class Dashboard extends React.Component {
           ];
           this.notifyRan = true;
           i++;
+          sessionStorage.setItem("initialRun", JSON.stringify(this.initialRun));
         }
       }
     });
