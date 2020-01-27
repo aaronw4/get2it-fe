@@ -8,13 +8,15 @@ import { Dropdown, DropdownButton, Button } from "react-bootstrap";
 import $ from "jquery";
 import { connect } from "react-redux";
 import { updateTask } from "../../actions.js";
+import Switch from "react-toggle-switch";
+
 
 class EditTaskList extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     const tasks = this.props.userTasks.find(
       tasks => `${tasks.id}` === this.props.match.params.id
-    )
+    );
     this.state = {
       icon1: false,
       icon2: false,
@@ -29,12 +31,13 @@ class EditTaskList extends React.Component {
       task_icon: tasks.task_icon,
       newError: null,
       user_id: tasks.user_id,
-      id: tasks.id
-    }
+      id: tasks.id,
+      notifyOn: tasks.notifyOn
+    };
   }
 
   newTask = evt => {
-    const { task_name, task_icon, user_id, id } = this.state;
+    const { task_name, task_icon, user_id, id, notifyOn } = this.state;
     const { date, start_time, end_time } = this.props;
     const payload = {
       date,
@@ -43,26 +46,35 @@ class EditTaskList extends React.Component {
       end_time,
       user_id,
       id,
-      task_icon
-    }
+      task_icon,
+      notifyOn
+    };
 
-    this.props.updateTask(payload, id)
+    this.props.updateTask(payload, id);
 
     setTimeout(() => {
-      this.props.history.push(`/taskList`)
-    }, 400)
-  }
+      this.props.history.push(`/taskList`);
+    }, 400);
+  };
+
+  toggleNotify = () => {
+    this.setState(prevState => {
+      return {
+        notifyOn: !prevState.notifyOn
+      };
+    });
+  };
 
   changeHandler = evt => {
-    evt.preventDefault()
+    evt.preventDefault();
 
     this.setState(
       {
         [evt.target.name]: evt.target.value
       },
       () => console.log(this.state.task_name)
-    )
-  }
+    );
+  };
   iconCheck = () => {
     if (this.state.task_icon === "") {
       // console.log("NO ICON")
@@ -73,7 +85,7 @@ class EditTaskList extends React.Component {
         icon4: false,
         icon5: false,
         icon6: false
-      })
+      });
     } else if (
       this.state.task_icon ===
       '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
@@ -114,7 +126,8 @@ class EditTaskList extends React.Component {
         icon4: true,
         icon5: true,
         icon6: true,
-        task_icon: '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
+        task_icon:
+          '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
       });
     } else if (
       this.state.task_icon ===
@@ -130,8 +143,7 @@ class EditTaskList extends React.Component {
         icon6: true,
         task_icon: '<i id="icon" className="fas fa-carrot iconDropdown"></i>'
       });
-    } 
-    else if (
+    } else if (
       this.state.task_icon ===
       '<i id="icon" className="fas fa-broom iconDropdown"></i>'
     ) {
@@ -145,8 +157,7 @@ class EditTaskList extends React.Component {
         icon6: true,
         task_icon: '<i id="icon" className="fas fa-broom iconDropdown"></i>'
       });
-    }
-    else if (
+    } else if (
       this.state.task_icon ===
       '<i id="icon" className="fab fa-black-tie iconDropdown"></i>'
     ) {
@@ -161,19 +172,19 @@ class EditTaskList extends React.Component {
         task_icon: '<i id="icon" className="fab fa-black-tie iconDropdown"></i>'
       });
     } else {
-      console.log("not working")
+      console.log("not working");
     }
-  }
+  };
 
   refreshPage = () => {
-    window.location.reload(false)
-  }
-  componentDidMount(){
-    this.iconCheck()
+    window.location.reload(false);
+  };
+  componentDidMount() {
+    this.iconCheck();
   }
   render() {
-    console.log(this.state.task_icon)
-    const { task_name, date } = this.state
+    console.log(this.state.task_icon);
+    const { task_name, date } = this.state;
     return (
       <div className="newTaskContainer">
         <br />
@@ -188,7 +199,7 @@ class EditTaskList extends React.Component {
           <Date taskDate={this.state.date} />
           <br />
           <br />
-          <div className='retrievedDate'>
+          <div className="retrievedDate">
             <input
               onChange={this.changeHandler}
               type="text"
@@ -263,13 +274,12 @@ class EditTaskList extends React.Component {
                   className="fab fa-black-tie iconDropdown"
                 />
               </div>
-             
             </div>
             <DropdownButton
               id="dropdown-item-button"
               title=""
               onClick={evt => {
-                evt.preventDefault()
+                evt.preventDefault();
               }}
             >
               <Dropdown.Item
@@ -285,7 +295,7 @@ class EditTaskList extends React.Component {
                     icon4: true,
                     icon5: true,
                     icon6: true
-                  })
+                  });
                   // this.addIconOne()
                 }}
                 as="button"
@@ -304,7 +314,7 @@ class EditTaskList extends React.Component {
                     icon4: true,
                     icon5: true,
                     icon6: true
-                  })
+                  });
                 }}
                 as="button"
               >
@@ -322,7 +332,7 @@ class EditTaskList extends React.Component {
                     icon4: true,
                     icon5: true,
                     icon6: true
-                  })
+                  });
                   // this.addIconThree()
                 }}
                 as="button"
@@ -341,7 +351,7 @@ class EditTaskList extends React.Component {
                     icon4: false,
                     icon5: true,
                     icon6: true
-                  })
+                  });
                   // this.addIconThree()
                 }}
                 as="button"
@@ -360,7 +370,7 @@ class EditTaskList extends React.Component {
                     icon4: true,
                     icon5: false,
                     icon6: true
-                  })
+                  });
                   // this.addIconThree()
                 }}
                 as="button"
@@ -379,7 +389,7 @@ class EditTaskList extends React.Component {
                     icon4: true,
                     icon5: true,
                     icon6: false
-                  })
+                  });
                   // this.addIconThree()
                 }}
                 as="button"
@@ -389,11 +399,21 @@ class EditTaskList extends React.Component {
             </DropdownButton>
           </div>
           <hr className="line" />
+          <div className="switchContainer">
+            <p className="notifySwitchText">
+              Turn on in-app notifications for this task?
+            </p>
+            <Switch
+              onClick={this.toggleNotify}
+              on={this.state.notifyOn}
+              className="notifySwitch"
+            />
+          </div>
 
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
           )}
-          <div className='completeBtnContainer'>
+          <div className="completeBtnContainer">
             <Button
               onClick={this.newTask}
               className="completeBtn-create"
@@ -404,7 +424,7 @@ class EditTaskList extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

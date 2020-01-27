@@ -9,6 +9,7 @@ import $ from "jquery";
 import { connect } from 'react-redux';
 import { createTask, newStartTime } from '../../actions.js';
 import moment from "moment";
+import Switch from 'react-toggle-switch'
 
 class NewTask extends React.Component {
   constructor(props) {
@@ -17,10 +18,26 @@ class NewTask extends React.Component {
     this.state = {
       icon: "",
       taskName: "",
-      newError: null
+      newError: null,
+      switched: false,
+      notifyOn: false,
     };
-
   }
+
+  toggleSwitch = () => {
+    this.setState(prevState => {
+      return {
+        switched: !prevState.switched
+      };
+    });
+  };
+  toggleNotify = () => {
+    this.setState(prevState => {
+      return {
+        notifyOn: !prevState.notifyOn
+      };
+    });
+  };
 
   changeHandler = evt => {
     evt.preventDefault();
@@ -31,117 +48,124 @@ class NewTask extends React.Component {
   };
 
   handleSubmit = evt => {
-    evt.preventDefault()
+    evt.preventDefault();
 
-    const { icon, taskName } = this.state
-    const { createTask, date, start_time, end_time, userData, error } = this.props
-    const id = userData.id
+    const { icon, taskName, notifyOn } = this.state;
+    const {
+      createTask,
+      date,
+      start_time,
+      end_time,
+      userData,
+      error,
+    } = this.props;
+    const id = userData.id;
 
-      if(start_time === '' && end_time === ''){
-        // this.props.newStartTime(moment().format("h:mm a"));
+    if (start_time === "" && end_time === "") {
+      // this.props.newStartTime(moment().format("h:mm a"));
 
-        const payload = {
-          task_icon: icon,
-          name: taskName,
-          date,
-          start_time: moment().format("h:mm a"),
-          end_time: moment().format("h:mm a"),
-        }
-        // console.log(payload)
-        
-        createTask(payload, id)
-      .then(() => {
-        this.props.history.push('/')
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({
-          newError: this.props.error
+      const payload = {
+        task_icon: icon,
+        name: taskName,
+        date,
+        notifyOn,
+        start_time: moment().format("h:mm a"),
+        end_time: moment().format("h:mm a")
+      };
+      // console.log(payload)
+
+      createTask(payload, id)
+        .then(() => {
+          this.props.history.push("/");
         })
-      });
-      } else if (end_time === ''){
-        const payload = {
-          task_icon: icon,
-          name: taskName,
-          date,
-          start_time,
-          end_time: moment().format("h:mm a")
-        }
-        console.log(payload)
-        
-        createTask(payload, id)
-      .then(() => {
-        this.props.history.push('/')
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({
-          newError: this.props.error
-        })
-      });
+        .catch(err => {
+          console.error(err);
+          this.setState({
+            newError: this.props.error
+          });
+        });
+    } else if (end_time === "") {
+      const payload = {
+        task_icon: icon,
+        name: taskName,
+        date,
+        notifyOn,
+        start_time,
+        end_time: moment().format("h:mm a")
+      };
+      console.log(payload);
 
-      } else if (start_time === ''){
-        const payload = {
-          task_icon: icon,
-          name: taskName,
-          date,
-          start_time: moment().format("h:mm a"),
-          end_time 
-        }
-        console.log(payload)
-        
-        createTask(payload, id)
-      .then(() => {
-        this.props.history.push('/')
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({
-          newError: this.props.error
+      createTask(payload, id)
+        .then(() => {
+          this.props.history.push("/");
         })
-      });
+        .catch(err => {
+          console.error(err);
+          this.setState({
+            newError: this.props.error
+          });
+        });
+    } else if (start_time === "") {
+      const payload = {
+        task_icon: icon,
+        name: taskName,
+        date,
+        notifyOn,
+        start_time: moment().format("h:mm a"),
+        end_time
+      };
+      console.log(payload);
 
-      } else {
-        
-        const payload = {
-          task_icon: icon,
-          name: taskName,
-          date,
-          start_time,
-          end_time,
-        }
-        createTask(payload, id)
-      .then(() => {
-        this.props.history.push('/')
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({
-          newError: this.props.error
+      createTask(payload, id)
+        .then(() => {
+          this.props.history.push("/");
         })
-      });
-      }
-
-  }
-  
-  addIconOne = event => {
-    $('#iconOne').removeClass("iconOne")
-    $('#iconTwo').addClass("iconTwo")
-    $('#iconThree').addClass("iconThree")
-    $('#iconFour').addClass("iconFour")
-    $('#iconFive').addClass("iconFive")
-    $('#iconSix').addClass("iconSix")
-console.log($('#iconThree'))
+        .catch(err => {
+          console.error(err);
+          this.setState({
+            newError: this.props.error
+          });
+        });
+    } else {
+      const payload = {
+        task_icon: icon,
+        name: taskName,
+        date,
+        notifyOn,
+        start_time,
+        end_time
+      };
+      createTask(payload, id)
+        .then(() => {
+          this.props.history.push("/");
+        })
+        .catch(err => {
+          console.error(err);
+          this.setState({
+            newError: this.props.error
+          });
+        });
     }
-    addIconTwo = event => {
-      // console.log("yolo")
+  };
+
+  addIconOne = event => {
+    $("#iconOne").removeClass("iconOne");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconThree").addClass("iconThree");
+    $("#iconFour").addClass("iconFour");
+    $("#iconFive").addClass("iconFive");
+    $("#iconSix").addClass("iconSix");
+    console.log($("#iconThree"));
+  };
+  addIconTwo = event => {
+    // console.log("yolo")
 
     $("#iconOne").addClass("iconOne");
     $("#iconTwo").removeClass("iconTwo");
     $("#iconThree").addClass("iconThree");
-    $('#iconFour').addClass("iconFour")
-    $('#iconFive').addClass("iconFive")
-    $('#iconSix').addClass("iconSix")
+    $("#iconFour").addClass("iconFour");
+    $("#iconFive").addClass("iconFive");
+    $("#iconSix").addClass("iconSix");
   };
   addIconThree = event => {
     // console.log("yolo")
@@ -149,9 +173,9 @@ console.log($('#iconThree'))
     $("#iconOne").addClass("iconOne");
     $("#iconTwo").addClass("iconTwo");
     $("#iconThree").removeClass("iconThree");
-    $('#iconFour').addClass("iconFour")
-    $('#iconFive').addClass("iconFive")
-    $('#iconSix').addClass("iconSix")
+    $("#iconFour").addClass("iconFour");
+    $("#iconFive").addClass("iconFive");
+    $("#iconSix").addClass("iconSix");
   };
   addIconFour = event => {
     // console.log("yolo")
@@ -159,9 +183,9 @@ console.log($('#iconThree'))
     $("#iconOne").addClass("iconOne");
     $("#iconTwo").addClass("iconTwo");
     $("#iconThree").addClass("iconThree");
-    $('#iconFive').addClass("iconFive")
-    $('#iconSix').addClass("iconSix")
-    $('#iconFour').removeClass("iconFour")
+    $("#iconFive").addClass("iconFive");
+    $("#iconSix").addClass("iconSix");
+    $("#iconFour").removeClass("iconFour");
   };
   addIconFive = event => {
     // console.log("yolo")
@@ -170,9 +194,9 @@ console.log($('#iconThree'))
     $("#iconTwo").addClass("iconTwo");
     $("#iconThree").addClass("iconThree");
 
-    $('#iconFour').addClass("iconFour")
-    $('#iconSix').addClass("iconSix")
-    $('#iconFive').removeClass("iconFive")
+    $("#iconFour").addClass("iconFour");
+    $("#iconSix").addClass("iconSix");
+    $("#iconFive").removeClass("iconFive");
   };
   addIconSix = event => {
     // console.log("yolo")
@@ -180,17 +204,17 @@ console.log($('#iconThree'))
     $("#iconOne").addClass("iconOne");
     $("#iconTwo").addClass("iconTwo");
     $("#iconThree").addClass("iconThree");
-    $('#iconFour').addClass("iconFour")
-    $('#iconFive').addClass("iconFive")
-    $('#iconSix').removeClass("iconSix")
+    $("#iconFour").addClass("iconFour");
+    $("#iconFive").addClass("iconFive");
+    $("#iconSix").removeClass("iconSix");
   };
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <div className="newTaskContainer">
         <br />
-        
+
         <h1 className="NewTask-Tittle"> Add New Task</h1>
         {/* <hr className="line" /> */}
         <br />
@@ -223,8 +247,10 @@ console.log($('#iconThree'))
             required
           />
 
-          <label className='newTaskLableName'>Pick an icon for your task!</label>
-          <div className='iconDropContainer'>
+          <label className="newTaskLableName">
+            Pick an icon for your task!
+          </label>
+          <div className="iconDropContainer">
             <div className="displayIcons">
               <div id="iconOne">
                 <i
@@ -240,28 +266,28 @@ console.log($('#iconThree'))
                   className="fas fa-hospital iconDropdown"
                 ></i>
               </div>
-              <div id="iconThree" >
+              <div id="iconThree">
                 <i
                   id="icon"
                   data-myval="3"
                   className="fab fa-accessible-icon iconDropdown"
                 ></i>
               </div>
-              <div id="iconFour" >
+              <div id="iconFour">
                 <i
                   id="icon"
                   data-myval="4"
                   className="fas fa-carrot iconDropdown"
                 ></i>
               </div>
-              <div id="iconFive" >
+              <div id="iconFive">
                 <i
                   id="icon"
                   data-myval="5"
                   className="fas fa-broom iconDropdown"
                 ></i>
               </div>
-              <div id="iconSix" >
+              <div id="iconSix">
                 <i
                   id="icon"
                   data-myval="6"
@@ -269,10 +295,14 @@ console.log($('#iconThree'))
                 ></i>
               </div>
             </div>
-            
-            
-            
-            <DropdownButton id="dropdown-item-button" title='' onClick={(evt) => {evt.preventDefault()}}>
+
+            <DropdownButton
+              id="dropdown-item-button"
+              title=""
+              onClick={evt => {
+                evt.preventDefault();
+              }}
+            >
               <Dropdown.Item
                 onClick={this.addIcons}
                 className="addIcon"
@@ -311,7 +341,10 @@ console.log($('#iconThree'))
                 }}
                 as="button"
               >
-                <i id="icon" className="fab fa-accessible-icon iconDropdown"></i>
+                <i
+                  id="icon"
+                  className="fab fa-accessible-icon iconDropdown"
+                ></i>
               </Dropdown.Item>
               <Dropdown.Item
                 className="addIcon"
@@ -354,14 +387,42 @@ console.log($('#iconThree'))
               </Dropdown.Item>
             </DropdownButton>
             {/* <Label /> */}
-            <div>{/* <JsxParser jsx={this.state.icon} /> */}</div>
           </div>
           <hr className="line" />
+          <div className="switchContainer">
+            <p className="notifySwitchText">
+              Turn on in-app notifications for this task?
+            </p>
+            <Switch
+              onClick={this.toggleNotify}
+              on={this.state.notifyOn}
+              className="notifySwitch"
+            />
+          </div>
+          <div className="switchContainer">
+            <p className="notifySwitchText">
+              Add this task to your
+              <span className="googleContainer">
+                <span className="blue"> G</span>
+                <span className="red">o</span>
+                <span className="yellow">o</span>
+                <span className="blue">g</span>
+                <span className="green">l</span>
+                <span className="red">e </span>
+              </span>
+              Calendar?
+            </p>
+            <Switch
+              onClick={this.toggleSwitch}
+              on={this.state.switched}
+              className="notifySwitch"
+            />
+          </div>
 
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
           )}
-          <div className='completeBtnContainer'>
+          <div className="completeBtnContainer">
             <Button className="completeBtn-create" type="submit">
               Complete
             </Button>

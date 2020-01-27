@@ -37,7 +37,6 @@ class Dashboard extends React.Component {
     //   this.runNotify();
     // }, 3000);
     this.interval = setInterval(() => {
-      console.log(this.initialRun)
       this.timeout = this.runNotify();
     }, 5000);
   }
@@ -84,16 +83,12 @@ class Dashboard extends React.Component {
           }
         }
         let nameInList = makeList(name)
-        console.log(nameInList);
-        // console.log(task.name === name, minutesLeft <= time);
         if (task.name === name && minutesLeft !== time && nameInList !== false && nameInList !== undefined) {
           return true;
         } else {
           return false;
         }
       });
-      // console.log(this.initialRun.includes(name));
-    console.log(this.initialRun)
 
     if (this.initialRun === null) {
       return false
@@ -110,7 +105,6 @@ class Dashboard extends React.Component {
         }
       }else {
         let initRun = this.initialRun.map(task => {
-          console.log(task.time, time);
           if (task.name === name && task.time === time) {
             return true
           }else {
@@ -138,142 +132,146 @@ class Dashboard extends React.Component {
         .duration(endTime.diff(currentTime))
         .asMinutes();
       // const hoursLeft = moment.duration(endTime.diff(currentTime)).asHours();
-      
-      console.log(task.name, task.timeLeft);
-      if (minutesLeft === 60 && this.sift(task.name, 60) === false) {
-        const payload = {
-          timeLeft: minutesLeft
-        };
-        this.notifyList.push({ id: task.id, payload });
-
-        this.timeout = setTimeout(() => {
-          notify(
-            <div className="notifyContainer">
-              <span className="notifyText">You have </span>
-              <span className="notifyEnd">one hour</span>
-              <span className="notifyText"> left to complete </span>
-              <span className="notifyName">{task.name}</span>
-            </div>
-          );
-        }, i * 6000);
-        this.initialRun = [
-          ...this.initialRun,
-          {
-            name: task.name,
-            time: 60
-          }
-        ]
-        this.notifyRan = true;
-        // this.props.getTASKS(this.props.userData.id);
-
-        i++;
-      } else if (
-        (minutesLeft === 30 && this.sift(task.name, 30) === false) ||
-        (minutesLeft === 10 && this.sift(task.name, 10) === false) ||
-        (minutesLeft === 5 && this.sift(task.name, 5) === false)
-      ) {
-        const payload = {
-          timeLeft: minutesLeft
-        };
-        this.notifyList.push({ id: task.id, payload });
-
-        this.timeout = setTimeout(() => {
-          notify(
-            <div className="notifyContainer">
-              <span className="notifyText">You have </span>
-              <span className="notifyEnd">{minutesLeft} minutes</span>
-              <span className="notifyText"> left to complete </span>
-              <span className="notifyName">{task.name}</span>
-            </div>
-          );
-        }, i * 6000);
-        this.initialRun = [
-          ...this.initialRun,
-          {
-            name: task.name,
-            time: minutesLeft
-          }
-        ];
-        this.notifyRan = true;
-        i++;
-      } else if (minutesLeft === 1 && this.sift(task.name, 1) === false) {
-        const payload = {
-          timeLeft: minutesLeft
-        };
-        this.notifyList.push({ id: task.id, payload });
-
-        this.timeout = setTimeout(() => {
-          notify(
-            <div className="notifyContainer">
-              <span className="notifyText">You have </span>
-              <span className="notifyEnd">{minutesLeft} minute</span>
-              <span className="notifyText"> left to complete </span>
-              <span className="notifyName">{task.name}</span>
-            </div>
-          );
-        }, i * 6000);
-        this.initialRun = [
-          ...this.initialRun,
-          {
-            name: task.name,
-            time: 1
-          }
-        ];
-        this.notifyRan = true;
-        i++;
-      } else if (minutesLeft <= 0 && this.sift(task.name, -1) === false) {
-        const payload = {
-          timeLeft: minutesLeft
-        };
-        this.notifyList.push({id: task.id, payload})
-        
-        this.timeout = setTimeout(() => {
-          notify(
-            <div className="notifyContainer">
-              <span className="notifyName">{task.name} </span>
-              <span className="notifyText">is </span>
-              <span className="notifyEnd">OVERDUE!!! </span>
-              <span className="notifyText">
-                Please update the due date or mark it complete!
-              </span>
-            </div>
-          );
-        }, i * 6000);
-        this.initialRun = [
-          ...this.initialRun,
-          {
-            name: task.name,
-            time: -1
-          }
-        ];
-        this.notifyRan = true;
-        // this.props.getTASKS(this.props.userData.id);
-        i++;
-      } else if (task.timeLeft === null && this.sift(task.name, minutesLeft)) {
-        const payload = {
-          timeLeft: minutesLeft
-        };
-        this.notifyList.push({ id: task.id, payload });
-
-        this.timeout = setTimeout(() => {
-          notify(
-            <div className="notifyContainer">
-              <span className="notifyText">You have </span>
-              <span className="notifyEnd">{minutesLeft} minutes</span>
-              <span className="notifyText"> left to complete </span>
-              <span className="notifyName">{task.name}</span>
-            </div>
-          );
-        }, i * 6000);
-        this.initialRun = [
-          ...this.initialRun,
-          {
-            name: task.name,
-            time: minutesLeft
-          }
-        ];
-        this.notifyRan = true;
-        i++;
+      if (task.notifyOn) {
+        if (minutesLeft === 60 && this.sift(task.name, 60) === false) {
+          const payload = {
+            timeLeft: minutesLeft
+          };
+          this.notifyList.push({ id: task.id, payload });
+  
+          this.timeout = setTimeout(() => {
+            notify(
+              <div className="notifyContainer">
+                <span className="notifyText">You have </span>
+                <span className="notifyEnd">one hour</span>
+                <span className="notifyText"> left to complete </span>
+                <span className="notifyName">{task.name}</span>
+              </div>
+            );
+          }, i * 6000);
+          this.initialRun = [
+            ...this.initialRun,
+            {
+              name: task.name,
+              time: 60
+            }
+          ]
+          this.notifyRan = true;
+          // this.props.getTASKS(this.props.userData.id);
+  
+          i++;
+          sessionStorage.setItem('initialRun', JSON.stringify(this.initialRun))
+        } else if (
+          (minutesLeft === 30 && this.sift(task.name, 30) === false) ||
+          (minutesLeft === 10 && this.sift(task.name, 10) === false) ||
+          (minutesLeft === 5 && this.sift(task.name, 5) === false)
+        ) {
+          const payload = {
+            timeLeft: minutesLeft
+          };
+          this.notifyList.push({ id: task.id, payload });
+  
+          this.timeout = setTimeout(() => {
+            notify(
+              <div className="notifyContainer">
+                <span className="notifyText">You have </span>
+                <span className="notifyEnd">{minutesLeft} minutes</span>
+                <span className="notifyText"> left to complete </span>
+                <span className="notifyName">{task.name}</span>
+              </div>
+            );
+          }, i * 6000);
+          this.initialRun = [
+            ...this.initialRun,
+            {
+              name: task.name,
+              time: minutesLeft
+            }
+          ];
+          this.notifyRan = true;
+          i++;
+          sessionStorage.setItem('initialRun', JSON.stringify(this.initialRun))
+        } else if (minutesLeft === 1 && this.sift(task.name, 1) === false) {
+          const payload = {
+            timeLeft: minutesLeft
+          };
+          this.notifyList.push({ id: task.id, payload });
+  
+          this.timeout = setTimeout(() => {
+            notify(
+              <div className="notifyContainer">
+                <span className="notifyText">You have </span>
+                <span className="notifyEnd">{minutesLeft} minute</span>
+                <span className="notifyText"> left to complete </span>
+                <span className="notifyName">{task.name}</span>
+              </div>
+            );
+          }, i * 6000);
+          this.initialRun = [
+            ...this.initialRun,
+            {
+              name: task.name,
+              time: 1
+            }
+          ];
+          this.notifyRan = true;
+          i++;
+          sessionStorage.setItem('initialRun', JSON.stringify(this.initialRun))
+        } else if (minutesLeft <= 0 && this.sift(task.name, -1) === false) {
+          const payload = {
+            timeLeft: minutesLeft
+          };
+          this.notifyList.push({id: task.id, payload})
+          
+          this.timeout = setTimeout(() => {
+            notify(
+              <div className="notifyContainer">
+                <span className="notifyName">{task.name} </span>
+                <span className="notifyText">is </span>
+                <span className="notifyEnd">OVERDUE!!! </span>
+                <span className="notifyText">
+                  Please update the due date or mark it complete!
+                </span>
+              </div>
+            );
+          }, i * 6000);
+          this.initialRun = [
+            ...this.initialRun,
+            {
+              name: task.name,
+              time: -1
+            }
+          ];
+          this.notifyRan = true;
+          i++;
+          sessionStorage.setItem('initialRun', JSON.stringify(this.initialRun))
+        } else if (task.timeLeft === null && this.sift(task.name, minutesLeft)) {
+          const payload = {
+            timeLeft: minutesLeft
+          };
+          this.notifyList.push({ id: task.id, payload });
+  
+          this.timeout = setTimeout(() => {
+            notify(
+              <div className="notifyContainer">
+                <span className="notifyText">You have </span>
+                <span className="notifyEnd">{minutesLeft} minutes</span>
+                <span className="notifyText"> left to complete </span>
+                <span className="notifyName">{task.name}</span>
+              </div>
+            );
+          }, i * 6000);
+          this.initialRun = [
+            ...this.initialRun,
+            {
+              name: task.name,
+              time: minutesLeft
+            }
+          ];
+          this.notifyRan = true;
+          i++;
+          sessionStorage.setItem("initialRun", JSON.stringify(this.initialRun));
+        }
       }
     });
 
@@ -287,7 +285,6 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    console.log(this.props);
 
     return (
       <>
