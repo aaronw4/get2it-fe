@@ -1,196 +1,199 @@
-import React from "react";
-import { withRouter } from 'react-router-dom'
-import "./NewTask.css";
-import Clock from "./StartTime";
-import Date from "./Date";
-import EndTime from "./EndTime";
-import { Dropdown, DropdownButton, Button } from "react-bootstrap";
-import $ from "jquery";
-import { connect } from 'react-redux';
-import { createTask, newStartTime } from '../../actions.js';
-import moment from "moment";
+import React from "react"
+import { withRouter } from "react-router-dom"
+import "./NewTask.css"
+import Clock from "./StartTime"
+import Date from "./Date"
+import EndTime from "./EndTime"
+import { Dropdown, DropdownButton, Button } from "react-bootstrap"
+import $ from "jquery"
+import { connect } from "react-redux"
+import { createTask, newStartTime } from "../../actions.js"
+import moment from "moment"
+import AddToCalendarBtn from "../AddCalendarBtn/AddCalendarBtn"
 
 class NewTask extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       icon: "",
       taskName: "",
       newError: null
-    };
-
+    }
   }
 
   changeHandler = evt => {
-    evt.preventDefault();
+    evt.preventDefault()
 
     this.setState({
       [evt.target.name]: evt.target.value
-    });
-  };
+    })
+  }
 
   handleSubmit = evt => {
     evt.preventDefault()
 
     const { icon, taskName } = this.state
-    const { createTask, date, start_time, end_time, userData, error } = this.props
+    const {
+      createTask,
+      date,
+      start_time,
+      end_time,
+      userData,
+      error
+    } = this.props
     const id = userData.id
 
-      if(start_time === '' && end_time === ''){
-        // this.props.newStartTime(moment().format("h:mm a"));
+    if (start_time === "" && end_time === "") {
+      // this.props.newStartTime(moment().format("h:mm a"));
 
-        const payload = {
-          task_icon: icon,
-          name: taskName,
-          date,
-          start_time: moment().format("h:mm a"),
-          end_time: moment().format("h:mm a"),
-        }
-        // console.log(payload)
-        
-        createTask(payload, id)
-      .then(() => {
-        this.props.history.push('/')
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({
-          newError: this.props.error
-        })
-      });
-      } else if (end_time === ''){
-        const payload = {
-          task_icon: icon,
-          name: taskName,
-          date,
-          start_time,
-          end_time: moment().format("h:mm a")
-        }
-        console.log(payload)
-        
-        createTask(payload, id)
-      .then(() => {
-        this.props.history.push('/')
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({
-          newError: this.props.error
-        })
-      });
-
-      } else if (start_time === ''){
-        const payload = {
-          task_icon: icon,
-          name: taskName,
-          date,
-          start_time: moment().format("h:mm a"),
-          end_time 
-        }
-        console.log(payload)
-        
-        createTask(payload, id)
-      .then(() => {
-        this.props.history.push('/')
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({
-          newError: this.props.error
-        })
-      });
-
-      } else {
-        
-        const payload = {
-          task_icon: icon,
-          name: taskName,
-          date,
-          start_time,
-          end_time,
-        }
-        createTask(payload, id)
-      .then(() => {
-        this.props.history.push('/')
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({
-          newError: this.props.error
-        })
-      });
+      const payload = {
+        task_icon: icon,
+        name: taskName,
+        date,
+        start_time: moment().format("h:mm a"),
+        end_time: moment().format("h:mm a")
       }
+      // console.log(payload)
 
-  }
-  
-  addIconOne = event => {
-    $('#iconOne').removeClass("iconOne")
-    $('#iconTwo').addClass("iconTwo")
-    $('#iconThree').addClass("iconThree")
-    $('#iconFour').addClass("iconFour")
-    $('#iconFive').addClass("iconFive")
-    $('#iconSix').addClass("iconSix")
-console.log($('#iconThree'))
+      createTask(payload, id)
+        .then(() => {
+          this.props.history.push("/")
+        })
+        .catch(err => {
+          console.error(err)
+          this.setState({
+            newError: this.props.error
+          })
+        })
+    } else if (end_time === "") {
+      const payload = {
+        task_icon: icon,
+        name: taskName,
+        date,
+        start_time,
+        end_time: moment().format("h:mm a")
+      }
+      console.log(payload)
+
+      createTask(payload, id)
+        .then(() => {
+          this.props.history.push("/")
+        })
+        .catch(err => {
+          console.error(err)
+          this.setState({
+            newError: this.props.error
+          })
+        })
+    } else if (start_time === "") {
+      const payload = {
+        task_icon: icon,
+        name: taskName,
+        date,
+        start_time: moment().format("h:mm a"),
+        end_time
+      }
+      console.log(payload)
+
+      createTask(payload, id)
+        .then(() => {
+          this.props.history.push("/")
+        })
+        .catch(err => {
+          console.error(err)
+          this.setState({
+            newError: this.props.error
+          })
+        })
+    } else {
+      const payload = {
+        task_icon: icon,
+        name: taskName,
+        date,
+        start_time,
+        end_time
+      }
+      createTask(payload, id)
+        .then(() => {
+          this.props.history.push("/")
+        })
+        .catch(err => {
+          console.error(err)
+          this.setState({
+            newError: this.props.error
+          })
+        })
     }
-    addIconTwo = event => {
-      // console.log("yolo")
+  }
 
-    $("#iconOne").addClass("iconOne");
-    $("#iconTwo").removeClass("iconTwo");
-    $("#iconThree").addClass("iconThree");
-    $('#iconFour').addClass("iconFour")
-    $('#iconFive').addClass("iconFive")
-    $('#iconSix').addClass("iconSix")
-  };
+  addIconOne = event => {
+    $("#iconOne").removeClass("iconOne")
+    $("#iconTwo").addClass("iconTwo")
+    $("#iconThree").addClass("iconThree")
+    $("#iconFour").addClass("iconFour")
+    $("#iconFive").addClass("iconFive")
+    $("#iconSix").addClass("iconSix")
+    console.log($("#iconThree"))
+  }
+  addIconTwo = event => {
+    // console.log("yolo")
+
+    $("#iconOne").addClass("iconOne")
+    $("#iconTwo").removeClass("iconTwo")
+    $("#iconThree").addClass("iconThree")
+    $("#iconFour").addClass("iconFour")
+    $("#iconFive").addClass("iconFive")
+    $("#iconSix").addClass("iconSix")
+  }
   addIconThree = event => {
     // console.log("yolo")
 
-    $("#iconOne").addClass("iconOne");
-    $("#iconTwo").addClass("iconTwo");
-    $("#iconThree").removeClass("iconThree");
-    $('#iconFour').addClass("iconFour")
-    $('#iconFive').addClass("iconFive")
-    $('#iconSix').addClass("iconSix")
-  };
+    $("#iconOne").addClass("iconOne")
+    $("#iconTwo").addClass("iconTwo")
+    $("#iconThree").removeClass("iconThree")
+    $("#iconFour").addClass("iconFour")
+    $("#iconFive").addClass("iconFive")
+    $("#iconSix").addClass("iconSix")
+  }
   addIconFour = event => {
     // console.log("yolo")
 
-    $("#iconOne").addClass("iconOne");
-    $("#iconTwo").addClass("iconTwo");
-    $("#iconThree").addClass("iconThree");
-    $('#iconFive').addClass("iconFive")
-    $('#iconSix').addClass("iconSix")
-    $('#iconFour').removeClass("iconFour")
-  };
+    $("#iconOne").addClass("iconOne")
+    $("#iconTwo").addClass("iconTwo")
+    $("#iconThree").addClass("iconThree")
+    $("#iconFive").addClass("iconFive")
+    $("#iconSix").addClass("iconSix")
+    $("#iconFour").removeClass("iconFour")
+  }
   addIconFive = event => {
     // console.log("yolo")
 
-    $("#iconOne").addClass("iconOne");
-    $("#iconTwo").addClass("iconTwo");
-    $("#iconThree").addClass("iconThree");
+    $("#iconOne").addClass("iconOne")
+    $("#iconTwo").addClass("iconTwo")
+    $("#iconThree").addClass("iconThree")
 
-    $('#iconFour').addClass("iconFour")
-    $('#iconSix').addClass("iconSix")
-    $('#iconFive').removeClass("iconFive")
-  };
+    $("#iconFour").addClass("iconFour")
+    $("#iconSix").addClass("iconSix")
+    $("#iconFive").removeClass("iconFive")
+  }
   addIconSix = event => {
     // console.log("yolo")
 
-    $("#iconOne").addClass("iconOne");
-    $("#iconTwo").addClass("iconTwo");
-    $("#iconThree").addClass("iconThree");
-    $('#iconFour').addClass("iconFour")
-    $('#iconFive').addClass("iconFive")
-    $('#iconSix').removeClass("iconSix")
-  };
+    $("#iconOne").addClass("iconOne")
+    $("#iconTwo").addClass("iconTwo")
+    $("#iconThree").addClass("iconThree")
+    $("#iconFour").addClass("iconFour")
+    $("#iconFive").addClass("iconFive")
+    $("#iconSix").removeClass("iconSix")
+  }
 
   render() {
     console.log(this.props)
     return (
       <div className="newTaskContainer">
         <br />
-        
+
         <h1 className="NewTask-Tittle"> Add New Task</h1>
         {/* <hr className="line" /> */}
         <br />
@@ -222,9 +225,12 @@ console.log($('#iconThree'))
             onChange={this.changeHandler}
             required
           />
-
-          <label className='newTaskLableName'>Pick an icon for your task!</label>
-          <div className='iconDropContainer'>
+          <AddToCalendarBtn title={this.state.taskName} />
+          <br />
+          <label className="newTaskLableName">
+            Pick an icon for your task!
+          </label>
+          <div className="iconDropContainer">
             <div className="displayIcons">
               <div id="iconOne">
                 <i
@@ -240,28 +246,28 @@ console.log($('#iconThree'))
                   className="fas fa-hospital iconDropdown"
                 ></i>
               </div>
-              <div id="iconThree" >
+              <div id="iconThree">
                 <i
                   id="icon"
                   data-myval="3"
                   className="fab fa-accessible-icon iconDropdown"
                 ></i>
               </div>
-              <div id="iconFour" >
+              <div id="iconFour">
                 <i
                   id="icon"
                   data-myval="4"
                   className="fas fa-carrot iconDropdown"
                 ></i>
               </div>
-              <div id="iconFive" >
+              <div id="iconFive">
                 <i
                   id="icon"
                   data-myval="5"
                   className="fas fa-broom iconDropdown"
                 ></i>
               </div>
-              <div id="iconSix" >
+              <div id="iconSix">
                 <i
                   id="icon"
                   data-myval="6"
@@ -269,10 +275,14 @@ console.log($('#iconThree'))
                 ></i>
               </div>
             </div>
-            
-            
-            
-            <DropdownButton id="dropdown-item-button" title='' onClick={(evt) => {evt.preventDefault()}}>
+
+            <DropdownButton
+              id="dropdown-item-button"
+              title=""
+              onClick={evt => {
+                evt.preventDefault()
+              }}
+            >
               <Dropdown.Item
                 onClick={this.addIcons}
                 className="addIcon"
@@ -280,8 +290,8 @@ console.log($('#iconThree'))
                   this.setState({
                     icon:
                       '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
-                  });
-                  this.addIconOne();
+                  })
+                  this.addIconOne()
                 }}
                 as="button"
               >
@@ -293,8 +303,8 @@ console.log($('#iconThree'))
                   this.setState({
                     icon:
                       '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
-                  });
-                  this.addIconTwo();
+                  })
+                  this.addIconTwo()
                 }}
                 as="button"
               >
@@ -306,12 +316,15 @@ console.log($('#iconThree'))
                   this.setState({
                     icon:
                       '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
-                  });
-                  this.addIconThree();
+                  })
+                  this.addIconThree()
                 }}
                 as="button"
               >
-                <i id="icon" className="fab fa-accessible-icon iconDropdown"></i>
+                <i
+                  id="icon"
+                  className="fab fa-accessible-icon iconDropdown"
+                ></i>
               </Dropdown.Item>
               <Dropdown.Item
                 className="addIcon"
@@ -319,8 +332,8 @@ console.log($('#iconThree'))
                   this.setState({
                     icon:
                       '<i id="icon" className="fas fa-carrot iconDropdown"></i>'
-                  });
-                  this.addIconFour();
+                  })
+                  this.addIconFour()
                 }}
                 as="button"
               >
@@ -332,8 +345,8 @@ console.log($('#iconThree'))
                   this.setState({
                     icon:
                       '<i id="icon" className="fas fa-broom iconDropdown"></i>'
-                  });
-                  this.addIconFive();
+                  })
+                  this.addIconFive()
                 }}
                 as="button"
               >
@@ -345,8 +358,8 @@ console.log($('#iconThree'))
                   this.setState({
                     icon:
                       '<i id="icon" className="fab fa-black-tie iconDropdown"></i>'
-                  });
-                  this.addIconSix();
+                  })
+                  this.addIconSix()
                 }}
                 as="button"
               >
@@ -361,14 +374,14 @@ console.log($('#iconThree'))
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
           )}
-          <div className='completeBtnContainer'>
+          <div className="completeBtnContainer">
             <Button className="completeBtn-create" type="submit">
               Complete
             </Button>
           </div>
         </form>
       </div>
-    );
+    )
   }
 }
 
@@ -379,11 +392,11 @@ const mapStateToProps = state => ({
   end_time: state.end_time,
   isLoading: state.isLoading,
   error: state.error
-});
+})
 
 const mapDispatchToProps = {
   createTask,
   newStartTime
-};
+}
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(NewTask));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewTask))
