@@ -15,7 +15,7 @@ class AddToCalendarBtn extends Component {
 
   render() {
     return (
-      <span style={{ color: "white" }}>
+      <span style={{ color: "white", textAlign: "center" }}>
         <AddToCalendar
           event={this.state.event}
           displayItemIcons={false}
