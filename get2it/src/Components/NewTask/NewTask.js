@@ -399,7 +399,7 @@ class NewTask extends React.Component {
               className="notifySwitch"
             />
           </div>
-          <div className="switchContainer">
+          {/* <div className="switchContainer">
             <p className="notifySwitchText">
               Add this task to your
               <span className="googleContainer">
@@ -417,7 +417,7 @@ class NewTask extends React.Component {
               on={this.state.switched}
               className="notifySwitch"
             />
-          </div>
+          </div> */}
 
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
