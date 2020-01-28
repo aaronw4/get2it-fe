@@ -256,7 +256,6 @@ class NewTask extends React.Component {
           <br />
 
 
-
           <label className="newTaskLableName">
             Pick an icon for your task!
           </label>
