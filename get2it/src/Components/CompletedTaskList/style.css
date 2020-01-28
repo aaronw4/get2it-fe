@@ -1,3 +1,16 @@
+.completedTaskList {
+  overflow: auto;
+  height: 100%;
+}
+.completedTaskList::-webkit-scrollbar {
+    height: 20px;
+    width: 8px;
+  }
+  .completedTaskList::-webkit-scrollbar-thumb {
+    background: rgba(192, 192, 192, 0.281);
+    border-radius: 30px;
+  }
+
 input[type=checkbox] {
     width: 40px;
     height:39px;

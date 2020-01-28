@@ -73,7 +73,7 @@ class CompletedTaskList extends React.Component {
   // render content to page
   render() {
     return (
-      <div>
+      <div className='completedTaskList'>
         <Form>
           <Form.Text className="taskTitle">COMPLETED TASKS</Form.Text>
         </Form>
