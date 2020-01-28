@@ -11,6 +11,7 @@ import { connect } from "react-redux"
 import { createTask, newStartTime } from "../../actions.js"
 import moment from "moment"
 import AddToCalendarBtn from "../AddCalendarBtn/AddCalendarBtn"
+import Switch from 'react-toggle-switch'
 
 
 class NewTask extends React.Component {
