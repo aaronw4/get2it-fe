@@ -196,7 +196,7 @@
     
     margin-left: 25%;
   }
-  .calendar {
+  /* .calendar {
     margin-top: 0.5rem;
     box-shadow: 0 1px 5px #aeaeae;
     border-radius: 5px;
@@ -266,7 +266,7 @@
     color: #eaeaea !important;
     cursor: not-allowed !important;
     background: inherit !important;
-  }
+  } */
   
   example-wrapper { 
       min-height: 280px; 

@@ -199,10 +199,11 @@
     margin-left: 25%;
   }
   .calendar {
-    margin-top: 0.5rem;
+    margin-right: 40px;
     box-shadow: 0 1px 5px #aeaeae;
     border-radius: 5px;
     overflow: hidden;
+    z-index: 999;
     
   }
   
@@ -211,7 +212,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
-    background: rgb(7, 7, 7);
+    background: rgba(7, 7, 7, 0.397);
     
   }
   
@@ -224,11 +225,12 @@
   }
   
   .week.day-labels {
-    background: rgb(74, 73, 73);
+    background: rgb(12, 12, 12);
   }
   
   .week.day-labels .day {
     cursor: default;
+    color: silver;
   }
   
   .day {
@@ -236,6 +238,7 @@
     padding: 1rem 0.5rem;
     text-align: center;
     cursor: pointer;
+    color: silver;
   }
   
   .week:not(.day-labels) .day:not(:last-of-type) {
@@ -247,8 +250,9 @@
   }
   
   .day.is-today.is-today {
-    font-weight: bold;
+    font-weight: bolder;
     color: rgb(255, 255, 255);
+    background-color: black;
   }
   
   .week:not(.day-labels) .day.is-selected.is-selected {
@@ -265,7 +269,7 @@
   }
   
   .day[disabled] {
-    color: #eaeaea !important;
+    color: #000000b9;
     cursor: not-allowed !important;
     background: inherit !important;
   }
