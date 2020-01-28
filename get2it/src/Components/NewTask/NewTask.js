@@ -1,19 +1,21 @@
-import React from "react";
-import { withRouter } from 'react-router-dom'
-import "./NewTask.css";
-import Clock from "./StartTime";
-import Date from "./Date";
-import EndTime from "./EndTime";
-import { Dropdown, DropdownButton, Button } from "react-bootstrap";
-import $ from "jquery";
-import { connect } from 'react-redux';
-import { createTask, newStartTime } from '../../actions.js';
-import moment from "moment";
-import Switch from 'react-toggle-switch'
+
+import React from "react"
+import { withRouter } from "react-router-dom"
+import "./NewTask.css"
+import Clock from "./StartTime"
+import Date from "./Date"
+import EndTime from "./EndTime"
+import { Dropdown, DropdownButton, Button } from "react-bootstrap"
+import $ from "jquery"
+import { connect } from "react-redux"
+import { createTask, newStartTime } from "../../actions.js"
+import moment from "moment"
+import AddToCalendarBtn from "../AddCalendarBtn/AddCalendarBtn"
+
 
 class NewTask extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       icon: "",
@@ -22,6 +24,7 @@ class NewTask extends React.Component {
       switched: false,
       notifyOn: false,
     };
+
   }
 
   toggleSwitch = () => {
@@ -40,15 +43,16 @@ class NewTask extends React.Component {
   };
 
   changeHandler = evt => {
-    evt.preventDefault();
+    evt.preventDefault()
 
     this.setState({
       [evt.target.name]: evt.target.value
-    });
-  };
+    })
+  }
 
   handleSubmit = evt => {
     evt.preventDefault();
+
 
     const { icon, taskName, notifyOn } = this.state;
     const {
@@ -60,6 +64,7 @@ class NewTask extends React.Component {
       error,
     } = this.props;
     const id = userData.id;
+
 
     if (start_time === "" && end_time === "") {
       // this.props.newStartTime(moment().format("h:mm a"));
@@ -190,10 +195,9 @@ class NewTask extends React.Component {
   addIconFive = event => {
     // console.log("yolo")
 
-    $("#iconOne").addClass("iconOne");
-    $("#iconTwo").addClass("iconTwo");
-    $("#iconThree").addClass("iconThree");
-
+    $("#iconOne").addClass("iconOne")
+    $("#iconTwo").addClass("iconTwo")
+    $("#iconThree").addClass("iconThree")
     $("#iconFour").addClass("iconFour");
     $("#iconSix").addClass("iconSix");
     $("#iconFive").removeClass("iconFive");
@@ -208,6 +212,7 @@ class NewTask extends React.Component {
     $("#iconFive").addClass("iconFive");
     $("#iconSix").removeClass("iconSix");
   };
+
 
   render() {
     console.log(this.props);
@@ -246,6 +251,11 @@ class NewTask extends React.Component {
             onChange={this.changeHandler}
             required
           />
+
+          <AddToCalendarBtn title={this.state.taskName} />
+          <br />
+
+
 
           <label className="newTaskLableName">
             Pick an icon for your task!
@@ -310,8 +320,8 @@ class NewTask extends React.Component {
                   this.setState({
                     icon:
                       '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
-                  });
-                  this.addIconOne();
+                  })
+                  this.addIconOne()
                 }}
                 as="button"
               >
@@ -323,8 +333,8 @@ class NewTask extends React.Component {
                   this.setState({
                     icon:
                       '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
-                  });
-                  this.addIconTwo();
+                  })
+                  this.addIconTwo()
                 }}
                 as="button"
               >
@@ -336,8 +346,8 @@ class NewTask extends React.Component {
                   this.setState({
                     icon:
                       '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
-                  });
-                  this.addIconThree();
+                  })
+                  this.addIconThree()
                 }}
                 as="button"
               >
@@ -352,8 +362,8 @@ class NewTask extends React.Component {
                   this.setState({
                     icon:
                       '<i id="icon" className="fas fa-carrot iconDropdown"></i>'
-                  });
-                  this.addIconFour();
+                  })
+                  this.addIconFour()
                 }}
                 as="button"
               >
@@ -365,8 +375,8 @@ class NewTask extends React.Component {
                   this.setState({
                     icon:
                       '<i id="icon" className="fas fa-broom iconDropdown"></i>'
-                  });
-                  this.addIconFive();
+                  })
+                  this.addIconFive()
                 }}
                 as="button"
               >
@@ -378,8 +388,8 @@ class NewTask extends React.Component {
                   this.setState({
                     icon:
                       '<i id="icon" className="fab fa-black-tie iconDropdown"></i>'
-                  });
-                  this.addIconSix();
+                  })
+                  this.addIconSix()
                 }}
                 as="button"
               >
@@ -429,7 +439,7 @@ class NewTask extends React.Component {
           </div>
         </form>
       </div>
-    );
+    )
   }
 }
 
@@ -440,11 +450,11 @@ const mapStateToProps = state => ({
   end_time: state.end_time,
   isLoading: state.isLoading,
   error: state.error
-});
+})
 
 const mapDispatchToProps = {
   createTask,
   newStartTime
-};
+}
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(NewTask));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewTask))
