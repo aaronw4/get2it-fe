@@ -1,3 +1,4 @@
+
 import React from "react"
 import { withRouter } from "react-router-dom"
 import "./NewTask.css"
@@ -11,6 +12,7 @@ import { createTask, newStartTime } from "../../actions.js"
 import moment from "moment"
 import AddToCalendarBtn from "../AddCalendarBtn/AddCalendarBtn"
 
+
 class NewTask extends React.Component {
   constructor(props) {
     super(props)
@@ -18,9 +20,27 @@ class NewTask extends React.Component {
     this.state = {
       icon: "",
       taskName: "",
-      newError: null
-    }
+      newError: null,
+      switched: false,
+      notifyOn: false,
+    };
+
   }
+
+  toggleSwitch = () => {
+    this.setState(prevState => {
+      return {
+        switched: !prevState.switched
+      };
+    });
+  };
+  toggleNotify = () => {
+    this.setState(prevState => {
+      return {
+        notifyOn: !prevState.notifyOn
+      };
+    });
+  };
 
   changeHandler = evt => {
     evt.preventDefault()
@@ -31,18 +51,20 @@ class NewTask extends React.Component {
   }
 
   handleSubmit = evt => {
-    evt.preventDefault()
+    evt.preventDefault();
 
-    const { icon, taskName } = this.state
+
+    const { icon, taskName, notifyOn } = this.state;
     const {
       createTask,
       date,
       start_time,
       end_time,
       userData,
-      error
-    } = this.props
-    const id = userData.id
+      error,
+    } = this.props;
+    const id = userData.id;
+
 
     if (start_time === "" && end_time === "") {
       // this.props.newStartTime(moment().format("h:mm a"));
@@ -51,145 +73,149 @@ class NewTask extends React.Component {
         task_icon: icon,
         name: taskName,
         date,
+        notifyOn,
         start_time: moment().format("h:mm a"),
         end_time: moment().format("h:mm a")
-      }
+      };
       // console.log(payload)
 
       createTask(payload, id)
         .then(() => {
-          this.props.history.push("/")
+          this.props.history.push("/");
         })
         .catch(err => {
-          console.error(err)
+          console.error(err);
           this.setState({
             newError: this.props.error
-          })
-        })
+          });
+        });
     } else if (end_time === "") {
       const payload = {
         task_icon: icon,
         name: taskName,
         date,
+        notifyOn,
         start_time,
         end_time: moment().format("h:mm a")
-      }
-      console.log(payload)
+      };
+      console.log(payload);
 
       createTask(payload, id)
         .then(() => {
-          this.props.history.push("/")
+          this.props.history.push("/");
         })
         .catch(err => {
-          console.error(err)
+          console.error(err);
           this.setState({
             newError: this.props.error
-          })
-        })
+          });
+        });
     } else if (start_time === "") {
       const payload = {
         task_icon: icon,
         name: taskName,
         date,
+        notifyOn,
         start_time: moment().format("h:mm a"),
         end_time
-      }
-      console.log(payload)
+      };
+      console.log(payload);
 
       createTask(payload, id)
         .then(() => {
-          this.props.history.push("/")
+          this.props.history.push("/");
         })
         .catch(err => {
-          console.error(err)
+          console.error(err);
           this.setState({
             newError: this.props.error
-          })
-        })
+          });
+        });
     } else {
       const payload = {
         task_icon: icon,
         name: taskName,
         date,
+        notifyOn,
         start_time,
         end_time
-      }
+      };
       createTask(payload, id)
         .then(() => {
-          this.props.history.push("/")
+          this.props.history.push("/");
         })
         .catch(err => {
-          console.error(err)
+          console.error(err);
           this.setState({
             newError: this.props.error
-          })
-        })
+          });
+        });
     }
-  }
+  };
 
   addIconOne = event => {
-    $("#iconOne").removeClass("iconOne")
-    $("#iconTwo").addClass("iconTwo")
-    $("#iconThree").addClass("iconThree")
-    $("#iconFour").addClass("iconFour")
-    $("#iconFive").addClass("iconFive")
-    $("#iconSix").addClass("iconSix")
-    console.log($("#iconThree"))
-  }
+    $("#iconOne").removeClass("iconOne");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconThree").addClass("iconThree");
+    $("#iconFour").addClass("iconFour");
+    $("#iconFive").addClass("iconFive");
+    $("#iconSix").addClass("iconSix");
+    console.log($("#iconThree"));
+  };
   addIconTwo = event => {
     // console.log("yolo")
 
-    $("#iconOne").addClass("iconOne")
-    $("#iconTwo").removeClass("iconTwo")
-    $("#iconThree").addClass("iconThree")
-    $("#iconFour").addClass("iconFour")
-    $("#iconFive").addClass("iconFive")
-    $("#iconSix").addClass("iconSix")
-  }
+    $("#iconOne").addClass("iconOne");
+    $("#iconTwo").removeClass("iconTwo");
+    $("#iconThree").addClass("iconThree");
+    $("#iconFour").addClass("iconFour");
+    $("#iconFive").addClass("iconFive");
+    $("#iconSix").addClass("iconSix");
+  };
   addIconThree = event => {
     // console.log("yolo")
 
-    $("#iconOne").addClass("iconOne")
-    $("#iconTwo").addClass("iconTwo")
-    $("#iconThree").removeClass("iconThree")
-    $("#iconFour").addClass("iconFour")
-    $("#iconFive").addClass("iconFive")
-    $("#iconSix").addClass("iconSix")
-  }
+    $("#iconOne").addClass("iconOne");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconThree").removeClass("iconThree");
+    $("#iconFour").addClass("iconFour");
+    $("#iconFive").addClass("iconFive");
+    $("#iconSix").addClass("iconSix");
+  };
   addIconFour = event => {
     // console.log("yolo")
 
-    $("#iconOne").addClass("iconOne")
-    $("#iconTwo").addClass("iconTwo")
-    $("#iconThree").addClass("iconThree")
-    $("#iconFive").addClass("iconFive")
-    $("#iconSix").addClass("iconSix")
-    $("#iconFour").removeClass("iconFour")
-  }
+    $("#iconOne").addClass("iconOne");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconThree").addClass("iconThree");
+    $("#iconFive").addClass("iconFive");
+    $("#iconSix").addClass("iconSix");
+    $("#iconFour").removeClass("iconFour");
+  };
   addIconFive = event => {
     // console.log("yolo")
 
     $("#iconOne").addClass("iconOne")
     $("#iconTwo").addClass("iconTwo")
     $("#iconThree").addClass("iconThree")
-
-    $("#iconFour").addClass("iconFour")
-    $("#iconSix").addClass("iconSix")
-    $("#iconFive").removeClass("iconFive")
-  }
+    $("#iconFour").addClass("iconFour");
+    $("#iconSix").addClass("iconSix");
+    $("#iconFive").removeClass("iconFive");
+  };
   addIconSix = event => {
     // console.log("yolo")
 
-    $("#iconOne").addClass("iconOne")
-    $("#iconTwo").addClass("iconTwo")
-    $("#iconThree").addClass("iconThree")
-    $("#iconFour").addClass("iconFour")
-    $("#iconFive").addClass("iconFive")
-    $("#iconSix").removeClass("iconSix")
-  }
+    $("#iconOne").addClass("iconOne");
+    $("#iconTwo").addClass("iconTwo");
+    $("#iconThree").addClass("iconThree");
+    $("#iconFour").addClass("iconFour");
+    $("#iconFive").addClass("iconFive");
+    $("#iconSix").removeClass("iconSix");
+  };
+
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <div className="newTaskContainer">
         <br />
@@ -225,8 +251,12 @@ class NewTask extends React.Component {
             onChange={this.changeHandler}
             required
           />
+
           <AddToCalendarBtn title={this.state.taskName} />
           <br />
+
+
+
           <label className="newTaskLableName">
             Pick an icon for your task!
           </label>
@@ -280,7 +310,7 @@ class NewTask extends React.Component {
               id="dropdown-item-button"
               title=""
               onClick={evt => {
-                evt.preventDefault()
+                evt.preventDefault();
               }}
             >
               <Dropdown.Item
@@ -367,9 +397,37 @@ class NewTask extends React.Component {
               </Dropdown.Item>
             </DropdownButton>
             {/* <Label /> */}
-            <div>{/* <JsxParser jsx={this.state.icon} /> */}</div>
           </div>
           <hr className="line" />
+          <div className="switchContainer">
+            <p className="notifySwitchText">
+              Turn on in-app notifications for this task?
+            </p>
+            <Switch
+              onClick={this.toggleNotify}
+              on={this.state.notifyOn}
+              className="notifySwitch"
+            />
+          </div>
+          {/* <div className="switchContainer">
+            <p className="notifySwitchText">
+              Add this task to your
+              <span className="googleContainer">
+                <span className="blue"> G</span>
+                <span className="red">o</span>
+                <span className="yellow">o</span>
+                <span className="blue">g</span>
+                <span className="green">l</span>
+                <span className="red">e </span>
+              </span>
+              Calendar?
+            </p>
+            <Switch
+              onClick={this.toggleSwitch}
+              on={this.state.switched}
+              className="notifySwitch"
+            />
+          </div> */}
 
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
