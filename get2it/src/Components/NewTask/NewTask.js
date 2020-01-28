@@ -253,7 +253,7 @@ class NewTask extends React.Component {
             required
           />
 
-          <AddToCalendarBtn title={this.state.taskName} />
+          <AddToCalendarBtn className='addToCal' title={this.state.taskName} />
           <br />
 
 

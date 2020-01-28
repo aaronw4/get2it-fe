@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import AddToCalendar from "react-add-to-calendar"
+import AddToCalendar from 'react-add-to-calendar'
 import moment from "moment"
 let items = [{ google: "Google" }]
 class AddToCalendarBtn extends Component {
@@ -17,6 +17,7 @@ class AddToCalendarBtn extends Component {
     return (
       <span style={{ color: "white", textAlign: "center" }}>
         <AddToCalendar
+          className='addToCal'
           event={this.state.event}
           displayItemIcons={false}
           listItems={items}

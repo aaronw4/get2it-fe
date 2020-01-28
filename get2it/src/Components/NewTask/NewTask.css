@@ -564,3 +564,17 @@
   height: 16px;
   font-weight: bolder;
 }
+.react-add-to-calendar__dropdown {
+  display: flex;
+  justify-content: center;
+}
+.google-link {
+  border: solid 1px silver;
+  border-radius: 3px;
+  color: silver;
+  padding: 3px;
+}
+.google-link:hover {
+  background-color: silver;
+  color: white;
+}
