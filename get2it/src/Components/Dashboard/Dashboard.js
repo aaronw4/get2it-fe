@@ -518,7 +518,7 @@ class Dashboard extends React.Component {
                 render={props => <TaskList {...props} />}
               />
               <Route
-                path="/CompletedtaskModal"
+                path="/editCompletedtaskModal"
                 render={props => <CompletedTaskList {...props} />}
               />
               <Route

@@ -29,6 +29,7 @@ class CompletedTaskList extends React.Component {
         list = [
           ...list,
           {
+            id: arrList[i].id,
             name: arrList[i].name,
             date: arrList[i].date
           }
@@ -94,7 +95,7 @@ class CompletedTaskList extends React.Component {
                         id="formText"
                         className='reUse'
                         to={{
-                          pathname: `/editCompletedtaskModal/99`,
+                          pathname: `/editCompletedtaskModal/${item.id}`,
                           state: { modal: true }
                         }}
                       >
