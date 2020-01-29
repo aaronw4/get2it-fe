@@ -12,7 +12,8 @@ class CompletedTaskList extends React.Component {
     super(props);
     console.log(props)
     // add tasklist to state
-    this.state= {taskList:[]
+    this.state= {
+      taskList: []
     }
   }
   event
@@ -21,18 +22,19 @@ class CompletedTaskList extends React.Component {
     // event.preventDefault();
     // pull tasks from props
     const arrList = this.props.userTasks;
-    const list =[]
-    var listItem;
-    var spacer = "      ";
+    let list =[]
     // loop through each task and post them to state
     for (let i = 0; i < arrList.length;i++) {
       if(arrList[i].status === true){
-        listItem = arrList[i].name.concat(spacer).concat(arrList[i].date)
-        list.push(listItem)
-      
+        list = [
+          ...list,
+          {
+            name: arrList[i].name,
+            date: arrList[i].date
+          }
+        ]     
       }
     };
-    // console.log(list)
     this.setState({
       taskList: list
     })
@@ -83,10 +85,14 @@ class CompletedTaskList extends React.Component {
           {this.state.taskList.map((item, index) => (
             <li className="formStyle" key={index}>
               <Form >
-                <Form.Group controlId='formBasicCheckbox'>
-                  <Form.Text>{item}</Form.Text>
+                <Form.Group className='completedGroup' controlId='formBasicCheckbox'>
+                  <Form.Text>
+                    <p className='completeDate'>{item.date}</p> 
+                    <p className='completeName'>{item.name}</p> 
+                  </Form.Text>
                   <Link
                         id="formText"
+                        className='reUse'
                         to={{
                           pathname: `/editCompletedtaskModal/99`,
                           state: { modal: true }

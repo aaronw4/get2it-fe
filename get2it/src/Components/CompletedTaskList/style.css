@@ -78,12 +78,42 @@ div .form-group {
     margin-left: 43%;
 padding: auto;
   }
-  
+
+.completedGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+.completeDate {
+  margin-bottom: 5px;
+  color: white;
+}
+.completeName {
+  margin-bottom: 5px;
+}
 .reUseBtn {
-    width: 33%;
-    height: 10%;
+    width: auto;
+    height: auto;
     padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .reUseBtn:Hover {
     opacity: 90%;
+}
+.reUse {
+  display: flex;
+  /* justify-content: center !important; */
+  align-items: center;
+  height: 30px;
+  width: 120px !important;
+  border: 1px solid silver;
+  border-radius: 6px;
+}
+#formText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
