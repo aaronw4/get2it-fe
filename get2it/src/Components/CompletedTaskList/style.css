@@ -42,7 +42,7 @@ div .form-group {
     display: block;
     margin-top: .25rem;
     padding: 2%;
-    margin-left: 10%;
+    /* margin-left: 10%; */
     color:white;
     width:100%;
     font-size: 1em;;
@@ -99,20 +99,25 @@ padding: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.reUseBtn:Hover {
+  }
+  .reUseBtn:Hover {
     opacity: 90%;
-}
-.reUse {
-  display: flex;
-  /* justify-content: center !important; */
-  align-items: center;
-  height: 30px;
-  width: 120px !important;
-  border: 1px solid silver;
-  border-radius: 6px;
-}
-#formText {
+  }
+  .reUse {
+    display: flex;
+    text-decoration: none;
+    /* justify-content: center !important; */
+    align-items: center;
+    height: 30px;
+    width: 120px !important;
+    border: 1px solid silver;
+    border-radius: 6px;
+  }
+  .reUse:hover {
+    background-color: dodgerblue;
+  }
+  #formText {
+  text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;

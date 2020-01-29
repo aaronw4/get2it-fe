@@ -183,7 +183,6 @@ class EditTaskList extends React.Component {
     this.iconCheck();
   }
   render() {
-    console.log(this.state.task_icon);
     const { task_name, date } = this.state;
     return (
       <div className="newTaskContainer">
@@ -204,7 +203,7 @@ class EditTaskList extends React.Component {
               onChange={this.changeHandler}
               type="text"
               value={date}
-              id=""
+              // id=""
             />
           </div>
         </div>

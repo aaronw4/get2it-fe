@@ -40,11 +40,11 @@ div .form-group {
 }
 .formStyle:hover {
 background-color: rgb(85, 84, 84);
-width: 95%;
+/* width: 95%; */
 border-radius: 15px;
 /* height:100%; */
-border: solid 2px rgb(158, 152, 152);
-padding:5px 5px 5px 10px;
+/* border: solid 2px rgb(158, 152, 152); */
+/* padding:5px 5px 5px 10px; */
 }
 .formStyle {
     margin-bottom: 5px;
