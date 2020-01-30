@@ -13,14 +13,22 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
     console.log(props)
+    this.state = {
+      _mounted: null
+    }
   }
 
   componentDidMount() {
-    this._mounted = true
+    this.setState({
+
+      _mounted: true
+    })
   }
 
   componentWillUnmount() {
-    this._mounted = false
+    this.setState({
+      _mounted: false
+    });
   }
 
   time = moment().format('H')
@@ -29,7 +37,6 @@ class Home extends React.Component {
   incompleteTasks = this.props.userTasks.filter(task => task.status === false)
   
   render() {
-    console.log(this.today)
     const {time, todayList} = this
     return (
       <div className="home">
@@ -70,7 +77,7 @@ class Home extends React.Component {
               return (
                 <div className="listItem" key={index}>
                   <div className="iconContainer">
-                    {/* {this._mounted === true ? <JsxParser jsx={task.task_icon} /> : null} */}
+                    {this.state._mounted === true ? (<JsxParser jsx={task.task_icon} />) : null}
                   </div>
                   <div className="itemContainer">
                     <p className="itemName">{task.name}</p>
