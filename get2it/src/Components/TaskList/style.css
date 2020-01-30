@@ -33,10 +33,15 @@ dl, ol, ul {
 } 
 div .form-group {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-image: radial-gradient(silver, black) 50;
   border-bottom: 2px solid;
     width: 90%;
     margin-left: 5%;
+}
+.deleteBtn {
+  width: 70px !important;
 }
 .formStyle:hover {
 background-color: rgb(85, 84, 84);

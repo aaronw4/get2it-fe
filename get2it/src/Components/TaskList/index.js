@@ -178,7 +178,7 @@ class editTaskList extends React.Component {
                       render={props => <EditTaskModal {...props} />}
                     />
                     <Button
-                      className="reUseBtn"
+                      className="reUseBtn deleteBtn"
                       onClick={() => this.deleted(item.id)}
                     >
                       Delete
