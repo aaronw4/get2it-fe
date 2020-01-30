@@ -150,11 +150,19 @@
     background: rgba(192, 192, 192, 0.281);
     border-radius: 30px;
   }
+  .newModal {
+    overflow: auto;
+    padding-top: 50px;
+  }
+  .reUseModal {
+    overflow: auto;
+    padding-top: 50px;
+  }
   .newTaskContainer {
     display: flex;
     flex-flow: column;
     align-items: center;
-    overflow: visible !important;
+    overflow: auto !important;
     width: 100%;
     height: 100%;
     margin-top: -25px;
@@ -168,6 +176,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .retrievedDate input {
+    padding-right: .2rem;
   }
   
   input {
@@ -209,11 +220,19 @@
     margin-left: 25%;
   }
   .calendar {
-    margin-right: 40px;
+    /* margin-right: 40px; */
     box-shadow: 0 1px 5px #aeaeae;
     border-radius: 5px;
     overflow: hidden;
     z-index: 999;
+    position: absolute;
+    left: 15px;
+    top: 50px;
+    width: 90%;
+    background-image: radial-gradient(circle at 50% 30%,rgb(110, 110, 110) 5%,rgb(110, 110, 110) 5%,rgb(6, 14, 26) 90%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     
   }
   

@@ -11,7 +11,7 @@ const EditTaskModal = ({ location }) => {
   return (
     <div className={modalClass}>
       {modal && <Link className='closeLink' to='/taskList'>Close</Link>}
-      <div>
+      <div className='reUseModal' >
         <EditTaskList />
       </div>
     </div>

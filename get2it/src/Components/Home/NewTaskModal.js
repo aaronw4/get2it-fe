@@ -11,7 +11,7 @@ const TaskModal = ({ location }) => {
   return (
     <div className={modalClass}>
       {modal && <Link className='closeLink' to='/'>Close</Link>}
-      <div>
+      <div className='newModal'>
         <NewTask />
       </div>
     </div>

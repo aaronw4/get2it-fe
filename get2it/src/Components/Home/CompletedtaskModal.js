@@ -11,7 +11,7 @@ const CompletedtaskModal = ({ location }) => {
   return (
     <div className={modalClass}>
       {modal && <Link className='closeLink' to='/CompletedTaskList'>Close</Link>}
-      <div>
+      <div className='reUseModal'>
         <EditCompletedTaskList />
       </div>
     </div>

@@ -14,7 +14,7 @@
 }
 .taskModal {
   size: 90%;
-  overflow: auto;
+  overflow: visible;
   align-self: center;
   position: absolute;
   width: 95%;
@@ -30,7 +30,7 @@
   flex-flow: column;
 }
 .editModal {
-  size: 90%;
+  size: 100%;
   overflow: auto;
   align-self: center;
   position: absolute;
@@ -39,7 +39,7 @@
   top: 50px;
   left: 8px;
   border-radius: 10px;
-  border: solid silver;
+  border: solid 1px silver;
   background-image: radial-gradient(circle at 50% 30%,rgb(110, 110, 110) 5%,rgb(110, 110, 110) 5%,rgb(6, 14, 26) 90%);
   background-repeat: no-repeat;
   background-position: center;
@@ -176,6 +176,8 @@
   text-decoration: none;
   color: var(--textColor);
   z-index: 0;
+  position: absolute;
+  right: 10px;
 }
 .closeLink:hover {
   color: white;
