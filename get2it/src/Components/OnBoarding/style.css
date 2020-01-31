@@ -1,3 +1,6 @@
+.onBoardingContainer {
+  height: 100%;
+}
 .logoImg {
     width:30px;
     color:white;
@@ -11,7 +14,7 @@
     margin-top: 8px;
     text-align: center;
     color: white;
-    font-size: 20px;
+    font-size: 30px;
 }
 .custom-tag {
     max-width: 100%;
@@ -32,14 +35,28 @@
 .indecator {
     margin-bottom: -90px;
 }
-#nextBTN {
+a.nextBTN {
+    z-index: 1;
+    position: absolute;
+    left: 108px;
+    bottom: 150px;
     color:white;
-    margin-bottom:-150px;
-    width: 250px;
+    margin-top: 50px;
+    width: 150px;
+    padding: 5px 0;
     background-color: transparent;
+    border: solid 1px;
     border-radius: 25px;
     border-color: white;
+    text-decoration: none;
 }
+a.nextBTN:hover {
+  background-color: white;
+  color: rgba(41, 42, 47, 0.863);
+  font-weight: 999;
+  box-shadow: 0px 0px 10px 3px silver;
+}
+
 div.carousel.slide {
     margin-top:50px;
     margin-left:48px;
@@ -57,7 +74,7 @@ a {
 }
 @media screen and (min-width: 750px) {
     .imgSlide {
-      height: 450px;
+      height: 400px;
       width: 300px;
       border-radius: 8px;
       margin-left: -1px;
@@ -75,19 +92,24 @@ a {
         color: white;
         font-size: 30px;
     }
-    #nextBTN {
-        
-        color:white;
-        margin-bottom:-450px;
-        width: 250px;
-        background-color: transparent;
-        border-radius: 25px;
-        border-color: white;
-        margin-left: 40px;
+    a.nextBTN {
+      z-index: 1;
+      position: absolute;
+      left: 138px;
+      bottom: 230px;
+      color:white;
+      margin-top: 50px;
+      width: 150px;
+      padding: 5px 0;
+      background-color: transparent;
+      border: solid 1px;
+      border-radius: 25px;
+      border-color: white;
+      text-decoration: none;
     }
     
     .indecator {
-        margin-bottom: -190px;
+        margin-bottom: -140px;
         margin-left: 80px;
         height:10px;
     }
@@ -101,18 +123,22 @@ a {
     margin-left: 14px;
     }
     .carousel-control-next {
-        margin-right:-80px;
+        position: absolute;
+        top: 160px;
+        right: -130px; 
         background-color: grey;
-        width:40px;
-        height:450px;
-        border-radius: 8px;
+        width:50px;
+        height:80px;
+        border-radius: 10%;
     }
     .carousel-control-prev {
-        margin-left:-40px;
+        position: absolute;
+        top: 160px;
+        left: -91px;
         background-color: grey;
-        width:40px;
-        height:450px;
-        border-radius: 8px;
+        width:50px;
+        height:80px;
+        border-radius: 10%;
     }
 }
   

@@ -72,39 +72,41 @@ const OnBoarding = props => {
   
 
   return (
-    <div>
+    <div className='onBoardingContainer'>
       <Container className="container">
         <Row>
           <Col xs={2}>
             {/* <i  id="arrow" className="fas fa-arrow-left"></i> */}
           </Col>
           <Col xs={8} className="signUp">
-            Sign Up
+            Welcome!
           </Col>
         </Row>
       </Container>
       <div className="fullContainer">
-      <Carousel  activeIndex={activeIndex} next={next} previous={previous}>
-        <CarouselIndicators
-          items={items}
-          activeIndex={activeIndex}
-          onClickHandler={goToIndex}
-          className='indecator'
-        />
-        {slides}
-        <CarouselControl
-          direction="prev"
-          directionText="Previous"
-          onClickHandler={previous}
-        />
-        <CarouselControl
-          direction="next"
-          directionText="Next"
-          onClickHandler={next}
-        />
-      </Carousel>
+        <Carousel activeIndex={activeIndex} next={next} previous={previous}>
+          <CarouselIndicators
+            items={items}
+            activeIndex={activeIndex}
+            onClickHandler={goToIndex}
+            className="indecator"
+          />
+          {slides}
+          <CarouselControl
+            direction="prev"
+            directionText="Previous"
+            onClickHandler={previous}
+          />
+          <CarouselControl
+            direction="next"
+            directionText="Next"
+            onClickHandler={next}
+          />
+        </Carousel>
       </div>
-      <Button id="nextBTN" onClick={this} type="submit"><Link to={'/'}>Next</Link> </Button>
+      <Link className="nextBTN" to={"/"}>
+        Let's Get2It!
+      </Link>
     </div>
   );
 };
