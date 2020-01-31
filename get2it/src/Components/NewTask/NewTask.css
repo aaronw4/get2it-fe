@@ -158,6 +158,15 @@
     overflow: auto;
     padding-top: 50px;
   }
+  .reUseModal::-webkit-scrollbar {
+    height: 20px;
+    width: 8px;
+    /* display: none; */
+  }
+  .reUseModal::-webkit-scrollbar-thumb {
+    background: rgba(192, 192, 192, 0.281);
+    border-radius: 30px;
+  }
   .newTaskContainer {
     display: flex;
     flex-flow: column;

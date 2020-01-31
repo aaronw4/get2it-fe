@@ -31,7 +31,7 @@
 }
 .editModal {
   size: 100%;
-  overflow: auto;
+  overflow: visible;
   align-self: center;
   position: absolute;
   width: 95%;
