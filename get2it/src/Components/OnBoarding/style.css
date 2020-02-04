@@ -22,7 +22,7 @@
     /* background: black; */
 }
 .carousel {
-    margin: 101px 54px 40px 54px;
+    margin: 20px 54px 40px 54px;
     width: 265px;
     height: 300px;
     
@@ -38,8 +38,9 @@
 a.nextBTN {
     z-index: 1;
     position: absolute;
-    left: 108px;
-    bottom: 150px;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
     color:white;
     margin-top: 50px;
     width: 150px;
@@ -58,7 +59,7 @@ a.nextBTN:hover {
 }
 
 div.carousel.slide {
-    margin-top:50px;
+    margin-top:20px;
     margin-left:48px;
  
 }
