@@ -96,7 +96,8 @@ a {
     a.nextBTN {
       z-index: 1;
       position: absolute;
-      left: 138px;
+      left: 50%;
+      transform: translateX(-32%);
       bottom: 230px;
       color:white;
       margin-top: 50px;
