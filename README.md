@@ -45,11 +45,11 @@ This is accomplished through the use of timers, calendars, and reminders.
 
 ### 4️⃣ Key Features
 
--    feature one
--    feature two
--    feature three
--    feature four
--    feature five
+-    Create, edit, remove tasks
+-    See lists for current, incomplete, and completed tasks
+-    Re-use completed tasks
+-    Toggle in-app notifications for each task
+-    Add a task to your google calendar
 
 ## 1️⃣ Tech Stack
 
