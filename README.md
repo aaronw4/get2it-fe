@@ -47,11 +47,17 @@ This is accomplished through the use of timers, calendars, and reminders.
 
 ### Front end built using:
 
-#### Reactjs
+#### React
 
 -    React's virtual DOM allows us to provide an extremely fast and easy UI.
 -    The ability to create and reuse Components keeps our code DRY and saves time in the overall development of the app.
 -    React is an open-source library. Because of this, it has a lot of useful applications and tools that make development easier.
+
+#### React-Redux
+
+-    Redux allows us to centralize our application's state, and persist it.
+-    Actions and reducers can be used to perform axios requests and to update the apps central state with the returned data.
+-    Through Redux, the apps components only re-render when the data they are actually using changes.
 
 #### Reactstrap
 
