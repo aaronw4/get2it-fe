@@ -1,16 +1,9 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
+# Get2It
 
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
+You can find the deployed project at [get2it.netlify.com](https://get2it.netlify.com).
 
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
+## Contributors
 
-# 1️⃣ Get2It
-
-1️⃣ You can find the deployed project at [get2it.netlify.com](https://get2it.netlify.com).
-
-## 4️⃣ Contributors
-
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
 
 |                                       [TJ Feledy](https://github.com/TJ-Feledy)                                        |                                       [Student 2](https://github.com/)                                        |                                       [Student 3](https://github.com/)                                        |                                       [Student 4](https://github.com/)                                        |                                       [Student 5](https://github.com/)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
@@ -21,7 +14,6 @@
 <br>
 <br>
 
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
@@ -34,16 +26,16 @@
 
 ## Project Overview
 
-1️⃣ [Trello Board](https://trello.com/b/22w8dI8x/get2it)
+[Trello Board](https://trello.com/b/22w8dI8x/get2it)
 
-1️⃣ [Product Canvas](https://www.notion.so/Get2It-f99d691af6ce4731b39adc459f35eba9)
+[Product Canvas](https://www.notion.so/Get2It-f99d691af6ce4731b39adc459f35eba9)
 
 
 Get2It is an app that helps people stay organized, focused, and motivated while performing daily tasks.
 This is accomplished through the use of timers, calendars, and reminders.
 
 
-### 4️⃣ Key Features
+### Key Features
 
 -    Create, edit, remove tasks
 -    See lists for current, incomplete, and completed tasks
@@ -51,7 +43,7 @@ This is accomplished through the use of timers, calendars, and reminders.
 -    Toggle in-app notifications for each task
 -    Add a task to your google calendar
 
-## 1️⃣ Tech Stack
+## Tech Stack
 
 ### Front end built using:
 
@@ -66,7 +58,6 @@ This is accomplished through the use of timers, calendars, and reminders.
 -    Reactstrap has the capabilities of Bootstrap, but is more React friendly because of it's pre-made component library.
 -    It is a huge time saver when it comes to creating forms, animations, tables, and more.
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
 
 #### Front end deployed to `Netlify`
 
