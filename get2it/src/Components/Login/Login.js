@@ -10,7 +10,7 @@ class Login extends React.Component {
   constructor() {
     super()
     this.state = {
-      username: '',
+      email: '',
       password: '',
     }
   }
@@ -26,9 +26,9 @@ class Login extends React.Component {
   handleSubmit = (evt) => {
     evt.preventDefault()
 
-    const { username, password } = this.state
+    const { email, password } = this.state
 
-    this.props.login(username, password)
+    this.props.login(email, password)
       .then(() => {
         this.props.history.push('/')
       })
@@ -38,7 +38,7 @@ class Login extends React.Component {
   }
 
   render() {
-    const { username, password } = this.state
+    const { email, password } = this.state
     const { isLoading, error } = this.props
 
     return (
@@ -53,8 +53,8 @@ class Login extends React.Component {
                 }
 
               <div className='inputContainer'>
-                <label to='username'><i id='registerIcon' className="far fa-user-circle"></i></label>
-                <input type='text' id='username' name='username' placeholder='Username' value={username} onChange={this.handleChange} required /><br />
+                <label to='email'><i id='registerIcon' className="far fa-user-circle"></i></label>
+                <input type='text' id='email' name='email' placeholder='email' value={email} onChange={this.handleChange} required /><br />
               </div>
               <div className='inputContainer'>
                 <label to='password'><i id='registerIcon' className="fas fa-unlock-alt"></i></label>
