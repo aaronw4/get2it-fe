@@ -34,11 +34,11 @@ export const NEW_START_TIME = 'NEW_START_TIME'
 export const NEW_END_TIME = 'NEW_END_TIME'
 
 
-export function createUser(username, password) {
+export function createUser(email, password, displayName) {
   return (dispatch) => {
     dispatch({ type: CREATE_USER_START })
 
-    return axios.post('https://get2it.herokuapp.com/api/auth/register', { username, password })
+    return axios.post('https://get2it.herokuapp.com/api/auth/register', { email, password, displayName })
       .then((res) => {
         localStorage.setItem('token', res.data.token)
           dispatch({ type: CREATE_USER_SUCCESS, payload: res.data.user })
