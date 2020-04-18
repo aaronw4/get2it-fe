@@ -34,11 +34,11 @@ export const NEW_START_TIME = 'NEW_START_TIME'
 export const NEW_END_TIME = 'NEW_END_TIME'
 
 
-export function createUser(username, password) {
+export function createUser(email, password) {
   return (dispatch) => {
     dispatch({ type: CREATE_USER_START })
 
-    return axios.post('https://get2it.herokuapp.com/api/auth/register', { username, password })
+    return axios.post('https://get2it.herokuapp.com/api/auth/register', { email, password })
       .then((res) => {
         localStorage.setItem('token', res.data.token)
           dispatch({ type: CREATE_USER_SUCCESS, payload: res.data.user })
@@ -50,11 +50,11 @@ export function createUser(username, password) {
   }
 }
 
-export function login(username, password) {
+export function login(email, password) {
   return (dispatch) => {
     dispatch({ type: LOGIN_START })
 
-    return axios.post('https://get2it.herokuapp.com/api/auth/login', { username, password })
+    return axios.post('https://get2it.herokuapp.com/api/auth/login', { email, password })
       .then((res) => {
         localStorage.setItem('token', res.data.token)
         dispatch({ type: LOGIN_SUCCESS, payload: res.data.user });
