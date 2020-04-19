@@ -10,8 +10,9 @@ class Register extends React.Component {
   constructor() {
     super()
     this.state = {
-      username: '',
+      email: '',
       password: '',
+      displayName: '',
       error: null
     }
   }
@@ -27,9 +28,9 @@ class Register extends React.Component {
   handleSubmit = (evt) => {
     evt.preventDefault()
 
-    const { username, password } = this.state
+    const { email, displayName, password } = this.state
 
-    this.props.createUser(username, password)
+    this.props.createUser(email, displayName, password)
       .then(() => {
         !this.props.error ?
           this.props.history.push('/onboarding') :
@@ -43,7 +44,7 @@ class Register extends React.Component {
   }
   render() {
     console.log(this.props)
-    const { username, password } = this.state
+    const { email, displayName, password } = this.state
     const { isLoading } = this.props
 
     return (
@@ -54,15 +55,19 @@ class Register extends React.Component {
             <h3 className='pageTitle'>Sign up</h3>
             <img className='registerLogo' src={logo} alt='get2it'/>
             <form className='registerForm' onSubmit={this.handleSubmit}>
-              {this.state.error === 'Invalid Credentials' ? <p className='error'>Username already exists!</p> : null}
+              {this.state.error === 'Invalid Credentials' ? <p className='error'>Email already exists!</p> : null}
 
               <div className='inputContainer'>
-                <label to='username'><i id='registerIcon' className="far fa-user-circle"></i></label>
-                <input type='text' id='username' name='username' placeholder='Username' value={username} onChange={this.handleChange} required /><br />
+                <label to='email'><i id='registerIcon' className="far fa-user-circle"></i></label>
+                <input type='email' id='email' name='email' placeholder='email' value={email} onChange={this.handleChange} required /><br />
               </div>
               <div className='inputContainer'>
                 <label to='password'><i id='registerIcon' className="fas fa-unlock-alt"></i></label>
                 <input type='password' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} required /><br />
+              </div>
+              <div className='inputContainer'>
+                <label to='displayName'><i id='registerIcon' className="fas fa-unlock-alt"></i></label>
+                <input type='text' id='displayName' name='displayName' placeholder='displayName' value={displayName} onChange={this.handleChange} required /><br />
               </div>
 
               <button className='registerButton' type='submit'>Create Account</button>
