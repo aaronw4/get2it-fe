@@ -201,3 +201,9 @@ export function newEndTime(time) {
     payload: time
   }
 }
+
+export function clearData() {
+  return dispatch => {
+    dispatch({type: CLEAR_DATA})
+  }
+}

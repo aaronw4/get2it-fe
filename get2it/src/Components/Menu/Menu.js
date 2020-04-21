@@ -26,6 +26,7 @@ class Menu extends React.Component {
     evt.preventDefault()
     
     localStorage.removeItem('token')
+    this.props.clearData()
     this.props.history.push('/login')
   }
   
@@ -115,4 +116,8 @@ const mapStateToProps = state => ({
   userID: state.userID,
 })
 
-export default withRouter(connect(mapStateToProps)(Menu))
+const mapDispatchToProps = {
+  clearData
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Menu))

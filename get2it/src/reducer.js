@@ -275,6 +275,13 @@ export default function(state = initialState, action) {
         end_time: action.payload
       };
     }
+    case CLEAR_DATA: {
+      return {
+        ...state,
+        userTasks: [],
+        newTask: {}
+      };
+    }
     default:
       return state;
   }
