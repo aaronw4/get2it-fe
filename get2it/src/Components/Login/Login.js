@@ -37,6 +37,12 @@ class Login extends React.Component {
       })
   }
 
+  handleClick = (evt) => {
+    evt.preventDefault()
+
+    this.props.showPassword()
+  }
+
   render() {
     const { email, password } = this.state
     const { isLoading, error } = this.props
@@ -58,7 +64,18 @@ class Login extends React.Component {
               </div>
               <div className='inputContainer'>
                 <label to='password'><i id='registerIcon' className="fas fa-unlock-alt"></i></label>
-                <input type='password' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} required /><br />
+                {
+                  showPW === false ? 
+                    <>
+                      <input type='password' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} required /><br />
+                      <button onClick={this.handleClick}>Show Password</button>
+                    </>
+                  :
+                    <>
+                      <input type='text' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} required /><br />
+                      <button onClick={this.handleClick}>Hide Password</button>
+                    </>
+                }
               </div>
 
               <button className='registerButton' type='submit'>Login</button>
@@ -74,10 +91,12 @@ class Login extends React.Component {
 const mapStateToProps = (state) => ({
   isLoading: state.isLoading,
   error: state.error,
+  showPW: state.showPW
 })
 
 const mapDispatchToProps = {
   login,
+  showPassword
 }
 
 export default withRouter(
