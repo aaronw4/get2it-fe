@@ -3,7 +3,7 @@ import '../Register/Register.css'
 import logo from '../Images/logo.png'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { login } from '../../actions'
+import { login, showPassword } from '../../actions'
 import Spinner from '../Spinner/Spinner.js'
 
 class Login extends React.Component {

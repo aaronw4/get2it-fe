@@ -203,7 +203,9 @@ export function newEndTime(time) {
 }
 
 export function clearData() {
-  return dispatch => {
-    dispatch({type: CLEAR_DATA})
-  }
+  return ({type: CLEAR_DATA})
+}
+
+export function showPassword() {
+  return ({type: SHOW_PASSWORD})
 }

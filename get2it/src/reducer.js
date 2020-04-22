@@ -87,7 +87,7 @@ const initialState = {
   start_time: '',
   end_time: '',
   newTask: {},
-  
+  showPW: false
 }
 //2019-11-22T00:00:00.000Z
 export default function(state = initialState, action) {
@@ -281,6 +281,12 @@ export default function(state = initialState, action) {
         userTasks: [],
         newTask: {}
       };
+    }
+    case SHOW_PASSWORD: {
+      return {
+        ...state, 
+        showPW: !state.showPW
+      }
     }
     default:
       return state;
