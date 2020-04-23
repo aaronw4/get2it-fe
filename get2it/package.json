@@ -48,7 +48,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -68,6 +68,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
+    "@testing-library/dom": "^7.2.1",
     "jest": "^25.4.0"
   }
 }
