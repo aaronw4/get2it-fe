@@ -68,7 +68,7 @@ class Login extends React.Component {
                   showPW === false ? 
                     <>
                       <input type='password' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} required /><br />
-                      <button onClick={this.handleClick}>Show Password</button>
+                      <button onClick={this.handleClick} >Show Password</button>
                     </>
                   :
                     <>
