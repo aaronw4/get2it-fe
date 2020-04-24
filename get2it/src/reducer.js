@@ -22,7 +22,9 @@ import {
   NEW_END_TIME,
   CREATE_TASK_START,
   CREATE_TASK_SUCCESS,
-  CREATE_TASK_FAILED
+  CREATE_TASK_FAILED,
+  CLEAR_DATA,
+  SHOW_PASSWORD
 } from "./actions.js";
 
 // const dummyTasks = [

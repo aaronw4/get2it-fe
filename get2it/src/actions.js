@@ -29,9 +29,12 @@ export const CREATE_TASK_START = "CREATE_TASK_START";
 export const CREATE_TASK_SUCCESS = "CREATE_TASK_SUCCESS";
 export const CREATE_TASK_FAILED = "CREATE_TASK_FAILED";
 
-export const NEW_TASK_DATE = 'NEW_TASK_DATE'
-export const NEW_START_TIME = 'NEW_START_TIME'
-export const NEW_END_TIME = 'NEW_END_TIME'
+export const NEW_TASK_DATE = 'NEW_TASK_DATE';
+export const NEW_START_TIME = 'NEW_START_TIME';
+export const NEW_END_TIME = 'NEW_END_TIME';
+
+export const CLEAR_DATA = 'CLEAR_DATA';
+export const SHOW_PASSWORD = 'SHOW_PASSWORD';
 
 
 export function createUser(email, password, displayName) {
@@ -203,9 +206,9 @@ export function newEndTime(time) {
 }
 
 export function clearData() {
-  return ({type: CLEAR_DATA})
+  return {type: CLEAR_DATA}
 }
 
 export function showPassword() {
-  return ({type: SHOW_PASSWORD})
+  return {type: SHOW_PASSWORD}
 }
