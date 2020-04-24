@@ -16,7 +16,5 @@
     "url": "https://github.com/Lambda-School-Labs/get2it-fe/issues"
   },
   "homepage": "https://github.com/Lambda-School-Labs/get2it-fe#readme",
-  "dependencies": {
-    "babel-jest": "^24.9.0"
-  }
+  "dependencies": {}
 }
