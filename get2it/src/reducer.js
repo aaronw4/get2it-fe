@@ -92,7 +92,7 @@ const initialState = {
   showPW: false
 }
 //2019-11-22T00:00:00.000Z
-export default function reducer(state = initialState, action) {
+export function reducer(state = initialState, action) {
   switch (action.type) {
     case CREATE_USER_START: {
       return {

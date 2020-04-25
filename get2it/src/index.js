@@ -11,7 +11,7 @@ import storage from 'redux-persist/lib/storage'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import reducer from './reducer'
+import {reducer} from './reducer'
 
 const persistConfig = {
   key: 'root',

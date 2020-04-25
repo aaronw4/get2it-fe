@@ -1,10 +1,9 @@
 import React from 'react';
 import './style.css';
 import { connect } from 'react-redux';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { updateTask, getTASKS } from '../../actions';
 import CompletedtaskModal from "../Home/CompletedtaskModal";
-import $ from "jquery";
 import { Link, Route } from "react-router-dom";
 // buld completed task component and set up state
 class CompletedTaskList extends React.Component {

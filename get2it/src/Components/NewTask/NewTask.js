@@ -62,7 +62,6 @@ class NewTask extends React.Component {
       start_time,
       end_time,
       userData,
-      error,
     } = this.props;
     const id = userData.id;
 

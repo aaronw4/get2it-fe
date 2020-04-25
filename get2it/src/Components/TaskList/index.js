@@ -49,7 +49,7 @@ class editTaskList extends React.Component {
         break
       case true:
         var filtered = this.itemArr.filter(function(el) {
-          return el != task
+          return el !== task
         })
         this.itemArr = filtered
         console.log(filtered)
