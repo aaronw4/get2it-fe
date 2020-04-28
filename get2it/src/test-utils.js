@@ -18,4 +18,5 @@ function renderWithRedux(
     return render(component, {wrapper: Wrapper, ...renderOptions})
   }
 
-export default renderWithRedux;
+export {renderWithRedux};
+export * from '@testing-library/react';
