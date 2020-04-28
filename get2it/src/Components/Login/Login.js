@@ -3,14 +3,14 @@ import '../Register/Register.css'
 import logo from '../Images/logo.png'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { login } from '../../actions'
+import { login, showPassword } from '../../actions'
 import Spinner from '../Spinner/Spinner.js'
 
 class Login extends React.Component {
   constructor() {
     super()
     this.state = {
-      username: '',
+      email: '',
       password: '',
     }
   }
@@ -26,9 +26,9 @@ class Login extends React.Component {
   handleSubmit = (evt) => {
     evt.preventDefault()
 
-    const { username, password } = this.state
+    const { email, password } = this.state
 
-    this.props.login(username, password)
+    this.props.login(email, password)
       .then(() => {
         this.props.history.push('/')
       })
@@ -37,9 +37,15 @@ class Login extends React.Component {
       })
   }
 
+  handleClick = (evt) => {
+    evt.preventDefault()
+
+    this.props.showPassword()
+  }
+
   render() {
-    const { username, password } = this.state
-    const { isLoading, error } = this.props
+    const { email, password } = this.state
+    const { isLoading, error, showPW } = this.props
 
     return (
       <>
@@ -53,12 +59,23 @@ class Login extends React.Component {
                 }
 
               <div className='inputContainer'>
-                <label to='username'><i id='registerIcon' className="far fa-user-circle"></i></label>
-                <input type='text' id='username' name='username' placeholder='Username' value={username} onChange={this.handleChange} required /><br />
+                <label to='email'><i id='registerIcon' className="far fa-user-circle"></i></label>
+                <input type='text' id='email' name='email' placeholder='email' value={email} onChange={this.handleChange} required /><br />
               </div>
               <div className='inputContainer'>
                 <label to='password'><i id='registerIcon' className="fas fa-unlock-alt"></i></label>
-                <input type='password' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} required /><br />
+                {
+                  showPW === false ? 
+                    <>
+                      <input type='password' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} required /><br />
+                      <button onClick={this.handleClick}>Show Password</button>
+                    </>
+                  :
+                    <>
+                      <input type='text' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} required /><br />
+                      <button onClick={this.handleClick}>Hide Password</button>
+                    </>
+                }
               </div>
 
               <button className='registerButton' type='submit'>Login</button>
@@ -74,10 +91,12 @@ class Login extends React.Component {
 const mapStateToProps = (state) => ({
   isLoading: state.isLoading,
   error: state.error,
+  showPW: state.showPW
 })
 
 const mapDispatchToProps = {
   login,
+  showPassword
 }
 
 export default withRouter(
