@@ -5,6 +5,7 @@
   overflow: auto;
   padding: 5px 20px;
 }
+
 .register::-webkit-scrollbar {
   height: 20px;
   width: 8px;
@@ -13,15 +14,34 @@
   background: rgba(192, 192, 192, 0.281);
   border-radius: 30px;
 }
+
+@media only screen and (min-width: 800px) {
+  .signupHeader {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
 .pageTitle {
   width: 100%;
   color: silver;
   padding: 20px 0 0;
   font-size: 1.2rem;
 }
+
+@media only screen and (min-width: 800px) {
+  .pageTitle {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    padding: 10px 0 0 0;
+  }
+}
+
 .registerLogo {
   width: 250px;
 }
+
 .inputContainer {
   display: flex;
   margin: 10px;
@@ -32,7 +52,7 @@
   border-left: 0px;
   border-right: 0px;
 }
-#registerIcon {
+.registerIcon {
   color: rgba(192, 192, 192, 0.65);
   margin: 0px 20px;
 }
@@ -46,6 +66,14 @@
   background-color: rgba(255, 255, 255, 0);
   color: silver;
 }
+
+@media only screen and (min-width: 800px) {
+  .registerButton {
+    font-size: 1.2rem;
+    max-width: 300px;
+  }
+}
+
 .registerButton:hover {
   background-color: var(--textColor);
   color: rgb(15, 15, 53);
@@ -54,18 +82,25 @@ input {
   width: 100%;
   text-align: left;
   margin: 20px 0;
-  padding: 0px 15px 8px;
+  padding: 0 0 8px 15px;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   color: rgb(236, 236, 236);
 }
+
+@media only screen and (min-width: 800px) {
+  input {
+    padding: 0 0 10px 50px;
+  }
+}
+
 input:focus {
   background-color: rgba(255, 255, 255, 0);
   border: none;
   outline: none;
 }
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
@@ -83,6 +118,13 @@ p.loginMessage {
   color: rgba(192, 192, 192, 0.65);
   margin-bottom: 0px;
 }
+
+@media only screen and (min-width: 800px) {
+  p.loginMessage {
+    margin-bottom: 30px;
+  }
+}
+
 .loginLink {
   color: silver;
   padding-left: 10px;

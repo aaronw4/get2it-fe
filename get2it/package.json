@@ -27,6 +27,7 @@
     "react-bootstrap-datetimerangepicker": "^2.0.4",
     "react-color": "^2.18.0",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^5.5.2",
     "react-jsx-parser": "^1.21.0",
     "react-materialize": "^3.8.7",
     "react-moment": "^0.9.7",
