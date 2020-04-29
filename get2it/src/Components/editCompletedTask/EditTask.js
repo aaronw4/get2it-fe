@@ -5,7 +5,6 @@ import Clock from "./StartTime";
 import Date from "./Date";
 import EndTime from "./EndTime";
 import { Dropdown, DropdownButton, Button } from "react-bootstrap";
-import $ from "jquery";
 import { connect } from "react-redux";
 import { updateTask } from "../../actions.js";
 

@@ -51,7 +51,7 @@ class Login extends React.Component {
       <>
         {isLoading ? <Spinner /> : 
           <div className='register'>
-            <h3 className='pageTitle'>Sign In</h3>
+            <h3 data-testid='loginHeader' className='pageTitle'>Sign In</h3>
             <img className='registerLogo' src={logo} alt='get2it' />
             <form className='registerForm' onSubmit={this.handleSubmit}>
               {error && error === 'Invalid Credentials' ?
@@ -68,7 +68,7 @@ class Login extends React.Component {
                   showPW === false ? 
                     <>
                       <input type='password' id='password' name='password' placeholder='Password' value={password} onChange={this.handleChange} required /><br />
-                      <button onClick={this.handleClick}>Show Password</button>
+                      <button onClick={this.handleClick} >Show Password</button>
                     </>
                   :
                     <>

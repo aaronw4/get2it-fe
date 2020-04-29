@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/Lambda-School-Labs/get2it-fe/issues"
   },
-  "homepage": "https://github.com/Lambda-School-Labs/get2it-fe#readme"
+  "homepage": "https://github.com/Lambda-School-Labs/get2it-fe#readme",
+  "dependencies": {}
 }
