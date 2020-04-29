@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { createUser } from "../../actions";
 import logo from "../Images/logo.png";
 import Spinner from "../Spinner/Spinner.js";
-import { useForm } from "react-hook-form";
 
 const Register = ({ isLoading, error, createUser, history }) => {
   const { register, handleSubmit, errors, getValues, reset } = useForm();
