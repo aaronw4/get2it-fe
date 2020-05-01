@@ -41,7 +41,7 @@ export function createUser(email, password, displayName) {
   return (dispatch) => {
     dispatch({ type: CREATE_USER_START })
 
-    return axios.post('https://get2it.herokuapp.com/api/auth/register', { email, password, displayName })
+    return axios.post(' https://get2itpt9.herokuapp.com/api/auth/register', { email, password, displayName })
       .then((res) => {
         localStorage.setItem('token', res.data.token)
           dispatch({ type: CREATE_USER_SUCCESS, payload: res.data.user })
@@ -57,7 +57,7 @@ export function login(email, password) {
   return (dispatch) => {
     dispatch({ type: LOGIN_START })
 
-    return axios.post('https://get2it.herokuapp.com/api/auth/login', { email, password })
+    return axios.post(' https://get2itpt9.herokuapp.com/api/auth/login', { email, password })
       .then((res) => {
         localStorage.setItem('token', res.data.token)
         dispatch({ type: LOGIN_SUCCESS, payload: res.data.user });
@@ -77,7 +77,7 @@ export function getTASKS(id) {
       Authorization: localStorage.getItem('token'),
     }
 
-    axios.get(`https://get2it.herokuapp.com/api/users/${id}/tasks`, { headers })
+    axios.get(` https://get2itpt9.herokuapp.com/api/users/${id}/tasks`, { headers })
       .then((res) => {
         console.log(res)
         const newRes = res.data.map(task => {
@@ -111,7 +111,7 @@ export function updateTask(payload, id){
       Authorization: localStorage.getItem('token'),
     }
 
-    axios.put(`https://get2it.herokuapp.com/api/users/tasks/${id}`, payload, { headers })
+    axios.put(` https://get2itpt9.herokuapp.com/api/users/tasks/${id}`, payload, { headers })
       .then((res) => {
         console.log(payload)
         dispatch({ type: UPDATE_TASK_SUCCESS, payload: res.data })
@@ -133,7 +133,7 @@ export function deleteTask(id) {
     };
 
     axios
-      .delete(`https://get2it.herokuapp.com/api/users/tasks/${id}`, { headers })
+      .delete(` https://get2itpt9.herokuapp.com/api/users/tasks/${id}`, { headers })
       .then(res => {
         dispatch({ type: DELETE_TASK_SUCCESS, payload: res.data });
       })
@@ -153,7 +153,7 @@ export function updateUser(payload, id) {
     };
 
     axios
-      .put(`https://get2it.herokuapp.com/api/auth/edit-profile/${id}`, payload, { headers })
+      .put(` https://get2itpt9.herokuapp.com/api/auth/edit-profile/${id}`, payload, { headers })
       .then(res => {
           dispatch({ type: UPDATE_USER_SUCCESS, payload: payload, id: id });
       })
@@ -173,7 +173,7 @@ export function createTask(payload, id) {
     };
 
     return axios
-      .post(`https://get2it.herokuapp.com/api/users/${id}/tasks`, payload, { headers })
+      .post(` https://get2itpt9.herokuapp.com/api/users/${id}/tasks`, payload, { headers })
       .then(res => {
           dispatch({ type: CREATE_TASK_SUCCESS, payload: payload, id: id });
       })
