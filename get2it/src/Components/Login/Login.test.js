@@ -1,14 +1,21 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import {renderWithRedux, cleanup, fireEvent, screen} from '../../test-utils';
+import {renderWithRedux, cleanup, fireEvent, screen, wait} from '../../test-utils';
 import Login from './Login';
 import { createStore } from 'redux';
 
 afterEach(cleanup);
 
-it('displays header', ()  => {
+it('displays all page elements', ()  => {
   renderWithRedux(<Login/>)
   screen.getByText('Sign In')
+  screen.getByAltText('get2it')
+  screen.getByPlaceholderText('email')
+  screen.getByPlaceholderText('Password')
+  screen.getByText('Show Password')
+  screen.getByText('Login')
+  screen.getByText("DON'T HAVE AN ACCOUNT?")
+  screen.getByText('SIGN UP')
 });
 
 it('doesnt display spinner', () => {
@@ -32,8 +39,8 @@ it('changes email value when typed in input field', () => {
 it('changes password value when typed in input field', () => {
   const {getByPlaceholderText} = renderWithRedux(<Login/>)
   const password = getByPlaceholderText(/password/i)
-  fireEvent.change(password, {target: {value: 'pass'}})
-  expect(password.value).toBe('pass')
+  fireEvent.change(password, {target: {value: 'password'}})
+  expect(password.value).toBe('password')
 });
 
 it('password has type password as default', () => {
@@ -64,3 +71,19 @@ it('Sign Up button has a link to register page', () => {
   const link = getByText(/SIGN UP/i)
   expect(link).toHaveAttribute('href', '/register')
 });
+
+it('logs in succussfully', async () => {
+  const fakeResponse = {token: 'fake-token'}
+  jest.spyOn(handleSubmit, 'login').mockImplementationOnce(() => {
+    return Promise.resolve({
+      json: () => Promise.resolve(fakeResponse)
+    })   
+  })
+
+  const {getByPlaceholderText} = renderWithRedux(<Login/>)
+  fireEvent.change(getByPlaceholderText(/email/i), {target: {value: 'Aaron'}})
+  fireEvent.change(getByPlaceholderText(/password/i), {target: {value: 'password'}})
+  fireEvent.click(screen.getByText('Login'))
+  await expect(window.location.pathname).toEqual('/')
+  expect(window.localStorage.getItem('token')).toEqual(fakeResponse.token)
+})
