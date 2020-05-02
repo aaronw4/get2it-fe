@@ -16,6 +16,7 @@
     "material-ui-time-picker": "^1.3.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.28",
+    "mutationobserver-shim": "^0.3.5",
     "onefe-bootstrap-daterangepicker": "^2.1.17",
     "postcss-loader": "^3.0.0",
     "precss": "^4.0.0",

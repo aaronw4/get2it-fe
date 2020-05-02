@@ -3,6 +3,7 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import { BrowserRouter } from 'react-router-dom'
 import {render} from '@testing-library/react';
+import 'mutationobserver-shim'
 import {initialState as reducerInitialState, reducer} from './reducer';
 
 function renderWithRedux(
