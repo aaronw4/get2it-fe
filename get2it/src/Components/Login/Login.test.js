@@ -72,18 +72,8 @@ it('Sign Up button has a link to register page', () => {
   expect(link).toHaveAttribute('href', '/register')
 });
 
-it('logs in succussfully', async () => {
-  const fakeResponse = {token: 'fake-token'}
-  jest.spyOn(handleSubmit, 'login').mockImplementationOnce(() => {
-    return Promise.resolve({
-      json: () => Promise.resolve(fakeResponse)
-    })   
-  })
-
-  const {getByPlaceholderText} = renderWithRedux(<Login/>)
-  fireEvent.change(getByPlaceholderText(/email/i), {target: {value: 'Aaron'}})
-  fireEvent.change(getByPlaceholderText(/password/i), {target: {value: 'password'}})
-  fireEvent.click(screen.getByText('Login'))
-  await expect(window.location.pathname).toEqual('/')
-  expect(window.localStorage.getItem('token')).toEqual(fakeResponse.token)
+it('logs in has type submit', () => {  
+  const {getByText} = renderWithRedux(<Login/>)
+  const login = getByText(/Login/i)
+  expect(login).toHaveAttribute('type','submit')
 })
