@@ -101,7 +101,7 @@ const Register = ({ isLoading, error, createUser, history }) => {
                 name="password"
                 placeholder={
                   errors.password && errors.password.type === "required"
-                    ? "PASSWORD IS REQUIRED"
+                    ? "PASSWORD IS REQUIRED!"
                     : "Password"
                 }
               />
