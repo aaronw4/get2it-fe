@@ -85,7 +85,7 @@ const Register = ({ isLoading, error, createUser, history }) => {
             </div>
 
             {/* PASSWORD */}
-            <div className="inputContainer">
+            <div className="inputContainer" >
               <label to="password">
                 <i className="registerIcon fas fa-unlock-alt"></i>
               </label>
@@ -95,6 +95,7 @@ const Register = ({ isLoading, error, createUser, history }) => {
                   minLength: 8,
                   validate: validatePassword,
                 })}
+                data-testid='passwordInput'
                 type="password"
                 id="password"
                 name="password"
