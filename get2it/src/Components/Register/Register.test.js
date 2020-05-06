@@ -77,6 +77,17 @@ it('warns you if password is too short', async () => {
     await waitFor(() => getByText('PASSWORD MUST BE 8 CHARACTERS OR LONGER'))    
 });
 
+// it('warns you that the passwords dont match', async () => {
+//     const {getByText, getByPlaceholderText, getByTestId} = renderWithRedux(<Register/>)
+//     const password = getByTestId(/passwordInput/i)
+//     const confirmPW = getByPlaceholderText(/Confirm Password/i)
+//     const submit = getByText('Create Account')
+//     fireEvent.change(password, {target: {value: 'password'}})
+//     fireEvent.change(confirmPW, {target: {value: 'something'}})
+//     fireEvent.click(submit)
+//     await waitFor(() => screen.getAllByText('PASSWORDS MUST MATCH'))
+// })
+
 it('Sign Up button has a link to register page', () => {
     const {getByText} = renderWithRedux(<Register/>)
     const link = getByText(/SIGN IN/i)
