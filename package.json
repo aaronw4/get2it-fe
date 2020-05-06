@@ -1,20 +1,80 @@
 {
-  "name": "get2it-fe",
-  "version": "1.0.0",
-  "description": "🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.",
-  "main": "index.js",
+  "name": "get2it",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "autoprefixer": "^9.7.6",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "bootstrap-datetimerangepicker": "^2.1.17",
+    "css-loader": "^3.5.2",
+    "date-fns": "^2.12.0",
+    "downshift": "^3.4.8",
+    "event-emitter": "^0.3.5",
+    "jquery": "^3.5.0",
+    "kalendaryo": "^1.11.1",
+    "material-ui-time-picker": "^1.3.0",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.28",
+    "onefe-bootstrap-daterangepicker": "^2.1.17",
+    "postcss-loader": "^3.0.0",
+    "precss": "^4.0.0",
+    "ramda": "^0.26.1",
+    "rc-time-picker": "^4.0.0-alpha.2",
+    "react": "^16.13.1",
+    "react-add-to-calendar": "^0.1.5",
+    "react-bootstrap": "^1.0.1",
+    "react-bootstrap-datetimerangepicker": "^2.0.4",
+    "react-color": "^2.18.0",
+    "react-dom": "^16.13.1",
+    "react-hook-form": "^5.6.0",
+    "react-jsx-parser": "^1.21.0",
+    "react-materialize": "^3.8.7",
+    "react-moment": "^0.9.7",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-router-modal": "^1.5.2",
+    "react-scripts": "^3.4.1",
+    "react-time-picker": "^3.9.0",
+    "react-toggle-switch": "^3.0.4",
+    "reactstrap": "^8.4.1",
+    "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.4",
+    "styled-components": "^4.4.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Lambda-School-Labs/get2it-fe.git"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Lambda-School-Labs/get2it-fe/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
-  "homepage": "https://github.com/Lambda-School-Labs/get2it-fe#readme",
-  "dependencies": {}
+  "devDependencies": {
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "react-test-renderer": "^16.13.1"
+  }
 }
