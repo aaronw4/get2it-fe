@@ -1,4 +1,5 @@
 # Get2It
+[![Maintainability](https://api.codeclimate.com/v1/badges/2bfe9545132cb9bd13f4/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/get2it-fe/maintainability)
 
 You can find the deployed project at [get2it.netlify.com](https://get2it.netlify.com).
 
