@@ -1,6 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import {renderWithRedux, cleanup, fireEvent, screen, wait} from '../../test-utils';
+import {renderWithRedux, cleanup, fireEvent, screen} from '../../test-utils';
 import Login from './Login';
 import { createStore } from 'redux';
 
