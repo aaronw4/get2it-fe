@@ -1,4 +1,3 @@
-
 import React from "react"
 import { withRouter } from "react-router-dom"
 import "./NewTask.css"
@@ -220,7 +219,7 @@ class NewTask extends React.Component {
       <div className="newTaskContainer">
         <br />
 
-        <h1 className="NewTask-Tittle"> Add New Task</h1>
+        <h1 className="newTaskHeader"> Add New Task</h1>
         {/* <hr className="line" /> */}
         <br />
         {/* <Category/> */}

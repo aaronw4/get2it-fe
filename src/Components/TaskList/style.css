@@ -12,25 +12,29 @@ input[type=checkbox] {
 }
 dl, ol, ul {
     margin-top:5%;
-    list-style:none; 
+    list-style:none;
     text-align: left;
     padding: 2px;
-    border-image: radial-gradient(silver, black) 50;
 }
 .taskListContainer {
   overflow: auto;
-  height: 75vh;
+  height: 100vh;
   padding: 0px;
+  background-color: #212936;
+  border: 1px solid #313c4e;
+  border-radius: 5px;
+  width: 90%;
+  margin: 0 auto;
 }
 .taskListContainer::-webkit-scrollbar-track-piece {
   height: 20px;
   width: 8px;
-} 
+}
 .taskListContainer::-webkit-scrollbar-thumb {
   background: rgba(192, 192, 192, 0.281);
   border-radius: 30px;
 
-} 
+}
 div .form-group {
   display: flex;
   justify-content: space-between;
