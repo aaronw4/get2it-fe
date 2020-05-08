@@ -172,6 +172,7 @@ class editTaskList extends React.Component {
                       }}
                     >
                       <Form.Text>{item.name}</Form.Text>
+                      <Form.Text>{item.start_time}-{item.end_time}</Form.Text>
                     </Link>
                     <Route
                       path="/edittaskModal/:id"

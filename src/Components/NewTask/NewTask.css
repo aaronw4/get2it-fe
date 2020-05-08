@@ -20,12 +20,12 @@
       display: inline;
       background-color: none;
     }
-    
+
     button {
       margin: 1px;
       cursor: pointer;
     }
-    
+
     .NewTask-Tittle{
       font-weight: bold;
       font-size: 2em;
@@ -44,15 +44,7 @@
       /* background: rgb(145, 144, 144); */
       padding: 7px;
       /* border-radius: 3px 3px 0 0 ; */
-      
-    }
-    h1 {
-        font-family: sans-serif;
-      font-size: 36px;
-      margin: 0;
-      color: white;
-      font-weight: bold;
-     
+
     }
     .create-new {
       /* border-top: 1px solid rgb(255, 255, 255); */
@@ -68,7 +60,7 @@
         border: 1px solid rgb(139, 139, 139);
         margin:5px 5px 25px 5px
       }
-    
+
     .create-new button {
       width: 25%;
       background: #eee;
@@ -78,18 +70,18 @@
       margin: 0;
       border: none;
       /* border-left: 1px solid #999; */
-      
+
     }
     .create-new button :hover {
       background: #ddd;
     }
-  
-    
+
+
     .items-list {
       background: #282727;
       border-radius: 3px;
     }
-    
+
     .to-do-item {
       padding: 10px 0 10px 0;
       margin: 1px 0 1px 0;
@@ -102,10 +94,10 @@
       font-weight: lighter;
       user-select: none;
     }
-    
+
     .name {
       margin-left: 10px;
-      
+
     }
     .name input {
       width: 350px;
@@ -114,10 +106,10 @@
       border: none;
       border-radius: 1px;
     }
-    
+
     .actions {
       margin-right: 10px;
-      
+
     }
     .actions button {
       padding: 7px;
@@ -134,7 +126,7 @@
       margin: 0 10px;
     }
     @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
-  
+
   * {
     /* padding: 0;
     margin: 0; */
@@ -167,15 +159,22 @@
     background: rgba(192, 192, 192, 0.281);
     border-radius: 30px;
   }
-  .newTaskContainer {
+  .dashboard .appRoutes .newTaskContainer {
     display: flex;
     flex-flow: column;
-    align-items: center;
     overflow: auto !important;
-    width: 100%;
-    height: 100%;
-    margin-top: -25px;
+    width: 74.5%;
+    height: 72.2vh;
     padding: 0 10px;
+    background-color: #212936;
+    border: 1px solid #303b4d;
+  }
+
+  .dashboard .appRoutes .newTaskContainer .newTaskHeader {
+    font-size: 1.7rem;
+    letter-spacing: -0.03rem;
+    margin-left: -20.2rem;
+    margin-top: -0.4rem;
   }
   .date-picker-container {
     width: 100%;
@@ -189,7 +188,7 @@
   .retrievedDate input {
     padding-right: .2rem;
   }
-  
+
   input {
     width: 100%;
     border: 2px solid #504f4f;
@@ -198,11 +197,11 @@
     font-size: 1.1rem;
     cursor: pointer;
   }
-  
+
   input:focus {
     border-color: palevioletred;
   }
-  
+
   button {
     background: none;
     border: none;
@@ -213,7 +212,7 @@
   svg:not(:root).svg-inline--fa {
     /* margin-left:5%; */
   }
-  
+
   button:focus {
     color: lightblue;
   }
@@ -225,7 +224,7 @@
     /* margin-left: 3%; */
   }
   .calender-date svg{
-    
+
     margin-left: 25%;
   }
   .calendar {
@@ -242,35 +241,35 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    
+
   }
-  
+
   .calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
     background: rgba(7, 7, 7, 0.397);
-    
+
   }
-  
+
   .week {
     display: flex;
   }
-  
+
   .week:not(:first-of-type) {
     border-top: 1px solid #eaeaea;
   }
-  
+
   .week.day-labels {
     background: rgb(12, 12, 12);
   }
-  
+
   .week.day-labels .day {
     cursor: default;
     color: silver;
   }
-  
+
   .day {
     width: calc(100% / 7);
     padding: 1rem 0.5rem;
@@ -278,104 +277,99 @@
     cursor: pointer;
     color: silver;
   }
-  
+
   .week:not(.day-labels) .day:not(:last-of-type) {
     border-right: 1px solid #eaeaea;
   }
-  
+
   .week:not(.day-labels) .day:hover {
     background-color: #e7e7e7;
   }
-  
+
   .day.is-today.is-today {
     font-weight: bolder;
     color: rgb(255, 255, 255);
     background-color: black;
   }
-  
+
   .week:not(.day-labels) .day.is-selected.is-selected {
     background-color: rgb(138, 0, 46);
     color: #fff;
   }
-  
+
   .color-white {
     color: #fff;
   }
-  
+
   .text-bold {
     font-weight: bold;
   }
-  
+
   .day[disabled] {
     color: #000000b9;
     cursor: not-allowed !important;
     background: inherit !important;
   }
-  
-  example-wrapper { 
-      min-height: 280px; 
-      align-content: flex-start; 
+
+  example-wrapper {
+      min-height: 280px;
+      align-content: flex-start;
   }
   .example-wrapper p, .example-col p {
-      margin: 20px 0 10px; 
+      margin: 20px 0 10px;
   }
-  .example-wrapper p:first-child, .example-col p:first-child { 
-      margin-top: 0; 
+  .example-wrapper p:first-child, .example-col p:first-child {
+      margin-top: 0;
   }
-  .example-col { 
-      display: inline-block; 
-      vertical-align: top; 
-      padding-right: 20px; 
+  .example-col {
+      display: inline-block;
+      vertical-align: top;
+      padding-right: 20px;
       padding-bottom: 20px;
   }
   .example-config {
-      margin: 0 0 20px; 
-      padding: 20px; 
+      margin: 0 0 20px;
+      padding: 20px;
       background-color: rgba(0,0,0,.03);
-      border: 1px solid rgba(0,0,0,.08); 
+      border: 1px solid rgba(0,0,0,.08);
   }
-  .event-log { 
-      margin: 0; 
-      padding: 0; 
-      max-height: 100px; 
-      overflow-y: auto; 
-      list-style-type: none; 
-      border: 1px solid rgba(0,0,0,.08); 
-      background-color: white; 
+  .event-log {
+      margin: 0;
+      padding: 0;
+      max-height: 100px;
+      overflow-y: auto;
+      list-style-type: none;
+      border: 1px solid rgba(0,0,0,.08);
+      background-color: white;
   }
   .event-log li {
-      margin: 0; 
-      padding: .3em; 
-      line-height: 1.2em; 
-      border-bottom: 1px solid rgba(0,0,0,.08); 
+      margin: 0;
+      padding: .3em;
+      line-height: 1.2em;
+      border-bottom: 1px solid rgba(0,0,0,.08);
   }
-  .event-log li:last-child { 
+  .event-log li:last-child {
       margin-bottom: -1px;
   }
   .form{
     background: transparent;
   }
-  
+
   main {
     margin: 100px auto;
   }
-  
+
   .color-indicator {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     cursor: pointer;
     background-color: none;
-  
+
     transition: transform .2s;
   }
   .color-indicator:hover {
     transform: scale(1.1);
-  }
-  .lable{
-    
-    
-    
   }
   .calender-date{
     display: flex;
@@ -383,8 +377,8 @@
     justify-content: center;
   }
   .line{
-    background-color:  rgb(65, 63, 63); 
-     height: 5 
+    background-color:  rgb(65, 63, 63);
+     height: 5
   }
   .endTime{
     display: flex;
@@ -423,18 +417,12 @@
     border: 0;
     border-top: none;
   }
-   
+
   .lableColor{
     margin-left: 350px;
   }
-  
-  .NewTask-Tittle2{
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-left: -130px;
-    margin-top: -50px;
-    text-transform: uppercase;
-  }
+
+
   .lableIcon{
    background-color: #fff;
   }
@@ -450,45 +438,24 @@
   }
   .displayIcons {
     display: flex;
-  
+
   }
-  .iconOne {
+  .iconOne, .iconTwo, .iconThree, .iconFour, .iconFive, .iconSix {
     /* border:1px solid rgb(182, 42, 170); */
     display: none;
-    
-  }
-  .iconTwo {
-    /* border:1px solid red; */
-    display: none;
-  }
-  .iconThree {
-    /* border:1px solid rgb(15, 158, 58); */
-    display: none;
-  }
-  .iconFour {
-    /* border:1px solid rgb(182, 42, 170); */
-    display: none;
-    
-  }
-  .iconFive {
-    /* border:1px solid red; */
-    display: none;
-  }
-  .iconSix {
-    /* border:1px solid rgb(15, 158, 58); */
-    display: none;
+
   }
   #iconOne {
     /* border:1px solid rgb(182, 42, 170); */
-  
+
   }
   #iconTwo {
     /* border:1px solid red; */
-  
+
   }
   #iconThree {
     /* border:1px solid rgb(15, 158, 58); */
-  
+
   }
   #dropdown-item-button {
     /* margin-top: -16%; */
@@ -511,10 +478,10 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-bottom: 40px; 
+    margin-bottom: 40px;
     padding-bottom: 20px;
     border-bottom: 2px solid;
-    border-image: radial-gradient(silver, black) 50;   
+    border-image: radial-gradient(silver, black) 50;
   }
   .startCont {
     display: flex;
