@@ -53,7 +53,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "report": "react-scripts test --coverage --watchAll=false",
-    "coverage": "CI=true yarn test --coverage --watchAll=false || true"
+    "coverage": "CI=true react-scripts test --coverage --watchAll=false || true"
   },
 	"jest": {
     "collectCoverageFrom": [
