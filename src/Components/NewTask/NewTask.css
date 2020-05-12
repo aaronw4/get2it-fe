@@ -7,7 +7,7 @@
   padding:5px;
   overflow: auto;
 }
-.taskModal::-webkit-scrollbar {
+/* .taskModal::-webkit-scrollbar {
     height: 20px;
     width: 8px;
     display: none;
@@ -15,7 +15,7 @@
 .taskModal::-webkit-scrollbar-thumb {
   background: rgba(192, 192, 192, 0.281);
   border-radius: 30px;
-}
+} */
     form {
       display: inline;
       background-color: none;
@@ -133,15 +133,15 @@
     box-sizing: border-box;
     font-family: "Source Sans Pro", helvetica;
   }
-  .newTaskContainer::-webkit-scrollbar {
+  /* .newTaskContainer::-webkit-scrollbar {
     height: 20px;
     width: 8px;
     /* display: none; */
-  }
+  /* }
   .newTaskContainer::-webkit-scrollbar-thumb {
     background: rgba(192, 192, 192, 0.281);
     border-radius: 30px;
-  }
+  } */ 
   .newModal {
     overflow: auto;
     padding-top: 50px;
@@ -150,15 +150,15 @@
     overflow: auto;
     padding-top: 50px;
   }
-  .reUseModal::-webkit-scrollbar {
+  /* .reUseModal::-webkit-scrollbar {
     height: 20px;
     width: 8px;
-    /* display: none; */
-  }
-  .reUseModal::-webkit-scrollbar-thumb {
+    /* display: none; 
+  } */
+  /* .reUseModal::-webkit-scrollbar-thumb {
     background: rgba(192, 192, 192, 0.281);
     border-radius: 30px;
-  }
+  } */
   .dashboard .appRoutes .newTaskContainer {
     display: flex;
     flex-flow: column;
