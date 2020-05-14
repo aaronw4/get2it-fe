@@ -136,18 +136,19 @@ In order for the app to function correctly, the user must set up their own envir
 
 🚫Document what you used for testing and why
 
-# 4️⃣ Installation Instructions
+# Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+*npm install* will install node_modules with all dependencies.
+*npm start* will run the app on your local device.
 
 ## Other Scripts
 
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
     * build - creates a build of the application
     * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+    * test - runs tests in **tests** directory 
+    * eject - copy the configuration files and dependencies into the project so you have full control over them
+    * coverageIOS - runs test coverage for IOS devices
+    * coverage - runs test coverage for Windows devices
 
 # Contributing
 
