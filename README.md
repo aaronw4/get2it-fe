@@ -132,14 +132,14 @@ In order for the app to function correctly, the user must set up their own envir
 | doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
 | rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
 
-# 4️⃣ Testing
+# Testing
 
-🚫Document what you used for testing and why
+Our test use **react-testing-library** because it allows us to render and test different react components with the use of Jest. It will test what is being rendered to the DOM. The advantage is that the test rendering will happen the same way as it would in actual use. To help us write test we will alse be using **testing-library/jest-dom** which is a library within react-testing-library.  This makes writing test smoother by allowing us to use custom Jest matchers. This will make the tests easier to read and therefore more maintainable. 
 
 # Installation Instructions
 
-*npm install* will install node_modules with all dependencies.
-*npm start* will run the app on your local device.
+- *npm install* will install node_modules with all dependencies.
+- *npm start* will run the app on your local device.
 
 ## Other Scripts
 
