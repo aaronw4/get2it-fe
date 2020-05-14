@@ -130,14 +130,14 @@
     box-sizing: border-box;
     font-family: "Source Sans Pro", helvetica;
   }
-  .newTaskContainer::-webkit-scrollbar {
+  /* .newTaskContainer::-webkit-scrollbar {
     height: 20px;
     width: 8px;
   }
   .newTaskContainer::-webkit-scrollbar-thumb {
     background: rgba(192, 192, 192, 0.281);
     border-radius: 30px;
-  }
+  } */
   .newTaskContainer {
     display: flex;
     flex-flow: column;
