@@ -2,7 +2,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/2bfe9545132cb9bd13f4/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/get2it-fe/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2bfe9545132cb9bd13f4/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/get2it-fe/test_coverage)
 
-You can find the deployed project at [get2it.netlify.com](https://get2it.netlify.com).
+You can find the deployed project at [Get2It](https://master.d2aj6lilolim7e.amplifyapp.com/).
 
 ## Contributors
 
@@ -66,7 +66,7 @@ This is accomplished through the use of timers, calendars, and reminders.
 -    It is a huge time saver when it comes to creating forms, animations, tables, and more.
 
 
-#### Front end deployed to `Netlify`
+#### Front end deployed to `AWS Amplify`
 
 #### [Back end](https://github.com/Lambda-School-Labs/get2it-be) built using:
 
