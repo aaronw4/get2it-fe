@@ -68,15 +68,27 @@ This is accomplished through the use of timers, calendars, and reminders.
 
 #### Front end deployed to `AWS Amplify`
 
-#### [Back end](https://github.com/Lambda-School-Labs/get2it-be) built using:
+### [Back end](https://github.com/Lambda-School-Labs/get2it-be) built using:
 
-#### 🚫 back end framework goes here
+#### PostgresSQL
 
--    point one
--    point two
--    point three
+-    This object-relational database system will safely store and scale our data workload.
+-    It gives us the ability to define our own data types
+-    We can write the code using Node.js
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+#### Node.js
+
+-   We are using this platform because it allows us to us JavaScript
+-   Node.js allows us to add, delete, modify data in our database
+
+#### Express
+
+-   This Node framework will allow us to quickly build a RESTful API
+-   Provides route support for responding to requests
+
+#### Knex
+
+-   We are using this tool to help us write SQL queries
 
 # APIs
 
