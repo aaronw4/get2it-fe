@@ -22,14 +22,12 @@ You can find the deployed project at [get2it.netlify.com](https://get2it.netlify
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 ![Redux](https://img.shields.io/badge/Redux-v4.0.4-blueviolet)
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](https://get2it.netlify.com)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-🚫 more info on using badges [here](https://github.com/badges/shields)
 
 ## Project Overview
 
-[Trello Board](https://trello.com/b/22w8dI8x/get2it)
+[Trello Board](https://trello.com/b/op90zWa0/labspt9-get2it)
 
 [Product Canvas](https://www.notion.so/Get2It-f99d691af6ce4731b39adc459f35eba9)
 
