@@ -1,16 +1,18 @@
 # Get2It
 [![Maintainability](https://api.codeclimate.com/v1/badges/2bfe9545132cb9bd13f4/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/get2it-fe/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2bfe9545132cb9bd13f4/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/get2it-fe/test_coverage)
 
-You can find the deployed project at [get2it.netlify.com](https://get2it.netlify.com).
+You can find the deployed project at [Get2It](https://master.d2aj6lilolim7e.amplifyapp.com/).
 
 ## Contributors
 
 
-|                                       [TJ Feledy](https://github.com/TJ-Feledy)                                        |                                       [Student 2](https://github.com/)                                        |                                       [Student 3](https://github.com/)                                        |                                       [Student 4](https://github.com/)                                        |                                       [Student 5](https://github.com/)                                        |
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="./images/me.jpg" width = "200" />](https://github.com/TJ-Feledy)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/TJ-Feledy)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/theodore-feledy-995b7a188/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+| [Daniel Ajadi](https://github.com/theolamide) | [Christine Carpenter](https://github.com/CodingCCarpenter) | [John Kouris](https://github.com/jdkouris) | [Jay Leach](https://github.com/leachcoding) | [Vici Shaweddy](https://github.com/vshaweddy) | [Aaron Williams](https://github.com/aaronw4) |
+| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
+| [<img src="./images/Daniel.jpg" width = "200" />](https://github.com/theolamide) | [<img src="./images/Christine.jpg" width = "200" />](https://github.com/CodingCCarpenter) | [<img src="./images/John.png" width = "200" />](https://github.com/jdkouris) | [<img src="./images/Jay.jpg" width = "200" />](https://github.com/leachcoding) | [<img src="./images/Vici.jpg" width = "200" />](https://github.com/vshaweddy) | [<img src="./images/Aaron.jpg" width = "200" />](https://github.com/aaronw4) | 
+| Project Manager | Web Developer | IOS Developer | Web Developer | IOS Developer | Web Developer |
+| [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/theolamide) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/CodingCCarpenter) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jdkouris) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/leachcoding) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/vshaweddy) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/aaronw4) |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/aaron-williams-b921073a/) |
 
 <br>
 <br>
@@ -20,14 +22,12 @@ You can find the deployed project at [get2it.netlify.com](https://get2it.netlify
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 ![Redux](https://img.shields.io/badge/Redux-v4.0.4-blueviolet)
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](https://get2it.netlify.com)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-🚫 more info on using badges [here](https://github.com/badges/shields)
 
 ## Project Overview
 
-[Trello Board](https://trello.com/b/22w8dI8x/get2it)
+[Trello Board](https://trello.com/b/op90zWa0/labspt9-get2it)
 
 [Product Canvas](https://www.notion.so/Get2It-f99d691af6ce4731b39adc459f35eba9)
 
@@ -66,49 +66,45 @@ This is accomplished through the use of timers, calendars, and reminders.
 -    It is a huge time saver when it comes to creating forms, animations, tables, and more.
 
 
-#### Front end deployed to `Netlify`
+#### Front end deployed to `AWS Amplify`
 
-#### [Back end](https://github.com/Lambda-School-Labs/get2it-be) built using:
+### [Back end](https://github.com/Lambda-School-Labs/get2it-be) built using:
 
-#### 🚫 back end framework goes here
+#### PostgresSQL
 
--    point one
--    point two
--    point three
+-    This object-relational database system will safely store and scale our data workload.
+-    It gives us the ability to define our own data types
+-    We can write the code using Node.js
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+#### Node.js
+
+-   We are using this platform because it allows us to us JavaScript
+-   Node.js allows us to add, delete, modify data in our database
+
+#### Express
+
+-   This Node framework will allow us to quickly build a RESTful API
+-   Provides route support for responding to requests
+
+#### Knex
+
+-   We are using this tool to help us write SQL queries
 
 # APIs
 
-## 2️⃣ Authentication API here
+## Authentication API here
 
-🚫Replace text below with a description of the API
+https://get2itpt9.herokuapp.com/api/auth/login
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+When an email and password is posted to this API, the API will verify these credentials. Once the user has been authenticated, they will receive an token for authorization which is then used throughout the App.  This token will expire in 1 day. The token is cleared when the user logs out.
 
-## 2️⃣ Payment API here
+## Payment API here
 
-🚫Replace text below with a description of the API
+The is no API for payment at this time.
 
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
+## Calendar API
 
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
+In future release canvases we are planning on using calendars from google and other sites.
 
 # 3️⃣ Environment Variables
 
@@ -136,22 +132,23 @@ In order for the app to function correctly, the user must set up their own envir
 | doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
 | rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
 
-# 4️⃣ Testing
+# Testing
 
-🚫Document what you used for testing and why
+Our test use **react-testing-library** because it allows us to render and test different react components with the use of Jest. It will test what is being rendered to the DOM. The advantage is that the test rendering will happen the same way as it would in actual use. To help us write test we will alse be using **testing-library/jest-dom** which is a library within react-testing-library.  This makes writing test smoother by allowing us to use custom Jest matchers. This will make the tests easier to read and therefore more maintainable. 
 
-# 4️⃣ Installation Instructions
+# Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+- *npm install* will install node_modules with all dependencies.
+- *npm start* will run the app on your local device.
 
 ## Other Scripts
 
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
     * build - creates a build of the application
     * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+    * test - runs tests in **tests** directory 
+    * eject - copy the configuration files and dependencies into the project so you have full control over them
+    * coverageIOS - runs test coverage for IOS devices
+    * coverage - runs test coverage for Windows devices
 
 # Contributing
 
@@ -191,4 +188,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/get2it-be) for details on the backend of our project.
