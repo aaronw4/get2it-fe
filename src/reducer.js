@@ -84,6 +84,7 @@ const initialState = {
   errorStatus: null,
   userData: {},
   userTasks: [],
+  filteredTasks: [],
   userID: null,
   date: '',
   start_time: '',
