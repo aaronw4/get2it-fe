@@ -8,6 +8,7 @@ import moment from 'moment'
 import Moment from 'react-moment'
 import NewTaskModal from './NewTaskModal.js'
 import logo from '../Images/logo.png'
+import {Filter} from './Filter'
 
 class Home extends React.Component {
   constructor(props) {
@@ -20,7 +21,6 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.setState({
-
       _mounted: true
     })
   }
@@ -59,36 +59,36 @@ class Home extends React.Component {
             <p className="total">{this.props.userTasks.length}</p>
           </div>
         </Link>
-        <div className="homeList">
-          {todayList.length === 0 ? (
-            <div className="noTaskContainer">
-              <i className="fas fa-long-arrow-alt-up arrow"></i>
-              <p className="instruction">
-                See your pending tasks!
-              </p>
-              <div className="bigLogoContainer">
-                <img className="bigLogo" src={logo} alt="Get2It!" />
-              </div>
-              <p className="instruction">Or add a new task!</p>
-              <i className="fas fa-long-arrow-alt-down arrow"></i>
-            </div>
-          ) : (
-            todayList.map((task, index) => {
-              return (
-                <div className="listItem" key={index}>
-                  <div className="iconContainer">
-                    {this.state._mounted === true ? (<JsxParser jsx={task.task_icon} />) : null}
-                  </div>
-                  <div className="itemContainer">
-                    <p className="itemName">{task.name}</p>
-                    <p className="duration">
-                      {task.start_time}-{task.end_time}
-                    </p>
-                  </div>
+        <div className="homeList">          
+          <Filter/>
+          <div className='listContainer'>
+            {todayList.length === 0 ? (
+              <div className="noTaskContainer">
+                <i className="fas fa-long-arrow-alt-up arrow"></i>
+                <p className="instruction">
+                  See your pending tasks!
+                </p>
+                <div className="bigLogoContainer">
+                  <img className="bigLogo" src={logo} alt="Get2It!" />
                 </div>
-              );
-            })
-          )}
+                <p className="instruction">Or add a new task!</p>
+                <i className="fas fa-long-arrow-alt-down arrow"></i>
+              </div>
+            ) : (
+              todayList.map((task, index) => {
+                return (
+                  <div className="listItem" key={index}>
+                    <div className="itemContainer">
+                      <p className="itemName">{task.name}</p>
+                      <p className="duration">
+                        {task.start_time}-{task.end_time}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
         </div>
 
         <Link
@@ -109,6 +109,7 @@ class Home extends React.Component {
 
 const mapStateToProps = state => ({
   userTasks: state.userTasks,
+  filteredTasks: state.filteredTasks,
   userData: state.userData,
   isLoading: state.isLoading,
 })
