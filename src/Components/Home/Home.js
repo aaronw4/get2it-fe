@@ -8,7 +8,8 @@ import moment from 'moment'
 import Moment from 'react-moment'
 import NewTaskModal from './NewTaskModal.js'
 import logo from '../Images/logo.png'
-import {Filter} from './Filter'
+import Filter from './Filter'
+import {updateFilteredTask} from '../../actions'
 
 class Home extends React.Component {
   constructor(props) {
@@ -114,5 +115,13 @@ const mapStateToProps = state => ({
   isLoading: state.isLoading,
 })
 
+const mapDispatchToProps = {
+  updateFilteredTask
+}
 
-export default withRouter(connect(mapStateToProps)(Home))
+export default withRouter(
+  connect(
+      mapStateToProps,
+      mapDispatchToProps
+  )(Home)
+)
