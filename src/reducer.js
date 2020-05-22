@@ -214,6 +214,7 @@ export function reducer(state = initialState, action) {
     }
     case UPDATE_TASK_FILTERED: {
       return {
+        ...state,
         filteredTasks: action.payload
       };
     }
