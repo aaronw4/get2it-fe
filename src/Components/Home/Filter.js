@@ -15,16 +15,16 @@ export const Filter = props => {
     const incompleteTasks = props.userTasks.filter(task => task.date < today && task.status === false) 
     const pastCompleted = props.userTasks.filter(task => task.date < today)
 
-    function handleClick(filter) {
-        props.updateFilteredTask(filter)
+    function handleClick(payload) {
+        props.updateFilteredTask(payload)
     }
     
     return (
         <div className='filterButtonsCont'>
-            <button onClick={() => handleClick(today)}>Today</button>
+            <button onClick={() => handleClick(todayList)}>Today</button>
             <button onClick={() => handleClick(tomorrow)}>Tomorrow</button>
-            <button onClick={handleClick(someday)}>Someday</button>
-            <button>Past</button>
+            <button onClick={() => handleClick(someday)}>Someday</button>
+            <button onClick={() => handleClick(tomorrowList)}>Past</button>
         </div>
     )
     
