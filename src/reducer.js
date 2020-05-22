@@ -11,6 +11,7 @@ import {
   UPDATE_TASK_START,
   UPDATE_TASK_SUCCESS,
   UPDATE_TASK_FAILED,
+  UPDATE_TASK_FILTERED,
   DELETE_TASK_START,
   DELETE_TASK_SUCCESS,
   DELETE_TASK_FAILED,
@@ -209,6 +210,11 @@ export function reducer(state = initialState, action) {
         ...state,
         isLoading: false,
         error: action.payload.message
+      };
+    }
+    case UPDATE_TASK_FILTERED: {
+      return {
+        filteredTasks: action.payload
       };
     }
     case UPDATE_USER_START: {
