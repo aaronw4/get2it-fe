@@ -63,41 +63,49 @@ class Home extends React.Component {
         <div className="homeList">          
           <Filter/>
           <div className='listContainer'>
-            {todayList.length === 0 ? (
-              <div className="noTaskContainer">
-                <i className="fas fa-long-arrow-alt-up arrow"></i>
-                <p className="instruction">
-                  See your pending tasks!
-                </p>
-                <div className="bigLogoContainer">
-                  <img className="bigLogo" src={logo} alt="Get2It!" />
-                </div>
-                <p className="instruction">Or add a new task!</p>
-                <i className="fas fa-long-arrow-alt-down arrow"></i>
+            {todayList.length === 0 && this.props.filteredTasks === null ? (
+              <div className="noTaskContainer"> 
+                <h3>{this.props.timePeriod}</h3>            
+                <p>Or add a new task!</p>
+                <Link
+                  id="addTaskLink"
+                  to={{ pathname: "/taskModal", state: { modal: true } }}
+                >
+                  +
+                </Link>
+              </div>
+            ) : 
+            todayList.length !== 0 && this.props.filteredTasks === null ? (
+              <div>
+                <h3>{this.props.timePeriod}</h3>
+                {(todayList.map((task, index) => {
+                  return (
+                    <div className="listItem" key={index}>
+                      <div className="itemContainer">
+                        <p className="itemName">{task.name}</p>
+                        <p className="duration">
+                          {task.start_time}-{task.end_time}
+                        </p>
+                      </div>
+                    </div>
+                  )
+                })) }
               </div>
             ) : (
-              todayList.map((task, index) => {
-                return (
-                  <div className="listItem" key={index}>
-                    <div className="itemContainer">
-                      <p className="itemName">{task.name}</p>
-                      <p className="duration">
-                        {task.start_time}-{task.end_time}
-                      </p>
+              <div>
+                <h3>{this.props.timePeriod}</h3>
+                {this.props.filteredTasks.map((task, index) => {
+                  return (
+                    <div>
+                      <p>{task.name}</p>
                     </div>
-                  </div>
-                );
-              })
+                  );
+                })}
+              </div>
             )}
           </div>
         </div>
 
-        <Link
-          id="addTaskLink"
-          to={{ pathname: "/taskModal", state: { modal: true } }}
-        >
-          +
-        </Link>
 
         <Route
           path="/taskModal"
@@ -113,6 +121,7 @@ const mapStateToProps = state => ({
   filteredTasks: state.filteredTasks,
   userData: state.userData,
   isLoading: state.isLoading,
+  timePeriod: state.timePeriod
 })
 
 const mapDispatchToProps = {
