@@ -36,6 +36,7 @@ export const NEW_END_TIME = 'NEW_END_TIME';
 
 export const CLEAR_DATA = 'CLEAR_DATA';
 export const SHOW_PASSWORD = 'SHOW_PASSWORD';
+export const TIME_PERIOD = 'TIME_PERIOD';
 
 
 export function createUser(email, password, displayName) {
@@ -218,4 +219,8 @@ export function clearData() {
 
 export function showPassword() {
   return {type: SHOW_PASSWORD}
+}
+
+export function timePeriod(payload) {
+  return {type: TIME_PERIOD, payload}
 }
