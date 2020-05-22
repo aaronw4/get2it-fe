@@ -25,7 +25,8 @@ import {
   CREATE_TASK_SUCCESS,
   CREATE_TASK_FAILED,
   CLEAR_DATA,
-  SHOW_PASSWORD
+  SHOW_PASSWORD,
+  TIME_PERIOD
 } from "./actions.js";
 
 // const dummyTasks = [
@@ -91,7 +92,8 @@ const initialState = {
   start_time: '',
   end_time: '',
   newTask: {},
-  showPW: false
+  showPW: false,
+  timePeriod: ''
 }
 //2019-11-22T00:00:00.000Z
 export function reducer(state = initialState, action) {
@@ -296,6 +298,12 @@ export function reducer(state = initialState, action) {
       return {
         ...state, 
         showPW: !state.showPW
+      }
+    }
+    case TIME_PERIOD: {
+      return {
+        ...state,
+        timePeriod: action.payload
       }
     }
     default:
