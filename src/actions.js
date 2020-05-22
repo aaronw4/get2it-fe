@@ -16,6 +16,7 @@ export const GET_TASKS_FAILED = 'GET_TASKS_FAILED'
 export const UPDATE_TASK_START = 'UPDATE_TASK_START'
 export const UPDATE_TASK_SUCCESS = 'UPDATE_TASK_SUCCESS'
 export const UPDATE_TASK_FAILED = 'UPDATE_TASK_FAILED'
+export const UPDATE_TASK_FILTERED = 'UPDATE_TASK_FILTERED'
 
 export const DELETE_TASK_START = "DELETE_TASK_START";
 export const DELETE_TASK_SUCCESS = "DELETE_TASK_SUCCESS";
@@ -120,6 +121,12 @@ export function updateTask(payload, id){
         console.log(err)
         dispatch({ type: UPDATE_TASK_FAILED, payload: err.response })
       })
+  }
+}
+
+export function updateFilteredTask(payload) {
+  return (dispatch) => {
+    dispatch({type: UPDATE_TASK_FILTERED})
   }
 }
 
