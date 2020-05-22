@@ -126,7 +126,7 @@ export function updateTask(payload, id){
 
 export function updateFilteredTask(payload) {
   return (dispatch) => {
-    dispatch({type: UPDATE_TASK_FILTERED})
+    dispatch({type: UPDATE_TASK_FILTERED, payload})
   }
 }
 
