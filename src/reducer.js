@@ -93,7 +93,7 @@ const initialState = {
   end_time: '',
   newTask: {},
   showPW: false,
-  timePeriod: ''
+  timePeriod: 'Today'
 }
 //2019-11-22T00:00:00.000Z
 export function reducer(state = initialState, action) {
