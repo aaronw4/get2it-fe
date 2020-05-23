@@ -63,7 +63,7 @@ class Home extends React.Component {
         <div className="homeList">          
           <Filter/>
           <div className='listContainer'>
-            {todayList.length === 0 && this.props.filteredTasks === null ? (
+            {this.props.timePeriod === 'Today' && this.props.filteredTasks.length === 0 ? (
               <div className="noTaskContainer"> 
                 <h3>{this.props.timePeriod}</h3>            
                 <p>Or add a new task!</p>
