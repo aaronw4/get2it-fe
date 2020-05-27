@@ -117,7 +117,27 @@
 .filterButtonsCont {
   display: flex;
   flex-flow: column;
-
+}
+.categoriesHeader {
+  display: flex;
+}
+#addCategoryButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 16px;
+  width: 16px;
+  background-color: dodgerblue;
+  color: white;
+  border-radius: 100%;
+  font-size: 1.6rem;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+#addCategoryButton:hover {
+  text-decoration: none;
+  background-color: white;
+  color: dodgerblue;
 }
 .Alert {
   color: red;
@@ -151,12 +171,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  bottom: 10px;
   height: 48px;
   width: 48px;
-  padding-bottom: 3.5px;
-  padding-left: .5px;
   background-color: dodgerblue;
   color: white;
   border-radius: 100%;
