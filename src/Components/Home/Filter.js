@@ -29,10 +29,21 @@ export const Filter = props => {
     
     return (
         <div className='filterButtonsCont'>
-            <button onClick={() => handleClick(todayList, 'Today')}>Today</button>
-            <button onClick={() => handleClick(tomorrowList, 'Tomorrow')}>Tomorrow</button>
-            <button onClick={() => handleClick(somedayList, 'Beyond Tomorrow')}>Beyond</button>
-            <button onClick={() => handleClick(pastList, 'Past')} className={alert}>Past</button>
+            <div className='filterButtonsCont'>
+                <button onClick={() => handleClick(todayList, 'Today')}>Today</button>
+                <button onClick={() => handleClick(tomorrowList, 'Tomorrow')}>Tomorrow</button>
+                <button onClick={() => handleClick(somedayList, 'Beyond Tomorrow')}>Beyond</button>
+                <button onClick={() => handleClick(pastList, 'Past')} className={alert}>Past</button>
+            </div>
+            <div className='filterButtonsCont'>
+                <div className='categoriesHeader'>
+                    <h5>Categories</h5>
+                    <button id='addCategoryButton'>+</button>
+                </div>
+                <button>Personal</button>
+                <button>Work</button>
+                <button>School</button>
+            </div>
         </div>
     )
     
