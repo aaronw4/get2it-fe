@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import moment from 'moment'
 import { withRouter } from 'react-router'
+import {Link} from 'react-router-dom'
 import {updateFilteredTask, timePeriod} from '../../actions'
 import './Home.css'
 
@@ -38,15 +39,19 @@ export const Filter = props => {
             <div className='filterButtonsCont'>
                 <div className='categoriesHeader'>
                     <h5>Categories</h5>
-                    <button id='addCategoryButton'>+</button>
+                    <Link 
+                        id='addCategoryButton'
+                        to='/newCategory'
+                    >
+                        +
+                    </Link>
                 </div>
                 <button>Personal</button>
                 <button>Work</button>
                 <button>School</button>
             </div>
         </div>
-    )
-    
+    )    
 }
 
 const mapStateToProps = state => {
