@@ -26,7 +26,10 @@ import {
   CREATE_TASK_FAILED,
   CLEAR_DATA,
   SHOW_PASSWORD,
-  TIME_PERIOD
+  TIME_PERIOD,
+  ADD_CATEGORY_FAILED,
+  ADD_CATEGORY_START,
+  ADD_CATEGORY_SUCCESS
 } from "./actions.js";
 
 // const dummyTasks = [
@@ -305,6 +308,30 @@ export function reducer(state = initialState, action) {
         ...state,
         timePeriod: action.payload
       }
+    }
+    case ADD_CATEGORY_START: {
+      return {
+        ...state,
+        isLoading: true
+      };
+    }
+    case ADD_CATEGORY_SUCCESS: {
+      console.log(action.payload);
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        category: action.payload
+      };
+    }
+    case ADD_CATEGORY_FAILED: {
+      console.log(action.payload);
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.data.message,
+        errorStatus: action.payload.status
+      };
     }
     default:
       return state;
