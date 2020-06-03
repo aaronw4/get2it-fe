@@ -1,5 +1,5 @@
 import React from 'react';
-import * as timerStates from '../../timerState';
+import * as timerState from '../timerState';
 
 const leftPad = (val) => {
   if (val < 10) return `0${val}`;
@@ -11,7 +11,7 @@ const TimerDisplay = (props) => (
   <div>
     <div className="row center-block">
       {
-        (props.timerState === timerStates.COMPLETE) && 
+        (props.timerState === timerState.COMPLETE) && 
         <iframe 
             title='youtube' 
             className="center-block youtube-responsive-width" 

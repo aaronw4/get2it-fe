@@ -7,7 +7,7 @@ import TimerDisplay from '../TimerDisplay/TimerDisplay';
 import TimerButton from '../TimerButton/TimerButton';
 import TimerConfig from '../TimerConfig/TimerConfig';
 
-import * as timerStates from '../../timerState';
+import * as timerState from '../timerState';
 
 class Timer extends Component {
   constructor() {
@@ -16,7 +16,7 @@ class Timer extends Component {
     this.state = {
       currentTime: moment.duration(25, 'minutes'),
       baseTime: moment.duration(25, 'minutes'),
-      timerState: timerStates.NOT_SET,
+      timerState: timerState.NOT_SET,
       timer: null,
     };
 
@@ -35,7 +35,7 @@ class Timer extends Component {
 
   startTimer() {
     this.setState({
-      timerState: timerStates.RUNNING,
+      timerState: timerState.RUNNING,
       timer: setInterval(this.reduceTimer, 1000)
     });
   }
@@ -46,7 +46,7 @@ class Timer extends Component {
     }
 
     this.setState({
-      timerState: timerStates.NOT_SET,
+      timerState: timerState.NOT_SET,
       timer: null,
       currentTime: moment.duration(this.state.baseTime),
     });
@@ -74,7 +74,7 @@ class Timer extends Component {
     }
 
     this.setState({
-      timerState: timerStates.COMPLETE,
+      timerState: timerState.COMPLETE,
       timer: null,
     });
   }
@@ -82,7 +82,7 @@ class Timer extends Component {
   render()
   {
     return (
-      <div className="container-fluid">
+      <div className="timerContainer">
         <TimerHeader />
         <TimerDisplay
           currentTime={this.state.currentTime}
@@ -93,7 +93,7 @@ class Timer extends Component {
           stopTimer={this.stopTimer}
           timerState={this.state.timerState}/>
         {
-          (this.state.timerState !== timerStates.RUNNING)
+          (this.state.timerState !== timerState.RUNNING)
             &&
             (<TimerConfig
               baseTime={this.state.baseTime}

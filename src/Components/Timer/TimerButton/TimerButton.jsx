@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import * as timerStates from '../../timerState';
+import * as timerState from '../timerState';
 
 class TimerButton extends Component {
   constructor() {
@@ -10,13 +10,13 @@ class TimerButton extends Component {
   }
 
   getButton() {
-    if (this.props.timerState === timerStates.NOT_SET)
+    if (this.props.timerState === timerState.NOT_SET)
       return (<button className="btn btn-success center-block" onClick={this.props.startTimer}>Start</button>);
 
-    if (this.props.timerState === timerStates.RUNNING)
+    if (this.props.timerState === timerState.RUNNING)
       return (<button className="btn btn-danger center-block" onClick={this.props.stopTimer}>Interrupt</button>);
 
-    if (this.props.timerState === timerStates.COMPLETE)
+    if (this.props.timerState === timerState.COMPLETE)
       return (<button className="btn btn-info center-block" onClick={this.props.stopTimer}>Reset</button>);
   }
 
