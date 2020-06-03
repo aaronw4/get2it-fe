@@ -11,6 +11,7 @@ import {
   UPDATE_TASK_START,
   UPDATE_TASK_SUCCESS,
   UPDATE_TASK_FAILED,
+  UPDATE_TASK_FILTERED,
   DELETE_TASK_START,
   DELETE_TASK_SUCCESS,
   DELETE_TASK_FAILED,
@@ -24,7 +25,8 @@ import {
   CREATE_TASK_SUCCESS,
   CREATE_TASK_FAILED,
   CLEAR_DATA,
-  SHOW_PASSWORD
+  SHOW_PASSWORD,
+  TIME_PERIOD
 } from "./actions.js";
 
 // const dummyTasks = [
@@ -84,12 +86,14 @@ const initialState = {
   errorStatus: null,
   userData: {},
   userTasks: [],
+  filteredTasks: [],
   userID: null,
   date: '',
   start_time: '',
   end_time: '',
   newTask: {},
-  showPW: false
+  showPW: false,
+  timePeriod: 'Today'
 }
 //2019-11-22T00:00:00.000Z
 export function reducer(state = initialState, action) {
@@ -210,6 +214,12 @@ export function reducer(state = initialState, action) {
         error: action.payload.message
       };
     }
+    case UPDATE_TASK_FILTERED: {
+      return {
+        ...state,
+        filteredTasks: action.payload
+      };
+    }
     case UPDATE_USER_START: {
       return {
         ...state,
@@ -288,6 +298,12 @@ export function reducer(state = initialState, action) {
       return {
         ...state, 
         showPW: !state.showPW
+      }
+    }
+    case TIME_PERIOD: {
+      return {
+        ...state,
+        timePeriod: action.payload
       }
     }
     default:

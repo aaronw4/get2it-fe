@@ -8,6 +8,8 @@ import moment from 'moment'
 import Moment from 'react-moment'
 import NewTaskModal from './NewTaskModal.js'
 import logo from '../Images/logo.png'
+import Filter from './Filter'
+import {updateFilteredTask} from '../../actions'
 
 class Home extends React.Component {
   constructor(props) {
@@ -20,7 +22,6 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.setState({
-
       _mounted: true
     })
   }
@@ -59,44 +60,52 @@ class Home extends React.Component {
             <p className="total">{this.props.userTasks.length}</p>
           </div>
         </Link>
-        <div className="homeList">
-          {todayList.length === 0 ? (
-            <div className="noTaskContainer">
-              <i className="fas fa-long-arrow-alt-up arrow"></i>
-              <p className="instruction">
-                See your pending tasks!
-              </p>
-              <div className="bigLogoContainer">
-                <img className="bigLogo" src={logo} alt="Get2It!" />
+        <div className="homeList">          
+          <Filter/>
+          <div className='listContainer'>
+            {this.props.timePeriod === 'Today' && this.props.filteredTasks.length === 0 ? (
+              <div className="noTaskContainer"> 
+                <h3>{this.props.timePeriod}</h3>            
+                <p>Or add a new task!</p>
+                <Link
+                  id="addTaskLink"
+                  to={{ pathname: "/taskModal", state: { modal: true } }}
+                >
+                  +
+                </Link>
               </div>
-              <p className="instruction">Or add a new task!</p>
-              <i className="fas fa-long-arrow-alt-down arrow"></i>
-            </div>
-          ) : (
-            todayList.map((task, index) => {
-              return (
-                <div className="listItem" key={index}>
-                  <div className="iconContainer">
-                    {this.state._mounted === true ? (<JsxParser jsx={task.task_icon} />) : null}
-                  </div>
-                  <div className="itemContainer">
-                    <p className="itemName">{task.name}</p>
-                    <p className="duration">
-                      {task.start_time}-{task.end_time}
-                    </p>
-                  </div>
-                </div>
-              );
-            })
-          )}
+            ) : 
+            todayList.length !== 0 && this.props.filteredTasks === null ? (
+              <div>
+                <h3>{this.props.timePeriod}</h3>
+                {(todayList.map((task, index) => {
+                  return (
+                    <div className="listItem" key={index}>
+                      <div className="itemContainer">
+                        <p className="itemName">{task.name}</p>
+                        <p className="duration">
+                          {task.start_time}-{task.end_time}
+                        </p>
+                      </div>
+                    </div>
+                  )
+                })) }
+              </div>
+            ) : (
+              <div>
+                <h3>{this.props.timePeriod}</h3>
+                {this.props.filteredTasks.map((task, index) => {
+                  return (
+                    <div>
+                      <p>{task.name}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </div>
 
-        <Link
-          id="addTaskLink"
-          to={{ pathname: "/taskModal", state: { modal: true } }}
-        >
-          +
-        </Link>
 
         <Route
           path="/taskModal"
@@ -109,9 +118,19 @@ class Home extends React.Component {
 
 const mapStateToProps = state => ({
   userTasks: state.userTasks,
+  filteredTasks: state.filteredTasks,
   userData: state.userData,
   isLoading: state.isLoading,
+  timePeriod: state.timePeriod
 })
 
+const mapDispatchToProps = {
+  updateFilteredTask
+}
 
-export default withRouter(connect(mapStateToProps)(Home))
+export default withRouter(
+  connect(
+      mapStateToProps,
+      mapDispatchToProps
+  )(Home)
+)

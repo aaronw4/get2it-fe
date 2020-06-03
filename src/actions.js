@@ -16,6 +16,7 @@ export const GET_TASKS_FAILED = 'GET_TASKS_FAILED'
 export const UPDATE_TASK_START = 'UPDATE_TASK_START'
 export const UPDATE_TASK_SUCCESS = 'UPDATE_TASK_SUCCESS'
 export const UPDATE_TASK_FAILED = 'UPDATE_TASK_FAILED'
+export const UPDATE_TASK_FILTERED = 'UPDATE_TASK_FILTERED'
 
 export const DELETE_TASK_START = "DELETE_TASK_START";
 export const DELETE_TASK_SUCCESS = "DELETE_TASK_SUCCESS";
@@ -35,6 +36,7 @@ export const NEW_END_TIME = 'NEW_END_TIME';
 
 export const CLEAR_DATA = 'CLEAR_DATA';
 export const SHOW_PASSWORD = 'SHOW_PASSWORD';
+export const TIME_PERIOD = 'TIME_PERIOD';
 
 
 export function createUser(email, password, displayName) {
@@ -120,6 +122,12 @@ export function updateTask(payload, id){
         console.log(err)
         dispatch({ type: UPDATE_TASK_FAILED, payload: err.response })
       })
+  }
+}
+
+export function updateFilteredTask(payload) {
+  return (dispatch) => {
+    dispatch({type: UPDATE_TASK_FILTERED, payload})
   }
 }
 
@@ -211,4 +219,8 @@ export function clearData() {
 
 export function showPassword() {
   return {type: SHOW_PASSWORD}
+}
+
+export function timePeriod(payload) {
+  return {type: TIME_PERIOD, payload}
 }
