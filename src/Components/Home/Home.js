@@ -1,15 +1,16 @@
-import React from 'react'
-import JsxParser from 'react-jsx-parser'
-import './Home.css'
-import 'react-router-modal/css/react-router-modal.css'
-import { connect } from 'react-redux'
-import { Link, Route, withRouter } from 'react-router-dom'
-import moment from 'moment'
-import Moment from 'react-moment'
-import NewTaskModal from './NewTaskModal.js'
-import logo from '../Images/logo.png'
-import Filter from './Filter'
-import {updateFilteredTask} from '../../actions'
+import React from 'react';
+import JsxParser from 'react-jsx-parser';
+import './Home.css';
+import 'react-router-modal/css/react-router-modal.css';
+import { connect } from 'react-redux';
+import { Link, Route, withRouter } from 'react-router-dom';
+import moment from 'moment';
+import Moment from 'react-moment';
+import NewTaskModal from './NewTaskModal.js';
+import logo from '../Images/logo.png';
+import Filter from './Filter';
+import {updateFilteredTask} from '../../actions';
+import Timer from '../Timer/Timer/Timer';
 
 class Home extends React.Component {
   constructor(props) {
@@ -73,6 +74,7 @@ class Home extends React.Component {
                 >
                   +
                 </Link>
+                <Timer />
               </div>
             ) : 
             todayList.length !== 0 && this.props.filteredTasks === null ? (
