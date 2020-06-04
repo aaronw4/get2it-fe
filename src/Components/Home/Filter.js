@@ -13,7 +13,14 @@ export const Filter = props => {
     const somedayList = props.userTasks.filter(task => task.date > tomorrow && task.status === false)
     const pastList = props.userTasks.filter(task => task.date < today)
     const incompleteTasks = props.userTasks.filter(task => task.date < today && task.status === false) 
-    const pastCompleted = props.userTasks.filter(task => task.date < today)
+
+    let alert;
+
+    if (incompleteTasks.length === 0) {
+        alert = 'noAlert'
+    } else {
+        alert = 'Alert'
+    }
 
     function handleClick(filter, string) {
         props.updateFilteredTask(filter);
@@ -25,7 +32,7 @@ export const Filter = props => {
             <button onClick={() => handleClick(todayList, 'Today')}>Today</button>
             <button onClick={() => handleClick(tomorrowList, 'Tomorrow')}>Tomorrow</button>
             <button onClick={() => handleClick(somedayList, 'Beyond Tomorrow')}>Beyond</button>
-            <button onClick={() => handleClick(pastList, 'Past')}>Past</button>
+            <button onClick={() => handleClick(pastList, 'Past')} className={alert}>Past</button>
         </div>
     )
     

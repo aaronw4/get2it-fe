@@ -119,6 +119,9 @@
   flex-flow: column;
 
 }
+.Alert {
+  color: red;
+}
 /* .jsx-parser {
   height: 30px;
   width: 30px;

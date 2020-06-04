@@ -36,10 +36,11 @@ class Home extends React.Component {
   time = moment().format('H')
   today = moment().format('L')
   todayList = this.props.userTasks.filter(task => task.date === this.today && task.status === false)
-  incompleteTasks = this.props.userTasks.filter(task => task.status === false)
-  
+  incompleteTasks = this.props.userTasks.filter(task => task.date < this.today && task.status === false) 
+
   render() {
     const {time, todayList} = this
+
     return (
       <div className="home">
         {time >= 4 && time < 11 ? (
@@ -99,7 +100,11 @@ class Home extends React.Component {
                 {this.props.filteredTasks.map((task, index) => {
                   return (
                     <div>
-                      <p>{task.name}</p>
+                      {task.status === false && task.date < this.today ? 
+                        <p className='Alert'>{task.name}</p>
+                        :
+                        <p>{task.name}</p>
+                      }
                     </div>
                   );
                 })}
