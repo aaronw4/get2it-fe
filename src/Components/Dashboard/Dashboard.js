@@ -12,6 +12,7 @@ import EditTaskList from '../editTask/EditTask.js'
 import EditCompletedTaskList from '../editCompletedTask/EditTask'
 import TaskList from '../TaskList/index.js'
 import Profile from '../Profile/Profile.js'
+import NewCategory from '../Home/NewCategory.js'
 import Spinner from '../Spinner/Spinner.js'
 import CompletedTaskList from '../CompletedTaskList/index.js'
 import Notification, { notify } from '../Notifications/Notification.js'
@@ -558,6 +559,10 @@ class Dashboard extends React.Component {
               <Route
                 path="/EditCompletedTaskList"
                 render={props => <EditCompletedTaskList {...props} />}
+              />            
+              <Route
+                path='/newCategory'
+                render={props => <NewCategory {...props} />}
               />
             </div>
           </div>

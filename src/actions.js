@@ -38,6 +38,9 @@ export const CLEAR_DATA = 'CLEAR_DATA';
 export const SHOW_PASSWORD = 'SHOW_PASSWORD';
 export const TIME_PERIOD = 'TIME_PERIOD';
 
+export const ADD_CATEGORY_START = 'ADD_CATEGORY_START';
+export const ADD_CATEGORY_SUCCESS = 'ADD_CATEGORY_SUCCESS';
+export const ADD_CATEGORY_FAILED = 'ADD_CATEGORY_FAILED';
 
 export function createUser(email, password, displayName) {
   return (dispatch) => {
@@ -223,4 +226,24 @@ export function showPassword() {
 
 export function timePeriod(payload) {
   return {type: TIME_PERIOD, payload}
+}
+
+export function addCategory(payload, id) {
+  return dispatch => {
+    dispatch({ type: ADD_CATEGORY_START });
+
+    const headers = {
+      Authorization: localStorage.getItem("token")
+    };
+
+    return axios
+      .post(` https://get2itpt9.herokuapp.com/api/categories/${id}/categories`, payload, { headers })
+      .then(res => {
+          dispatch({ type: ADD_CATEGORY_SUCCESS, payload: payload, id: id });
+      })
+      .catch(err => {
+        const payload = err.response ? err.response.data : err;
+        dispatch({ type: ADD_CATEGORY_FAILED, payload });
+      });
+  };
 }
