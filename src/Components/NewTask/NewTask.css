@@ -172,9 +172,7 @@
 
   .dashboard .appRoutes .newTaskContainer .newTaskHeader {
     font-size: 1.7rem;
-    letter-spacing: -0.03rem;
-    margin-left: -20.2rem;
-    margin-top: -0.4rem;
+    margin-top: 10px;
   }
   .date-picker-container {
     width: 100%;
