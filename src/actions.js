@@ -42,6 +42,10 @@ export const ADD_CATEGORY_START = 'ADD_CATEGORY_START';
 export const ADD_CATEGORY_SUCCESS = 'ADD_CATEGORY_SUCCESS';
 export const ADD_CATEGORY_FAILED = 'ADD_CATEGORY_FAILED';
 
+export const GET_CATEGORY_START = 'GET_CATEGORY_START';
+export const GET_CATEGORY_SUCCESS = 'GET_CATEGORY_SUCCESS';
+export const GET_CATEGORY_FAILED = 'GET_CATEGORY_FAILED';
+
 export function createUser(email, password, displayName) {
   return (dispatch) => {
     dispatch({ type: CREATE_USER_START })
@@ -246,4 +250,25 @@ export function addCategory(payload, id) {
         dispatch({ type: ADD_CATEGORY_FAILED, payload });
       });
   };
+}
+
+export function getCategories(id) {
+  return dispatch => {
+    dispatch({type: GET_CATEGORY_START});
+
+    const headers = {
+      Authorization: localStorage.getItem('token')
+    };
+
+    return axios
+      .get(`https://get2itpt9.herokuapp.com/api/categories/${id}/categories`, {headers})
+      .then(res => {
+        const payload = res.data;
+        dispatch({ type: GET_CATEGORY_SUCCESS, payload: payload})
+      })
+      .catch(err => {
+        const payload = err.response ? err.response.data : err;
+        dispatch({type: GET_TASKS_FAILED, payload});
+      })
+  }
 }
