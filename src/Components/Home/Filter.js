@@ -14,7 +14,7 @@ export const Filter = props => {
     const somedayList = props.userTasks.filter(task => task.date > tomorrow && task.status === false)
     const pastList = props.userTasks.filter(task => task.date < today)
     const incompleteTasks = props.userTasks.filter(task => task.date < today && task.status === false) 
-
+    const categories = props.categories
     let alert;
 
     if (incompleteTasks.length === 0) {
@@ -46,9 +46,11 @@ export const Filter = props => {
                         +
                     </Link>
                 </div>
-                <button>Personal</button>
-                <button>Work</button>
-                <button>School</button>
+                <div className='filterButtonsCont'>
+                    {categories.map(categories => (
+                        <button>{categories.name}</button>
+                    ))}
+                </div>
             </div>
         </div>
     )    
@@ -57,7 +59,8 @@ export const Filter = props => {
 const mapStateToProps = state => {
     return {
         userTasks: state.userTasks,
-        timePeriod: state.timePeriod
+        timePeriod: state.timePeriod,
+        categories: state.categories
     }    
 }
 
