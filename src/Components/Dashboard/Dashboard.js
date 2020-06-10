@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 import OnBoarding from '../OnBoarding/index.js';
 import Home from '../Home/Home.js';
-// import Menu from '../Menu/Menu.js' -- NOT CURRENTLY IN USE - being replaced with HEADER
+import Menu from '../Menu/Menu.js';
 import Header from '../Header/Header';
 import NewTask from '../NewTask/NewTask.js';
 import EditTaskList from '../editTask/EditTask.js';
@@ -525,7 +525,10 @@ class Dashboard extends Component {
         ) : (
           <div className="dashboard">
 {/* HEADER */}
-              <Header {...this.props} />
+            <div className="nav">
+              <Menu />
+            </div>
+            <Header {...this.props} />
             <div className="appRoutes">
               <Notification />
               <Route
