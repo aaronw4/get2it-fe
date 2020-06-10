@@ -1,25 +1,26 @@
-import React from 'react';
-import './Dashboard.css'
+import React, { Component } from 'react';
+import './Dashboard.css';
 import moment from 'moment'
-import Alert from 'react-bootstrap/Alert'
-import { connect } from 'react-redux'
-import { Route, withRouter } from 'react-router-dom'
-import OnBoarding from '../OnBoarding/index.js'
-import Home from '../Home/Home.js'
-import Menu from '../Menu/Menu.js'
-import NewTask from '../NewTask/NewTask.js'
-import EditTaskList from '../editTask/EditTask.js'
-import EditCompletedTaskList from '../editCompletedTask/EditTask'
-import TaskList from '../TaskList/index.js'
-import Profile from '../Profile/Profile.js'
-import NewCategory from '../Home/NewCategory.js'
+import Alert from 'react-bootstrap/Alert';
+import { connect } from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
+import OnBoarding from '../OnBoarding/index.js';
+import Home from '../Home/Home.js';
+// import Menu from '../Menu/Menu.js' -- NOT CURRENTLY IN USE - being replaced with HEADER
+import Header from '../Header/Header';
+import NewTask from '../NewTask/NewTask.js';
+import EditTaskList from '../editTask/EditTask.js';
+import EditCompletedTaskList from '../editCompletedTask/EditTask';
+import TaskList from '../TaskList/index.js';
+import Profile from '../Profile/Profile.js';
+import NewCategory from '../Home/NewCategory.js';
 import Spinner from '../Spinner/Spinner.js'
-import CompletedTaskList from '../CompletedTaskList/index.js'
-import Notification, { notify } from '../Notifications/Notification.js'
+import CompletedTaskList from '../CompletedTaskList/index.js';
+import Notification, { notify } from '../Notifications/Notification.js';
 import { getTASKS, updateTask } from "../../actions.js";
 
 
-class Dashboard extends React.Component {
+class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.initialRun = JSON.parse(sessionStorage.getItem("initialRun"));
@@ -522,9 +523,8 @@ class Dashboard extends React.Component {
           </Alert>
         ) : (
           <div className="dashboard">
-            <div className="nav">
-              <Menu />
-            </div>
+{/* HEADER */}
+              <Header {...this.props} />
             <div className="appRoutes">
               <Notification />
               <Route
