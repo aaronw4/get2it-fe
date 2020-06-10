@@ -11,6 +11,7 @@ import { createTask, newStartTime } from "../../actions.js"
 import moment from "moment"
 import AddToCalendarBtn from "../AddCalendarBtn/AddCalendarBtn"
 import Switch from 'react-toggle-switch'
+import Category from './Category'
 
 
 class NewTask extends React.Component {
@@ -394,7 +395,9 @@ class NewTask extends React.Component {
                 <i id="icon" className="fab fa-black-tie iconDropdown"></i>
               </Dropdown.Item>
             </DropdownButton>
-            {/* <Label /> */}
+          </div>
+          <div className='catTaskForm'>
+            <p className='catTaskFormP'>Choose a Category</p><Category/>
           </div>
           <hr className="line" />
           <div className="switchContainer">
@@ -407,26 +410,6 @@ class NewTask extends React.Component {
               className="notifySwitch"
             />
           </div>
-          {/* <div className="switchContainer">
-            <p className="notifySwitchText">
-              Add this task to your
-              <span className="googleContainer">
-                <span className="blue"> G</span>
-                <span className="red">o</span>
-                <span className="yellow">o</span>
-                <span className="blue">g</span>
-                <span className="green">l</span>
-                <span className="red">e </span>
-              </span>
-              Calendar?
-            </p>
-            <Switch
-              onClick={this.toggleSwitch}
-              on={this.state.switched}
-              className="notifySwitch"
-            />
-          </div> */}
-
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
           )}
