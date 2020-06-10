@@ -16,7 +16,7 @@ import NewCategory from '../Home/NewCategory.js'
 import Spinner from '../Spinner/Spinner.js'
 import CompletedTaskList from '../CompletedTaskList/index.js'
 import Notification, { notify } from '../Notifications/Notification.js'
-import { getTASKS, updateTask } from "../../actions.js";
+import { getTASKS, updateTask, getCategories } from "../../actions.js";
 
 
 class Dashboard extends React.Component {
@@ -35,6 +35,7 @@ class Dashboard extends React.Component {
   componentDidMount() {
     this._mounted = true;
     this.props.getTASKS(this.props.userData.id);
+    this.props.getCategories(this.props.userData.id);
     // this.timeout = setTimeout(() => {
     //   this.runNotify();
     // }, 3000);
@@ -582,6 +583,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getTASKS,
   updateTask,
+  getCategories
 }
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Dashboard));

@@ -29,7 +29,10 @@ import {
   TIME_PERIOD,
   ADD_CATEGORY_FAILED,
   ADD_CATEGORY_START,
-  ADD_CATEGORY_SUCCESS
+  ADD_CATEGORY_SUCCESS,
+  GET_CATEGORY_START,
+  GET_CATEGORY_SUCCESS,
+  GET_CATEGORY_FAILED
 } from "./actions.js";
 
 // const dummyTasks = [
@@ -96,7 +99,8 @@ const initialState = {
   end_time: '',
   newTask: {},
   showPW: false,
-  timePeriod: 'Today'
+  timePeriod: 'Today',
+  categories:[]
 }
 //2019-11-22T00:00:00.000Z
 export function reducer(state = initialState, action) {
@@ -320,8 +324,7 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: null,
-        category: action.payload
+        error: null
       };
     }
     case ADD_CATEGORY_FAILED: {
@@ -332,6 +335,29 @@ export function reducer(state = initialState, action) {
         error: action.payload.data.message,
         errorStatus: action.payload.status
       };
+    }
+    case GET_CATEGORY_START: {
+      return {
+        ...state,
+        isLoading: true
+      }
+    }
+    case GET_CATEGORY_SUCCESS: {
+      console.log(action.payload);
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        categories: action.payload
+      }
+    }
+    case GET_CATEGORY_FAILED: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.data.message,
+        errorStatus: action.payload.status
+      }
     }
     default:
       return state;

@@ -3,7 +3,7 @@ import '../Register/Register.css'
 import logo from '../Images/logo.png'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { login, showPassword } from '../../actions'
+import { login, showPassword, getCategories } from '../../actions'
 import Spinner from '../Spinner/Spinner.js'
 
 class Login extends React.Component {
@@ -32,9 +32,15 @@ class Login extends React.Component {
       .then(() => {
         this.props.history.push('/')
       })
+      .then(() => {
+        this.props.getCategories(this.props.userID)
+      })
       .catch((err) => {
         console.error(err.error)
-      })
+      });
+    
+    
+    
   }
 
   handleClick = (evt) => {
@@ -45,7 +51,7 @@ class Login extends React.Component {
 
   render() {
     const { email, password } = this.state
-    const { isLoading, error, showPW } = this.props
+    const { isLoading, error, showPW} = this.props
 
     return (
       <>
@@ -91,12 +97,14 @@ class Login extends React.Component {
 const mapStateToProps = (state) => ({
   isLoading: state.isLoading,
   error: state.error,
-  showPW: state.showPW
+  showPW: state.showPW,
+  userID: state.userID
 })
 
 const mapDispatchToProps = {
   login,
-  showPassword
+  showPassword,
+  getCategories
 }
 
 export default withRouter(
