@@ -549,17 +549,14 @@
   margin-bottom: 3px;
   color: white;
 }
-.blue {
-  color: rgb(30, 131, 231);
+.catTaskForm {
+  display: flex;
+  justify-content: center;
 }
-.red {
-  color: rgb(209, 0, 0);
-}
-.yellow {
-  color: rgb(207, 187, 0);
-}
-.green {
-  color: rgb(0, 129, 0);
+.catTaskFormP {
+  margin-right: 10px;
+  font-size: 1.4em;  
+  color: white;
 }
 .googleContainer {
   display: flex;
