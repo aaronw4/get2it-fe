@@ -324,8 +324,7 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: null,
-        category: action.payload
+        error: null
       };
     }
     case ADD_CATEGORY_FAILED: {
