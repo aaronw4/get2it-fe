@@ -3,20 +3,46 @@ import {withRouter} from 'react-router-dom'
 import { connect } from "react-redux"
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 
-export const Category = props => {
-  const categories = props.categories
+class Category extends React.Component {
+  constructor(props) {
+    super(props)
 
+    this.state = {
+      name: ""
+    };
+  }
+
+  categories = this.props.categories
   
+
+  render() {
     return (
-      <div>
-        <DropdownButton>
-          {categories.map(categories => (
-            <Dropdown.Item as='button'>{categories.name}</Dropdown.Item>
+      <div className='catTaskForm'>
+        {this.state.name === "" ? 
+          <p className='catTaskFormP'>Choose a Category</p> :
+          <p className='catTaskFormP'>Category: {this.state.name}</p>
+        }
+        
+        <DropdownButton
+          id='dropdown-item-button'
+          onClick = {evt => evt.preventDefault()}
+        >
+          {this.categories.map(categories => (
+            <Dropdown.Item 
+              as='button' 
+              value={categories.id}
+              onClick={() => {
+                this.setState({name: categories.name});
+                this.props.setCategoryID(categories.id);
+              }}
+            >
+                {categories.name}
+            </Dropdown.Item>
           ))}
         </DropdownButton>
       </div>
     );  
-}
+}}
 
 const mapStateToProps = state => {
   return {
