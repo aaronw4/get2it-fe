@@ -32,7 +32,8 @@ import {
   ADD_CATEGORY_SUCCESS,
   GET_CATEGORY_START,
   GET_CATEGORY_SUCCESS,
-  GET_CATEGORY_FAILED
+  GET_CATEGORY_FAILED,
+  ASSIGN_CATEGORY
 } from "./actions.js";
 
 // const dummyTasks = [
@@ -257,7 +258,7 @@ export function reducer(state = initialState, action) {
       };
     }
     case CREATE_TASK_SUCCESS: {
-      console.log(action.payload);
+      console.log('New Task', action.payload);
       return {
         ...state,
         isLoading: false,
@@ -358,6 +359,9 @@ export function reducer(state = initialState, action) {
         error: action.payload.data.message,
         errorStatus: action.payload.status
       }
+    }
+    case ASSIGN_CATEGORY: {
+      return {...state}
     }
     default:
       return state;
