@@ -46,6 +46,8 @@ export const GET_CATEGORY_START = 'GET_CATEGORY_START';
 export const GET_CATEGORY_SUCCESS = 'GET_CATEGORY_SUCCESS';
 export const GET_CATEGORY_FAILED = 'GET_CATEGORY_FAILED';
 
+export const ASSIGN_CATEGORY = 'ASSIGN_CATEGORY';
+
 export function createUser(email, password, displayName) {
   return (dispatch) => {
     dispatch({ type: CREATE_USER_START })
@@ -242,8 +244,8 @@ export function addCategory(payload, id) {
 
     return axios
       .post(` https://get2itpt9.herokuapp.com/api/categories/${id}/categories`, payload, { headers })
-      .then(res => {
-          dispatch({ type: ADD_CATEGORY_SUCCESS, payload: payload, id: id });
+      .then(() => {
+        dispatch({ type: ADD_CATEGORY_SUCCESS, payload: payload, id: id })
       })
       .catch(err => {
         const payload = err.response ? err.response.data : err;
@@ -270,5 +272,19 @@ export function getCategories(id) {
         const payload = err.response ? err.response.data : err;
         dispatch({type: GET_TASKS_FAILED, payload});
       })
+  }
+}
+
+export function assignCategory(task_id, user_id, category_id) {
+  return dispatch => {
+    const headers = {
+      Authorization: localStorage.getItem('token')
+    };
+    const payload = {task_id: task_id, user_id: user_id};
+
+    return axios
+      .post(`https://get2itpt9.herokuapp.com/api/categories/${category_id}/tasks`, payload, {headers})
+      .then(() => dispatch({type: ASSIGN_CATEGORY}))
+      .catch(err => console.log(err, payload))
   }
 }
