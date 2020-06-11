@@ -181,7 +181,7 @@ export function updateUser(payload, id) {
   };
 }
 
-export function createTask(payload, id) {
+export function createTask(payload, user_id, category_id) {
   return dispatch => {
     dispatch({ type: CREATE_TASK_START });
 
@@ -190,14 +190,18 @@ export function createTask(payload, id) {
     };
 
     return axios
-      .post(` https://get2itpt9.herokuapp.com/api/users/${id}/tasks`, payload, { headers })
+      .post(` https://get2itpt9.herokuapp.com/api/users/${user_id}/tasks`, payload, { headers })
       .then(res => {
-          dispatch({ type: CREATE_TASK_SUCCESS, payload: payload, id: id });
+          dispatch({ type: CREATE_TASK_SUCCESS, payload: payload});
+          let task_id = res.data.id;
+          return axios.post(`https://get2itpt9.herokuapp.com/api/categories/${category_id}/tasks`, {task_id: task_id, user_id: user_id}, {headers})
       })
+      .then(res => console.log(res))
       .catch(err => {
         const payload = err.response ? err.response.data : err;
         dispatch({ type: CREATE_TASK_FAILED, payload });
-      });
+      })
+    
   };
 }
 
