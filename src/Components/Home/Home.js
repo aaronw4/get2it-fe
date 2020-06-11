@@ -15,7 +15,6 @@ import Timer from '../Timer/Timer/Timer';
 class Home extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
     this.state = {
       _mounted: null
     }

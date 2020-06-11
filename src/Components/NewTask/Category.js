@@ -8,20 +8,16 @@ class Category extends React.Component {
     super(props)
 
     this.state = {
-      name: ""
+      name: "Personal"
     };
   }
 
-  categories = this.props.categories
-  
+  categories = this.props.categories  
 
   render() {
     return (
       <div className='catTaskForm'>
-        {this.state.name === "" ? 
-          <p className='catTaskFormP'>Choose a Category</p> :
-          <p className='catTaskFormP'>Category: {this.state.name}</p>
-        }
+        <p className='catTaskFormP'>Category: {this.state.name}</p>
         
         <DropdownButton
           id='dropdown-item-button'
