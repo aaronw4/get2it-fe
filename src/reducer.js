@@ -32,8 +32,7 @@ import {
   ADD_CATEGORY_SUCCESS,
   GET_CATEGORY_START,
   GET_CATEGORY_SUCCESS,
-  GET_CATEGORY_FAILED,
-  ASSIGN_CATEGORY
+  GET_CATEGORY_FAILED
 } from "./actions.js";
 
 // const dummyTasks = [
@@ -258,11 +257,11 @@ export function reducer(state = initialState, action) {
       };
     }
     case CREATE_TASK_SUCCESS: {
-      console.log('New Task', action.payload);
+      console.log('New Task', action.payload, action.id);
       return {
         ...state,
         isLoading: false,
-        newTask: action.payload,
+        taskID: action.id,
         error: null
       };
     }
@@ -359,10 +358,7 @@ export function reducer(state = initialState, action) {
         error: action.payload.data.message,
         errorStatus: action.payload.status
       }
-    }
-    case ASSIGN_CATEGORY: {
-      return {...state}
-    }
+    }    
     default:
       return state;
   }
