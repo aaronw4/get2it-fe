@@ -23,9 +23,14 @@ class NewTask extends React.Component {
       newError: null,
       switched: false,
       notifyOn: false,
-      categoryID: "",
-      taskID: ""
+      categoryID: ''
     };
+  }
+
+  componentDidMount() {
+    const categories = this.props.categories;
+    const id = categories[0].id;
+    this.setState({categoryID: id})
   }
 
   setCategoryID = (id) => {
@@ -58,16 +63,15 @@ class NewTask extends React.Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    
-    console.log(this.state.categoryID)
 
-    const { icon, taskName, notifyOn, categoryID, taskID } = this.state;
+    const { icon, taskName, notifyOn, categoryID } = this.state;
     const {
       createTask,
       date,
       start_time,
       end_time,
       userData,
+      taskID
     } = this.props;
     const id = userData.id;
 
@@ -81,15 +85,9 @@ class NewTask extends React.Component {
         end_time: moment().format("h:mm a")
       };
 
-      createTask(payload, id)
-        .then(res => {
-          const task_id = res.id;
-          console.log(res.id);
+      createTask(payload, id, categoryID)
+        .then(() => {
           this.props.history.push("/");
-          return (task_id)
-        })
-        .then(task_id => {
-          this.props.assignCategory(task_id, id, categoryID)
         })
         .catch(err => {
           console.log(err);
@@ -108,14 +106,8 @@ class NewTask extends React.Component {
       };
 
       createTask(payload, id)
-        .then(res => {
-          const task_id = res.id;
-          console.log(res.id);
+        .then(() => {
           this.props.history.push("/");
-          return (task_id)
-        })
-        .then(task_id => {
-          this.props.assignCategory(task_id, id, categoryID)
         })
         .catch(err => {
           console.log(err);
@@ -134,14 +126,8 @@ class NewTask extends React.Component {
       };
 
       createTask(payload, id)
-        .then(res => {
-          const task_id = res.id;
-          console.log(res.id);
+        .then(() => {
           this.props.history.push("/");
-          return (task_id)
-        })
-        .then(task_id => {
-          this.props.assignCategory(task_id, id, categoryID)
         })
         .catch(err => {
           console.log(err);
@@ -159,14 +145,8 @@ class NewTask extends React.Component {
         end_time
       };
       createTask(payload, id)
-        .then(res => {
-          const task_id = res.id;
-          console.log(res.id);
+        .then(() => {
           this.props.history.push("/");
-          return (task_id)
-        })
-        .then(task_id => {
-          this.props.assignCategory(task_id, id, categoryID)
         })
         .catch(err => {
           console.log(err);
@@ -440,7 +420,8 @@ const mapStateToProps = state => ({
   start_time: state.start_time,
   end_time: state.end_time,
   isLoading: state.isLoading,
-  error: state.error
+  error: state.error,
+  categories: state.categories
 })
 
 const mapDispatchToProps = {
