@@ -90,7 +90,6 @@ export function getTASKS(id) {
 
     axios.get(` https://get2itpt9.herokuapp.com/api/users/${id}/tasks`, { headers })
       .then((res) => {
-        console.log(res)
         const newRes = res.data.map(task => {
           if (!task.status) {
             return {
