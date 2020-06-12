@@ -31,12 +31,13 @@ class EditTaskList extends React.Component {
       newError: null,
       user_id: tasks.user_id,
       id: tasks.id,
-      notifyOn: tasks.notifyOn
+      notifyOn: tasks.notifyOn,
+      notificationId: tasks.notificationId
     };
   }
 
   newTask = evt => {
-    const { task_name, task_icon, user_id, id, notifyOn } = this.state;
+    const { task_name, task_icon, user_id, id, notifyOn, notificationId} = this.state;
     const { date, start_time, end_time } = this.props;
     const payload = {
       date,
@@ -46,7 +47,8 @@ class EditTaskList extends React.Component {
       user_id,
       id,
       task_icon,
-      notifyOn
+      notifyOn,
+      notificationId
     };
 
     this.props.updateTask(payload, id);
