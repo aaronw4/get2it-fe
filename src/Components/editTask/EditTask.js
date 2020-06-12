@@ -48,7 +48,7 @@ class EditTaskList extends React.Component {
       id,
       task_icon,
       notifyOn,
-      notificationId
+      notificationId: notificationId
     };
 
     this.props.updateTask(payload, id);
