@@ -41,7 +41,7 @@ class Home extends React.Component {
     const {time, todayList} = this
 
     return (
-      // <div className="home">
+      // 
       //   {time >= 4 && time < 11 ? (
       //     <h2 className="greeting">Good morning</h2>
       //   ) : time >= 11 && time < 16 ? (
@@ -53,7 +53,7 @@ class Home extends React.Component {
       //     <p className="date">{moment().format("LL")}</p>
       //     <p className="time">
       //       <Moment interval={10000} format="LT" />
-      //     </p>
+      //     </p>c
       //   </div>
       //   <Link className="countLink" to="/taskList">
       //     <div className="countContainer">
@@ -110,9 +110,6 @@ class Home extends React.Component {
               </div>
             )}
           </div>
-        </div>
-
-
         <Route
           path="/taskModal"
           render={props => <NewTaskModal {...props} />}

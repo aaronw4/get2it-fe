@@ -7,6 +7,7 @@ import Timer from '../Timer/Timer/Timer';
 //importing libraries
 import styled from 'styled-components';
 import moment from 'react-moment';
+import Moment from 'moment';
 
 class Header extends Component {
     constructor(props) {
@@ -31,8 +32,18 @@ class Header extends Component {
                     <Menu />
                 </Nav>
                 <HeaderGreeting>
-                    <H2>Good Afternoon, displayName!</H2>
-                    <H3>June 9, 2019 5:21 pm CST</H3> {/* March 24, 2020 08:30 PM*/}
+                    {time >= 4 && time < 11 ? (
+                        <H2>Good Morning!</H2>
+                    ) 
+                    :  time >= 11 && time < 16 ? (
+                        <H2>Good Afternoon!</H2>
+                    ) : (
+                        <H2>Good Evening!</H2>
+                    )}
+                    <H3>{moment().format('LL')}</H3> 
+                    <p className="time">
+                        <Moment interval={10000} format = "LT" />
+                    </p>
                 </HeaderGreeting>
                 <div className='timer'>
                     <Timer />
