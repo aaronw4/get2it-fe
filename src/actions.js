@@ -123,9 +123,12 @@ export function updateTask(payload, id, category_id){
 
     axios.put(` https://get2itpt9.herokuapp.com/api/users/tasks/${id}`, payload, { headers })
       .then((res) => {
-        console.log(payload)
         dispatch({ type: UPDATE_TASK_SUCCESS, payload: res.data });
-        return axios.put(`https://get2itpt9.herokuapp.com/api/categories/tasks/${id}`, {category_id: category_id}, {headers})
+        return axios.put(
+          `https://get2itpt9.herokuapp.com/api/categories/tasks/${id}`, 
+          {category_id: category_id}, 
+          {headers}
+        )
       })
       .catch((err) => {
         console.log(err)
