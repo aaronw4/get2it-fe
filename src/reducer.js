@@ -257,11 +257,11 @@ export function reducer(state = initialState, action) {
       };
     }
     case CREATE_TASK_SUCCESS: {
-      console.log(action.payload);
+      console.log('New Task', action.payload, action.id);
       return {
         ...state,
         isLoading: false,
-        newTask: action.payload,
+        taskID: action.id,
         error: null
       };
     }
@@ -358,7 +358,7 @@ export function reducer(state = initialState, action) {
         error: action.payload.data.message,
         errorStatus: action.payload.status
       }
-    }
+    }    
     default:
       return state;
   }

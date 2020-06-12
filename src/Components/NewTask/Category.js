@@ -1,77 +1,49 @@
-import React, { Component } from "react";
-import Downshift from "downshift";
+import React from "react";
+import {withRouter} from 'react-router-dom'
+import { connect } from "react-redux"
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 
-
-class Category extends Component {
+class Category extends React.Component {
   constructor(props) {
-    super(props);
-    this.Category = [
-      { type: "personal" },
-      { type: "Business" }
-    ];
+    super(props)
 
     this.state = {
-      selectedcategory: ""
+      name: "Personal"
     };
-
-    this.onChange = this.onChange.bind(this);
   }
 
-  onChange(selectedcategory) {
-    this.setState({ selectedcategory: selectedcategory.type });
-  }
+  categories = this.props.categories  
 
   render() {
     return (
-      <Downshift
-        onChange={this.onChange}
-        selectedItem={this.state.selectedcategory}
-        itemToString={Category => (Category ? Category.type : "")}
-      >
-        {({
-          isOpen,
-          getToggleButtonProps,
-          getItemProps,
-          highlightedIndex,
-          selectedItem: dsSelectedItem,
-          getLabelProps
-        }) => (
-          <div>
-            <label
-              style={{ marginTop: "1rem", display: "block" }}
-              {...getLabelProps()}
+      <div className='catTaskForm'>
+        <p className='catTaskFormP'>Category: {this.state.name}</p>
+        
+        <DropdownButton
+          id='dropdown-item-button'
+          onClick = {evt => evt.preventDefault()}
+        >
+          {this.categories.map(categories => (
+            <Dropdown.Item 
+              as='button' 
+              value={categories.id}
+              onClick={() => {
+                this.setState({name: categories.name});
+                this.props.setCategoryID(categories.id);
+              }}
             >
-            </label>{" "}
-            <br />
-            <button className="dropdown-button" {...getToggleButtonProps()}>
-              {this.state.selectedcategory !== ""
-                ? this.state.selectedcategory
-                : "Category"}
-            </button>
-            <div style={{ position: "relative" }}>
-              {isOpen ? (
-                <div className="downshift-dropdown">
-                  {this.Category.map((item, index) => (
-                    <div
-                      className="dropdown-item"
-                      {...getItemProps({ key: index, index, item })}
-                      style={{
-                        backgroundColor:
-                          highlightedIndex === index ? "lightgray" : "gray",
-                        fontWeight: dsSelectedItem === item ? "bold" : "normal"
-                      }}
-                    >
-                      {item.Category}
-                    </div>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          </div>
-        )}
-      </Downshift>
-    );
-  }
+                {categories.name}
+            </Dropdown.Item>
+          ))}
+        </DropdownButton>
+      </div>
+    );  
+}}
+
+const mapStateToProps = state => {
+  return {
+      categories: state.categories
+  }    
 }
 
-export default Category 
+export default withRouter(connect(mapStateToProps)(Category))

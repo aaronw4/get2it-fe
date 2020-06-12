@@ -7,11 +7,11 @@ import EndTime from "./EndTime"
 import { Dropdown, DropdownButton, Button } from "react-bootstrap"
 import $ from "jquery"
 import { connect } from "react-redux"
-import { createTask, newStartTime } from "../../actions.js"
+import { createTask, newStartTime, assignCategory } from "../../actions.js"
 import moment from "moment"
 import AddToCalendarBtn from "../AddCalendarBtn/AddCalendarBtn"
 import Switch from 'react-toggle-switch'
-
+import Category from './Category'
 
 class NewTask extends React.Component {
   constructor(props) {
@@ -23,8 +23,19 @@ class NewTask extends React.Component {
       newError: null,
       switched: false,
       notifyOn: false,
+      categoryID: '',
+      notificationId: ''
     };
+  }
 
+  componentDidMount() {
+    const categories = this.props.categories;
+    const id = categories[0].id;
+    this.setState({categoryID: id})
+  }
+
+  setCategoryID = (id) => {
+    this.setState({categoryID: id});
   }
 
   toggleSwitch = () => {
@@ -34,6 +45,7 @@ class NewTask extends React.Component {
       };
     });
   };
+
   toggleNotify = () => {
     this.setState(prevState => {
       return {
@@ -53,37 +65,33 @@ class NewTask extends React.Component {
   handleSubmit = evt => {
     evt.preventDefault();
 
-
-    const { icon, taskName, notifyOn } = this.state;
+    const { icon, taskName, notifyOn, categoryID, notificationId} = this.state;
     const {
       createTask,
       date,
       start_time,
       end_time,
-      userData,
+      userData
     } = this.props;
     const id = userData.id;
 
-
     if (start_time === "" && end_time === "") {
-      // this.props.newStartTime(moment().format("h:mm a"));
-
       const payload = {
         task_icon: icon,
         name: taskName,
         date,
         notifyOn,
         start_time: moment().format("h:mm a"),
-        end_time: moment().format("h:mm a")
+        end_time: moment().format("h:mm a"),
+        notificationId
       };
-      // console.log(payload)
 
-      createTask(payload, id)
+      createTask(payload, id, categoryID)
         .then(() => {
           this.props.history.push("/");
         })
         .catch(err => {
-          console.error(err);
+          console.log(err);
           this.setState({
             newError: this.props.error
           });
@@ -95,16 +103,16 @@ class NewTask extends React.Component {
         date,
         notifyOn,
         start_time,
-        end_time: moment().format("h:mm a")
+        end_time: moment().format("h:mm a"),
+        notificationId
       };
-      console.log(payload);
 
       createTask(payload, id)
         .then(() => {
           this.props.history.push("/");
         })
         .catch(err => {
-          console.error(err);
+          console.log(err);
           this.setState({
             newError: this.props.error
           });
@@ -116,16 +124,16 @@ class NewTask extends React.Component {
         date,
         notifyOn,
         start_time: moment().format("h:mm a"),
-        end_time
+        end_time,
+        notificationId
       };
-      console.log(payload);
 
       createTask(payload, id)
         .then(() => {
           this.props.history.push("/");
         })
         .catch(err => {
-          console.error(err);
+          console.log(err);
           this.setState({
             newError: this.props.error
           });
@@ -137,14 +145,15 @@ class NewTask extends React.Component {
         date,
         notifyOn,
         start_time,
-        end_time
+        end_time,
+        notificationId
       };
       createTask(payload, id)
         .then(() => {
           this.props.history.push("/");
         })
         .catch(err => {
-          console.error(err);
+          console.log(err);
           this.setState({
             newError: this.props.error
           });
@@ -159,11 +168,8 @@ class NewTask extends React.Component {
     $("#iconFour").addClass("iconFour");
     $("#iconFive").addClass("iconFive");
     $("#iconSix").addClass("iconSix");
-    console.log($("#iconThree"));
   };
   addIconTwo = event => {
-    // console.log("yolo")
-
     $("#iconOne").addClass("iconOne");
     $("#iconTwo").removeClass("iconTwo");
     $("#iconThree").addClass("iconThree");
@@ -172,8 +178,6 @@ class NewTask extends React.Component {
     $("#iconSix").addClass("iconSix");
   };
   addIconThree = event => {
-    // console.log("yolo")
-
     $("#iconOne").addClass("iconOne");
     $("#iconTwo").addClass("iconTwo");
     $("#iconThree").removeClass("iconThree");
@@ -182,8 +186,6 @@ class NewTask extends React.Component {
     $("#iconSix").addClass("iconSix");
   };
   addIconFour = event => {
-    // console.log("yolo")
-
     $("#iconOne").addClass("iconOne");
     $("#iconTwo").addClass("iconTwo");
     $("#iconThree").addClass("iconThree");
@@ -192,8 +194,6 @@ class NewTask extends React.Component {
     $("#iconFour").removeClass("iconFour");
   };
   addIconFive = event => {
-    // console.log("yolo")
-
     $("#iconOne").addClass("iconOne")
     $("#iconTwo").addClass("iconTwo")
     $("#iconThree").addClass("iconThree")
@@ -202,8 +202,6 @@ class NewTask extends React.Component {
     $("#iconFive").removeClass("iconFive");
   };
   addIconSix = event => {
-    // console.log("yolo")
-
     $("#iconOne").addClass("iconOne");
     $("#iconTwo").addClass("iconTwo");
     $("#iconThree").addClass("iconThree");
@@ -212,35 +210,29 @@ class NewTask extends React.Component {
     $("#iconSix").removeClass("iconSix");
   };
 
-
   render() {
-    console.log(this.props);
     return (
       <div className="newTaskContainer">
         <br />
-
         <h1 className="newTaskHeader"> Add New Task</h1>
-        {/* <hr className="line" /> */}
         <br />
-        {/* <Category/> */}
+
         <div className="calender-date">
           <div className="datePick">
             <i className="far fa-calendar-alt fa-3x" />
           </div>
           <br />
           <br />
-
           <Date className="date" />
           <br />
           <br />
         </div>
+
         <Clock />
         <hr className="line" />
-
         <EndTime />
-
-        <div className="app"></div>
         <hr className="line" />
+
         <form onSubmit={this.handleSubmit}>
           <label className="newTaskLableName">New Task Name:</label>
           <input
@@ -254,10 +246,10 @@ class NewTask extends React.Component {
           <AddToCalendarBtn className='addToCal' title={this.state.taskName} />
           <br />
 
-
           <label className="newTaskLableName">
             Pick an icon for your task!
           </label>
+
           <div className="iconDropContainer">
             <div className="displayIcons">
               <div id="iconOne">
@@ -316,8 +308,7 @@ class NewTask extends React.Component {
                 className="addIcon"
                 onClick={() => {
                   this.setState({
-                    icon:
-                      '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
+                    icon: '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
                   })
                   this.addIconOne()
                 }}
@@ -325,12 +316,12 @@ class NewTask extends React.Component {
               >
                 <i id="icon" className="fas fa-heartbeat iconDropdown"></i>
               </Dropdown.Item>
+
               <Dropdown.Item
                 className="addIcon"
                 onClick={() => {
                   this.setState({
-                    icon:
-                      '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
+                    icon: '<i id="icon" className="fas fa-hospital iconDropdown"></i>'
                   })
                   this.addIconTwo()
                 }}
@@ -338,12 +329,12 @@ class NewTask extends React.Component {
               >
                 <i id="icon" className="fas fa-hospital iconDropdown"></i>
               </Dropdown.Item>
+
               <Dropdown.Item
                 className="addIcon"
                 onClick={() => {
                   this.setState({
-                    icon:
-                      '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
+                    icon: '<i id="icon" className="fab fa-accessible-icon iconDropdown"></i>'
                   })
                   this.addIconThree()
                 }}
@@ -354,12 +345,12 @@ class NewTask extends React.Component {
                   className="fab fa-accessible-icon iconDropdown"
                 ></i>
               </Dropdown.Item>
+
               <Dropdown.Item
                 className="addIcon"
                 onClick={() => {
                   this.setState({
-                    icon:
-                      '<i id="icon" className="fas fa-carrot iconDropdown"></i>'
+                    icon: '<i id="icon" className="fas fa-carrot iconDropdown"></i>'
                   })
                   this.addIconFour()
                 }}
@@ -367,12 +358,12 @@ class NewTask extends React.Component {
               >
                 <i id="icon" className="fas fa-carrot iconDropdown"></i>
               </Dropdown.Item>
+
               <Dropdown.Item
                 className="addIcon"
                 onClick={() => {
                   this.setState({
-                    icon:
-                      '<i id="icon" className="fas fa-broom iconDropdown"></i>'
+                    icon: '<i id="icon" className="fas fa-broom iconDropdown"></i>'
                   })
                   this.addIconFive()
                 }}
@@ -380,12 +371,12 @@ class NewTask extends React.Component {
               >
                 <i id="icon" className="fas fa-broom iconDropdown"></i>
               </Dropdown.Item>
+
               <Dropdown.Item
                 className="addIcon"
                 onClick={() => {
                   this.setState({
-                    icon:
-                      '<i id="icon" className="fab fa-black-tie iconDropdown"></i>'
+                    icon: '<i id="icon" className="fab fa-black-tie iconDropdown"></i>'
                   })
                   this.addIconSix()
                 }}
@@ -394,9 +385,13 @@ class NewTask extends React.Component {
                 <i id="icon" className="fab fa-black-tie iconDropdown"></i>
               </Dropdown.Item>
             </DropdownButton>
-            {/* <Label /> */}
+          </div>
+
+          <div>
+            <Category setCategoryID={this.setCategoryID}/>
           </div>
           <hr className="line" />
+
           <div className="switchContainer">
             <p className="notifySwitchText">
               Turn on in-app notifications for this task?
@@ -407,29 +402,11 @@ class NewTask extends React.Component {
               className="notifySwitch"
             />
           </div>
-          {/* <div className="switchContainer">
-            <p className="notifySwitchText">
-              Add this task to your
-              <span className="googleContainer">
-                <span className="blue"> G</span>
-                <span className="red">o</span>
-                <span className="yellow">o</span>
-                <span className="blue">g</span>
-                <span className="green">l</span>
-                <span className="red">e </span>
-              </span>
-              Calendar?
-            </p>
-            <Switch
-              onClick={this.toggleSwitch}
-              on={this.state.switched}
-              className="notifySwitch"
-            />
-          </div> */}
 
           {this.state.newError && (
             <p className="error">{this.state.newError}</p>
           )}
+
           <div className="completeBtnContainer">
             <Button className="completeBtn-create" type="submit">
               Complete
@@ -447,7 +424,8 @@ const mapStateToProps = state => ({
   start_time: state.start_time,
   end_time: state.end_time,
   isLoading: state.isLoading,
-  error: state.error
+  error: state.error,
+  categories: state.categories
 })
 
 const mapDispatchToProps = {
