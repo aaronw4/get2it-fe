@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
+//importing libraries
 import moment from 'moment';
+import styled from 'styled-components';
 
+//importing components
 import TimerHeader from '../TimerHeader/TimerHeader';
 import TimerDisplay from '../TimerDisplay/TimerDisplay';
 import TimerButton from '../TimerButton/TimerButton';
 import TimerConfig from '../TimerConfig/TimerConfig';
 
+//importing state for Timer
 import * as timerState from '../timerState';
 
 class Timer extends Component {
@@ -82,7 +86,7 @@ class Timer extends Component {
   render()
   {
     return (
-      <div className="timerContainer">
+      <TimerContainer>
         <TimerHeader />
         <TimerDisplay
           currentTime={this.state.currentTime}
@@ -100,8 +104,14 @@ class Timer extends Component {
               setBaseTime={this.setBaseTime}
             />)
         }
-      </div>
+      </TimerContainer>
     );
   }
 }
+
+const TimerContainer = styled.div`
+  font-size: 1 rem;
+  color: white;
+  font-weight: 300; 
+`;
 export default Timer;
