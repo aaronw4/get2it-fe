@@ -23,7 +23,8 @@ class NewTask extends React.Component {
       newError: null,
       switched: false,
       notifyOn: false,
-      categoryID: ''
+      categoryID: '',
+      notificationId: ''
     };
   }
 
@@ -64,14 +65,13 @@ class NewTask extends React.Component {
   handleSubmit = evt => {
     evt.preventDefault();
 
-    const { icon, taskName, notifyOn, categoryID } = this.state;
+    const { icon, taskName, notifyOn, categoryID, notificationId} = this.state;
     const {
       createTask,
       date,
       start_time,
       end_time,
-      userData,
-      taskID
+      userData
     } = this.props;
     const id = userData.id;
 
@@ -82,7 +82,8 @@ class NewTask extends React.Component {
         date,
         notifyOn,
         start_time: moment().format("h:mm a"),
-        end_time: moment().format("h:mm a")
+        end_time: moment().format("h:mm a"),
+        notificationId
       };
 
       createTask(payload, id, categoryID)
@@ -102,7 +103,8 @@ class NewTask extends React.Component {
         date,
         notifyOn,
         start_time,
-        end_time: moment().format("h:mm a")
+        end_time: moment().format("h:mm a"),
+        notificationId
       };
 
       createTask(payload, id)
@@ -122,7 +124,8 @@ class NewTask extends React.Component {
         date,
         notifyOn,
         start_time: moment().format("h:mm a"),
-        end_time
+        end_time,
+        notificationId
       };
 
       createTask(payload, id)
@@ -142,7 +145,8 @@ class NewTask extends React.Component {
         date,
         notifyOn,
         start_time,
-        end_time
+        end_time,
+        notificationId
       };
       createTask(payload, id)
         .then(() => {
