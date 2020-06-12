@@ -8,7 +8,7 @@ class Category extends React.Component {
     super(props)
 
     this.state = {
-      name: "Personal"
+      name: this.props.categoryName
     };
   }
 
