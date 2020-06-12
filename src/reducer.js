@@ -173,7 +173,7 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.data.message,
+        error: action.payload.data,
         errorStatus: action.payload.status
       };
     }
