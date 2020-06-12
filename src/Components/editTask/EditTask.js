@@ -8,14 +8,18 @@ import { Dropdown, DropdownButton, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { updateTask } from "../../actions.js";
 import Switch from "react-toggle-switch";
+import Category from '../NewTask/Category';
+import axios from 'axios';
 
 
 class EditTaskList extends React.Component {
   constructor(props) {
     super(props);
+
     const tasks = this.props.userTasks.find(
       tasks => `${tasks.id}` === this.props.match.params.id
     );
+
     this.state = {
       icon1: false,
       icon2: false,
@@ -32,12 +36,36 @@ class EditTaskList extends React.Component {
       user_id: tasks.user_id,
       id: tasks.id,
       notifyOn: tasks.notifyOn,
+      categoryID: '',
+      categoryName: '',
       notificationId: tasks.notificationId
     };
   }
+  
+  componentDidMount() {
+    const id = this.state.id;
+    const headers = {
+      Authorization: localStorage.getItem("token")
+    };
+
+    axios
+      .get(`https://get2itpt9.herokuapp.com/api/categories/tasks/${id}`, {headers})
+      .then(res => {
+        let category_id = res.data.category_id;
+        this.setState({categoryID: category_id});
+        const categories = this.props.categories;
+        const category = categories.filter(category => category.id === category_id);
+        this.setState({categoryName: category.name})
+      })
+      .catch(err => console.log(err))
+  };
+
+  setCategoryID = (id) => {
+    this.setState({categoryID: id});
+  }
 
   newTask = evt => {
-    const { task_name, task_icon, user_id, id, notifyOn, notificationId} = this.state;
+    const { task_name, task_icon, user_id, id, notifyOn, notificationId, categoryID} = this.state;
     const { date, start_time, end_time } = this.props;
     const payload = {
       date,
@@ -51,7 +79,7 @@ class EditTaskList extends React.Component {
       notificationId: notificationId
     };
 
-    this.props.updateTask(payload, id);
+    this.props.updateTask(payload, id, categoryID);
 
     setTimeout(() => {
       this.props.history.push(`/taskList`);
@@ -76,6 +104,7 @@ class EditTaskList extends React.Component {
       () => console.log(this.state.task_name)
     );
   };
+
   iconCheck = () => {
     if (this.state.task_icon === "") {
       // console.log("NO ICON")
@@ -180,9 +209,11 @@ class EditTaskList extends React.Component {
   refreshPage = () => {
     window.location.reload(false);
   };
+
   componentDidMount() {
     this.iconCheck();
-  }
+  };
+
   render() {
     const { task_name, date } = this.state;
     return (
@@ -398,7 +429,12 @@ class EditTaskList extends React.Component {
               </Dropdown.Item>
             </DropdownButton>
           </div>
+
+          <div>
+            <Category setCategoryID={this.setCategoryID} categoryName={this.state.categoryName}/>
+          </div>
           <hr className="line" />
+          
           <div className="switchContainer">
             <p className="notifySwitchText">
               Turn on in-app notifications for this task?
@@ -435,7 +471,8 @@ const mapStateToProps = state => ({
   start_time: state.start_time,
   end_time: state.end_time,
   isLoading: state.isLoading,
-  error: state.error
+  error: state.error,
+  categories: state.categories
 })
 
 const mapDispatchToProps = {
