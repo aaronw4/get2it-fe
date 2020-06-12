@@ -160,7 +160,7 @@ export function reducer(state = initialState, action) {
       };
     }
     case GET_TASKS_SUCCESS: {
-      console.log(action.payload);
+      console.log('Tasks', action.payload);
       return {
         ...state,
         isLoading: false,
@@ -343,7 +343,7 @@ export function reducer(state = initialState, action) {
       }
     }
     case GET_CATEGORY_SUCCESS: {
-      console.log(action.payload);
+      console.log('Categories', action.payload);
       return {
         ...state,
         isLoading: false,
