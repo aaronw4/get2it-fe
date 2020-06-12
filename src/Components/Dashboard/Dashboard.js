@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 import OnBoarding from '../OnBoarding/index.js';
 import Home from '../Home/Home.js';
-import Menu from '../Menu/Menu.js';
+// import Menu from '../Menu/Menu.js';
 import Header from '../Header/Header';
 import NewTask from '../NewTask/NewTask.js';
 import EditTaskList from '../editTask/EditTask.js';
