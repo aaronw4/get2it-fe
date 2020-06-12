@@ -11,7 +11,6 @@ import Switch from "react-toggle-switch";
 import Category from '../NewTask/Category';
 import axios from 'axios';
 
-
 class EditTaskList extends React.Component {
   constructor(props) {
     super(props);
@@ -43,6 +42,7 @@ class EditTaskList extends React.Component {
   }
   
   componentDidMount() {
+    this.iconCheck();
     const id = this.state.id;
     const headers = {
       Authorization: localStorage.getItem("token")
@@ -208,11 +208,7 @@ class EditTaskList extends React.Component {
 
   refreshPage = () => {
     window.location.reload(false);
-  };
-
-  componentDidMount() {
-    this.iconCheck();
-  };
+  };  
 
   render() {
     const { task_name, date } = this.state;
