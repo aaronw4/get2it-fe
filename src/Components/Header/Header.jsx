@@ -20,8 +20,8 @@ class Header extends Component {
                     <Menu />
                 </Nav>
                 <HeaderGreeting>
-                    <h2>Good Afternoon, displayName!</h2>
-                    <h3>June 9, 2019 5:21 pm CST</h3> {/* March 24, 2020 08:30 PM*/}
+                    <H2>Good Afternoon, displayName!</H2>
+                    <H3>June 9, 2019 5:21 pm CST</H3> {/* March 24, 2020 08:30 PM*/}
                 </HeaderGreeting>
                 <div className='timer'>
                     <Timer />
@@ -39,7 +39,6 @@ const HeaderDiv = styled.div`
   flex-direction: row;
   width: 99vw;
   ${'' /* justify-content: space-between; */}
-  
 `;
 
 const Nav = styled.div`
@@ -54,8 +53,21 @@ const HeaderGreeting = styled.div`
   display: flex;
   flex-direction: column;
   width: 35%;
+  margin-left: 2%;
   ${'' /* justify-content: space-between; */}
   
 `;
 
+const H2 = styled.h2`
+  font-size: 1.6rem;
+  margin: 5px;
+  color: white;
+  font-weight: 500; 
+`;
+
+const H3 = styled.h3`
+  font-size: 1.4rem;
+  color: dark-gray;
+  font-weight: 200; 
+`;
 export default Header;
