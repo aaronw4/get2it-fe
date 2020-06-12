@@ -525,9 +525,6 @@ class Dashboard extends Component {
         ) : (
           <div className="dashboard">
 {/* HEADER */}
-            <div className="nav">
-              <Menu />
-            </div>
             <Header {...this.props} />
             <div className="appRoutes">
               <Notification />

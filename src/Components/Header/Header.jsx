@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Menu from '../Menu/Menu';
+import Timer from '../Timer/Timer/Timer';
 
 
 class Header extends Component {
@@ -13,10 +15,17 @@ class Header extends Component {
     render() {
         return (
             <div className='header'>
+                <div className="nav">
+                    <Menu />
+                </div>
                 <div className='header-greeting'>
                     <h2>Good Afternoon, displayName!</h2>
                     <h3>June 9, 2019 5:21 pm CST</h3> {/* March 24, 2020 08:30 PM*/}
                 </div>
+                <div className='timer'>
+                    <Timer />
+                </div>
+                <div></div>
             </div>
         )
     }
