@@ -24,6 +24,7 @@ class NewTask extends React.Component {
       switched: false,
       notifyOn: false,
       categoryID: '',
+      categoryName: 'Personal',
       notificationId: 1
     };
   }
@@ -388,7 +389,7 @@ class NewTask extends React.Component {
           </div>
 
           <div>
-            <Category setCategoryID={this.setCategoryID}/>
+            <Category setCategoryID={this.setCategoryID} categoryName={this.state.categoryName}/>
           </div>
           <hr className="line" />
 
