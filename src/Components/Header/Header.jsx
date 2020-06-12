@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+
+//importing components
 import Menu from '../Menu/Menu';
 import Timer from '../Timer/Timer/Timer';
-import styled from 'styled-components';
 
+//importing libraries
+import styled from 'styled-components';
+import moment from 'react-moment';
 
 class Header extends Component {
     constructor(props) {
@@ -13,7 +17,14 @@ class Header extends Component {
         this.notifyList = [];
       }
 
+      time = moment().format('H')
+      today = moment().format('L')
+      todayList = this.props.userTasks.filter(task => task.date === this.today && task.status === false)
+      incompleteTasks = this.props.userTasks.filter(task => task.date < this.today && task.status === false) 
+    
     render() {
+        const {time, todayList} = this;
+
         return (
             <HeaderDiv>
                 <Nav>
