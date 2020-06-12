@@ -114,7 +114,7 @@ export function getTASKS(id) {
   }
 }
 
-export function updateTask(payload, id){
+export function updateTask(payload, id, category_id){
   return (dispatch) => {
     dispatch({ type: UPDATE_TASK_START })
 
@@ -125,7 +125,8 @@ export function updateTask(payload, id){
     axios.put(` https://get2itpt9.herokuapp.com/api/users/tasks/${id}`, payload, { headers })
       .then((res) => {
         console.log(payload)
-        dispatch({ type: UPDATE_TASK_SUCCESS, payload: res.data })
+        dispatch({ type: UPDATE_TASK_SUCCESS, payload: res.data });
+        return axios.put(`https://get2itpt9.herokuapp.com/api/categories/tasks/${id}`, {category_id: category_id}, {headers})
       })
       .catch((err) => {
         console.log(err)
@@ -194,7 +195,8 @@ export function createTask(payload, user_id, category_id) {
       .then(res => {
           dispatch({ type: CREATE_TASK_SUCCESS, payload: payload});
           let task_id = res.data.id;
-          return axios.post(`https://get2itpt9.herokuapp.com/api/categories/${category_id}/tasks`, {task_id: task_id, user_id: user_id}, {headers})
+          console.log(task_id, user_id, category_id);
+          return axios.post(`https://get2itpt9.herokuapp.com/api/categories/${category_id}/tasks`, {task_id: task_id}, {headers})
       })
       .then(res => console.log(res))
       .catch(err => {
