@@ -55,7 +55,7 @@ class EditTaskList extends React.Component {
         this.setState({categoryID: category_id});
         const categories = this.props.categories;
         const category = categories.filter(category => category.id === category_id);
-        this.setState({categoryName: category.name})
+        this.setState({categoryName: category[0].name})
       })
       .catch(err => console.log(err))
   };
