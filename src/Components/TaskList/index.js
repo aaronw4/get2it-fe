@@ -7,7 +7,6 @@ import { updateTask } from "../../actions"
 import { getTASKS, deleteTask } from "../../actions"
 import $ from "jquery"
 import EditTaskModal from "../Home/EditTaskModal"
-import AddToCalendarBtn from "../AddCalendarBtn/AddCalendarBtn"
 
 // build task component and set up state
 class editTaskList extends React.Component {
@@ -53,6 +52,8 @@ class editTaskList extends React.Component {
         })
         this.itemArr = filtered
         console.log(filtered)
+        break;
+      default: console.log('Something went wrong')
     }
     this.classBTN(item)
     console.log(this.itemArr)

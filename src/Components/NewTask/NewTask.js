@@ -305,7 +305,6 @@ class NewTask extends React.Component {
               }}
             >
               <Dropdown.Item
-                onClick={this.addIcons}
                 className="addIcon"
                 onClick={() => {
                   this.setState({
