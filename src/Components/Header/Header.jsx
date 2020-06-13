@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-
-//importing components
 import Menu from '../Menu/Menu';
 import Timer from '../Timer/Timer/Timer';
-
-//importing libraries
 import styled from 'styled-components';
-import moment from 'react-moment';
-import Moment from 'moment';
+
 
 class Header extends Component {
     constructor(props) {
@@ -18,32 +13,15 @@ class Header extends Component {
         this.notifyList = [];
       }
 
-      time = moment().format('H')
-      today = moment().format('L')
-      todayList = this.props.userTasks.filter(task => task.date === this.today && task.status === false)
-      incompleteTasks = this.props.userTasks.filter(task => task.date < this.today && task.status === false) 
-    
     render() {
-        const {time, todayList} = this;
-
         return (
             <HeaderDiv>
                 <Nav>
                     <Menu />
                 </Nav>
                 <HeaderGreeting>
-                    {time >= 4 && time < 11 ? (
-                        <H2>Good Morning!</H2>
-                    ) 
-                    :  time >= 11 && time < 16 ? (
-                        <H2>Good Afternoon!</H2>
-                    ) : (
-                        <H2>Good Evening!</H2>
-                    )}
-                    <H3>{moment().format('LL')}</H3> 
-                    <p className="time">
-                        <Moment interval={10000} format = "LT" />
-                    </p>
+                    <H2>Good Afternoon, displayName!</H2>
+                    <H3>June 9, 2019 5:21 pm CST</H3> {/* March 24, 2020 08:30 PM*/}
                 </HeaderGreeting>
                 <div className='timer'>
                     <Timer />
@@ -75,21 +53,22 @@ const HeaderGreeting = styled.div`
   display: flex;
   flex-direction: column;
   width: 35%;
-  margin-left: 2%;
   ${'' /* justify-content: space-between; */}
   
 `;
 
 const H2 = styled.h2`
-  font-size: 1.6rem;
-  margin: 5px;
-  color: white;
-  font-weight: 500; 
+  font-size: 1.7rem;
+ color: white;
+ font-weight: 500;
+  
 `;
 
-const H3 = styled.h3`
-  font-size: 1.4rem;
-  color: dark-gray;
-  font-weight: 200; 
+const H3 = styled.h2`
+  font-size: 1.7rem;
+ color: white;
+ font-weight: 500;
+  
 `;
+
 export default Header;
