@@ -1,7 +1,7 @@
 import React from "react";
 import Downshift from "downshift";
 import Kalendaryo from "kalendaryo";
-import Calendar from "./Calender";
+import Calendar from "../NewTask/Calender";
 import { format } from "date-fns";
 import "./EditTask.css";
 import { newTaskDate } from '../../actions.js'
