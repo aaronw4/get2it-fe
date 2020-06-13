@@ -8,7 +8,7 @@ class Category extends React.Component {
     super(props)
 
     this.state = {
-      name: "Personal"
+      name: this.props.categoryName
     };
   }
 
@@ -17,7 +17,11 @@ class Category extends React.Component {
   render() {
     return (
       <div className='catTaskForm'>
-        <p className='catTaskFormP'>Category: {this.state.name}</p>
+        {
+          this.state.name === '' ? 
+          <p className='catTaskFormP'>Category: {this.props.categoryName}</p> :
+          <p className='catTaskFormP'>Category: {this.state.name}</p>
+        }        
         
         <DropdownButton
           id='dropdown-item-button'
