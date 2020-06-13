@@ -37,7 +37,7 @@ const HeaderDiv = styled.div`
   height: 25vh;
   display: flex;
   flex-direction: row;
-  width: 99vw;
+  width: 100vw;
   ${'' /* justify-content: space-between; */}
 `;
 

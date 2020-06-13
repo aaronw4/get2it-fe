@@ -74,7 +74,6 @@ class Home extends React.Component {
                 >
                   +
                 </Link>
-                <Timer />
               </div>
             ) : 
             todayList.length !== 0 && this.props.filteredTasks === null ? (

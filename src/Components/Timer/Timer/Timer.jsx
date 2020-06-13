@@ -113,5 +113,6 @@ const TimerContainer = styled.div`
   font-size: 1 rem;
   color: white;
   font-weight: 300; 
+  width: 23%;
 `;
 export default Timer;
