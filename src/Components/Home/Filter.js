@@ -29,7 +29,9 @@ export const Filter = props => {
         props.timePeriod(string)
     }
 
-    function handleCategoryClick(id) {
+    function handleCategoryClick(id, string) {
+        props.timePeriod(string)
+
         const headers = {
             Authorization: localStorage.getItem("token")
         };
@@ -64,7 +66,7 @@ export const Filter = props => {
                 </div>
                 <div className='filterButtonsCont'>
                     {categories.map(categories => (
-                        <button key={categories.id} onClick={() => handleCategoryClick(categories.id)}>{categories.name}</button>
+                        <button key={categories.id} onClick={() => handleCategoryClick(categories.id, categories.name)}>{categories.name}</button>
                     ))}
                 </div>
             </div>
