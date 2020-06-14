@@ -34,22 +34,22 @@ class Header extends Component {
 
 const HeaderDiv = styled.div`
   font-size: 1rem;
-  height: 25vh;
+  height: 12vh;
   display: flex;
   flex-direction: row;
-  width: 100vw;
-  ${'' /* justify-content: space-between; */}
+  width: 90vw;
+  justify-content: space-around;
 `;
 
 const Nav = styled.div`
   font-size: 1rem;
-  height: 25vh;
+  heigh: 10vh;
   width: 3%;
 `;
 
 const HeaderGreeting = styled.div`
-  font-size: 1rem;
-  height: 25vh;
+  font-size: 0.9rem;
+  height: 12vh;
   display: flex;
   flex-direction: column;
   width: 35%;

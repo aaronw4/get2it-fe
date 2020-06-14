@@ -87,15 +87,19 @@ class Timer extends Component {
   {
     return (
       <TimerContainer>
-        <TimerHeader />
-        <TimerDisplay
-          currentTime={this.state.currentTime}
-          timerState={this.state.timerState}
-        />
-        <TimerButton
+        
+          {/* <TimerHeader /> */}
+          <TimerDisplay
+            currentTime={this.state.currentTime}
+            timerState={this.state.timerState}
+          />
+         
+        
+         <TimerButton
           startTimer={this.startTimer}
           stopTimer={this.stopTimer}
           timerState={this.state.timerState}/>
+       
         {
           (this.state.timerState !== timerState.RUNNING)
             &&
@@ -104,15 +108,19 @@ class Timer extends Component {
               setBaseTime={this.setBaseTime}
             />)
         }
-      </TimerContainer>
-    );
+        
+      </TimerContainer>    );
   }
 }
 
 const TimerContainer = styled.div`
-  font-size: 1 rem;
+  font-size: 0.8 rem;
   color: white;
   font-weight: 300; 
-  width: 23%;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150 px;
 `;
 export default Timer;

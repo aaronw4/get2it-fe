@@ -2,7 +2,7 @@
   --textColor: silver;
   --iconColor: rgba(192, 192, 192, 0.65);
   --buttonBorder: 2px solid rgb(212, 211, 211);
-  width: 100%;
+  width: 100vw;
 
   /* Example:  
                 button {
@@ -13,7 +13,7 @@
 }
 
 .App {
-  width: 100%;
+  width: 100vw;
   text-align: center;
   display: flex;
   justify-content: center;
