@@ -86,30 +86,7 @@ const Nav = styled.div`
   font-size: 1rem;
   heigh: 10vh;
   width: 3%;
-`;
-
-const HeaderGreeting = styled.div`
-  font-size: 0.9rem;
-  height: 12vh;
-  display: flex;
-  flex-direction: column;
-  width: 35%;
-  ${'' /* justify-content: space-between; */}
-  
-`;
-
-const H2 = styled.h2`
-  font-size: 1.7rem;
- color: white;
- font-weight: 500;
-  
-`;
-
-const H3 = styled.h2`
-  font-size: 1.7rem;
- color: white;
- font-weight: 500;
-  
+  margin-bottom: 25px;
 `;
 
 export default Header;
