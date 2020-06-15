@@ -41,17 +41,21 @@ body {
 
 @media only screen and (min-width: 500px) {
   body {
-    width: 100vw;
+    width: 95vw;
   }
 }
 
 @media only screen and (min-width: 800px) {
   body {
-    width: 100vw;
+    width: 95vw;
   }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.headingGreeting {
+  margin-top: 3%;
 }

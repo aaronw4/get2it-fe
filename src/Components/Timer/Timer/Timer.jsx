@@ -87,20 +87,18 @@ class Timer extends Component {
   {
     return (
       <TimerContainer>
-        
-          {/* <TimerHeader /> */}
-          <TimerDisplay
-            currentTime={this.state.currentTime}
-            timerState={this.state.timerState}
-          />
-         
-        
-         <TimerButton
-          startTimer={this.startTimer}
-          stopTimer={this.stopTimer}
-          timerState={this.state.timerState}/>
-       
-        {
+          <TimerPartA>
+            <TimerDisplay
+              currentTime={this.state.currentTime}
+              timerState={this.state.timerState}
+            />
+            <TimerButton
+              startTimer={this.startTimer}
+              stopTimer={this.stopTimer}
+              timerState={this.state.timerState}/>
+          </TimerPartA>
+          <TimerPartB>
+          {
           (this.state.timerState !== timerState.RUNNING)
             &&
             (<TimerConfig
@@ -108,7 +106,7 @@ class Timer extends Component {
               setBaseTime={this.setBaseTime}
             />)
         }
-        
+          </TimerPartB>
       </TimerContainer>    );
   }
 }
@@ -119,8 +117,17 @@ const TimerContainer = styled.div`
   font-weight: 300; 
   width: 150px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   height: 150 px;
+  margin-top 3%;
+`;
+
+const TimerPartA = styled.div`
+  margin-right: 3%;
+`;
+
+const TimerPartB = styled.div`
+  margin-left: 2%;
 `;
 export default Timer;

@@ -44,7 +44,7 @@ class Header extends Component {
               <Nav>
                   <Menu />
               </Nav>
-              <div>
+              <div className='headerGreeting'>
                   {time >= 4 && time < 11 ? (
                     <h2 className="greeting">Good Morning</h2>
                   ) : time >= 11 && time < 16 ? (
@@ -81,6 +81,7 @@ const HeaderDiv = styled.div`
   width: 90vw;
   justify-content: space-around;
   border: 1px solid white;
+  border-radius: 8px;
   margin-bottom: 4%;
 `;
 
@@ -89,6 +90,7 @@ const Nav = styled.div`
   heigh: 10vh;
   width: 3%;
   margin-bottom: 3%
+  margin-top: 2%;
 `;
 
 export default Header;
