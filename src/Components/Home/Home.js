@@ -34,7 +34,7 @@ class Home extends React.Component {
   incompleteTasks = this.props.userTasks.filter(task => task.date < this.today && task.status === false) 
 
   render() {
-    const {time, todayList} = this
+    const { todayList } = this
 
     return ( 
       <div className="home">
@@ -87,8 +87,6 @@ class Home extends React.Component {
             )}
           </div>
         </div>
-
-
         <Route
           path="/taskModal"
           render={props => <NewTaskModal {...props} />}
