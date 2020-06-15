@@ -44,10 +44,21 @@ class Header extends Component {
               <Nav>
                   <Menu />
               </Nav>
-              <HeaderGreeting>
-                  <H2>Good Afternoon, displayName!</H2>
-                  <H3>June 9, 2019 5:21 pm CST</H3> {/* March 24, 2020 08:30 PM*/}
-              </HeaderGreeting>
+              <div>
+                  {time >= 4 && time < 11 ? (
+                    <h2 className="greeting">Good Morning</h2>
+                  ) : time >= 11 && time < 16 ? (
+                    <h2 className="greeting">Good Afternoon</h2>
+                  ) : (
+                    <h2 className="greeting">Good Evening</h2>
+                   )}
+                  <div className="today">
+                    <p className="date">{moment().format("LL")}</p>
+                    <p className="time">
+                    <Moment interval={10000} format="LT" />
+                    </p>
+                  </div>
+                </div>
               <div className='timer'>
                   <Timer />
               </div>
