@@ -7,7 +7,7 @@ import EndTime from "./EndTime"
 import { Dropdown, DropdownButton, Button } from "react-bootstrap"
 import $ from "jquery"
 import { connect } from "react-redux"
-import { createTask, newStartTime, assignCategory } from "../../actions.js"
+import { createTask, newStartTime } from "../../actions.js"
 import moment from "moment"
 import AddToCalendarBtn from "../AddCalendarBtn/AddCalendarBtn"
 import Switch from 'react-toggle-switch'
@@ -24,7 +24,8 @@ class NewTask extends React.Component {
       switched: false,
       notifyOn: false,
       categoryID: '',
-      notificationId: ''
+      categoryName: 'Personal',
+      notificationId: 1
     };
   }
 
@@ -83,7 +84,7 @@ class NewTask extends React.Component {
         notifyOn,
         start_time: moment().format("h:mm a"),
         end_time: moment().format("h:mm a"),
-        notificationId
+        notificationId: notificationId
       };
 
       createTask(payload, id, categoryID)
@@ -104,7 +105,7 @@ class NewTask extends React.Component {
         notifyOn,
         start_time,
         end_time: moment().format("h:mm a"),
-        notificationId
+        notificationId: notificationId
       };
 
       createTask(payload, id)
@@ -125,7 +126,7 @@ class NewTask extends React.Component {
         notifyOn,
         start_time: moment().format("h:mm a"),
         end_time,
-        notificationId
+        notificationId: notificationId
       };
 
       createTask(payload, id)
@@ -146,7 +147,7 @@ class NewTask extends React.Component {
         notifyOn,
         start_time,
         end_time,
-        notificationId
+        notificationId: notificationId
       };
       createTask(payload, id)
         .then(() => {
@@ -388,7 +389,7 @@ class NewTask extends React.Component {
           </div>
 
           <div>
-            <Category setCategoryID={this.setCategoryID}/>
+            <Category setCategoryID={this.setCategoryID} categoryName={this.state.categoryName}/>
           </div>
           <hr className="line" />
 

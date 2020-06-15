@@ -123,7 +123,6 @@ class editTaskList extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.userTasks.filter(task => task.status === false))
     this.setState({
       taskList: this.props.userTasks.filter(task => task.status === false)
     })
