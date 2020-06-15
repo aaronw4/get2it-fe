@@ -75,18 +75,20 @@ class Header extends Component {
 
 const HeaderDiv = styled.div`
   font-size: 1rem;
-  height: 12vh;
+  height: 20vh;
   display: flex;
   flex-direction: row;
   width: 90vw;
   justify-content: space-around;
+  border: 1px solid white;
+  margin-bottom: 4%;
 `;
 
 const Nav = styled.div`
   font-size: 1rem;
   heigh: 10vh;
   width: 3%;
-  margin-bottom: 25px;
+  margin-bottom: 3%
 `;
 
 export default Header;
