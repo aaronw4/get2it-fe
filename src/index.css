@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   height: auto;
-  min-height: 100vh;
+  min-height: 98vh;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -9,14 +9,15 @@ html {
   display: flex;
   justify-content: center;
   background-color: none;
+  overflow: visible;
 }
 
 body {
   background-color: none;
   height: 100% !important;
-  width: 100%;
+  width: 100vw;
   min-height: 100%;
-  max-width: 375px;
+  max-width: 1000px;
   margin: 0;
   /* margin-bottom: 40px; */
   padding: 0;
@@ -40,17 +41,21 @@ body {
 
 @media only screen and (min-width: 500px) {
   body {
-    max-width: 500px;
+    width: 95vw;
   }
 }
 
 @media only screen and (min-width: 800px) {
   body {
-    max-width: 750px;
+    width: 95vw;
   }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.headingGreeting {
+  margin-top: 3%;
 }

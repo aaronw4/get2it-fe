@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
+//importing libraries
 import moment from 'moment';
+import styled from 'styled-components';
 
+//importing components
 import TimerHeader from '../TimerHeader/TimerHeader';
 import TimerDisplay from '../TimerDisplay/TimerDisplay';
 import TimerButton from '../TimerButton/TimerButton';
 import TimerConfig from '../TimerConfig/TimerConfig';
 
+//importing state for Timer
 import * as timerState from '../timerState';
 
 class Timer extends Component {
@@ -82,17 +86,19 @@ class Timer extends Component {
   render()
   {
     return (
-      <div className="timerContainer">
-        <TimerHeader />
-        <TimerDisplay
-          currentTime={this.state.currentTime}
-          timerState={this.state.timerState}
-        />
-        <TimerButton
-          startTimer={this.startTimer}
-          stopTimer={this.stopTimer}
-          timerState={this.state.timerState}/>
-        {
+      <TimerContainer>
+          <TimerPartA>
+            <TimerDisplay
+              currentTime={this.state.currentTime}
+              timerState={this.state.timerState}
+            />
+            <TimerButton
+              startTimer={this.startTimer}
+              stopTimer={this.stopTimer}
+              timerState={this.state.timerState}/>
+          </TimerPartA>
+          <TimerPartB>
+          {
           (this.state.timerState !== timerState.RUNNING)
             &&
             (<TimerConfig
@@ -100,8 +106,28 @@ class Timer extends Component {
               setBaseTime={this.setBaseTime}
             />)
         }
-      </div>
-    );
+          </TimerPartB>
+      </TimerContainer>    );
   }
 }
+
+const TimerContainer = styled.div`
+  font-size: 0.8 rem;
+  color: white;
+  font-weight: 300; 
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 150 px;
+  margin-top 3%;
+`;
+
+const TimerPartA = styled.div`
+  margin-right: 3%;
+`;
+
+const TimerPartB = styled.div`
+  margin-left: 2%;
+`;
 export default Timer;

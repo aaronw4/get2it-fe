@@ -1,9 +1,21 @@
 import React from 'react';
 
-const Header = () => (
-  <div className="row">
-    <p className="text-center">You can do it!</p>
-  </div>
+import styled from 'styled-components';
+
+const TimerHeader = () => (
+  <HeaderContainer>
+    <P>You can do it!</P>
+  </HeaderContainer>
 );
 
-export default Header;
+export default TimerHeader;
+
+const HeaderContainer = styled.div`
+  margin-top: 1.5%;
+`;
+
+const P = styled.p`
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 500; 
+`;
