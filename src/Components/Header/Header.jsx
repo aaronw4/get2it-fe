@@ -31,6 +31,7 @@ class Header extends Component {
       });
     };
 
+    // formatting time and date with 'moment' for dynamic greeting and time/date display
     time = moment().format('H')
     today = moment().format('L')
     todayList = this.props.userTasks.filter(task => task.date === this.today && task.status === false)
@@ -41,9 +42,11 @@ class Header extends Component {
 
       return (
           <HeaderDiv>
+              {/* hamburger menu for navigation */}
               <Nav>
                   <Menu />
               </Nav>
+              {/* Dynamic greeting based on time of day */}
               <div className='headerGreeting'>
                   {time >= 4 && time < 11 ? (
                     <h2 className="greeting">Good Morning</h2>
@@ -59,9 +62,11 @@ class Header extends Component {
                     </p>
                   </div>
                 </div>
+              {/* Timer component */}
               <div className='timer'>
                   <Timer />
               </div>
+              {/* Task counter */}
               <Link className="countLink" to="/taskList">
                 <div className="countContainer">
                   <h1 className="count">{todayList.length}</h1>
