@@ -6,7 +6,6 @@ import { Link, Route, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import NewTaskModal from './NewTaskModal.js';
 import Filter from './Filter';
-import Timer from '../Timer/Timer/Timer';
 
 class Home extends React.Component {
   constructor(props) {
@@ -64,7 +63,6 @@ class Home extends React.Component {
                 >
                   +
                 </Link>
-                <Timer />
               </div>
             ) : (
               <div>
