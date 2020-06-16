@@ -31,7 +31,7 @@ class NewTask extends React.Component {
 
   componentDidMount() {
     const categories = this.props.categories;
-    const id = categories.id;
+    const id = categories[0].id;
     console.log(categories.id);
     console.log(id);
     this.setState({categoryID: id})
