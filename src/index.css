@@ -1,15 +1,14 @@
 html {
   box-sizing: border-box;
   height: auto;
-  min-height: 98vh;
+  min-height: 100vh;
   width: 100%;
   margin: 0;
   padding: 0;
-  /* padding-bottom: 20px; */
   display: flex;
   justify-content: center;
   background-color: none;
-  overflow: visible;
+  overflow: hidden;
 }
 
 body {
@@ -17,9 +16,7 @@ body {
   height: 100% !important;
   width: 100vw;
   min-height: 100%;
-  max-width: 1000px;
   margin: 0;
-  /* margin-bottom: 40px; */
   padding: 0;
   padding-bottom: 20px;
   background-image: radial-gradient(
@@ -31,7 +28,6 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -41,13 +37,13 @@ body {
 
 @media only screen and (min-width: 500px) {
   body {
-    width: 95vw;
+    width: 100vw;
   }
 }
 
 @media only screen and (min-width: 800px) {
   body {
-    width: 95vw;
+    width: 100vw;
   }
 }
 

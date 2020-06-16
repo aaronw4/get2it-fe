@@ -18,6 +18,7 @@ class Timer extends Component {
     super();
 
     this.state = {
+      //setting the timer to default to 25 minutes
       currentTime: moment.duration(25, 'minutes'),
       baseTime: moment.duration(25, 'minutes'),
       timerState: timerState.NOT_SET,
@@ -83,21 +84,24 @@ class Timer extends Component {
     });
   }
 
-  render()
-  {
+  render() {
+
     return (
+
       <TimerContainer>
-          <TimerPartA>
-            <TimerDisplay
-              currentTime={this.state.currentTime}
-              timerState={this.state.timerState}
-            />
-            <TimerButton
-              startTimer={this.startTimer}
-              stopTimer={this.stopTimer}
-              timerState={this.state.timerState}/>
-          </TimerPartA>
-          <TimerPartB>
+
+        <TimerPartA>
+          <TimerDisplay
+            currentTime={this.state.currentTime}
+            timerState={this.state.timerState}
+          />
+          <TimerButton
+            startTimer={this.startTimer}
+            stopTimer={this.stopTimer}
+            timerState={this.state.timerState}/>
+        </TimerPartA>
+
+        <TimerPartB>
           {
           (this.state.timerState !== timerState.RUNNING)
             &&
@@ -107,7 +111,9 @@ class Timer extends Component {
             />)
         }
           </TimerPartB>
-      </TimerContainer>    );
+
+      </TimerContainer>    
+    );
   }
 }
 

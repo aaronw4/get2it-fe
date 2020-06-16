@@ -83,7 +83,7 @@ const HeaderDiv = styled.div`
   height: 20vh;
   display: flex;
   flex-direction: row;
-  width: 90vw;
+  width: 100%;
   justify-content: space-around;
   border: 1px solid white;
   border-radius: 8px;
@@ -92,7 +92,7 @@ const HeaderDiv = styled.div`
 
 const Nav = styled.div`
   font-size: 1rem;
-  heigh: 10vh;
+  heigh: 13vh;
   width: 3%;
   margin-bottom: 3%
   margin-top: 2%;

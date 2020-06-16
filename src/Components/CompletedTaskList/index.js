@@ -5,12 +5,12 @@ import { Form } from 'react-bootstrap';
 import { updateTask, getTASKS } from '../../actions';
 import CompletedtaskModal from "../Home/CompletedtaskModal";
 import { Link, Route } from "react-router-dom";
-// buld completed task component and set up state
+// build completed task component and set up state
 class CompletedTaskList extends React.Component {
   constructor(props) {
     super(props);
     console.log(props)
-    // add tasklist to state
+    // add taskList to state
     this.state= {
       taskList: []
     }
@@ -18,7 +18,6 @@ class CompletedTaskList extends React.Component {
   event
 // build function to add tasks to state
   createTaskList = event => {
-    // event.preventDefault();
     // pull tasks from props
     const arrList = this.props.userTasks;
     let list =[]
@@ -40,10 +39,8 @@ class CompletedTaskList extends React.Component {
     })
   };
 
-  toggleComplete = event => {
-    
-  }
   arrar = [];
+
   complete = (index) => {
 
     var tasks = this.props.userTasks
