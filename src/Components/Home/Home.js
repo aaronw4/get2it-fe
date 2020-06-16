@@ -4,7 +4,6 @@ import 'react-router-modal/css/react-router-modal.css';
 import { connect } from 'react-redux';
 import { Link, Route, withRouter } from 'react-router-dom';
 import moment from 'moment';
-import Moment from 'react-moment';
 import NewTaskModal from './NewTaskModal.js';
 import Filter from './Filter';
 import Timer from '../Timer/Timer/Timer';
@@ -31,29 +30,10 @@ class Home extends React.Component {
   incompleteTasks = this.props.userTasks.filter(task => task.date < this.today && task.status === false) 
 
   render() {
-    const {time, todayList} = this
+    const { todayList } = this
 
-    return (
+    return ( 
       <div className="home">
-        {time >= 4 && time < 11 ? (
-          <h2 className="greeting">Good morning</h2>
-        ) : time >= 11 && time < 16 ? (
-          <h2 className="greeting">Good afternoon</h2>
-        ) : (
-          <h2 className="greeting">Good evening</h2>
-        )}
-        <div className="today">
-          <p className="date">{moment().format("LL")}</p>
-          <p className="time">
-            <Moment interval={10000} format="LT" />
-          </p>
-        </div>
-        <Link className="countLink" to="/taskList">
-          <div className="countContainer">
-            <h1 className="count">{todayList.length}</h1>
-            <p className="total">{this.props.userTasks.length}</p>
-          </div>
-        </Link>
         <div className="homeList">          
           <Filter/>
           <div className='listContainer'>
@@ -104,8 +84,6 @@ class Home extends React.Component {
             )}
           </div>
         </div>
-
-
         <Route
           path="/taskModal"
           render={props => <NewTaskModal {...props} />}

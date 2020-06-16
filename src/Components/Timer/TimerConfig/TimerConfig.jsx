@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 class TimerConfig extends Component {
   constructor() {
@@ -18,27 +19,28 @@ class TimerConfig extends Component {
 
   render() {
     return (
-      <div className="row">
-        <h2 className="text-primary">Set Timer</h2>
-        <div className="row control-row">
-          <div className="form-group">
-            <div className="col-sm-3">
-              <label htmlFor="minutes">Minutes</label>
-            </div>
-            <div className="col-sm-9">
-              <input
-                id="minutes"
-                className="form-control"
-                type="number"
-                defaultValue={this.props.baseTime.get('minutes')}
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-        </div>
+      <div >    
+        <label htmlFor="minutes">Set Timer</label>   
+        <MinInput
+          id="minutes"
+          className="form-control"
+          type="number"
+          defaultValue={this.props.baseTime.get('minutes')}
+          onChange={this.handleChange}
+        />
       </div>
     );
   }
 }
 
 export default TimerConfig;
+
+const H2 = styled.h2 `
+  font-size: 0.8rem;
+  text-align: r
+`
+const MinInput = styled.input `
+  font-size: 0.8rem;
+  width: 4rem;
+  margin: 0;
+`

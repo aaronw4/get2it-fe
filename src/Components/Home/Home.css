@@ -1,17 +1,20 @@
 #root {
-  height: 100%;
+  height: auto;
+  width: 99%;
+  margin: 0;
 }
+
 .home {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   box-sizing: border-box;
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  overflow: auto;
-  /* position: relative; */
+  overflow-x: hidden;
 }
+
 .taskModal {
   size: 90%;
   overflow: visible;
@@ -29,6 +32,7 @@
   display: flex;
   flex-flow: column;
 }
+
 .editModal {
   size: 100%;
   overflow: visible;
@@ -47,6 +51,7 @@
   display: flex;
   flex-flow: column;
 }
+
 .addCategoryModal {
   size: 100%;
   overflow: visible;
@@ -65,18 +70,22 @@
   display: flex;
   flex-flow: column;
 }
+
 .today {
   display: flex;
   flex-flow: column;
   justify-content: center;
 }
+
 .date {
   margin: 0;
 }
+
 .greeting {
   color: rgb(216, 216, 216);
   font-size: 1.9rem;
 }
+
 .countContainer {
   box-sizing: border-box;
   display: flex;
@@ -89,13 +98,16 @@
   position: relative;
   margin: 15px 0;
 }
+
 .countContainer:hover {
   background-color: rgba(192, 192, 192, 0.137);
 }
+
 .count {
   color: white;
   font-size: 3rem;
 }
+
 .total {
   display: flex;
   justify-content: center;
@@ -109,6 +121,7 @@
   right: 2px;
   top: -6px;
 }
+
 .homeList {
   box-sizing: border-box;
   height: 100%;
@@ -118,27 +131,29 @@
   padding: 0 20px;
   overflow: auto;
 }
+
 .listContainer {
   width: 100%;  
   margin: 20px 0 10px 0;  
   border-image: radial-gradient(silver, black) 50;
   border-bottom: 2px solid;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
 }
+
 .listItem {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
 }
+
 .filterButtonsCont {
   display: flex;
   flex-flow: column;
 }
+
 .categoriesHeader {
   display: flex;
 }
+
 #addCategoryButton {
   display: flex;
   justify-content: center;
@@ -152,39 +167,41 @@
   margin-left: 10px;
   margin-top: 5px;
 }
+
 #addCategoryButton:hover {
   text-decoration: none;
   background-color: white;
   color: dodgerblue;
 }
+
 .Alert {
   color: red;
 }
-/* .jsx-parser {
-  height: 30px;
-  width: 30px;
-} */
+
 #icon {
   width: 18px;
   margin-right: 15px;
   margin-bottom: 16px;
   color: rgba(192, 192, 192, 0.425);
 }
+
 .itemContainer {
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
+
 .itemName {
   color: rgba(255, 255, 255, 0.781);
   text-align: start;
-  /* margin-left: 10px; */
 }
+
 .duration {
   color: rgba(255, 255, 255, 0.781);
   margin-left: 10px;
 }
+
 #addTaskLink {
   display: flex;
   justify-content: center;
@@ -196,26 +213,17 @@
   border-radius: 100%;
   font-size: 3rem;
 }
+
 #addTaskLink:hover {
   text-decoration: none;
   background-color: white;
   color: dodgerblue;
 }
+
 .countLink:hover {
   text-decoration: none;
 }
 
-
-/*REMOVED SCROLLBAR TO TEST */
-/* .editModal::-webkit-scrollbar {
-  height: 20px;
-  width: 8px;
-  padding: ; 
-}
-.editModal::-webkit-scrollbar-thumb {
-  background: rgba(192, 192, 192, 0.281);
-  border-radius: 30px;
-} */
 .closeLink {
   align-self: flex-end;
   margin-right: 10px;
@@ -225,19 +233,22 @@
   position: absolute;
   right: 10px;
 }
+
 .closeLink:hover {
   color: white;
 }
+
 .noTaskContainer {
   box-sizing: border-box;
   overflow: hidden;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: space-evenly;
   padding-bottom: 98px;
 }
+
 .bigLogoContainer {
   display: flex;
   justify-content: center;
@@ -245,13 +256,16 @@
   overflow: hidden;
   max-height: 100px;
 }
+
 .bigLogo {
   width: 200px;
 }
+
 .instruction {
   margin: 0px;
   color: dodgerblue;
 }
+
 .arrow {
   font-size: x-large;
   color: dodgerblue;
