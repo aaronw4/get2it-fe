@@ -39,10 +39,6 @@ class CompletedTaskList extends React.Component {
     })
   };
 
-  toggleComplete = event => {
-    
-  }
-  
   arrar = [];
 
   complete = (index) => {

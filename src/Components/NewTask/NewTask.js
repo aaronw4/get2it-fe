@@ -32,6 +32,7 @@ class NewTask extends React.Component {
   componentDidMount() {
     const categories = this.props.categories;
     const id = categories[0].id;
+    
     this.setState({categoryID: id})
   }
 
@@ -305,11 +306,11 @@ class NewTask extends React.Component {
               }}
             >
               <Dropdown.Item
-                onClick={this.addIcons}
+                // onClick={this.addIcons}
                 className="addIcon"
                 onClick={() => {
                   this.setState({
-                    icon: '<i id="icon" className="fas fa-heartbeat iconDropdown"></i>'
+                    icon: '<id="icon" className="fas fa-heartbeat iconDropdown"></id=>'
                   })
                   this.addIconOne()
                 }}
