@@ -117,7 +117,9 @@ class editTaskList extends React.Component {
           return task.status === false
         })
       },
-      this.props.history.push("/")
+      setTimeout(() => {
+        window.location.reload(true)
+      }, 100)
     )
   }
 
