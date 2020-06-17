@@ -6,7 +6,6 @@ import { Link, Route, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import NewTaskModal from './NewTaskModal.js';
 import Filter from './Filter';
-import {updateFilteredTask} from '../../actions';
 
 class Home extends React.Component {
   constructor(props) {
@@ -17,15 +16,11 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      _mounted: true
-    })
-  }
+    this.setState({_mounted: true});
+  };
 
   componentWillUnmount() {
-    this.setState({
-      _mounted: false
-    });
+    this.setState({_mounted: false});
   }
 
   time = moment().format('H')
@@ -41,19 +36,7 @@ class Home extends React.Component {
         <div className="homeList">          
           <Filter/>
           <div className='listContainer'>
-            {this.props.timePeriod === 'Today' && this.props.filteredTasks.length === 0 ? (
-              <div className="noTaskContainer"> 
-                <h3>{this.props.timePeriod}</h3>            
-                <p>Or add a new task!</p>
-                <Link
-                  id="addTaskLink"
-                  to={{ pathname: "/taskModal", state: { modal: true } }}
-                >
-                  +
-                </Link>
-              </div>
-            ) : 
-            todayList.length !== 0 && this.props.filteredTasks === null ? (
+            {todayList.length !== 0 && this.props.filteredTasks.length === 0 ? (
               <div>
                 <h3>{this.props.timePeriod}</h3>
                 {(todayList.map((task, index) => {
@@ -69,12 +52,24 @@ class Home extends React.Component {
                   )
                 })) }
               </div>
+            ) : 
+            this.props.timePeriod === 'Today' && this.props.filteredTasks.length === 0 ? (
+              <div className="noTaskContainer"> 
+                <h3>{this.props.timePeriod}</h3>            
+                <p>Or add a new task!</p>
+                <Link
+                  id="addTaskLink"
+                  to={{ pathname: "/taskModal", state: { modal: true } }}
+                >
+                  +
+                </Link>
+              </div>
             ) : (
               <div>
                 <h3>{this.props.timePeriod}</h3>
-                {this.props.filteredTasks.map((task, index) => {
+                {this.props.filteredTasks.map((task) => {
                   return (
-                    <div>
+                    <div key={task.id}>
                       {task.status === false && task.date < this.today ? 
                         <p className='Alert'>{task.name}</p>
                         :
@@ -104,13 +99,8 @@ const mapStateToProps = state => ({
   timePeriod: state.timePeriod
 })
 
-const mapDispatchToProps = {
-  updateFilteredTask
-}
-
 export default withRouter(
   connect(
-      mapStateToProps,
-      mapDispatchToProps
+      mapStateToProps
   )(Home)
 )

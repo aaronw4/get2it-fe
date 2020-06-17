@@ -5,6 +5,7 @@ import { withRouter } from 'react-router'
 import {Link} from 'react-router-dom'
 import {updateFilteredTask, timePeriod} from '../../actions'
 import './Home.css'
+import axios from 'axios'
 
 export const Filter = props => {
     const today = moment().format('L')
@@ -27,6 +28,23 @@ export const Filter = props => {
         props.updateFilteredTask(filter);
         props.timePeriod(string)
     }
+
+    function handleCategoryClick(id, string) {
+        props.timePeriod(string)
+
+        const headers = {
+            Authorization: localStorage.getItem("token")
+        };
+
+        axios
+        .get(`https://get2it-arw.herokuapp.com/api/categories/${id}/tasks`, {headers})
+        .then(res => {
+            console.log(res.data)
+            let category = res.data;
+            props.updateFilteredTask(category)
+        })
+        .catch(err => console.log(err))
+    }
     
     return (
         <div className='filterButtonsCont'>
@@ -48,7 +66,7 @@ export const Filter = props => {
                 </div>
                 <div className='filterButtonsCont'>
                     {categories.map(categories => (
-                        <button>{categories.name}</button>
+                        <button key={categories.id} onClick={() => handleCategoryClick(categories.id, categories.name)}>{categories.name}</button>
                     ))}
                 </div>
             </div>

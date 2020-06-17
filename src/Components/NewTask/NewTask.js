@@ -7,7 +7,7 @@ import EndTime from "./EndTime"
 import { Dropdown, DropdownButton, Button } from "react-bootstrap"
 import $ from "jquery"
 import { connect } from "react-redux"
-import { createTask, newStartTime } from "../../actions.js"
+import { createTask, newStartTime, updateFilteredTask, timePeriod } from "../../actions.js"
 import moment from "moment"
 import AddToCalendarBtn from "../AddCalendarBtn/AddCalendarBtn"
 import Switch from 'react-toggle-switch'
@@ -91,6 +91,8 @@ class NewTask extends React.Component {
 
       createTask(payload, id, categoryID)
         .then(() => {
+          this.props.updateFilteredTask([]);
+          this.props.timePeriod('Today');
           this.props.history.push("/");
         })
         .catch(err => {
@@ -112,6 +114,8 @@ class NewTask extends React.Component {
 
       createTask(payload, id)
         .then(() => {
+          this.props.updateFilteredTask([]);
+          this.props.timePeriod('Today');
           this.props.history.push("/");
         })
         .catch(err => {
@@ -133,6 +137,8 @@ class NewTask extends React.Component {
 
       createTask(payload, id)
         .then(() => {
+          this.props.updateFilteredTask([]);
+          this.props.timePeriod('Today');
           this.props.history.push("/");
         })
         .catch(err => {
@@ -153,6 +159,8 @@ class NewTask extends React.Component {
       };
       createTask(payload, id)
         .then(() => {
+          this.props.updateFilteredTask([]);
+          this.props.timePeriod('Today');
           this.props.history.push("/");
         })
         .catch(err => {
@@ -307,7 +315,6 @@ class NewTask extends React.Component {
               }}
             >
               <Dropdown.Item
-                // onClick={this.addIcons}
                 className="addIcon"
                 onClick={() => {
                   this.setState({
@@ -433,7 +440,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   createTask,
-  newStartTime
+  newStartTime,
+  updateFilteredTask,
+  timePeriod
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewTask))
