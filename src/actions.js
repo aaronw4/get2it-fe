@@ -278,7 +278,7 @@ export function getCategories(id) {
       })
       .catch(err => {
         const payload = err.response ? err.response.data : err;
-        dispatch({type: GET_TASKS_FAILED, payload});
+        dispatch({type: GET_CATEGORY_FAILED, payload});
       })
   }
 }

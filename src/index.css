@@ -8,7 +8,6 @@ html {
   display: flex;
   justify-content: center;
   background-color: none;
-  overflow: hidden;
 }
 
 body {

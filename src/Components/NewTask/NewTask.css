@@ -159,7 +159,7 @@
     background: rgba(192, 192, 192, 0.281);
     border-radius: 30px;
   } */
-  .dashboard .appRoutes .newTaskContainer {
+  /* .dashboard .appRoutes .newTaskContainer {
     display: flex;
     flex-flow: column;
     overflow: auto !important;
@@ -173,6 +173,13 @@
   .dashboard .appRoutes .newTaskContainer .newTaskHeader {
     font-size: 1.7rem;
     margin-top: 10px;
+  } */
+  .newTaskContainer {
+    background-color: #212936;
+    border: 1px solid #313c4e;
+    border-radius: 5px;
+    max-width: 90%;
+    margin: 0 auto;
   }
   .date-picker-container {
     width: 100%;
