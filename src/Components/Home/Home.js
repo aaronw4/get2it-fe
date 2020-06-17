@@ -36,7 +36,7 @@ class Home extends React.Component {
         <div className="homeList">          
           <Filter/>
           <div className='listContainer'>
-            {todayList.length !== 0 && this.props.filteredTasks.length === 0 ? (
+            {this.props.timePeriod === 'Today' && todayList.length !== 0 ? (
               <div>
                 <h3>{this.props.timePeriod}</h3>
                 {(todayList.map((task, index) => {
@@ -44,6 +44,7 @@ class Home extends React.Component {
                     <div className="listItem" key={index}>
                       <div className="itemContainer">
                         <p className="itemName">{task.name}</p>
+                        <p>{task.date}</p>
                         <p className="duration">
                           {task.start_time}-{task.end_time}
                         </p>
@@ -69,11 +70,23 @@ class Home extends React.Component {
                 <h3>{this.props.timePeriod}</h3>
                 {this.props.filteredTasks.map((task) => {
                   return (
-                    <div key={task.id}>
+                    <div className="listItem" key={task.id}>
                       {task.status === false && task.date < this.today ? 
-                        <p className='Alert'>{task.name}</p>
+                        <div className="itemContainer">
+                          <p className='Alert'>{task.name}</p>
+                          <p>{task.date}</p>
+                          <p className="duration">
+                            {task.start_time}-{task.end_time}
+                          </p>
+                        </div>
                         :
-                        <p>{task.name}</p>
+                        <div className="itemContainer">
+                          <p className="itemName">{task.name}</p>
+                          <p>{task.date}</p>
+                          <p className="duration">
+                            {task.start_time}-{task.end_time}
+                          </p>
+                        </div>
                       }
                     </div>
                   );
