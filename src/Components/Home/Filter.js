@@ -43,7 +43,11 @@ export const Filter = props => {
             let category = res.data;
             props.updateFilteredTask(category)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            props.updateFilteredTask([]) 
+            // Above is for if there are not tasks on submitted category.
+        })
     }
     
     return (
