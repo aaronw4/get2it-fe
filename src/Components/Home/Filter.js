@@ -40,7 +40,12 @@ export const Filter = props => {
         .get(`https://get2itpt9.herokuapp.com/api/categories/${id}/tasks`, {headers})
         .then(res => {
             console.log(res.data)
-            let category = res.data;
+            let category = res.data.map(tasks => {
+                return {
+                    ...tasks,
+                    date: moment(tasks.date).add(1,'day').format('L')
+                }
+            });
             props.updateFilteredTask(category)
         })
         .catch(err => {
