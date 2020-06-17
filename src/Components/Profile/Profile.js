@@ -8,10 +8,10 @@ class Profile extends React.Component {
   constructor(props) {
     super(props)
 
-    const { username } = this.props.userData
+    const { displayName } = this.props.userData
 
     this.state = {
-      username: username,
+      displayName: displayName,
     }
   }
 
@@ -20,7 +20,7 @@ class Profile extends React.Component {
 
     const payload = {
       id: this.props.userID,
-      username: this.state.username,
+      displayName: this.state.displayName,
       // password: this.props.userData.password
     }
 
@@ -41,26 +41,26 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { username } = this.state;
+    const { displayName } = this.state;
     const { isLoading, error } = this.props;
 
     return (
       <div className="profile">
-        <h3 className="pageTitle">{this.props.userData.username}</h3>
+        <h3 className="pageTitle">{this.props.userData.displayName}</h3>
         <i className="fas fa-user-circle profileImg"></i>
         <form className="registerForm proForm" onSubmit={this.updatedProfile}>
           {error && <p className="error">{error}</p>}
 
           <div className="inputContainer">
-            <label to="username">
+            <label to="displayName">
               <i id="registerIcon" className="far fa-user-circle"></i>
             </label>
             <input
               type="text"
-              id="username"
-              name="username"
-              placeholder="Username"
-              value={username}
+              id="displayName"
+              name="displayName"
+              placeholder="Display Name"
+              value={displayName}
               onChange={this.handleChange}
               required
             />
