@@ -37,7 +37,7 @@ export const Filter = props => {
         };
 
         axios
-        .get(`https://get2it-arw.herokuapp.com/api/categories/${id}/tasks`, {headers})
+        .get(`https://get2itpt9.herokuapp.com/api/categories/${id}/tasks`, {headers})
         .then(res => {
             console.log(res.data)
             let category = res.data;
