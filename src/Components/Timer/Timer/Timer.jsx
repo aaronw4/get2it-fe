@@ -118,7 +118,7 @@ class Timer extends Component {
 }
 
 const TimerContainer = styled.div`
-  font-size: 0.8 rem;
+  font-size: 0.8rem;
   color: white;
   font-weight: 300; 
   width: 150px;
@@ -126,14 +126,14 @@ const TimerContainer = styled.div`
   flex-direction: row;
   align-items: center;
   height: 150 px;
-  margin-top 3%;
+  margin-top 4%;
 `;
 
 const TimerPartA = styled.div`
-  margin-right: 3%;
+  margin-left: 1rem;
 `;
 
 const TimerPartB = styled.div`
-  margin-left: 2%;
+  margin-right: 1rem;
 `;
 export default Timer;
