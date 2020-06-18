@@ -60,7 +60,7 @@ class Home extends React.Component {
                 <p>Or add a new task!</p>
                 <Link
                   id="addTaskLink"
-                  to={{ pathname: "/taskModal", state: { modal: true } }}
+                  to={{ pathname: "/newTask", state: { modal: true } }}
                 >
                   +
                 </Link>
