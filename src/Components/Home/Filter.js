@@ -65,7 +65,7 @@ export const Filter = props => {
             </div>
             <div className='flexColumn'>
                 <div className='categoriesHeader'>
-                    <h5>Categories</h5>
+                    <h3>Categories</h3>
                     <Link 
                         id='addCategoryButton'
                         to='/newCategory'

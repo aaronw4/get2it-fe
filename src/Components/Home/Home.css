@@ -138,12 +138,17 @@
   margin: 20px 0 10px 0;  
   border-image: radial-gradient(silver, black) 50;
   border-bottom: 2px solid;
+  padding-right: 6%;
+  width: 65%;
 }
 
 .listItem {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  padding-left: 6%;
+  color: #d3d3d3;
+  font-size: 1.4rem;
 }
 
 .filterButtonsCont {
@@ -152,11 +157,14 @@
   color: white;
   width: 33%;
   border-right: 2px solid gray;
-  min-width: 150px;
+  min-width: 165px;
+  height: 60vh;
+  font-size: 2.3rem;
 }
 
 .filterButton {
-  color: white;
+  color: #d3d3d3;
+  font-size: 1.4rem;
 }
 
 .flexColumn {
@@ -168,10 +176,20 @@
  .categoriesHeader {
   display: flex;
   flex-direction: row-reverse;
+  border-top: 1px solid gray;
   align-content: space-between;
   justify-content: flex-end;
   margin-top: 8%;
- } 
+  padding-top: 8%;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding-right: 6%;
+} 
+
+.categories {
+  color: #d3d3d3;
+  font-size: 1.3rem;
+}
 
 #addCategoryButton {
   display: flex;
@@ -184,7 +202,6 @@
   background-color: dodgerblue;
   color: white;
   border-radius: 100%;
-  font-size: 1.6rem;
   margin-left: 10px;
   margin-top: 5px;
   margin-right: 6px;
