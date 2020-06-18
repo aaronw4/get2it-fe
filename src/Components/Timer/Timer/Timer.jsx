@@ -126,7 +126,7 @@ const TimerContainer = styled.div`
   flex-direction: row;
   align-items: center;
   height: 150 px;
-  margin-top 4%;
+  margin-top: 10%;
 `;
 
 const TimerPartA = styled.div`
@@ -135,5 +135,6 @@ const TimerPartA = styled.div`
 
 const TimerPartB = styled.div`
   margin-right: 1rem;
+  margin-top: 2%;
 `;
 export default Timer;
