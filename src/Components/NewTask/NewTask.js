@@ -252,6 +252,7 @@ class NewTask extends React.Component {
             name="taskName"
             onChange={this.changeHandler}
             required
+            data-testid="newTaskInput"
           />
 
           <AddToCalendarBtn className='addToCal' title={this.state.taskName} />

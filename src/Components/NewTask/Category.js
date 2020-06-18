@@ -25,6 +25,7 @@ class Category extends React.Component {
         
         <DropdownButton
           id='dropdown-item-button'
+          data-testid='catButton'
           onClick = {evt => evt.preventDefault()}
         >
           {this.categories.map(categories => (

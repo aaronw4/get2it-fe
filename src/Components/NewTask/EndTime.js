@@ -32,7 +32,7 @@ class TimeSelectForm extends Component {
         <h1 className="Title2"> END</h1>
         <div className="startTime">
           <div className="timeContainer" onSubmit={this.handleSubmit}>
-            <i className="far fa-clock fa-3x"></i>
+            <i data-testid='clockImg' className="far fa-clock fa-3x"></i>
             <TimePicker
               className="pickTime"
               value={this.state.end_time}
