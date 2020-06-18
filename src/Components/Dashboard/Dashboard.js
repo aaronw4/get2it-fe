@@ -164,8 +164,6 @@ class Dashboard extends Component {
               }
             ];
             this.notifyRan = true;
-            // this.props.getTASKS(this.props.userData.id);
-
             i++;
             sessionStorage.setItem(
               "initialRun",
