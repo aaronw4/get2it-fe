@@ -6,3 +6,4 @@ import App from './App';
 it('renders without crashing', () => {
     renderWithRedux(<App/>)
 })
+

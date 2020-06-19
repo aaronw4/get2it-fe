@@ -83,7 +83,8 @@
 
 .greeting {
   color: rgb(216, 216, 216);
-  font-size: 1.9rem;
+  font-size: 1.5rem;
+  margin-top: 13%;
 }
 
 .countContainer {
@@ -93,10 +94,12 @@
   align-items: center;
   background-color: rgba(192, 192, 192, 0.247);
   border-radius: 100%;
-  height: 100px;
-  width: 100px;
+  height: 75px;
+  width: 75px;
   position: relative;
-  margin: 15px 0;
+  margin: 30% 0;
+  color: white;
+  padding-right: 3%;
 }
 
 .countContainer:hover {
@@ -137,35 +140,74 @@
   margin: 20px 0 10px 0;  
   border-image: radial-gradient(silver, black) 50;
   border-bottom: 2px solid;
+  padding-right: 6%;
+  width: 65%;
 }
 
 .listItem {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  padding-left: 6%;
+  color: #d3d3d3;
+  font-size: 1.4rem;
 }
 
 .filterButtonsCont {
   display: flex;
   flex-flow: column;
+  color: white;
+  width: 33%;
+  border-right: 2px solid gray;
+  min-width: 165px;
+  max-width: 300px;
+  height: 60vh;
+  font-size: 2.3rem;
 }
 
-.categoriesHeader {
+.filterButton {
+  color: #d3d3d3;
+  font-size: 1.4rem;
+}
+
+.flexColumn {
   display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+ .categoriesHeader {
+  display: flex;
+  flex-direction: row-reverse;
+  border-top: 1px solid gray;
+  align-content: space-between;
+  justify-content: flex-end;
+  margin-top: 8%;
+  padding-top: 8%;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding-right: 6%;
+} 
+
+.categories {
+  color: #d3d3d3;
+  font-size: 1.3rem;
 }
 
 #addCategoryButton {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 16px;
-  width: 16px;
+  padding-bottom: 2px;
+  font-weight: 500;
+  height: 24px;
+  width: 24px;
   background-color: dodgerblue;
   color: white;
   border-radius: 100%;
-  font-size: 1.6rem;
   margin-left: 10px;
   margin-top: 5px;
+  margin-right: 6px;
 }
 
 #addCategoryButton:hover {

@@ -41,6 +41,6 @@ const H2 = styled.h2 `
 `
 const MinInput = styled.input `
   font-size: 0.8rem;
-  width: 4rem;
+  width: 3rem;
   margin: 0;
 `
