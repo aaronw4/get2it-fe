@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 import OnBoarding from '../OnBoarding/index.js';
 import Home from '../Home/Home.js';
-// import Menu from '../Menu/Menu.js';
 import Header from '../Header/Header';
 import NewTask from '../NewTask/NewTask.js';
 import EditTaskList from '../editTask/EditTask.js';
@@ -18,7 +17,6 @@ import Spinner from '../Spinner/Spinner.js'
 import CompletedTaskList from '../CompletedTaskList/index.js';
 import Notification, { notify } from '../Notifications/Notification.js';
 import { getTASKS, updateTask, getCategories } from "../../actions.js";
-
 
 class Dashboard extends Component {
   constructor(props) {
@@ -37,9 +35,6 @@ class Dashboard extends Component {
     this._mounted = true;
     this.props.getTASKS(this.props.userData.id);
     this.props.getCategories(this.props.userData.id);
-    // this.timeout = setTimeout(() => {
-    //   this.runNotify();
-    // }, 3000);
     this.interval = setInterval(() => {
       this.timeout = this.runNotify();
     }, 5000);
@@ -137,7 +132,6 @@ class Dashboard extends Component {
       const minutesLeft = moment
         .duration(endTime.diff(currentTime))
         .asMinutes();
-      // const hoursLeft = moment.duration(endTime.diff(currentTime)).asHours();
       if (task.notifyOn) {
         if (this.notifyList.length === 0) {
           if (minutesLeft === 60 && this.sift(task.name, 60) === false) {
@@ -164,8 +158,6 @@ class Dashboard extends Component {
               }
             ];
             this.notifyRan = true;
-            // this.props.getTASKS(this.props.userData.id);
-
             i++;
             sessionStorage.setItem(
               "initialRun",
@@ -180,7 +172,6 @@ class Dashboard extends Component {
               timeLeft: minutesLeft
             };
             this.notifyList.push({ id: task.id, payload });
-
             this.timeout = setTimeout(() => {
               notify(
                 <div className="notifyContainer">
@@ -238,7 +229,6 @@ class Dashboard extends Component {
               timeLeft: minutesLeft
             };
             this.notifyList.push({ id: task.id, payload });
-
             this.timeout = setTimeout(() => {
               notify(
                 <div className="notifyContainer">
@@ -343,8 +333,6 @@ class Dashboard extends Component {
               }
             ];
             this.notifyRan = true;
-            // this.props.getTASKS(this.props.userData.id);
-
             i++;
             sessionStorage.setItem(
               "initialRun",
@@ -363,7 +351,6 @@ class Dashboard extends Component {
               timeLeft: minutesLeft
             };
             this.notifyList.push({ id: task.id, payload });
-
             this.timeout = setTimeout(() => {
               notify(
                 <div className="notifyContainer">
@@ -429,7 +416,6 @@ class Dashboard extends Component {
               timeLeft: minutesLeft
             };
             this.notifyList.push({ id: task.id, payload });
-
             this.timeout = setTimeout(() => {
               notify(
                 <div className="notifyContainer">
@@ -492,7 +478,6 @@ class Dashboard extends Component {
         }
       }
     });
-
     sessionStorage.setItem("initialRun", JSON.stringify(this.initialRun));
   };
 
@@ -524,47 +509,21 @@ class Dashboard extends Component {
           </Alert>
         ) : (
           <div className="dashboard">
-{/* HEADER */}
             <Header {...this.props} />
             <div className="appRoutes">
               <Notification />
-              <Route
-                path="/onboarding"
-                render={props => <OnBoarding {...props} />}
-              />
-
-              <Route exact path="/" render={props => <Home {...props} />} />
-              <Route path="/NewTask" render={props => <NewTask {...props} />} />
-              <Route
-                path="/taskList"
-                render={props => <TaskList {...props} />}
-              />
-              <Route path="/taskModal" render={props => <Home key={this.UId} {...props} />} />
+              <Route path="/onboarding" render={props => <OnBoarding {...props} />}/>
+              <Route exact path="/" render={props => <Home {...props} />}/>
+              <Route path="/NewTask" render={props => <NewTask {...props} />}/>
+              <Route path="/taskList" render={props => <TaskList {...props} />}/>
+              <Route path="/taskModal" render={props => <Home key={this.UId} {...props} />}/>
               <Route path="/profile" render={props => <Profile {...props} />} />
-              <Route
-                path="/CompletedTaskList"
-                render={props => <CompletedTaskList {...props} />}
-              />
-              <Route
-                path="/edittaskModal"
-                render={props => <TaskList {...props} />}
-              />
-              <Route
-                path="/editCompletedtaskModal"
-                render={props => <CompletedTaskList {...props} />}
-              />
-              <Route
-                path="/EditTaskList"
-                render={props => <EditTaskList {...props} />}
-              />
-              <Route
-                path="/EditCompletedTaskList"
-                render={props => <EditCompletedTaskList {...props} />}
-              />            
-              <Route
-                path='/newCategory'
-                render={props => <NewCategory {...props} />}
-              />
+              <Route path="/CompletedTaskList" render={props => <CompletedTaskList {...props} />}/>
+              <Route path="/edittaskModal" render={props => <TaskList {...props} />} />
+              <Route path="/editCompletedtaskModal" render={props => <CompletedTaskList {...props} />}/>
+              <Route path="/EditTaskList" render={props => <EditTaskList {...props} />}/>
+              <Route path="/EditCompletedTaskList" render={props => <EditCompletedTaskList {...props} />}/>            
+              <Route path='/newCategory' render={props => <NewCategory {...props} />}/>
             </div>
           </div>
         )}

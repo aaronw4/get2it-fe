@@ -57,15 +57,15 @@ export const Filter = props => {
     
     return (
         <div className='filterButtonsCont'>
-            <div className='filterButtonsCont'>
-                <button onClick={() => handleClick(todayList, 'Today')}>Today</button>
-                <button onClick={() => handleClick(tomorrowList, 'Tomorrow')}>Tomorrow</button>
-                <button onClick={() => handleClick(somedayList, 'Beyond Tomorrow')}>Beyond</button>
-                <button onClick={() => handleClick(pastList, 'Past')} className={alert}>Past</button>
+            <div className='flexColumn'>
+                <button className='filterButton' onClick={() => handleClick(todayList, 'Today')}>Today</button>
+                <button className='filterButton' onClick={() => handleClick(tomorrowList, 'Tomorrow')}>Tomorrow</button>
+                <button className='filterButton' onClick={() => handleClick(somedayList, 'Beyond Tomorrow')}>Beyond</button>
+                <button className={alert} onClick={() => handleClick(pastList, 'Past')}><span className='filterButton'>Past</span></button>
             </div>
-            <div className='filterButtonsCont'>
+            <div className='flexColumn'>
                 <div className='categoriesHeader'>
-                    <h5>Categories</h5>
+                    <h3>Categories</h3>
                     <Link 
                         id='addCategoryButton'
                         to='/newCategory'
@@ -73,9 +73,9 @@ export const Filter = props => {
                         +
                     </Link>
                 </div>
-                <div className='filterButtonsCont'>
+                <div className='flexColumn'>
                     {categories.map(categories => (
-                        <button key={categories.id} onClick={() => handleCategoryClick(categories.id, categories.name)}>{categories.name}</button>
+                        <button className='categories' key={categories.id} onClick={() => handleCategoryClick(categories.id, categories.name)}>{categories.name}</button>
                     ))}
                 </div>
             </div>
