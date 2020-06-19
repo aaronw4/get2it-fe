@@ -49,7 +49,7 @@ class Menu extends React.Component {
     return (
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle className="dropButton">
-          <i className="fas fa-bars fa-lg"></i>
+          <i data-testid='menu' className="fas fa-bars fa-lg"></i>
         </DropdownToggle>
         <DropdownMenu>
           <DropdownItem header>
