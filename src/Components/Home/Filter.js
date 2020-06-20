@@ -61,7 +61,7 @@ export const Filter = props => {
                 <button className='filterButton' onClick={() => handleClick(todayList, 'Today')}>Today</button>
                 <button className='filterButton' onClick={() => handleClick(tomorrowList, 'Tomorrow')}>Tomorrow</button>
                 <button className='filterButton' onClick={() => handleClick(somedayList, 'Beyond Tomorrow')}>Beyond</button>
-                <button className={alert} onClick={() => handleClick(pastList, 'Past')}><span className='filterButton'>Past</span></button>
+                <button className={alert} onClick={() => handleClick(pastList, 'Past')}><span>Past</span></button>
             </div>
             <div className='flexColumn'>
                 <div className='categoriesHeader'>
