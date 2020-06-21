@@ -1,56 +1,33 @@
 import axios from 'axios'
 import moment from 'moment'
 
-export const CREATE_USER_START = 'CREATE_USER_START'
-export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS'
-export const CREATE_USER_FAILED = 'CREATE_USER_FAILED'
-
-export const LOGIN_START = 'LOGIN_START'
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
-export const LOGIN_FAILED = 'LOGIN_FAILED'
-
-export const GET_TASKS_START = 'GET_TASKS_START'
-export const GET_TASKS_SUCCESS = 'GET_TASKS_SUCCESS'
-export const GET_TASKS_FAILED = 'GET_TASKS_FAILED'
-
-export const UPDATE_TASK_START = 'UPDATE_TASK_START'
-export const UPDATE_TASK_SUCCESS = 'UPDATE_TASK_SUCCESS'
-export const UPDATE_TASK_FAILED = 'UPDATE_TASK_FAILED'
-export const UPDATE_TASK_FILTERED = 'UPDATE_TASK_FILTERED'
-
-export const DELETE_TASK_START = "DELETE_TASK_START";
+export const START = 'START';
+export const FAILED = 'FAILED';
+export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const GET_TASKS_SUCCESS = 'GET_TASKS_SUCCESS';
+export const UPDATE_TASK_SUCCESS = 'UPDATE_TASK_SUCCESS';
 export const DELETE_TASK_SUCCESS = "DELETE_TASK_SUCCESS";
-export const DELETE_TASK_FAILED = "DELETE_TASK_FAILED";
-
-export const UPDATE_USER_START = 'UPDATE_USER_START'
-export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
-export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED'
-
-export const CREATE_TASK_START = "CREATE_TASK_START";
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const CREATE_TASK_SUCCESS = "CREATE_TASK_SUCCESS";
-export const CREATE_TASK_FAILED = "CREATE_TASK_FAILED";
-
+export const ADD_CATEGORY_SUCCESS = 'ADD_CATEGORY_SUCCESS';
+export const GET_CATEGORY_SUCCESS = 'GET_CATEGORY_SUCCESS';
 export const NEW_TASK_DATE = 'NEW_TASK_DATE';
 export const NEW_START_TIME = 'NEW_START_TIME';
 export const NEW_END_TIME = 'NEW_END_TIME';
-
 export const CLEAR_DATA = 'CLEAR_DATA';
 export const SHOW_PASSWORD = 'SHOW_PASSWORD';
 export const TIME_PERIOD = 'TIME_PERIOD';
-
-export const ADD_CATEGORY_START = 'ADD_CATEGORY_START';
-export const ADD_CATEGORY_SUCCESS = 'ADD_CATEGORY_SUCCESS';
-export const ADD_CATEGORY_FAILED = 'ADD_CATEGORY_FAILED';
-
-export const GET_CATEGORY_START = 'GET_CATEGORY_START';
-export const GET_CATEGORY_SUCCESS = 'GET_CATEGORY_SUCCESS';
-export const GET_CATEGORY_FAILED = 'GET_CATEGORY_FAILED';
-
+export const UPDATE_TASK_FILTERED = 'UPDATE_TASK_FILTERED';
 export const ASSIGN_CATEGORY = 'ASSIGN_CATEGORY';
+
+const headers = {
+  Authorization: localStorage.getItem('token'),
+}
 
 export function createUser(email, password, displayName) {
   return (dispatch) => {
-    dispatch({ type: CREATE_USER_START })
+    dispatch({ type: START })
 
     return axios.post(' https://get2itpt9.herokuapp.com/api/auth/register', { email, password, displayName })
       .then((res) => {
@@ -59,14 +36,14 @@ export function createUser(email, password, displayName) {
       })
       .catch((err) => {
         const payload = err.response ? err.response.data : err
-        dispatch({ type: CREATE_USER_FAILED, payload })
+        dispatch({ type: FAILED, payload })
       })
   }
 }
 
 export function login(email, password) {
   return (dispatch) => {
-    dispatch({ type: LOGIN_START })
+    dispatch({ type: START })
 
     return axios.post(' https://get2itpt9.herokuapp.com/api/auth/login', { email, password })
       .then((res) => {
@@ -75,18 +52,14 @@ export function login(email, password) {
       })
       .catch((err) => {
         const payload = err.response ? err.response.data : err
-        dispatch({ type: LOGIN_FAILED, payload })
+        dispatch({ type: FAILED, payload })
       })
   }
 }
 
 export function getTASKS(id) {
   return (dispatch) => {
-    dispatch({ type: GET_TASKS_START })
-
-    const headers = {
-      Authorization: localStorage.getItem('token'),
-    }
+    dispatch({ type: START })
 
     axios.get(` https://get2itpt9.herokuapp.com/api/users/${id}/tasks`, { headers })
       .then((res) => {
@@ -108,18 +81,14 @@ export function getTASKS(id) {
       })
       .catch((err) => {
         console.log(err.response)
-        dispatch({ type: GET_TASKS_FAILED, payload: err.response })
+        dispatch({ type: FAILED, payload: err.response })
       })
   }
 }
 
 export function updateTask(payload, id, category_id){
   return (dispatch) => {
-    dispatch({ type: UPDATE_TASK_START })
-
-    const headers = {
-      Authorization: localStorage.getItem('token'),
-    }
+    dispatch({ type: START })
 
     axios.put(` https://get2itpt9.herokuapp.com/api/users/tasks/${id}`, payload, { headers })
       .then((res) => {
@@ -132,7 +101,7 @@ export function updateTask(payload, id, category_id){
       })
       .catch((err) => {
         console.log(err)
-        dispatch({ type: UPDATE_TASK_FAILED, payload: err.response })
+        dispatch({ type: FAILED, payload: err.response })
       })
   }
 }
@@ -145,12 +114,7 @@ export function updateFilteredTask(payload) {
 
 export function deleteTask(id) {
   return dispatch => {
-    dispatch({ type: DELETE_TASK_START });
-    console.log(id)
-
-    const headers = {
-      Authorization: localStorage.getItem("token")
-    };
+    dispatch({ type: START });
 
     axios
       .delete(` https://get2itpt9.herokuapp.com/api/users/tasks/${id}`, { headers })
@@ -159,18 +123,14 @@ export function deleteTask(id) {
       })
       .catch(err => {
         console.log(err);
-        dispatch({ type: DELETE_TASK_FAILED, payload: err.response.data });
+        dispatch({ type: FAILED, payload: err.response.data });
       });
   };
 }
 
 export function updateUser(payload, id) {
   return dispatch => {
-    dispatch({ type: UPDATE_USER_START });
-
-    const headers = {
-      Authorization: localStorage.getItem("token")
-    };
+    dispatch({ type: START });
 
     axios
       .put(` https://get2itpt9.herokuapp.com/api/auth/edit-profile/${id}`, payload, { headers })
@@ -179,18 +139,14 @@ export function updateUser(payload, id) {
       })
       .catch(err => {
         console.log(err);
-        dispatch({ type: UPDATE_USER_FAILED, payload: err.response.data });
+        dispatch({ type: FAILED, payload: err.response.data });
       });
   };
 }
 
 export function createTask(payload, user_id, category_id) {
   return dispatch => {
-    dispatch({ type: CREATE_TASK_START });
-
-    const headers = {
-      Authorization: localStorage.getItem("token")
-    };
+    dispatch({ type: START });
 
     return axios
       .post(` https://get2itpt9.herokuapp.com/api/users/${user_id}/tasks`, payload, { headers })
@@ -203,7 +159,7 @@ export function createTask(payload, user_id, category_id) {
       .then(res => console.log(res))
       .catch(err => {
         const payload = err.response ? err.response.data : err;
-        dispatch({ type: CREATE_TASK_FAILED, payload });
+        dispatch({ type: FAILED, payload });
       })
     
   };
@@ -244,11 +200,7 @@ export function timePeriod(payload) {
 
 export function addCategory(payload, id) {
   return dispatch => {
-    dispatch({ type: ADD_CATEGORY_START });
-
-    const headers = {
-      Authorization: localStorage.getItem("token")
-    };
+    dispatch({ type: START });
 
     return axios
       .post(` https://get2itpt9.herokuapp.com/api/categories/${id}/categories`, payload, { headers })
@@ -257,18 +209,14 @@ export function addCategory(payload, id) {
       })
       .catch(err => {
         const payload = err.response ? err.response.data : err;
-        dispatch({ type: ADD_CATEGORY_FAILED, payload });
+        dispatch({ type: FAILED, payload });
       });
   };
 }
 
 export function getCategories(id) {
   return dispatch => {
-    dispatch({type: GET_CATEGORY_START});
-
-    const headers = {
-      Authorization: localStorage.getItem('token')
-    };
+    dispatch({type: START});
 
     return axios
       .get(`https://get2itpt9.herokuapp.com/api/categories/${id}/categories`, {headers})
@@ -278,16 +226,14 @@ export function getCategories(id) {
       })
       .catch(err => {
         const payload = err.response ? err.response.data : err;
-        dispatch({type: GET_CATEGORY_FAILED, payload});
+        dispatch({type: FAILED, payload});
       })
   }
 }
 
 export function assignCategory(task_id, user_id, category_id) {
   return dispatch => {
-    const headers = {
-      Authorization: localStorage.getItem('token')
-    };
+    
     const payload = {task_id: task_id, user_id: user_id};
 
     return axios
