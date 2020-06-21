@@ -86,7 +86,7 @@ import {
 //   },
 // ]
 
-const initialState = {
+export const initialState = {
   isLoading: false,
   error: null,
   errorStatus: null,
