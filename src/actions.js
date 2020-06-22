@@ -61,6 +61,10 @@ export function getTASKS(id) {
   return (dispatch) => {
     dispatch({ type: START })
 
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+    }
+
     axios.get(` https://get2itpt9.herokuapp.com/api/users/${id}/tasks`, { headers })
       .then((res) => {
         const newRes = res.data.map(task => {
