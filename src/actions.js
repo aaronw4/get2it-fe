@@ -21,10 +21,6 @@ export const TIME_PERIOD = 'TIME_PERIOD';
 export const UPDATE_TASK_FILTERED = 'UPDATE_TASK_FILTERED';
 export const ASSIGN_CATEGORY = 'ASSIGN_CATEGORY';
 
-const headers = {
-  Authorization: localStorage.getItem('token'),
-}
-
 export function createUser(email, password, displayName) {
   return (dispatch) => {
     dispatch({ type: START })
@@ -61,6 +57,10 @@ export function getTASKS(id) {
   return (dispatch) => {
     dispatch({ type: START })
 
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+    }
+
     axios.get(` https://get2itpt9.herokuapp.com/api/users/${id}/tasks`, { headers })
       .then((res) => {
         const newRes = res.data.map(task => {
@@ -90,6 +90,10 @@ export function updateTask(payload, id, category_id){
   return (dispatch) => {
     dispatch({ type: START })
 
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+    }
+
     axios.put(` https://get2itpt9.herokuapp.com/api/users/tasks/${id}`, payload, { headers })
       .then((res) => {
         dispatch({ type: UPDATE_TASK_SUCCESS, payload: res.data });
@@ -116,6 +120,10 @@ export function deleteTask(id) {
   return dispatch => {
     dispatch({ type: START });
 
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+    }
+
     axios
       .delete(` https://get2itpt9.herokuapp.com/api/users/tasks/${id}`, { headers })
       .then(res => {
@@ -132,6 +140,10 @@ export function updateUser(payload, id) {
   return dispatch => {
     dispatch({ type: START });
 
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+    }
+
     axios
       .put(` https://get2itpt9.herokuapp.com/api/auth/edit-profile/${id}`, payload, { headers })
       .then(res => {
@@ -147,6 +159,10 @@ export function updateUser(payload, id) {
 export function createTask(payload, user_id, category_id) {
   return dispatch => {
     dispatch({ type: START });
+
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+    }
 
     return axios
       .post(` https://get2itpt9.herokuapp.com/api/users/${user_id}/tasks`, payload, { headers })
@@ -202,6 +218,10 @@ export function addCategory(payload, id) {
   return dispatch => {
     dispatch({ type: START });
 
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+    }
+
     return axios
       .post(` https://get2itpt9.herokuapp.com/api/categories/${id}/categories`, payload, { headers })
       .then(() => {
@@ -217,6 +237,10 @@ export function addCategory(payload, id) {
 export function getCategories(id) {
   return dispatch => {
     dispatch({type: START});
+    
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+    }
 
     return axios
       .get(`https://get2itpt9.herokuapp.com/api/categories/${id}/categories`, {headers})
@@ -233,6 +257,9 @@ export function getCategories(id) {
 
 export function assignCategory(task_id, user_id, category_id) {
   return dispatch => {
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+    }
     
     const payload = {task_id: task_id, user_id: user_id};
 
