@@ -62,7 +62,7 @@ small.form-text {
     padding: 2%;
     color:white;
     width:100%;
-    font-size: 1.7em;
+    font-size: 1.6rem;
     margin-left: 0%;
 }
 .addTaskLink {
@@ -91,17 +91,19 @@ padding: auto;
 .completeDate {
   margin-bottom: 5px;
   color: white;
+  font-size: 1rem;
 }
 .completeName {
   margin-bottom: 5px;
+  font-size: 1.2rem;
 }
 .reUseBtn {
     width: auto;
     height: auto;
-    padding: 2%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 0.8rem;
   }
   .reUseBtn:Hover {
     opacity: 90%;
