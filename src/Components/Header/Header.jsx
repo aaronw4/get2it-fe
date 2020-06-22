@@ -67,7 +67,7 @@ class Header extends Component {
                   <Timer />
               </div>
               {/* Task counter */}
-              <Link className="countLink" to="/taskList">
+              <Link className="countLink" to="/taskList" data-testid='taskCount'>
                 <div className="countContainer">
                   <h1 className="count">{todayList.length}</h1>
                   <p className="total">{this.props.userTasks.length}</p>
