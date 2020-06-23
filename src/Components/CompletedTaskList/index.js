@@ -89,6 +89,7 @@ class CompletedTaskList extends React.Component {
                   </Form.Text>
                   <Link
                         id="formText"
+                        data-testid='taskLink'
                         className='reUse'
                         to={{
                           pathname: `/editCompletedtaskModal/${item.id}`,
