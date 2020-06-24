@@ -49,7 +49,7 @@ class EditTaskList extends React.Component {
     };
 
     axios
-      .get(`https://get2itpt9.herokuapp.com/api/categories/tasks/${id}`, {headers})
+      .get(`https://get2it-arw.herokuapp.com/api/categories/tasks/${id}`, {headers})
       .then(res => {
         let category_id = res.data.category_id;
         this.setState({categoryID: category_id});

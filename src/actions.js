@@ -25,7 +25,7 @@ export function createUser(email, password, displayName) {
   return (dispatch) => {
     dispatch({ type: START })
 
-    return axios.post(' https://get2itpt9.herokuapp.com/api/auth/register', { email, password, displayName })
+    return axios.post(' https://get2it-arw.herokuapp.com/api/auth/register', { email, password, displayName })
       .then((res) => {
         localStorage.setItem('token', res.data.token)
           dispatch({ type: CREATE_USER_SUCCESS, payload: res.data.user })
@@ -41,7 +41,7 @@ export function login(email, password) {
   return (dispatch) => {
     dispatch({ type: START })
 
-    return axios.post(' https://get2itpt9.herokuapp.com/api/auth/login', { email, password })
+    return axios.post(' https://get2it-arw.herokuapp.com/api/auth/login', { email, password })
       .then((res) => {
         localStorage.setItem('token', res.data.token)
         dispatch({ type: LOGIN_SUCCESS, payload: res.data.user });
@@ -61,7 +61,7 @@ export function getTASKS(id) {
       Authorization: localStorage.getItem('token'),
     }
 
-    axios.get(` https://get2itpt9.herokuapp.com/api/users/${id}/tasks`, { headers })
+    axios.get(` https://get2it-arw.herokuapp.com/api/users/${id}/tasks`, { headers })
       .then((res) => {
         const newRes = res.data.map(task => {
           if (!task.status) {
@@ -94,11 +94,11 @@ export function updateTask(payload, id, category_id){
       Authorization: localStorage.getItem('token'),
     }
 
-    axios.put(` https://get2itpt9.herokuapp.com/api/users/tasks/${id}`, payload, { headers })
+    axios.put(` https://get2it-arw.herokuapp.com/api/users/tasks/${id}`, payload, { headers })
       .then((res) => {
         dispatch({ type: UPDATE_TASK_SUCCESS, payload: res.data });
         return axios.put(
-          `https://get2itpt9.herokuapp.com/api/categories/tasks/${id}`, 
+          `https://get2it-arw.herokuapp.com/api/categories/tasks/${id}`, 
           {category_id: category_id}, 
           {headers}
         )
@@ -125,7 +125,7 @@ export function deleteTask(id) {
     }
 
     axios
-      .delete(` https://get2itpt9.herokuapp.com/api/users/tasks/${id}`, { headers })
+      .delete(` https://get2it-arw.herokuapp.com/api/users/tasks/${id}`, { headers })
       .then(res => {
         dispatch({ type: DELETE_TASK_SUCCESS, payload: res.data });
       })
@@ -145,7 +145,7 @@ export function updateUser(payload, id) {
     }
 
     axios
-      .put(` https://get2itpt9.herokuapp.com/api/auth/edit-profile/${id}`, payload, { headers })
+      .put(` https://get2it-arw.herokuapp.com/api/auth/edit-profile/${id}`, payload, { headers })
       .then(res => {
           dispatch({ type: UPDATE_USER_SUCCESS, payload: payload, id: id });
       })
@@ -165,12 +165,12 @@ export function createTask(payload, user_id, category_id) {
     }
 
     return axios
-      .post(` https://get2itpt9.herokuapp.com/api/users/${user_id}/tasks`, payload, { headers })
+      .post(` https://get2it-arw.herokuapp.com/api/users/${user_id}/tasks`, payload, { headers })
       .then(res => {
           dispatch({ type: CREATE_TASK_SUCCESS, payload: payload});
           let task_id = res.data.id;
           console.log(task_id, user_id, category_id);
-          return axios.post(`https://get2itpt9.herokuapp.com/api/categories/${category_id}/tasks`, {task_id: task_id}, {headers})
+          return axios.post(`https://get2it-arw.herokuapp.com/api/categories/${category_id}/tasks`, {task_id: task_id}, {headers})
       })
       .then(res => console.log(res))
       .catch(err => {
@@ -223,7 +223,7 @@ export function addCategory(payload, id) {
     }
 
     return axios
-      .post(` https://get2itpt9.herokuapp.com/api/categories/${id}/categories`, payload, { headers })
+      .post(` https://get2it-arw.herokuapp.com/api/categories/${id}/categories`, payload, { headers })
       .then(() => {
         dispatch({ type: ADD_CATEGORY_SUCCESS, payload: payload, id: id })
       })
@@ -243,7 +243,7 @@ export function getCategories(id) {
     }
 
     return axios
-      .get(`https://get2itpt9.herokuapp.com/api/categories/${id}/categories`, {headers})
+      .get(`https://get2it-arw.herokuapp.com/api/categories/${id}/categories`, {headers})
       .then(res => {
         const payload = res.data;
         dispatch({ type: GET_CATEGORY_SUCCESS, payload: payload})
@@ -264,7 +264,7 @@ export function assignCategory(task_id, user_id, category_id) {
     const payload = {task_id: task_id, user_id: user_id};
 
     return axios
-      .post(`https://get2itpt9.herokuapp.com/api/categories/${category_id}/tasks`, payload, {headers})
+      .post(`https://get2it-arw.herokuapp.com/api/categories/${category_id}/tasks`, payload, {headers})
       .then(() => dispatch({type: ASSIGN_CATEGORY}))
       .catch(err => console.log(err, payload))
   }
