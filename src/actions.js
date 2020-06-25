@@ -145,7 +145,7 @@ export function updateUser(payload, id) {
     }
 
     axios
-      .put(` https://get2it-arw.herokuapp.com/api/auth/edit-profile/${id}`, payload, { headers })
+      .put(` https://get2it-arw.herokuapp.com/api/auth/users/${id}`, payload, { headers })
       .then(res => {
           dispatch({ type: UPDATE_USER_SUCCESS, payload: payload, id: id });
       })

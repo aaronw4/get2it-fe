@@ -5,7 +5,6 @@ import moment from 'moment';
 import styled from 'styled-components';
 
 //importing components
-import TimerHeader from '../TimerHeader/TimerHeader';
 import TimerDisplay from '../TimerDisplay/TimerDisplay';
 import TimerButton from '../TimerButton/TimerButton';
 import TimerConfig from '../TimerConfig/TimerConfig';

@@ -19,7 +19,7 @@ export const Filter = props => {
     let alert;
 
     if (incompleteTasks.length === 0) {
-        alert = 'noAlert'
+        alert = 'filterButton'
     } else {
         alert = 'Alert'
     }
