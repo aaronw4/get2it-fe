@@ -66,7 +66,7 @@ class editTaskList extends React.Component {
   }
 
   arrar = []
-  complete = () => {
+  complete = async () => {
     for (var i = 0; i < this.itemArr.length; i++) {
       this.arrar.push(this.itemArr[i])
     }
@@ -75,7 +75,7 @@ class editTaskList extends React.Component {
       this.getTaskById(id)
     })
 
-    setTimeout(() => {
+    await setTimeout(() => {
       window.location.reload(true)
     }, 500)
   }
@@ -119,7 +119,7 @@ class editTaskList extends React.Component {
       },
       setTimeout(() => {
         window.location.reload(true)
-      }, 100)
+      }, 500)
     )
   }
 
