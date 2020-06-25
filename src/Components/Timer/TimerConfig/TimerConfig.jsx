@@ -35,10 +35,6 @@ class TimerConfig extends Component {
 
 export default TimerConfig;
 
-const H2 = styled.h2 `
-  font-size: 0.8rem;
-  text-align: r
-`
 const MinInput = styled.input `
   font-size: 0.8rem;
   width: 3rem;
