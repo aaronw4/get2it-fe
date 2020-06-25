@@ -112,7 +112,7 @@ class NewTask extends React.Component {
         notificationId: notificationId
       };
 
-      createTask(payload, id)
+      createTask(payload, id, categoryID)
         .then(() => {
           this.props.updateFilteredTask([]);
           this.props.timePeriod('Today');
@@ -135,7 +135,7 @@ class NewTask extends React.Component {
         notificationId: notificationId
       };
 
-      createTask(payload, id)
+      createTask(payload, id, categoryID)
         .then(() => {
           this.props.updateFilteredTask([]);
           this.props.timePeriod('Today');
@@ -157,7 +157,7 @@ class NewTask extends React.Component {
         end_time,
         notificationId: notificationId
       };
-      createTask(payload, id)
+      createTask(payload, id, categoryID)
         .then(() => {
           this.props.updateFilteredTask([]);
           this.props.timePeriod('Today');
