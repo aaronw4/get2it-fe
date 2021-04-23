@@ -12,12 +12,12 @@ export const Filter = props => {
     const tomorrow = moment().add(1, 'd').format('L')
     const todayList = props.userTasks.filter(task => task.date === today && task.status === false)
     const tomorrowList = props.userTasks.filter(task => task.date === tomorrow && task.status === false)
-    const somedayList = props.userTasks.filter(task => task.date > tomorrow && task.status === false)
-    const pastList = props.userTasks.filter(task => task.date < today)
-    const incompleteTasks = props.userTasks.filter(task => task.date < today && task.status === false) 
+    const somedayList = props.userTasks.filter(task => moment(task.date).isAfter(tomorrow) && task.status === false)
+    const pastList = props.userTasks.filter(task => moment(task.date).isBefore(today))
+    const incompleteTasks = props.userTasks.filter(task => (task.date) < today && task.status === false) 
     const categories = props.categories
     let alert;
-
+    
     if (incompleteTasks.length === 0) {
         alert = 'filterButton'
     } else {
@@ -37,7 +37,7 @@ export const Filter = props => {
         };
 
         axios
-        .get(`https://get2itpt9.herokuapp.com/api/categories/${id}/tasks`, {headers})
+        .get(`https://get2it-arw.herokuapp.com/api/categories/${id}/tasks`, {headers})
         .then(res => {
             console.log(res.data)
             let category = res.data.map(tasks => {

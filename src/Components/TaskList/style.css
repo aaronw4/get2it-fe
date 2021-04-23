@@ -17,14 +17,13 @@ dl, ol, ul {
     padding: 2px;
 }
 .taskListContainer {
-  overflow: auto;
-  height: 100vh;
   padding: 0px;
   background-color: #212936;
   border: 1px solid #313c4e;
   border-radius: 5px;
   width: 90%;
   margin: 0 auto;
+  font-size: 16px;
 }
 .taskListContainer::-webkit-scrollbar-track-piece {
   height: 20px;
@@ -158,6 +157,7 @@ padding: auto;
 #completedLink {
   padding: 4px;
   padding-left: 8px;
+  margin-right: 20px;
   box-sizing: border-box;
   height: 35px;
   width: 177px;
@@ -168,6 +168,7 @@ padding: auto;
   top: 200px;
   right: 18px;
   text-decoration: none;
+  font-size: 16px;
 }
 #completedLink:hover {
   border: 1px solid silver;
