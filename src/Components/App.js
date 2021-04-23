@@ -23,8 +23,7 @@ function App() {
       <PrivateRoute path='/CompletedTaskList' component={Dashboard} />
       <PrivateRoute path='/newCategory' component={Dashboard}/>
       <Route path='/login' component={Login} />
-      <Route path='/register' component={Register} />
-      
+      <Route path='/register' component={Register} />    
     </div>
   );
 }

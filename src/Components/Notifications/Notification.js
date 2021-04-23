@@ -17,8 +17,6 @@ export default class Notification extends React.Component {
       msg: '',
     }
     this.timeout = null
-
-    
   }
 
   componentDidMount() {
