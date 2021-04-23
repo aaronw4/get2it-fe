@@ -40,6 +40,10 @@
   width: 250px;
 }
 
+.registerForm {  
+  align-items: center;
+}
+
 .inputContainer {
   display: flex;
   margin: 10px;
@@ -49,6 +53,9 @@
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .registerIcon {
   color: rgba(192, 192, 192, 0.65);
@@ -76,6 +83,7 @@
   background-color: var(--textColor);
   color: rgb(15, 15, 53);
 }
+
 input {
   width: 100%;
   text-align: left;
@@ -115,6 +123,7 @@ select:-webkit-autofill:focus {
 p.loginMessage {
   color: rgba(192, 192, 192, 0.65);
   margin-bottom: 0px;
+  font-size: 16px;
 }
 
 @media only screen and (min-width: 800px) {

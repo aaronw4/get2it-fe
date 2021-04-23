@@ -245,6 +245,10 @@
   margin-left: 10px;
 }
 
+#addTaskText {
+  font-size: 16px;
+}
+
 #addTaskLink {
   display: flex;
   justify-content: center;

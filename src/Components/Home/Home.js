@@ -57,7 +57,7 @@ class Home extends React.Component {
             this.props.timePeriod === 'Today' && this.props.filteredTasks.length === 0 ? (
               <div className="noTaskContainer"> 
                 <h3>{this.props.timePeriod}</h3>            
-                <p>Or add a new task!</p>
+                <p id='addTaskText'>Add a new task!</p>
                 <Link
                   id="addTaskLink"
                   to={{ pathname: "/newTask", state: { modal: true } }}
