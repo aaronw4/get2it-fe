@@ -32,7 +32,6 @@ class NewTask extends React.Component {
   componentDidMount() {
     const categories = this.props.categories;
     const id = categories[0].id;
-    console.log(categories.id);
     console.log(id);
     this.setState({categoryID: id})
   }
@@ -69,13 +68,7 @@ class NewTask extends React.Component {
     evt.preventDefault();
 
     const { icon, taskName, notifyOn, categoryID, notificationId} = this.state;
-    const {
-      createTask,
-      date,
-      start_time,
-      end_time,
-      userData
-    } = this.props;
+    const { createTask, date, start_time, end_time, userData} = this.props;
     const id = userData.id;
 
     if (start_time === "" && end_time === "") {
